@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Tiny_Weather</string>
+    <string name="location_id1">
+        현재위치
+    </string>
+    <string name="location_id2">
+        __구 __동
+    </string>
 </resources>
