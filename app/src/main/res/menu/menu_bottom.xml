@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/covid"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:title="코로나"
+        android:fontFamily="@font/scdream3" />
+    <item
+        android:id="@+id/map"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:title="전국지도"
+        android:fontFamily="@font/scdream3"
+        />
+    <item
+        android:id="@+id/home"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:title="홈"
+        android:icon="@drawable/home"
+        android:fontFamily="@font/scdream3" />
+    <item
+        android:id="@+id/weather"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:title="날씨"
+        android:fontFamily="@font/scdream3" />
+    <item
+        android:id="@+id/dust"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:title="미세먼지"
+        android:fontFamily="@font/scdream3" />
+</menu>
