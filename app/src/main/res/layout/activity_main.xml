@@ -3,7 +3,7 @@
     android:id="@+id/some_id"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/some_id"
+    android:background="@drawable/background_color"
     >
     <TextView
         android:layout_width="93dp"
