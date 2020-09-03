@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- drawable/face_png.xml -->
+    <vector
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:aapt="http://schemas.android.com/aapt"
+        android:width="200dp"
+        android:height="200.18dp"
+        android:viewportWidth="200"
+        android:viewportHeight="200.18"
+        >
+
+        <group>
+
+            <clip-path
+                android:pathData="M0 0H200V200.181H0V0Z"
+                />
+
+        </group>
+
+    </vector>
+</selector>

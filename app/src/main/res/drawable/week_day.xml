@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- drawable/week_day.xml -->
+    <vector
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:aapt="http://schemas.android.com/aapt"
+        android:width="353dp"
+        android:height="48dp"
+        android:viewportWidth="353"
+        android:viewportHeight="48"
+        >
+
+        <group>
+
+            <clip-path
+                android:pathData="M0 0H353V48H0V0Z"
+                />
+
+            <path
+                android:pathData="M0 0V48H353V0"
+                android:fillColor="#C4DEFC"
+                />
+
+        </group>
+
+    </vector>
+
+</selector>

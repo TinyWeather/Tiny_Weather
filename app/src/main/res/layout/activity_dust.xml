@@ -19,6 +19,7 @@
         android:gravity="center_horizontal|top"
         android:fontFamily="@font/scdream3"
         />
+
     <TextView
         android:layout_width="180dp"
         android:layout_height="50dp"
@@ -33,4 +34,385 @@
         android:gravity="center_horizontal|top"
         android:fontFamily="@font/scdream3"
         />
+
+    <!-- face -->
+    <View
+        android:id="@+id/face"
+        android:layout_width="200dp"
+        android:layout_height="203dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="79dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="122dp"
+        android:background="#00000000"
+        />
+    <!-- face_png -->
+    <View
+        android:id="@+id/face_png"
+        android:layout_width="200dp"
+        android:layout_height="200.18dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="79dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="122dp"
+        android:background="@drawable/face_png"
+        />
+
+    <!-- face_background -->
+    <View
+        android:id="@+id/face_backgr"
+        android:layout_width="200dp"
+        android:layout_height="200.18dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="79dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="124.82dp"
+        android:background="@drawable/face_backgr"
+        />
+
+
+    <!-- update_time -->
+    <TextView
+        android:id="@+id/update_time"
+        android:layout_width="265dp"
+        android:layout_height="42dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="51dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="340dp"
+        android:text="@string/update_time"
+        android:textAppearance="@style/update_time"
+        android:gravity="center_horizontal|top"
+        />
+
+    <!-- dust_menu -->
+    <View
+        android:id="@+id/dust_menu"
+        android:layout_width="92dp"
+        android:layout_height="21dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="137dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="413dp"
+        android:background="#00000000"
+        />
+
+    <!-- togle_menu1 -->
+    <View
+        android:id="@+id/togle_menu1"
+        android:layout_width="49dp"
+        android:layout_height="21dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="137dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="413dp"
+        android:background="@drawable/togle_menu1"
+        />
+
+    <!-- togle_menu2 -->
+    <View
+        android:id="@+id/togle_menu2"
+        android:layout_width="92dp"
+        android:layout_height="21dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="137dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="413dp"
+        android:background="@drawable/togle_menu2"
+        />
+
+    <!-- time_dust -->
+    <View
+        android:id="@+id/time_dust"
+        android:layout_width="384dp"
+        android:layout_height="129dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="2dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="423dp"
+        android:background="#00000000"
+        />
+
+    <!-- time_dust_txt -->
+    <TextView
+        android:id="@+id/time_dust_txt"
+        android:layout_width="335dp"
+        android:layout_height="18dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="13dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="428dp"
+        android:text="@string/time_dust_txt"
+        android:textAppearance="@style/time_dust_txt"
+        android:gravity="center_horizontal|top"
+        />
+
+    <!-- time_dust_top -->
+    <View
+        android:id="@+id/time_dust_top"
+        android:layout_width="353dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="2dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="423dp"
+        android:background="@drawable/time_dust_top"
+        />
+
+    <!-- time_dust_back -->
+    <View
+        android:id="@+id/time_dust_back"
+        android:layout_width="353dp"
+        android:layout_height="128dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="2dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="424dp"
+        android:background="@drawable/time_dust_back"
+        android:elevation="3dp"
+        />
+
+    <!-- time -->
+    <View
+        android:id="@+id/time"
+        android:layout_width="65dp"
+        android:layout_height="87dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="244dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="456dp"
+        android:background="#00000000"
+        />
+
+    <!-- time_face -->
+    <View
+        android:id="@+id/time_face"
+        android:layout_width="33dp"
+        android:layout_height="33.43dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="260dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="483dp"
+        android:background="#00000000"
+        />
+
+    <!-- time_time -->
+    <TextView
+        android:id="@+id/time_time"
+        android:layout_width="65dp"
+        android:layout_height="18dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="244dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="456dp"
+        android:text="@string/time_time"
+        android:textAppearance="@style/time_time"
+        android:gravity="center_horizontal|top"
+        />
+
+    <!-- time_txt -->
+    <TextView
+        android:id="@+id/time_txt"
+        android:layout_width="65dp"
+        android:layout_height="18dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="244dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="525dp"
+        android:text="@string/time_txt"
+        android:textAppearance="@style/time_txt"
+        android:gravity="center_horizontal|top"
+        />
+
+    <!-- week_dust -->
+    <View
+        android:id="@+id/week_dust"
+        android:layout_width="353dp"
+        android:layout_height="427dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="2dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="573dp"
+        android:background="#00000000"
+        />
+
+    <!-- week_day -->
+    <View
+        android:id="@+id/week_day"
+        android:layout_width="353dp"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="2dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="666dp"
+        android:background="@drawable/week_day"
+        />
+
+    <!-- week_txt -->
+    <TextView
+        android:id="@+id/week_txt"
+        android:layout_width="335dp"
+        android:layout_height="18dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="13dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="579dp"
+        android:text="@string/week_txt"
+        android:textAppearance="@style/week_txt"
+        android:gravity="center_horizontal|top"
+        />
+
+    <!-- week_top -->
+    <View
+        android:id="@+id/week_top"
+        android:layout_width="353dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="2dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="573dp"
+        android:background="@drawable/week_top"
+        />
+
+    <!-- week_back -->
+    <View
+        android:id="@+id/week_back"
+        android:layout_width="353dp"
+        android:layout_height="426dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="2dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="574dp"
+        android:background="@drawable/week_back"
+        android:elevation="3dp"
+        />
+
+    <!-- week -->
+    <View
+        android:id="@+id/week"
+        android:layout_width="344dp"
+        android:layout_height="33.43dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="953dp"
+        android:background="#00000000"
+        />
+
+    <!-- week_img -->
+    <View
+        android:id="@+id/week_img"
+        android:layout_width="33dp"
+        android:layout_height="33.43dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="166dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="953dp"
+        android:background="@drawable/week_img"
+        />
+
+    <!-- week_backs -->
+    <View
+        android:id="@+id/week_backs"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="166dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="953dp"
+        android:background="@drawable/week_backs"
+        />
+
+    <!-- week_degree -->
+    <TextView
+        android:id="@+id/week_degree"
+        android:layout_width="119dp"
+        android:layout_height="23dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="235dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="960dp"
+        android:text="@string/week_degree"
+        android:textAppearance="@style/week_degree"
+        android:gravity="center_horizontal|top"
+        />
+
+    <!-- week_date -->
+    <TextView
+        android:id="@+id/week_date"
+        android:layout_width="119dp"
+        android:layout_height="23dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="960dp"
+        android:text="@string/week_date"
+        android:textAppearance="@style/week_date"
+        android:gravity="center_horizontal|top"
+        />
+
+    <!-- dust_standard -->
+    <View
+        android:id="@+id/dust_standa"
+        android:layout_width="353dp"
+        android:layout_height="137dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="2dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="1018dp"
+        android:background="#00000000"
+        />
+
+    <!-- standard_img -->
+    <View
+        android:id="@+id/standard_im"
+        android:layout_width="315dp"
+        android:layout_height="87dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="23dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="1058dp"
+        android:background="@drawable/standard_im"
+        />
+
+    <!-- standard_txt -->
+    <TextView
+        android:id="@+id/standard_tx"
+        android:layout_width="335dp"
+        android:layout_height="18dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="13dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="1024dp"
+        android:text="@string/standard_tx"
+        android:textAppearance="@style/standard_tx"
+        android:gravity="center_horizontal|top"
+        />
+
+    <!-- standard_top -->
+    <View
+        android:id="@+id/standard_to"
+        android:layout_width="353dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="2dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="1018dp"
+        android:background="@drawable/standard_to"
+        />
+
+    <!-- standard_back -->
+    <View
+        android:id="@+id/standard_ba"
+        android:layout_width="353dp"
+        android:layout_height="137dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="2dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="1018dp"
+        android:background="@drawable/standard_ba"
+        android:elevation="3dp"
+        />
+
+
 </RelativeLayout>

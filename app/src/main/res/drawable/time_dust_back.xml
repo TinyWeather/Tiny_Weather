@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- drawable/time_dust_b.xml -->
+    <vector
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:aapt="http://schemas.android.com/aapt"
+        android:width="353dp"
+        android:height="128dp"
+        android:viewportWidth="353"
+        android:viewportHeight="128"
+        >
+
+        <group>
+
+            <clip-path
+                android:pathData="M17 0H336C345.389 0 353 7.61116 353 17V111C353 120.389 345.389 128 336 128H17C7.61116 128 0 120.389 0 111V17C0 7.61116 7.61116 0 17 0Z"
+                />
+
+            <path
+                android:pathData="M0 0V128H353V0"
+                android:fillColor="#E0F2FA"
+                />
+
+        </group>
+
+    </vector>
+
+</selector>

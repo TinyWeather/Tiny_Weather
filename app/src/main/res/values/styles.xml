@@ -29,4 +29,226 @@
         </item>
     </style>
 
+<!--미세먼지-->
+    <!--dust update_time -->
+    <style name="pm">
+
+        <item name="android:textSize">
+            18sp
+        </item>
+
+        <item name="android:textColor">
+            #000000
+        </item>
+    </style>
+
+    <!-- time_dust_txt -->
+    <style name="time_dust_txt">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:textColor">
+            #000000
+        </item>
+
+    </style>
+
+    <!-- week_txt -->
+    <style name="week_txt">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:textColor">
+            #000000
+        </item>
+
+    </style>
+
+    <!-- standard_tx -->
+    <style name="standard_tx">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:textColor">
+            #000000
+        </item>
+
+    </style>
+
+    <!-- update_time -->
+    <style name="update_time">
+
+        <item name="android:textSize">
+            18sp
+        </item>
+
+        <item name="android:textColor">
+            #000000
+        </item>
+
+    </style>
+
+    <!-- time_time.xml -->
+    <style name="time_time">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:textColor">
+            #000000
+        </item>
+
+    </style>
+
+    <!-- time_txt.xml -->
+    <style name="time_txt">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:textColor">
+            #000000
+        </item>
+
+    </style>
+
+    <!-- week_degree.xml -->
+    <style name="week_degree">
+
+        <item name="android:textSize">
+            18sp
+        </item>
+
+        <item name="android:textColor">
+            #000000
+        </item>
+
+    </style>
+
+    <!-- week_date.xml -->
+    <style name="week_date">
+
+        <item name="android:textSize">
+            18sp
+        </item>
+
+        <item name="android:textColor">
+            #000000
+        </item>
+    </style>
+
+
+<!--날씨-->
+    <!-- w_big_txt.xml -->
+    <style name="w_big_txt">
+
+        <item name="android:textSize">
+            36sp
+        </item>
+
+        <item name="android:textColor">
+            #000000
+        </item>
+
+    </style>
+
+    <!-- w_t_d_txt.xml -->
+    <style name="w_t_d_txt">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:textColor">
+            #000000
+        </item>
+
+    </style>
+
+    <!-- week_s_topdown.xml -->
+    <style name="week_s_topdown">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:textColor">
+            #000000
+        </item>
+
+    </style>
+
+    <!-- week_s_date.xml -->
+    <style name="week_s_date">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:textColor">
+            #000000
+        </item>
+
+    </style>
+
+    <!-- w_topdown.xml -->
+    <style name="w_topdown">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:textColor">
+            #000000
+        </item>
+
+    </style>
+
+    <!-- w_dust.xml -->
+    <style name="w_dust">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:textColor">
+            #000000
+        </item>
+
+    </style>
+
+    <!-- w_weather.xml -->
+    <style name="w_weather">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:textColor">
+            #000000
+        </item>
+
+    </style>
+
+    <!-- w_date.xml -->
+    <style name="w_date">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:textColor">
+            #000000
+        </item>
+
+    </style>
+
 </resources>
