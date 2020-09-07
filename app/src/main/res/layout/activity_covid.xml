@@ -1,10 +1,15 @@
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+<RelativeLayout
     android:id="@+id/some_id"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/background_color"
-    >
+    android:background="@drawable/background_color">
+
     <TextView
         android:layout_width="93dp"
         android:layout_height="33dp"
@@ -19,7 +24,9 @@
         android:gravity="center_horizontal|top"
         android:fontFamily="@font/scdream3"
         />
+
     <TextView
+        android:id="@+id/adress_textview"
         android:layout_width="180dp"
         android:layout_height="50dp"
         android:layout_alignParentLeft="true"
@@ -33,4 +40,116 @@
         android:gravity="center_horizontal|top"
         android:fontFamily="@font/scdream3"
         />
+
+    <ImageView
+        android:id="@+id/covid_img"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="140dp"
+        android:background="#00000000"
+        app:srcCompat="@drawable/dust7"
+        />
+    <TextView
+        android:id="@+id/covid_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="170dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="365dp"
+        android:text="보통"
+        android:textSize="40dp"
+        android:gravity="center_horizontal|top"
+        android:fontFamily="@font/scdream3"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="108dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="430dp"
+        android:text="코로나 현황"
+        android:textSize="40dp"
+        android:gravity="center_horizontal|top"
+        android:fontFamily="@font/scdream3"
+        />
+
+    <TextView
+        android:id="@+id/adress_textview2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="__구"
+        android:textSize="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="180dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="485dp"
+        android:gravity="center_horizontal|top"
+        android:fontFamily="@font/scdream3"
+        />
+
+    <View
+        android:id="@+id/graph_background"
+        android:layout_width="339dp"
+        android:layout_height="191dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="535dp"
+        android:background="@drawable/covid_graph_background"
+        />
+
+    <View
+        android:id="@+id/graph_top"
+        android:layout_width="339dp"
+        android:layout_height="37dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="535dp"
+        android:background="@drawable/covid_graph_top"
+        />
+
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:background="#00ff0000"
+        android:text="<"
+        android:textSize="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="600dp"
+        />
+
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:background="#00ff0000"
+        android:text=">"
+        android:textSize="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="347dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="600dp"
+        />
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/map_layout"
+        android:layout_width="300dp"
+        android:layout_height="320dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="745dp"
+        android:background="@drawable/map"
+        />
+
 </RelativeLayout>
+</ScrollView>
