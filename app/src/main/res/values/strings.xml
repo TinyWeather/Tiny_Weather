@@ -1,10 +1,36 @@
 <resources>
     <string name="app_name">Tiny_Weather</string>
+
+<!-- 홈 -->
     <string name="location_id1">
         현재위치
     </string>
     <string name="location_id2">
         __구 __동
+    </string>
+    <string name="weather_id1">
+        28º
+    </string>
+    <string name="weather_id2">
+        어제보다 2º 낮아요
+    </string>
+    <string name="weather_id3">
+        최고 30º / 최저 22º
+    </string>
+    <string name="dust_id1">
+        좋음
+    </string>
+    <string name="covid_id1">
+        코로나 현황
+    </string>
+    <string name="covid_id2">
+        __구
+    </string>
+    <string name="covid_id3">
+        1일 확진자 : n명(오늘)
+    </string>
+    <string name="covid_id4">
+        누적 확진자 : n명
     </string>
 
 <!--미세먼지-->
