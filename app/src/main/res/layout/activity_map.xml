@@ -36,4 +36,14 @@
         android:fontFamily="@font/scdream3"
         />
 
+    <View
+        android:id="@+id/image_2"
+        android:layout_width="329dp"
+        android:layout_height="393dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="169dp"
+        android:background="@drawable/image_2" />
+
 </RelativeLayout>
