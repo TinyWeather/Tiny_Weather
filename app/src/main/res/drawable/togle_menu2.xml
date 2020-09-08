@@ -1,27 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- drawable/togle_menu2.xml -->
-    <vector
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:aapt="http://schemas.android.com/aapt"
-        android:width="92dp"
-        android:height="21dp"
-        android:viewportWidth="92"
-        android:viewportHeight="21"
-        >
+<!-- drawable/togle_menu2.xml -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="92dp"
+    android:height="21dp"
+    android:viewportWidth="92"
+    android:viewportHeight="21"
+    >
 
-        <group>
+    <group>
 
-            <clip-path
-                android:pathData="M9 0H83C87.9706 0 92 4.02944 92 9V12C92 16.9706 87.9706 21 83 21H9C4.02944 21 0 16.9706 0 12V9C0 4.02944 4.02944 0 9 0Z"
-                />
+        <clip-path
+            android:pathData="M9 0H83C87.9706 0 92 4.02944 92 9V12C92 16.9706 87.9706 21 83 21H9C4.02944 21 0 16.9706 0 12V9C0 4.02944 4.02944 0 9 0Z"
+            />
 
-            <path
-                android:pathData="M0 0V21H92V0"
-                android:fillColor="#C2E0FF"
-                />
+        <path
+            android:pathData="M0 0V21H92V0"
+            android:fillColor="#C2E0FF"
+            />
 
-        </group>
+    </group>
 
-    </vector>
-</selector>
+</vector>

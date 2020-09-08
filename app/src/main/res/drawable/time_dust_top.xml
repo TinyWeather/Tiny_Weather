@@ -1,28 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- drawable/time_dust_t.xml -->
-    <vector
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:aapt="http://schemas.android.com/aapt"
-        android:width="353dp"
-        android:height="30dp"
-        android:viewportWidth="353"
-        android:viewportHeight="30"
-        >
+<!-- drawable/time_dust_t.xml -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="353dp"
+    android:height="30dp"
+    android:viewportWidth="353"
+    android:viewportHeight="30"
+    >
 
-        <group>
+    <group>
 
-            <clip-path
-                android:pathData="M15 0H338C346.284 0 353 6.71573 353 15C353 23.2843 346.284 30 338 30H15C6.71573 30 0 23.2843 0 15C0 6.71573 6.71573 0 15 0Z"
-                />
+        <clip-path
+            android:pathData="M15 0H338C346.284 0 353 6.71573 353 15C353 23.2843 346.284 30 338 30H15C6.71573 30 0 23.2843 0 15C0 6.71573 6.71573 0 15 0Z"
+            />
 
-            <path
-                android:pathData="M0 0V30H353V0"
-                android:fillColor="#A8E4FF"
-                />
+        <path
+            android:pathData="M0 0V30H353V0"
+            android:fillColor="#A8E4FF"
+            />
 
-        </group>
+    </group>
 
-    </vector>
-
-</selector>
+</vector>

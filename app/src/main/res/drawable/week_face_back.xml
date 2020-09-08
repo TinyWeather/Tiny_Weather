@@ -1,29 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<!-- drawable/week_face_back.xml -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="33dp"
+    android:height="33dp"
+    android:viewportWidth="33"
+    android:viewportHeight="33"
+    >
 
-    <!-- drawable/week_face_back.xml -->
-    <vector
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:aapt="http://schemas.android.com/aapt"
-        android:width="33dp"
-        android:height="33dp"
-        android:viewportWidth="33"
-        android:viewportHeight="33"
-        >
+    <group>
 
-        <group>
+        <clip-path
+            android:pathData="M33 16.5C33 25.6127 25.6127 33 16.5 33C7.3873 33 0 25.6127 0 16.5C0 7.3873 7.3873 0 16.5 0C25.6127 0 33 7.3873 33 16.5Z"
+            />
 
-            <clip-path
-                android:pathData="M33 16.5C33 25.6127 25.6127 33 16.5 33C7.3873 33 0 25.6127 0 16.5C0 7.3873 7.3873 0 16.5 0C25.6127 0 33 7.3873 33 16.5Z"
-                />
+        <path
+            android:pathData="M0 0V33H33V0"
+            android:fillColor="#9BC9FF"
+            />
 
-            <path
-                android:pathData="M0 0V33H33V0"
-                android:fillColor="#9BC9FF"
-                />
+    </group>
 
-        </group>
-
-    </vector>
-
-</selector>
+</vector>

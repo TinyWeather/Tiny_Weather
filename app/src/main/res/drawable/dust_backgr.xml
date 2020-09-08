@@ -1,0 +1,24 @@
+<!-- drawable/dust_backgr.xml -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="347dp"
+    android:height="87dp"
+    android:viewportWidth="347"
+    android:viewportHeight="87"
+    >
+
+    <group>
+
+        <clip-path
+            android:pathData="M0 0H347V87H0V0Z"
+            />
+
+        <path
+            android:pathData="M0 0V87H347V0"
+            android:fillColor="@color/colorSkyBlue"
+            />
+
+    </group>
+
+</vector>

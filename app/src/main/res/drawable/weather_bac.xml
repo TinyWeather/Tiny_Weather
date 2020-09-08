@@ -1,28 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- drawable/weather_bac.xml -->
-    <vector
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:aapt="http://schemas.android.com/aapt"
-        android:width="353dp"
-        android:height="113dp"
-        android:viewportWidth="353"
-        android:viewportHeight="113"
-        >
+<!-- drawable/weather_bac.xml -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="353dp"
+    android:height="113dp"
+    android:viewportWidth="353"
+    android:viewportHeight="113"
+    >
 
-        <group>
+    <group>
 
-            <clip-path
-                android:pathData="M17 0H336C345.389 0 353 7.61116 353 17V96C353 105.389 345.389 113 336 113H17C7.61116 113 0 105.389 0 96V17C0 7.61116 7.61116 0 17 0Z"
-                />
+        <clip-path
+            android:pathData="M17 0H336C345.389 0 353 7.61116 353 17V96C353 105.389 345.389 113 336 113H17C7.61116 113 0 105.389 0 96V17C0 7.61116 7.61116 0 17 0Z"
+            />
 
-            <path
-                android:pathData="M0 0V113H353V0"
-                android:fillColor="#E0F2FA"
-                />
+        <path
+            android:pathData="M0 0V113H353V0"
+            android:fillColor="#E0F2FA"
+            />
 
-        </group>
+    </group>
 
-    </vector>
-
-</selector>
+</vector>
