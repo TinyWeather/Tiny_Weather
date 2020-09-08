@@ -7,6 +7,7 @@
     android:background="@drawable/background_color"
     tools:context=".MapFragment"
     >
+
     <TextView
         android:layout_width="93dp"
         android:layout_height="33dp"
