@@ -89,7 +89,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="37dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginHorizontal="10dp"
                 android:background="@drawable/covid_graph_top"
                 />
 
