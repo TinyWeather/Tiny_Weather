@@ -74,7 +74,7 @@
             android:textSize="30sp"
             android:fontFamily="@font/scdream3" />
 
-        <View
+        <RelativeLayout
             android:id="@+id/graph_background"
             android:layout_width="match_parent"
             android:layout_height="191dp"
@@ -82,19 +82,20 @@
             android:layout_centerHorizontal="true"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/covid_graph_background"
-            />
+            android:background="@drawable/covid_graph_background">
 
-        <View
-            android:id="@+id/graph_top"
-            android:layout_width="match_parent"
-            android:layout_height="37dp"
-            android:layout_below="@id/adress_textview2"
-            android:layout_centerHorizontal="true"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/covid_graph_top"
-            />
+            <View
+                android:id="@+id/graph_top"
+                android:layout_width="match_parent"
+                android:layout_height="37dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/covid_graph_top"
+                />
+
+        </RelativeLayout>
+
+
 
         <!--<Button
             android:layout_width="30dp"
