@@ -139,17 +139,5 @@
         android:layout_marginTop="600dp"
         />
 
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/map_layout"
-        android:layout_width="300dp"
-        android:layout_height="320dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="70dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="745dp"
-        android:background="@drawable/map"
-        />
-
 </RelativeLayout>
 </ScrollView>
