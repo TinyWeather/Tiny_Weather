@@ -38,6 +38,6 @@
         android:layout_below="@id/txt_location2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        app:srcCompat="@drawable/map" />
+        app:srcCompat="@drawable/national_map" />
 
 </RelativeLayout>

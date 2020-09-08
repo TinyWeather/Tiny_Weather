@@ -96,7 +96,7 @@
             android:background="@drawable/covid_graph_top"
             />
 
-        <Button
+        <!--<Button
             android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:background="#00ff0000"
@@ -118,7 +118,7 @@
             android:layout_marginLeft="347dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="600dp"
-            />
+            />-->
 
     </RelativeLayout>
 
