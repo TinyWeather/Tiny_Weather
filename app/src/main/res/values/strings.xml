@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Tiny_Weather</string>
+    <string name="app_name">미세한 날씨</string>
 
 <!-- 홈 -->
     <string name="location_id1">
