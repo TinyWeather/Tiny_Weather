@@ -24,6 +24,7 @@
         android:text="@string/location_id1"
         android:textAppearance="@style/location_id1" />
 
+    <!--android:text="@string/location_id2" 잠시 빼둠-->
     <TextView
         android:id="@+id/txt_location2"
         android:layout_width="wrap_content"
@@ -32,8 +33,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/scdream3"
-        android:text="@string/location_id2"
+        android:text="주소"
         android:textAppearance="@style/location_id2" />
+<!--임시-->
+    <Button
+        android:id="@+id/LocationBtn"
+        android:text="임시"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <ImageView
         android:id="@+id/img_weather"
