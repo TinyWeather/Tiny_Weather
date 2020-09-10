@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/group_setting">
+        <item android:title="정보">
+            <menu>
+                <item
+                    android:id="@+id/profile"
+                    android:icon="@drawable/profile"
+                    style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                    android:title="프로필"
+                    />
+                <item
+                    android:id="@+id/push"
+                    android:icon="@mipmap/ic_notifications_none_black_36dp"
+                    style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                    android:title="푸쉬 알림"
+                    />
+                <item
+                    android:id="@+id/gps"
+                    android:icon="@mipmap/ic_location_on_black_24dp"
+                    style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                    android:title="GPS"
+                    />
+            </menu>
+        </item>
+    </group>
+    <group
+        android:id="@+id/group_info">
+        <item android:title="설정">
+            <menu>
+                <item
+                    android:id="@+id/notice"
+                    android:icon="@mipmap/ic_info_outline_black_36dp"
+                    style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                    android:title="공지사항"
+                    />
+                <item
+                    android:id="@+id/inquiry"
+                    android:icon="@mipmap/ic_chat_black_36dp"
+                    style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                    android:title="문의하기"
+                    />
+                <item
+                    android:id="@+id/guide"
+                    android:icon="@mipmap/ic_class_black_36dp"
+                    style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                    android:title="가이드북"
+                    />
+                <item
+                    android:id="@+id/donation"
+                    android:icon="@mipmap/ic_attach_money_black_36dp"
+                    style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                    android:title="개발자 지원하기"
+                    />
+            </menu>
+        </item>
+    </group>
+
+</menu>
