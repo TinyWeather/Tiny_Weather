@@ -10,6 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class DustFragment extends Fragment {
+    LocationActivity locationActivity;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -18,6 +20,14 @@ public class DustFragment extends Fragment {
         initUI(rootView);
 
         return rootView;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        locationActivity = new LocationActivity(getContext(), getActivity());
+        locationActivity.setTextView();
     }
 
     public void initUI(ViewGroup rootView) {

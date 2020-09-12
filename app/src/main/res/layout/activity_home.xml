@@ -36,11 +36,6 @@
         android:text="주소"
         android:textAppearance="@style/location_id2" />
 <!--임시-->
-    <Button
-        android:id="@+id/LocationBtn"
-        android:text="임시"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
 
     <ImageView
         android:id="@+id/img_weather"
