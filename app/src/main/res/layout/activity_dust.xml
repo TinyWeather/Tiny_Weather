@@ -123,7 +123,19 @@
         android:layout_below="@id/togle_group"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="15dp"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/time_dust_back"
+        android:elevation="3dp"
+        android:visibility="visible">
+
+   <!--     &lt;!&ndash; time_dust_back &ndash;&gt;
+        <View
+            android:id="@+id/time_dust_back"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:background="@drawable/time_dust_back"
+            android:elevation="3dp"
+            android:visibility="visible" />-->
 
         <!-- time_dust -->
         <View
@@ -149,14 +161,7 @@
             android:layout_height="30dp"
             android:background="@drawable/time_dust_top"
             />
-        <!-- time_dust_back -->
-        <View
-            android:id="@+id/time_dust_back"
-            android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:background="@drawable/time_dust_back"
-            android:elevation="3dp"
-            android:visibility="visible" />
+
         <!-- dust_background -->
         <RelativeLayout
             android:id="@+id/time_dust_div"
@@ -222,7 +227,19 @@
         android:layout_height="427dp"
         android:layout_below="@id/time_dust_group"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="15dp">
+        android:layout_marginTop="15dp"
+        android:background="@drawable/week_back"
+        android:elevation="3dp"
+        >
+
+      <!--  &lt;!&ndash; week_back &ndash;&gt;
+        <View
+            android:id="@+id/week_back"
+            android:layout_width="match_parent"
+            android:layout_height="427dp"
+            android:background="@drawable/week_back"
+            android:elevation="3dp"
+            />-->
 
         <!-- week_dust -->
         <View
@@ -252,14 +269,7 @@
             android:textAppearance="@style/week_txt"
             />
 
-        <!-- week_back -->
-        <View
-            android:id="@+id/week_back"
-            android:layout_width="match_parent"
-            android:layout_height="427dp"
-            android:background="@drawable/week_back"
-            android:elevation="3dp"
-            />
+
 
         <RelativeLayout
             android:id="@+id/one_week_group"
