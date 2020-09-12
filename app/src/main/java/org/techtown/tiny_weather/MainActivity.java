@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -115,6 +116,11 @@ public class MainActivity extends AppCompatActivity implements onTabItemSelected
                 return true;
             }
         });
+
+        View header = navigationView.getHeaderView(0);
+        TextView text = (TextView) header.findViewById(R.id.user_location);
+        LocationActivity locationActivity = new LocationActivity(getApplicationContext(), MainActivity.this);
+        text.setText(locationActivity.getTextView());
     }
 
     @Override

@@ -51,6 +51,27 @@ public class LocationActivity {
         }
     }
 
+    public String getTextView() {
+        locationManager = (LocationManager)context.getSystemService(Context.LOCATION_SERVICE);
+        String getAddress = "위치 조회 불가";
+        //사용자의 현재 위치
+        Location userLocation = getMyLocation();
+        if( userLocation != null ) {
+            double latitude = userLocation.getLatitude();
+            double longitude = userLocation.getLongitude();
+            System.out.println("★★★ 현재 내 위치값 : "+latitude+","+longitude+" ★★★");
+            String address = getAddress(activity.getBaseContext(), latitude, longitude);
+
+            System.out.println("★★★ 현재 내 위치값 : "+address+" ★★★");
+            if(!address.equals("주소를 가져올 수 없습니다.") && !address.equals("현재 위치를 확인 할 수 없습니다.")) {
+                String strAddress[] = address.split(" ");
+                getAddress = strAddress[2] + " " + strAddress[3];
+            }
+        }
+
+        return getAddress;
+    }
+
     /* 사용자의 위치를 수신 */
     public Location getMyLocation() {
         Location currentLocation = null;
