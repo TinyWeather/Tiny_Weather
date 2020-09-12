@@ -4,369 +4,369 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-<RelativeLayout
-    android:id="@+id/dust"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/background_color"
-    >
-
-    <!--현재 위치-->
     <RelativeLayout
-        android:id="@+id/location_group"
-        android:layout_width="wrap_content"
+        android:id="@+id/dust"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
-        android:fontFamily="@font/scdream3">
+        android:background="@drawable/background_color"
+        >
 
-    <TextView
-        android:id="@+id/txt_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:fontFamily="@font/scdream3"
-        android:text="@string/location_id1"
-        android:textAppearance="@style/location_id1" />
-
-    <!--_구 _ 동-->
-    <TextView
-        android:id="@+id/txt_location2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txt_location"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/scdream3"
-        android:lineSpacingExtra="5sp"
-        android:text="@string/location_id2"
-        android:textAppearance="@style/location_id2" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/face_group"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_below="@id/location_group"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp">
-        <!-- face_background -->
-        <View
-            android:id="@+id/face_backgr"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:background="@drawable/face_backgr"
-            />
-        <!-- face -->
-        <ImageView
-            android:id="@+id/face"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            app:srcCompat="@drawable/dust" />
-        <!-- face_png -->
-        <View
-            android:id="@+id/face_png"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:background="@drawable/face_png" />
-    </RelativeLayout>
-
-    <!-- 업데이트 시간 update_time -->
-    <TextView
-        android:id="@+id/update_time"
-        android:layout_width="300dp"
-        android:layout_height="32dp"
-        android:layout_below="@id/face_group"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="@string/update_time"
-        android:textAlignment="center"
-        android:textAppearance="@style/update_time"
-        />
-
-    <RelativeLayout
-        android:id="@+id/togle_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/update_time">
-        <!-- dust_menu -->
-        <View
-            android:id="@+id/dust_menu"
-            android:layout_width="92dp"
-            android:layout_height="21dp"
-            android:background="#00000000"
-            />
-        <!-- togle_menu2 -->
-        <View
-            android:id="@+id/togle_menu2"
-            android:layout_width="92dp"
-            android:layout_height="21dp"
-            android:background="@drawable/togle_menu2"
-            />
-        <!-- togle_menu1 -->
-        <View
-            android:id="@+id/togle_menu1"
-            android:layout_width="49dp"
-            android:layout_height="21dp"
-            android:background="@drawable/togle_menu1"
-            />
-    </RelativeLayout>
-
-    <!--시간별 예보-->
-    <RelativeLayout
-        android:id="@+id/time_dust_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/togle_group"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="15dp"
-        android:layout_centerHorizontal="true">
-
-        <!-- time_dust -->
-        <View
-            android:id="@+id/time_dust"
-            android:layout_width="wrap_content"
-            android:layout_height="130dp"
-            android:background="#00000000"
-            />
-        <!-- time_dust_txt -->
-        <TextView
-            android:id="@+id/time_dust_txt"
-            android:layout_width="match_parent"
-            android:layout_height="18dp"
-            android:layout_marginTop="4dp"
-            android:text="@string/time_dust_txt"
-            android:textAlignment="center"
-            android:textAppearance="@style/time_dust_txt"
-            />
-        <!-- time_dust_top -->
-        <View
-            android:id="@+id/time_dust_top"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:background="@drawable/time_dust_top"
-            />
-        <!-- time_dust_back -->
-        <View
-            android:id="@+id/time_dust_back"
-            android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:background="@drawable/time_dust_back"
-            android:elevation="3dp"
-            android:visibility="visible" />
-        <!-- dust_background -->
+        <!--현재 위치-->
         <RelativeLayout
-            android:id="@+id/time_dust_div"
-            android:layout_width="match_parent"
-            android:layout_height="87dp"
-            android:layout_marginTop="30dp"
+            android:id="@+id/location_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"
+            android:fontFamily="@font/scdream3">
+
+            <TextView
+                android:id="@+id/txt_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/scdream3"
+                android:text="@string/location_id1"
+                android:textAppearance="@style/location_id1" />
+
+            <!--_구 _ 동-->
+            <TextView
+                android:id="@+id/txt_location2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_location"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/scdream3"
+                android:lineSpacingExtra="5sp"
+                android:text="@string/location_id2"
+                android:textAppearance="@style/location_id2" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/face_group"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_below="@id/location_group"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp">
+            <!-- face_background -->
+            <View
+                android:id="@+id/face_backgr"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:background="@drawable/face_backgr"
+                />
+            <!-- face -->
+            <ImageView
+                android:id="@+id/face"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                app:srcCompat="@drawable/dust" />
+            <!-- face_png -->
+            <View
+                android:id="@+id/face_png"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:background="@drawable/face_png" />
+        </RelativeLayout>
+
+        <!-- 업데이트 시간 update_time -->
+        <TextView
+            android:id="@+id/update_time"
+            android:layout_width="300dp"
+            android:layout_height="32dp"
+            android:layout_below="@id/face_group"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="@string/update_time"
+            android:textAlignment="center"
+            android:textAppearance="@style/update_time"
+            />
+
+        <RelativeLayout
+            android:id="@+id/togle_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/update_time">
+            <!-- dust_menu -->
+            <View
+                android:id="@+id/dust_menu"
+                android:layout_width="92dp"
+                android:layout_height="21dp"
+                android:background="#00000000"
+                />
+            <!-- togle_menu2 -->
+            <View
+                android:id="@+id/togle_menu2"
+                android:layout_width="92dp"
+                android:layout_height="21dp"
+                android:background="@drawable/togle_menu2"
+                />
+            <!-- togle_menu1 -->
+            <View
+                android:id="@+id/togle_menu1"
+                android:layout_width="49dp"
+                android:layout_height="21dp"
+                android:background="@drawable/togle_menu1"
+                />
+        </RelativeLayout>
+
+        <!--시간별 예보-->
+        <RelativeLayout
+            android:id="@+id/time_dust_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/togle_group"
             android:layout_marginHorizontal="10dp"
-            android:background="@drawable/dust_backgr">
-            <HorizontalScrollView
+            android:layout_marginTop="15dp"
+            android:layout_centerHorizontal="true">
+
+            <!-- time_dust -->
+            <View
+                android:id="@+id/time_dust"
+                android:layout_width="wrap_content"
+                android:layout_height="130dp"
+                android:background="#00000000"
+                />
+            <!-- time_dust_txt -->
+            <TextView
+                android:id="@+id/time_dust_txt"
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/time_dust_txt"
+                android:textAlignment="center"
+                android:textAppearance="@style/time_dust_txt"
+                />
+            <!-- time_dust_top -->
+            <View
+                android:id="@+id/time_dust_top"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/time_dust_top"
+                />
+            <!-- time_dust_back -->
+            <View
+                android:id="@+id/time_dust_back"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:background="@drawable/time_dust_back"
+                android:elevation="3dp"
+                android:visibility="visible" />
+            <!-- dust_background -->
+            <RelativeLayout
+                android:id="@+id/time_dust_div"
                 android:layout_width="match_parent"
                 android:layout_height="87dp"
-                android:layout_centerVertical="true">
-                <RelativeLayout
-                    android:id="@+id/time_group"
-                    android:layout_width="65dp"
-                    android:layout_height="87dp">
-                    <!-- time -->
-                    <View
-                        android:id="@+id/time"
+                android:layout_marginTop="30dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/dust_backgr">
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="87dp"
+                    android:layout_centerVertical="true">
+                    <RelativeLayout
+                        android:id="@+id/time_group"
                         android:layout_width="65dp"
-                        android:layout_height="87dp"
-                        android:background="#00000000"
-                        />
-                    <!-- time_face -->
-                    <View
-                        android:id="@+id/time_face"
-                        android:layout_width="33dp"
-                        android:layout_height="33dp"
-                        android:background="@drawable/dust"
-                        android:layout_marginTop="30dp"
-                        android:layout_centerHorizontal="true"
-                        />
-                    <!-- time_time -->
-                    <TextView
-                        android:id="@+id/time_time"
-                        android:layout_width="65dp"
-                        android:layout_height="18dp"
-                        android:text="@string/time_time"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/time_time"
-                        />
-                    <!-- time_txt -->
-                    <TextView
-                        android:id="@+id/time_txt"
-                        android:layout_width="65dp"
-                        android:layout_height="18dp"
-                        android:text="@string/time_txt"
-                        android:textAlignment="center"
-                        android:layout_marginTop="65dp"
-                        android:textAppearance="@style/time_txt"
-                        />
-                </RelativeLayout>
-            </HorizontalScrollView>
+                        android:layout_height="87dp">
+                        <!-- time -->
+                        <View
+                            android:id="@+id/time"
+                            android:layout_width="65dp"
+                            android:layout_height="87dp"
+                            android:background="#00000000"
+                            />
+                        <!-- time_face -->
+                        <View
+                            android:id="@+id/time_face"
+                            android:layout_width="33dp"
+                            android:layout_height="33dp"
+                            android:background="@drawable/dust"
+                            android:layout_marginTop="30dp"
+                            android:layout_centerHorizontal="true"
+                            />
+                        <!-- time_time -->
+                        <TextView
+                            android:id="@+id/time_time"
+                            android:layout_width="65dp"
+                            android:layout_height="18dp"
+                            android:text="@string/time_time"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/time_time"
+                            />
+                        <!-- time_txt -->
+                        <TextView
+                            android:id="@+id/time_txt"
+                            android:layout_width="65dp"
+                            android:layout_height="18dp"
+                            android:text="@string/time_txt"
+                            android:textAlignment="center"
+                            android:layout_marginTop="65dp"
+                            android:textAppearance="@style/time_txt"
+                            />
+                    </RelativeLayout>
+                </HorizontalScrollView>
+            </RelativeLayout>
         </RelativeLayout>
-    </RelativeLayout>
 
 
-    <!--주간 예보-->
-    <RelativeLayout
-        android:id="@+id/week_dust_group"
-        android:layout_width="match_parent"
-        android:layout_height="427dp"
-        android:layout_below="@id/time_dust_group"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="15dp">
-
-        <!-- week_dust -->
-        <View
-            android:id="@+id/week_dust"
-            android:layout_width="match_parent"
-            android:layout_height="427dp"
-            android:background="#00000000"
-            />
-
-        <!-- week_top -->
-        <View
-            android:id="@+id/week_top"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:background="@drawable/week_top"
-            />
-
-        <!-- week_txt -->
-        <TextView
-            android:id="@+id/week_txt"
-            android:layout_width="match_parent"
-            android:layout_marginTop="4dp"
-            android:layout_height="18dp"
-            android:text="@string/week_txt"
-            android:textAlignment="center"
-            android:layout_centerHorizontal="true"
-            android:textAppearance="@style/week_txt"
-            />
-
-        <!-- week_back -->
-        <View
-            android:id="@+id/week_back"
-            android:layout_width="match_parent"
-            android:layout_height="427dp"
-            android:background="@drawable/week_back"
-            android:elevation="3dp"
-            />
-
+        <!--주간 예보-->
         <RelativeLayout
-            android:id="@+id/one_week_group"
+            android:id="@+id/week_dust_group"
             android:layout_width="match_parent"
+            android:layout_height="427dp"
+            android:layout_below="@id/time_dust_group"
             android:layout_marginHorizontal="10dp"
-            android:layout_height="33dp"
-            android:layout_marginTop="40dp">
-            <!-- week -->
+            android:layout_marginTop="15dp">
+
+            <!-- week_dust -->
             <View
-                android:id="@+id/week"
+                android:id="@+id/week_dust"
                 android:layout_width="match_parent"
-                android:layout_height="33dp"
+                android:layout_height="427dp"
                 android:background="#00000000"
                 />
 
-            <!-- week_backs -->
+            <!-- week_top -->
             <View
-                android:id="@+id/week_backs"
-                android:layout_width="33dp"
-                android:layout_height="33dp"
-                android:background="@drawable/week_backs"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
+                android:id="@+id/week_top"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@drawable/week_top"
                 />
 
-            <!-- week_img -->
+            <!-- week_txt -->
+            <TextView
+                android:id="@+id/week_txt"
+                android:layout_width="match_parent"
+                android:layout_marginTop="4dp"
+                android:layout_height="18dp"
+                android:text="@string/week_txt"
+                android:textAlignment="center"
+                android:layout_centerHorizontal="true"
+                android:textAppearance="@style/week_txt"
+                />
+
+            <!-- week_back -->
             <View
-                android:id="@+id/week_img"
-                android:layout_width="33dp"
+                android:id="@+id/week_back"
+                android:layout_width="match_parent"
+                android:layout_height="427dp"
+                android:background="@drawable/week_back"
+                android:elevation="3dp"
+                />
+
+            <RelativeLayout
+                android:id="@+id/one_week_group"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="10dp"
                 android:layout_height="33dp"
-                android:background="@drawable/dust2"
-                android:layout_centerHorizontal="true"
-                />
+                android:layout_marginTop="40dp">
+                <!-- week -->
+                <View
+                    android:id="@+id/week"
+                    android:layout_width="match_parent"
+                    android:layout_height="33dp"
+                    android:background="#00000000"
+                    />
 
-            <!-- week_degree -->
-            <TextView
-                android:id="@+id/week_degree"
-                android:layout_width="match_parent"
-                android:layout_height="23dp"
-                android:text="@string/week_degree"
-                android:textAppearance="@style/week_degree"
-                android:textAlignment="viewEnd"
-                android:layout_centerVertical="true"
-                />
+                <!-- week_backs -->
+                <View
+                    android:id="@+id/week_backs"
+                    android:layout_width="33dp"
+                    android:layout_height="33dp"
+                    android:background="@drawable/week_backs"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    />
 
-            <!-- week_date -->
-            <TextView
-                android:id="@+id/week_date"
+                <!-- week_img -->
+                <View
+                    android:id="@+id/week_img"
+                    android:layout_width="33dp"
+                    android:layout_height="33dp"
+                    android:background="@drawable/dust2"
+                    android:layout_centerHorizontal="true"
+                    />
+
+                <!-- week_degree -->
+                <TextView
+                    android:id="@+id/week_degree"
+                    android:layout_width="match_parent"
+                    android:layout_height="23dp"
+                    android:text="@string/week_degree"
+                    android:textAppearance="@style/week_degree"
+                    android:textAlignment="viewEnd"
+                    android:layout_centerVertical="true"
+                    />
+
+                <!-- week_date -->
+                <TextView
+                    android:id="@+id/week_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="23dp"
+                    android:text="@string/week_date"
+                    android:textAppearance="@style/week_date"
+                    android:textAlignment="viewStart"
+                    android:layout_centerVertical="true"
+                    />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <!--미세먼지 기준-->
+        <RelativeLayout
+            android:id="@+id/dust_degree_group"
+            android:layout_width="match_parent"
+            android:layout_height="137dp"
+            android:layout_below="@id/week_dust_group"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp">
+            <!-- standard_img -->
+            <View
+                android:id="@+id/standard_im"
                 android:layout_width="match_parent"
-                android:layout_height="23dp"
-                android:text="@string/week_date"
-                android:textAppearance="@style/week_date"
-                android:textAlignment="viewStart"
-                android:layout_centerVertical="true"
+                android:layout_height="87dp"
+                android:layout_marginTop="30dp"
+                android:background="@color/colorAccent"
+                />
+            <!-- standard_txt -->
+            <TextView
+                android:id="@+id/standard_tx"
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:text="@string/standard_tx"
+                android:layout_marginTop="4dp"
+                android:textAppearance="@style/standard_tx"
+                android:textAlignment="center"
+                />
+            <!-- standard_top -->
+            <View
+                android:id="@+id/standard_to"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/standard_to"
+                />
+            <!-- standard_back -->
+            <View
+                android:id="@+id/standard_ba"
+                android:layout_width="match_parent"
+                android:layout_height="137dp"
+                android:background="@drawable/standard_ba"
+                android:elevation="3dp"
+                />
+            <!-- dust_standard -->
+            <View
+                android:id="@+id/dust_standa"
+                android:layout_width="match_parent"
+                android:layout_height="137dp"
+                android:background="#00000000"
                 />
         </RelativeLayout>
     </RelativeLayout>
-
-    <!--미세먼지 기준-->
-    <RelativeLayout
-        android:id="@+id/dust_degree_group"
-        android:layout_width="match_parent"
-        android:layout_height="137dp"
-        android:layout_below="@id/week_dust_group"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp">
-        <!-- standard_img -->
-        <View
-            android:id="@+id/standard_im"
-            android:layout_width="match_parent"
-            android:layout_height="87dp"
-            android:layout_marginTop="30dp"
-            android:background="@color/colorAccent"
-            />
-        <!-- standard_txt -->
-        <TextView
-            android:id="@+id/standard_tx"
-            android:layout_width="match_parent"
-            android:layout_height="18dp"
-            android:text="@string/standard_tx"
-            android:layout_marginTop="4dp"
-            android:textAppearance="@style/standard_tx"
-            android:textAlignment="center"
-            />
-        <!-- standard_top -->
-        <View
-            android:id="@+id/standard_to"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:background="@drawable/standard_to"
-            />
-        <!-- standard_back -->
-        <View
-            android:id="@+id/standard_ba"
-            android:layout_width="match_parent"
-            android:layout_height="137dp"
-            android:background="@drawable/standard_ba"
-            android:elevation="3dp"
-            />
-        <!-- dust_standard -->
-        <View
-            android:id="@+id/dust_standa"
-            android:layout_width="match_parent"
-            android:layout_height="137dp"
-            android:background="#00000000"
-            />
-    </RelativeLayout>
-</RelativeLayout>
 </ScrollView>
