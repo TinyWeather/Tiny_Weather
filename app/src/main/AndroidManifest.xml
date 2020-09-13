@@ -22,8 +22,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".LocationFragment"></activity>
-        <service android:name=".GpsTracker" />
+
 
         <activity android:name=".LodingActivity"
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
