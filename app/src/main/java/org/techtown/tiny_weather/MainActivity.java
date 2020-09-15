@@ -12,7 +12,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,7 +38,6 @@ public class MainActivity extends AppCompatActivity implements onTabItemSelected
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         // 로딩
         Intent intent = new Intent(this, LodingActivity.class);
         startActivity(intent);

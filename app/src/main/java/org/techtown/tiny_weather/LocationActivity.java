@@ -68,6 +68,7 @@ public class LocationActivity {
                 getAddress = strAddress[2] + " " + strAddress[3];
             }
         }
+        System.out.println("★★★ 현재 내 위치값 : "+getAddress+" ★★★");
 
         return getAddress;
     }

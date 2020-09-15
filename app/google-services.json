@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "409259890846",
+    "firebase_url": "https://tiny-weather-project.firebaseio.com",
+    "project_id": "tiny-weather-project",
+    "storage_bucket": "tiny-weather-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409259890846:android:d455dff08f298b6611c38f",
+        "android_client_info": {
+          "package_name": "org.techtown.tiny_weather"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "409259890846-gslsgs3vpf2rl8qa7tqch80blpkeiaqn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.techtown.tiny_weather",
+            "certificate_hash": "59ad037da4094d99906e14b2078ac1be34ea364a"
+          }
+        },
+        {
+          "client_id": "409259890846-ordkee0j0jbhl7hv1gv9l49jj9iujnl4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYjX0D7C8PiUA7cSEkw5QrWuQNh4OMTFg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "409259890846-ordkee0j0jbhl7hv1gv9l49jj9iujnl4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
