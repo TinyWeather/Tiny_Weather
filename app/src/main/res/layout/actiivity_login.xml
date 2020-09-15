@@ -25,7 +25,7 @@
         android:layout_marginLeft="95dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="320dp"
-        android:background="#ffffff"
+        android:background="@drawable/login_text"
         android:hint="  E-mail"
         android:textSize="20dp"
         />
@@ -38,7 +38,7 @@
         android:layout_marginLeft="95dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="380dp"
-        android:background="#ffffff"
+        android:background="@drawable/login_text"
         android:hint="  password"
         android:textSize="20dp"
         />
@@ -64,7 +64,7 @@
         android:layout_marginLeft="143dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="480dp"
-        android:background="#FFCD6D"
+        android:background="@drawable/login_btn"
         android:text="login/join"
         />
 
