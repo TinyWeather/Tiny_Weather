@@ -268,8 +268,6 @@
             android:textAppearance="@style/week_txt"
             />
 
-
-
         <RelativeLayout
             android:id="@+id/one_week_group"
             android:layout_width="match_parent"
