@@ -1,43 +1,50 @@
-<RelativeLayout
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/map"
+    android:id="@+id/refresh_layout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/background_color"
+    android:layout_height="match_parent"
     tools:context=".MapFragment">
 
-    <TextView
-        android:id="@+id/txt_location"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/map"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/scdream3"
-        android:text="@string/location_id1"
-        android:textAppearance="@style/location_id1" />
+        android:background="@drawable/background_color">
 
-    <TextView
-        android:id="@+id/txt_location2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txt_location"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/scdream3"
-        android:lineSpacingExtra="5sp"
-        android:text="@string/location_id2"
-        android:textAppearance="@style/location_id2" />
+        <TextView
+            android:id="@+id/txt_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/scdream3"
+            android:text="@string/location_id1"
+            android:textAppearance="@style/location_id1" />
 
-    <ImageView
-        android:id="@+id/image_2"
-        android:layout_width="wrap_content"
-        android:layout_height="393dp"
-        android:layout_below="@id/txt_location2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        app:srcCompat="@drawable/national_map" />
+        <TextView
+            android:id="@+id/txt_location2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_location"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/scdream3"
+            android:lineSpacingExtra="5sp"
+            android:text="@string/location_id2"
+            android:textAppearance="@style/location_id2" />
 
-</RelativeLayout>
+        <ImageView
+            android:id="@+id/image_2"
+            android:layout_width="wrap_content"
+            android:layout_height="393dp"
+            android:layout_below="@id/txt_location2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            app:srcCompat="@drawable/national_map" />
+
+    </RelativeLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

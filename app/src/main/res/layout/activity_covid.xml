@@ -1,177 +1,186 @@
-<ScrollView
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/refresh_layout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    tools:context=".CovidFragment">
 
-    <RelativeLayout
-        android:id="@+id/covid"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/background_color"
-        >
-
-        <TextView
-            android:id="@+id/txt_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/scdream3"
-            android:text="@string/location_id1"
-            android:textAppearance="@style/location_id1" />
-
-        <TextView
-            android:id="@+id/txt_location2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txt_location"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/scdream3"
-            android:text="@string/location_id2"
-            android:textAppearance="@style/location_id2" />
-
-        <ImageView
-            android:id="@+id/covid_img"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_below="@id/txt_location2"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
-            app:srcCompat="@drawable/dust7" />
-
-        <TextView
-            android:id="@+id/covid_textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/covid_img"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:text="보통"
-            android:textSize="40sp"
-            android:fontFamily="@font/scdream3" />
-
-        <TextView
-            android:id="@+id/adress_textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/covid_textview"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:text="코로나 현황"
-            android:textSize="40sp"
-            android:fontFamily="@font/scdream3" />
-
-        <TextView
-            android:id="@+id/adress_textview2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/adress_textview"
-            android:layout_centerHorizontal="true"
-            android:text="__구"
-            android:textSize="30sp"
-            android:fontFamily="@font/scdream3" />
+        android:layout_height="wrap_content">
 
         <RelativeLayout
-            android:id="@+id/graph_background"
+            android:id="@+id/covid"
             android:layout_width="match_parent"
-            android:layout_height="191dp"
-            android:layout_below="@id/adress_textview2"
-            android:layout_centerHorizontal="true"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/covid_graph_background">
-
-            <View
-                android:id="@+id/graph_top"
-                android:layout_width="match_parent"
-                android:layout_height="37dp"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/covid_graph_top"
-                />
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_color"
+            >
 
             <TextView
-                android:id="@+id/graph_text"
+                android:id="@+id/txt_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="175dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/scdream3"
+                android:text="@string/location_id1"
+                android:textAppearance="@style/location_id1" />
+
+            <TextView
+                android:id="@+id/txt_location2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_location"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/scdream3"
+                android:text="@string/location_id2"
+                android:textAppearance="@style/location_id2" />
+
+            <ImageView
+                android:id="@+id/covid_img"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_below="@id/txt_location2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                app:srcCompat="@drawable/dust7" />
+
+            <TextView
+                android:id="@+id/covid_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/covid_img"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="보통"
+                android:textSize="40sp"
+                android:fontFamily="@font/scdream3" />
+
+            <TextView
+                android:id="@+id/adress_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/covid_textview"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="코로나 현황"
+                android:textSize="40sp"
+                android:fontFamily="@font/scdream3" />
+
+            <TextView
+                android:id="@+id/adress_textview2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/adress_textview"
+                android:layout_centerHorizontal="true"
                 android:text="__구"
-                android:textSize="25dp"
-            />
-        </RelativeLayout>
+                android:textSize="30sp"
+                android:fontFamily="@font/scdream3" />
 
-        <!--<Button
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
-            android:background="#00ff0000"
-            android:text="<"
-            android:textSize="50dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="37dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="600dp"
-            />
-
-        <Button
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
-            android:background="#00ff0000"
-            android:text=">"
-            android:textSize="50dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="347dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="600dp"
-            />-->
-
-
-        <RelativeLayout
-            android:id="@+id/covid_table"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_below="@id/adress_textview2"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="253dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/covid_graph_background">
-
-            <View
-                android:id="@+id/table_top"
+            <RelativeLayout
+                android:id="@+id/graph_background"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="191dp"
+                android:layout_below="@id/adress_textview2"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/covid_graph_top" />
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/covid_graph_background">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <View
+                    android:id="@+id/graph_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/covid_graph_top"
+                    />
+
+                <TextView
+                    android:id="@+id/graph_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="175dp"
+                    android:text="__구"
+                    android:textSize="25dp"
+                    />
+            </RelativeLayout>
+
+            <!--<Button
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="10dp"
-                android:text="지역"
+                android:background="#00ff0000"
+                android:text="<"
+                android:textSize="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="37dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="600dp"
                 />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <Button
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="120dp"
-                android:layout_marginTop="10dp"
-                android:text="신규확진자"
-                android:textSize="20dp" />
+                android:background="#00ff0000"
+                android:text=">"
+                android:textSize="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="347dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="600dp"
+                />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:layout_marginLeft="255dp"
-                android:layout_marginTop="10dp"
-                android:text="누적확진자"
-                />
+
+            <RelativeLayout
+                android:id="@+id/covid_table"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_below="@id/adress_textview2"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="253dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/covid_graph_background">
+
+                <View
+                    android:id="@+id/table_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/covid_graph_top" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="10dp"
+                    android:text="지역"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="120dp"
+                    android:layout_marginTop="10dp"
+                    android:text="신규확진자"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="255dp"
+                    android:layout_marginTop="10dp"
+                    android:text="누적확진자"
+                    />
+
+            </RelativeLayout>
 
         </RelativeLayout>
 
-    </RelativeLayout>
+    </ScrollView>
 
-</ScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

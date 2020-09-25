@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements onTabItemSelected
 
         View header = navigationView.getHeaderView(0);
         TextView text = (TextView) header.findViewById(R.id.user_location);
-        LocationActivity locationActivity = new LocationActivity(getApplicationContext(), MainActivity.this);
+        LocationActivity locationActivity = new LocationActivity(getApplicationContext());
         text.setText(locationActivity.getTextView());
     }
 
@@ -132,24 +132,6 @@ public class MainActivity extends AppCompatActivity implements onTabItemSelected
         return super.onOptionsItemSelected(item);
     }
 
-    DrawerLayout.DrawerListener listener = new DrawerLayout.DrawerListener() {
-        @Override
-        public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
-        }
-
-        @Override
-        public void onDrawerOpened(@NonNull View drawerView) {
-        }
-
-        @Override
-        public void onDrawerClosed(@NonNull View drawerView) {
-        }
-
-        @Override
-        public void onDrawerStateChanged(int newState) {
-        }
-    };
-
     @Override
     public void onTabSelected(int position) {
         if(position == 0)
@@ -163,7 +145,5 @@ public class MainActivity extends AppCompatActivity implements onTabItemSelected
         else if(position == 4)
             bottomNavigationView.setSelectedItemId(R.id.dust);
     }
-
-
 
 }

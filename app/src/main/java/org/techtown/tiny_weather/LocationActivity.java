@@ -1,103 +1,148 @@
 package org.techtown.tiny_weather;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Service;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Bundle;
+import android.os.IBinder;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class LocationActivity {
+public class LocationActivity extends Service implements LocationListener {
+    private final Context mContext;
+    int count = 0;
+    boolean isGPSEnable = false;
+
+    boolean isNetWorkEnable = false;
+
+    boolean isGetLocation = false;
+
+    Location location;
+    double lat;
+    double lon;
+
+    private static final long MIN_DISTANCE_UPDATE = 10;
+    private static final long MIN_TIME_UPDATE = 1000 * 10 * 1;
+
+    protected LocationManager locationManager;
+
+    /*
     private Context context;
     private Activity activity;
     private static final int REQUEST_CODE_LOCATION = 2;
-    private LocationManager locationManager;
+    private LocationManager locationManager;*/
 
-    public LocationActivity(Context context, Activity activity) {
-        this.context = context;
+    public LocationActivity(Context mContext) {
+        this.mContext = mContext;
+        getLocation();
+        /*this.context = context;
         this.activity = activity;
-        locationManager = (LocationManager)context.getSystemService(Context.LOCATION_SERVICE);
+        locationManager = (LocationManager)context.getSystemService(Context.LOCATION_SERVICE);*/
     }
 
-    public void setTextView() {
-        //사용자의 위치 수신을 위한 세팅
-        locationManager = (LocationManager)context.getSystemService(Context.LOCATION_SERVICE);
-        //사용자의 현재 위치
-        Location userLocation = getMyLocation();
-        if( userLocation != null ) {
-            double latitude = userLocation.getLatitude();
-            double longitude = userLocation.getLongitude();
-            System.out.println("★★★ 현재 내 위치값 : "+latitude+","+longitude+" ★★★");
-            String address = getAddress(activity.getBaseContext(), latitude, longitude);
+    @SuppressLint("MissingPermission")
+    public Location getLocation() {
+        try {
+            locationManager = (LocationManager) mContext.getSystemService(LOCATION_SERVICE);
 
-            System.out.println("★★★ 현재 내 위치값 : "+address+" ★★★");
-            TextView textView = (TextView) activity.findViewById(R.id.txt_location2);
-            if(!address.equals("주소를 가져올 수 없습니다.") && !address.equals("현재 위치를 확인 할 수 없습니다.")) {
-                String strAddress[] = address.split(" ");
-                textView.setText(strAddress[2] + " " + strAddress[3]);
+
+            isGPSEnable = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
+            isNetWorkEnable = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+
+
+            if (!isGPSEnable && !isNetWorkEnable) {
+            } else {
+                this.isGetLocation = true;
+                if (isNetWorkEnable) {
+                    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, MIN_DISTANCE_UPDATE, this);
+                    if (locationManager != null) {
+                        location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                        if (location != null) {
+                            lat = location.getLatitude();
+                            lon = location.getLongitude();
+                        }
+                    }
+                }
+                if (isGPSEnable) {
+                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, MIN_DISTANCE_UPDATE, this);
+                    if (location == null) {
+
+                        if (locationManager != null) {
+                            location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                            if (location != null) {
+                                lat = location.getLatitude();
+                                lon = location.getLongitude();
+                            }
+                        }
+                    }
+                }
             }
-            else {
-                textView.setText("위치 조회 불가");
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        return location;
+    }
+
+    public double getLatitude() {
+        if (location != null)
+            lat = location.getLatitude();
+        return lat;
+    }
+
+    public double getLongitude() {
+        if (location != null)
+            lon = location.getLongitude();
+        return lon;
+    }
+
+    public boolean isGetLocation() {
+        return this.isGetLocation;
+    }
+
+    public void stopUsingGPS() {
+        if (locationManager != null)
+            locationManager.removeUpdates(LocationActivity.this);
     }
 
     public String getTextView() {
-        locationManager = (LocationManager)context.getSystemService(Context.LOCATION_SERVICE);
+        locationManager = (LocationManager)mContext.getSystemService(Context.LOCATION_SERVICE);
         String getAddress = "위치 조회 불가";
         //사용자의 현재 위치
-        Location userLocation = getMyLocation();
-        if( userLocation != null ) {
-            double latitude = userLocation.getLatitude();
-            double longitude = userLocation.getLongitude();
-            System.out.println("★★★ 현재 내 위치값 : "+latitude+","+longitude+" ★★★");
-            String address = getAddress(activity.getBaseContext(), latitude, longitude);
+        if( location != null ) {
+            System.out.println("★★★ 현재 내 위치값 : "+lat+","+lon+" ★★★");
+            String address = getAddress(mContext, lat, lon);
 
             System.out.println("★★★ 현재 내 위치값 : "+address+" ★★★");
             if(!address.equals("주소를 가져올 수 없습니다.") && !address.equals("현재 위치를 확인 할 수 없습니다.")) {
                 String strAddress[] = address.split(" ");
                 getAddress = strAddress[2] + " " + strAddress[3];
             }
+            else {
+                getAddress = "위치 조회 불가";
+            }
         }
-        System.out.println("★★★ 현재 내 위치값 : "+getAddress+" ★★★");
 
         return getAddress;
     }
 
-    /* 사용자의 위치를 수신 */
-    public Location getMyLocation() {
-        Location currentLocation = null;
-        // Register the listener with the Location Manager to receive location updates
-        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            System.out.println("★★★ 사용자에게 권한을 요청해야함 ★★★");
-            ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, this.REQUEST_CODE_LOCATION);
-            getMyLocation(); //이건 써도되고 안써도 되지만, 전 권한 승인하면 즉시 위치값 받아오려고 썼습니다!
-        }
-        else {
-            System.out.println("★★★ 권한요청 안해도됨 ★★★");
-
-            // 수동으로 위치 구하기
-            String locationProvider = LocationManager.GPS_PROVIDER;
-            currentLocation = locationManager.getLastKnownLocation(locationProvider);
-            if (currentLocation != null) {
-                double lng = currentLocation.getLongitude();
-                double lat = currentLocation.getLatitude();
-            }
-        }
-        return currentLocation;
-    }
-
-    /* 위도,경도로 주소구하기 */
-    public static String getAddress(Context mContext, double lat, double lng) {
+    public static String getAddress(Context mContext, double lat, double lon) {
         String nowAddress ="현재 위치를 확인 할 수 없습니다.";
         Geocoder geocoder = new Geocoder(mContext, Locale.KOREA);
         List<Address> address;
@@ -105,7 +150,7 @@ public class LocationActivity {
             if (geocoder != null) {
                 //세번째 파라미터는 좌표에 대해 주소를 리턴 받는 갯수로
                 //한좌표에 대해 두개이상의 이름이 존재할수있기에 주소배열을 리턴받기 위해 최대갯수 설정
-                address = geocoder.getFromLocation(lat, lng, 1);
+                address = geocoder.getFromLocation(lat, lon, 1);
 
                 if (address != null && address.size() > 0) {
                     // 주소 받아오기
@@ -119,5 +164,31 @@ public class LocationActivity {
             e.printStackTrace();
         }
         return nowAddress;
+    }
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+
+    }
+
+    @Override
+    public void onStatusChanged(String s, int i, Bundle bundle) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String s) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String s) {
+
     }
 }
