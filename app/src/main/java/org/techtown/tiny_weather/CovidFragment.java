@@ -14,9 +14,15 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class CovidFragment extends Fragment {
     LocationActivity locationActivity;
+    TimeActivity timeActivity;
     SwipeRefreshLayout swipeRefreshLayout;
+    TextView text, text2, text3, text4;
 
     @Nullable
     @Override
@@ -28,8 +34,12 @@ public class CovidFragment extends Fragment {
             @Override
             public void onRefresh() {
                 locationActivity = new LocationActivity(getContext());
-                TextView text = (TextView) getActivity().findViewById(R.id.txt_location2);
+                timeActivity = new TimeActivity();
+
                 text.setText(locationActivity.getTextView());
+                text2.setText(locationActivity.getTextView2());
+                text3.setText(locationActivity.getTextView2());
+                text4.setText(timeActivity.getTime());
 
                 NavigationView navigationView = (NavigationView) rootView.getRootView().findViewById(R.id.nav_view);
                 View header = navigationView.getHeaderView(0);
@@ -56,8 +66,17 @@ public class CovidFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         locationActivity = new LocationActivity(getContext());
-        TextView text = (TextView) getActivity().findViewById(R.id.txt_location2);
+        timeActivity = new TimeActivity();
+
+        text = (TextView) getActivity().findViewById(R.id.txt_location2);
+        text2 = (TextView) getActivity().findViewById(R.id.address_txt2);
+        text3 = (TextView) getActivity().findViewById(R.id.graph_text);
+        text4 = (TextView) getActivity().findViewById(R.id.update_time2);
+
         text.setText(locationActivity.getTextView());
+        text2.setText(locationActivity.getTextView2());
+        text3.setText(locationActivity.getTextView2());
+        text4.setText(timeActivity.getTime());
     }
 
     public void initUI(ViewGroup rootView) {

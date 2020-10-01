@@ -131,8 +131,49 @@ public class LocationActivity extends Service implements LocationListener {
 
             System.out.println("★★★ 현재 내 위치값 : "+address+" ★★★");
             if(!address.equals("주소를 가져올 수 없습니다.") && !address.equals("현재 위치를 확인 할 수 없습니다.")) {
+                if(address.contains(","))
+                    address = address.replace(",", "");
+
                 String strAddress[] = address.split(" ");
-                getAddress = strAddress[2] + " " + strAddress[3];
+
+                if(strAddress.length > 4)
+                    if(address.contains("대한민국"))
+                        getAddress = strAddress[2] + " " + strAddress[3];
+                    else
+                        getAddress = strAddress[3] + " " + strAddress[2];
+                else
+                    getAddress = address;
+            }
+            else {
+                getAddress = "위치 조회 불가";
+            }
+        }
+
+        return getAddress;
+    }
+
+    public String getTextView2() {
+        locationManager = (LocationManager)mContext.getSystemService(Context.LOCATION_SERVICE);
+        String getAddress = "위치 조회 불가";
+        //사용자의 현재 위치
+        if( location != null ) {
+            System.out.println("★★★ 현재 내 위치값 : "+lat+","+lon+" ★★★");
+            String address = getAddress(mContext, lat, lon);
+
+            System.out.println("★★★ 현재 내 위치값 : "+address+" ★★★");
+            if(!address.equals("주소를 가져올 수 없습니다.") && !address.equals("현재 위치를 확인 할 수 없습니다.")) {
+                if(address.contains(","))
+                    address = address.replace(",", "");
+
+                String strAddress[] = address.split(" ");
+
+                if(strAddress.length > 4)
+                    if(address.contains("대한민국"))
+                        getAddress = strAddress[2];
+                    else
+                        getAddress = strAddress[3];
+                else
+                    getAddress = address;
             }
             else {
                 getAddress = "위치 조회 불가";

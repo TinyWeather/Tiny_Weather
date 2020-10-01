@@ -1,128 +1,70 @@
 <resources>
     <string name="app_name">미세한 날씨</string>
 
-<!-- 홈 -->
+
+    <!-- text -->
     <string name="location_id1">
         현재위치
     </string>
+
     <string name="location_id2">
         __구 __동
     </string>
-    <string name="weather_id1">
-        28º
+
+    <string name="location_id3">
+        __구
     </string>
-    <string name="weather_id2">
-        어제보다 2º 낮아요
+
+    <string name="location_id4">
+        지역
     </string>
-    <string name="weather_id3">
-        최고 30º / 최저 22º
-    </string>
-    <string name="dust_id1">
-        좋음
-    </string>
+
     <string name="covid_id1">
         코로나 현황
     </string>
+
     <string name="covid_id2">
-        __구
+        신규확진자
     </string>
+
     <string name="covid_id3">
-        1일 확진자 : n명(오늘)
-    </string>
-    <string name="covid_id4">
-        누적 확진자 : n명
+        누적확진자
     </string>
 
-<!--미세먼지-->
-    <!--dust update_time-->
-    <string name="pm">
-     업데이트 시간 2020-09-01 11:45 PM
-    </string>
-
-    <!--time_dust_txt -->
-    <string name="time_dust_txt">
-
-    시간별 예보 (좋음, 보통, 나쁜, 매우나쁨)
-    </string>
-
-    <!-- week_txt -->
-    <string name="week_txt">
-    주간 예보 (월요일 ~ 일요일)
-    </string>
-
-    <!-- standard_tx -->
-    <string name="standard_tx">
-     환경부/WHO 미세먼지,초미세먼지 기준
-     </string>
-
-    <!-- update_time.xml -->
-    <string name="update_time">
-        업데이트 시간
-        2020-09-01 11:45 PM
-    </string>
-
-
-    <!-- time_time.xml -->
-    <string name="time_time">
-        오후 02시
-    </string>
-
-    <!-- time_txt.xml -->
-    <string name="time_txt">
-    오후 02시
-    </string>
-
-    <!-- week_degree.xml -->
-    <string name="week_degree">
-        보통
-    </string>
-
-
-    <!-- week_date.xml -->
-    <string name="week_date">
-        일요일 09.06
-    </string>
-
-<!--날씨-->
-    <!-- strings.xml -->
-    <string name="w_big_txt">
-        28도 어제보다 2도 낮아요
-            최고 30도 / 최저 22도
-    </string>
-
-    <!-- w_t_d_txt.xml -->
-    <string name="w_t_d_txt">
-        11시28도
-    </string>
-
-    <!-- week_s_topdown.xml -->
-    <string name="week_s_topdown">
-        30도/23도
-    </string>
-
-    <!-- week_s_date.xml -->
-    <string name="week_s_date">
-        월 8.31
-    </string>
-
-    <!-- w_topdown.xml -->
-    <string name="w_topdown">
-        최고/최저
-    </string>
-
-    <!-- w_dust.xml -->
-    <string name="w_dust">
-        미세먼지
-    </string>
-
-    <!-- w_weather.xml -->
-    <string name="w_weather">
+    <string name="weather_id1">
         날씨
     </string>
 
-    <!-- w_date.xml -->
-    <string name="w_date">
+    <string name="weather_id2">
+        최저/최고
+    </string>
+
+    <string name="dust_id1">
+        미세먼지
+    </string>
+
+    <string name="dust_id2">
+        시간별 예보 (좋음, 보통, 나쁜, 매우나쁨)
+    </string>
+
+    <string name="dust_id3">
+        주간 예보 (월요일 ~ 일요일)
+    </string>
+
+    <string name="dust_id4">
+        환경부/WHO 미세먼지,초미세먼지 기준
+    </string>
+
+    <string name="date_id1">
         날짜
+    </string>
+
+    <string name="update_time_id1">
+        업데이트 시간
+    </string>
+
+    <string name="update_time_id2">
+        ____-__-__ __:__ __
     </string>
 
 </resources>

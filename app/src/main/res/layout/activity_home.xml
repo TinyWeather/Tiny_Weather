@@ -15,8 +15,7 @@
             android:id="@+id/home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/background_color"
-            >
+            android:background="@drawable/background_color">
 
             <TextView
                 android:id="@+id/txt_location"
@@ -25,11 +24,9 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:fontFamily="@font/scdream3"
                 android:text="@string/location_id1"
-                android:textAppearance="@style/location_id1" />
+                android:textAppearance="@style/txt_black_24" />
 
-            <!--android:text="@string/location_id2" 잠시 빼둠-->
             <TextView
                 android:id="@+id/txt_location2"
                 android:layout_width="wrap_content"
@@ -37,16 +34,36 @@
                 android:layout_below="@id/txt_location"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/scdream3"
-                android:text="주소"
-                android:textAppearance="@style/location_id2" />
-            <!--임시-->
+                android:text="@string/location_id2"
+                android:textAlignment="center"
+                android:textAppearance="@style/txt_black_36" />
+
+            <TextView
+                android:id="@+id/update_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_location2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="@string/update_time_id1"
+                android:textAlignment="center"
+                android:textAppearance="@style/txt_black_18" />
+
+            <TextView
+                android:id="@+id/update_time2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/update_time"
+                android:layout_centerHorizontal="true"
+                android:text="@string/update_time_id2"
+                android:textAlignment="center"
+                android:textAppearance="@style/txt_black_18" />
 
             <ImageView
                 android:id="@+id/img_weather"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_below="@id/txt_location2"
+                android:layout_below="@id/update_time2"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="25dp"
                 app:srcCompat="@drawable/sun" />
@@ -58,9 +75,8 @@
                 android:layout_below="@id/img_weather"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:fontFamily="@font/scdream3"
-                android:text="@string/weather_id1"
-                android:textAppearance="@style/weather_id1" />
+                android:text="28º"
+                android:textAppearance="@style/txt_black_36" />
 
             <TextView
                 android:id="@+id/txt_weather2"
@@ -68,9 +84,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt_weather"
                 android:layout_centerHorizontal="true"
-                android:fontFamily="@font/scdream3"
-                android:text="@string/weather_id2"
-                android:textAppearance="@style/weather_id2" />
+                android:text="어제보다 2º 낮아요"
+                android:textAppearance="@style/txt_black_15" />
 
             <TextView
                 android:id="@+id/txt_weather3"
@@ -78,9 +93,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt_weather2"
                 android:layout_centerHorizontal="true"
-                android:fontFamily="@font/scdream3"
-                android:text="@string/weather_id3"
-                android:textAppearance="@style/weather_id3" />
+                android:text="최고 30º / 최저 22º"
+                android:textAppearance="@style/txt_black_14" />
 
             <ImageView
                 android:id="@+id/img_dust"
@@ -98,9 +112,8 @@
                 android:layout_below="@id/img_dust"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:fontFamily="@font/scdream3"
-                android:text="@string/dust_id1"
-                android:textAppearance="@style/dust_id1" />
+                android:text="좋음"
+                android:textAppearance="@style/txt_black_36" />
 
             <TextView
                 android:id="@+id/txt_covid"
@@ -109,9 +122,8 @@
                 android:layout_below="@id/txt_dust"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="40dp"
-                android:fontFamily="@font/scdream3"
                 android:text="@string/covid_id1"
-                android:textAppearance="@style/covid_id1" />
+                android:textAppearance="@style/txt_black_36" />
 
             <TextView
                 android:id="@+id/txt_covid2"
@@ -119,9 +131,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt_covid"
                 android:layout_centerHorizontal="true"
-                android:fontFamily="@font/scdream3"
-                android:text="@string/covid_id2"
-                android:textAppearance="@style/covid_id2" />
+                android:text="@string/location_id3"
+                android:textAppearance="@style/txt_black_24" />
 
             <TextView
                 android:id="@+id/txt_covid3"
@@ -130,9 +141,8 @@
                 android:layout_below="@id/txt_covid2"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/scdream3"
-                android:text="@string/covid_id3"
-                android:textAppearance="@style/covid_id3" />
+                android:text="1일 확진자 : n명(오늘)"
+                android:textAppearance="@style/txt_black_32" />
 
             <TextView
                 android:id="@+id/txt_covid4"
@@ -140,9 +150,14 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt_covid3"
                 android:layout_centerHorizontal="true"
-                android:fontFamily="@font/scdream3"
-                android:text="@string/covid_id4"
-                android:textAppearance="@style/covid_id4" />
+                android:text="누적 확진자 : n명"
+                android:textAppearance="@style/txt_black_28" />
+
+            <!-- 스크롤 짤림 방지 -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_below="@+id/txt_covid4"/>
 
         </RelativeLayout>
 

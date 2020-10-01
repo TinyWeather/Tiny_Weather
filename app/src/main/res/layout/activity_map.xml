@@ -20,9 +20,8 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:fontFamily="@font/scdream3"
             android:text="@string/location_id1"
-            android:textAppearance="@style/location_id1" />
+            android:textAppearance="@style/txt_black_24" />
 
         <TextView
             android:id="@+id/txt_location2"
@@ -31,18 +30,17 @@
             android:layout_below="@id/txt_location"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/scdream3"
             android:lineSpacingExtra="5sp"
             android:text="@string/location_id2"
-            android:textAppearance="@style/location_id2" />
+            android:textAppearance="@style/txt_black_36" />
 
         <ImageView
             android:id="@+id/image_2"
             android:layout_width="wrap_content"
-            android:layout_height="393dp"
+            android:layout_height="380dp"
             android:layout_below="@id/txt_location2"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="80dp"
             app:srcCompat="@drawable/national_map" />
 
     </RelativeLayout>

@@ -15,8 +15,7 @@
             android:id="@+id/weather"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/background_color"
-            >
+            android:background="@drawable/background_color">
 
             <TextView
                 android:id="@+id/txt_location"
@@ -25,9 +24,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:fontFamily="@font/scdream3"
                 android:text="@string/location_id1"
-                android:textAppearance="@style/location_id1" />
+                android:textAppearance="@style/txt_black_24" />
 
             <TextView
                 android:id="@+id/txt_location2"
@@ -36,15 +34,35 @@
                 android:layout_below="@id/txt_location"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/scdream3"
                 android:text="@string/location_id2"
-                android:textAppearance="@style/location_id2" />
+                android:textAppearance="@style/txt_black_36" />
+
+            <TextView
+                android:id="@+id/update_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_location2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="@string/update_time_id1"
+                android:textAlignment="center"
+                android:textAppearance="@style/txt_black_18" />
+
+            <TextView
+                android:id="@+id/update_time2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/update_time"
+                android:layout_centerHorizontal="true"
+                android:text="@string/update_time_id2"
+                android:textAlignment="center"
+                android:textAppearance="@style/txt_black_18" />
 
             <ImageView
                 android:id="@+id/img_weather"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_below="@id/txt_location2"
+                android:layout_below="@id/update_time2"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="25dp"
                 app:srcCompat="@drawable/sun" />
@@ -56,9 +74,8 @@
                 android:layout_below="@id/img_weather"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:fontFamily="@font/scdream3"
-                android:text="@string/weather_id1"
-                android:textAppearance="@style/weather_id1" />
+                android:text="28º"
+                android:textAppearance="@style/txt_black_36" />
 
             <TextView
                 android:id="@+id/txt_weather2"
@@ -66,9 +83,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt_weather"
                 android:layout_centerHorizontal="true"
-                android:fontFamily="@font/scdream3"
-                android:text="@string/weather_id2"
-                android:textAppearance="@style/weather_id2" />
+                android:text="어제보다 2º 낮아요"
+                android:textAppearance="@style/txt_black_15" />
 
             <TextView
                 android:id="@+id/txt_weather3"
@@ -76,20 +92,20 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt_weather2"
                 android:layout_centerHorizontal="true"
-                android:fontFamily="@font/scdream3"
-                android:text="@string/weather_id3"
-                android:textAppearance="@style/weather_id3" />
+                android:text="최고 30º / 최저 22º"
+                android:textAppearance="@style/txt_black_14" />
 
             <RelativeLayout
-                android:id="@+id/weather_bac"
+                android:id="@+id/weather_day"
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:layout_marginTop="20dp"
+                android:layout_height="120dp"
                 android:layout_below="@id/txt_weather3"
                 android:layout_centerHorizontal="true"
                 android:layout_marginHorizontal="10dp"
-                android:background="@drawable/weather_day"
-                android:elevation="55dp">
+                android:layout_marginTop="20dp"
+                android:background="@drawable/graph_background_15"
+                android:elevation="5dp"
+                android:paddingHorizontal="5dp">
 
                 <HorizontalScrollView
                     android:layout_width="match_parent"
@@ -97,17 +113,18 @@
                     android:layout_centerVertical="true">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="100dp">
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="100dp">
+                            android:layout_height="100dp"
+                            android:layout_gravity="center">
 
                             <ImageView
                                 android:id="@+id/img_weather_day1"
-                                android:layout_width="70dp"
-                                android:layout_height="70dp"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
                                 android:layout_centerHorizontal="true"
                                 app:srcCompat="@drawable/sun" />
 
@@ -117,20 +134,29 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/img_weather_day1"
                                 android:layout_centerHorizontal="true"
-                                android:fontFamily="@font/scdream3"
-                                android:text="@string/weather_id1"
-                                android:textAppearance="@style/weather_id2" />
+                                android:text="11시"
+                                android:textAppearance="@style/txt_black_15" />
+
+                            <TextView
+                                android:id="@+id/txt2_weather_day1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/txt_weather_day1"
+                                android:layout_centerHorizontal="true"
+                                android:text="28º"
+                                android:textAppearance="@style/txt_black_15" />
 
                         </RelativeLayout>
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="100dp">
+                            android:layout_height="100dp"
+                            android:layout_gravity="center">
 
                             <ImageView
                                 android:id="@+id/img_weather_day2"
-                                android:layout_width="70dp"
-                                android:layout_height="70dp"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
                                 android:layout_centerHorizontal="true"
                                 app:srcCompat="@drawable/sun" />
 
@@ -140,20 +166,29 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/img_weather_day2"
                                 android:layout_centerHorizontal="true"
-                                android:fontFamily="@font/scdream3"
-                                android:text="@string/weather_id1"
-                                android:textAppearance="@style/weather_id2" />
+                                android:text="12시"
+                                android:textAppearance="@style/txt_black_15" />
+
+                            <TextView
+                                android:id="@+id/txt2_weather_day2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/txt_weather_day2"
+                                android:layout_centerHorizontal="true"
+                                android:text="28º"
+                                android:textAppearance="@style/txt_black_15" />
 
                         </RelativeLayout>
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="100dp">
+                            android:layout_height="100dp"
+                            android:layout_gravity="center">
 
                             <ImageView
                                 android:id="@+id/img_weather_day3"
-                                android:layout_width="70dp"
-                                android:layout_height="70dp"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
                                 android:layout_centerHorizontal="true"
                                 app:srcCompat="@drawable/sun" />
 
@@ -163,20 +198,29 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/img_weather_day3"
                                 android:layout_centerHorizontal="true"
-                                android:fontFamily="@font/scdream3"
-                                android:text="@string/weather_id1"
-                                android:textAppearance="@style/weather_id2" />
+                                android:text="13시"
+                                android:textAppearance="@style/txt_black_15" />
+
+                            <TextView
+                                android:id="@+id/txt2_weather_day3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/txt_weather_day3"
+                                android:layout_centerHorizontal="true"
+                                android:text="28º"
+                                android:textAppearance="@style/txt_black_15" />
 
                         </RelativeLayout>
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="100dp">
+                            android:layout_height="100dp"
+                            android:layout_gravity="center">
 
                             <ImageView
                                 android:id="@+id/img_weather_day4"
-                                android:layout_width="70dp"
-                                android:layout_height="70dp"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
                                 android:layout_centerHorizontal="true"
                                 app:srcCompat="@drawable/sun" />
 
@@ -186,20 +230,29 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/img_weather_day4"
                                 android:layout_centerHorizontal="true"
-                                android:fontFamily="@font/scdream3"
-                                android:text="@string/weather_id1"
-                                android:textAppearance="@style/weather_id2" />
+                                android:text="14시"
+                                android:textAppearance="@style/txt_black_15" />
+
+                            <TextView
+                                android:id="@+id/txt2_weather_day4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/txt_weather_day4"
+                                android:layout_centerHorizontal="true"
+                                android:text="28º"
+                                android:textAppearance="@style/txt_black_15" />
 
                         </RelativeLayout>
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="100dp">
+                            android:layout_height="100dp"
+                            android:layout_gravity="center">
 
                             <ImageView
                                 android:id="@+id/img_weather_day5"
-                                android:layout_width="70dp"
-                                android:layout_height="70dp"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
                                 android:layout_centerHorizontal="true"
                                 app:srcCompat="@drawable/sun" />
 
@@ -209,20 +262,29 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/img_weather_day5"
                                 android:layout_centerHorizontal="true"
-                                android:fontFamily="@font/scdream3"
-                                android:text="@string/weather_id1"
-                                android:textAppearance="@style/weather_id2" />
+                                android:text="15시"
+                                android:textAppearance="@style/txt_black_15" />
+
+                            <TextView
+                                android:id="@+id/txt2_weather_day5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/txt_weather_day5"
+                                android:layout_centerHorizontal="true"
+                                android:text="28º"
+                                android:textAppearance="@style/txt_black_15" />
 
                         </RelativeLayout>
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="100dp">
+                            android:layout_height="100dp"
+                            android:layout_gravity="center">
 
                             <ImageView
                                 android:id="@+id/img_weather_day6"
-                                android:layout_width="70dp"
-                                android:layout_height="70dp"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
                                 android:layout_centerHorizontal="true"
                                 app:srcCompat="@drawable/sun" />
 
@@ -232,9 +294,49 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/img_weather_day6"
                                 android:layout_centerHorizontal="true"
-                                android:fontFamily="@font/scdream3"
-                                android:text="@string/weather_id1"
-                                android:textAppearance="@style/weather_id2" />
+                                android:text="16시"
+                                android:textAppearance="@style/txt_black_15" />
+
+                            <TextView
+                                android:id="@+id/txt2_weather_day6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/txt_weather_day6"
+                                android:layout_centerHorizontal="true"
+                                android:text="28º"
+                                android:textAppearance="@style/txt_black_15" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center">
+
+                            <ImageView
+                                android:id="@+id/img_weather_day7"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:layout_centerHorizontal="true"
+                                app:srcCompat="@drawable/sun" />
+
+                            <TextView
+                                android:id="@+id/txt_weather_day7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/img_weather_day7"
+                                android:layout_centerHorizontal="true"
+                                android:text="17시"
+                                android:textAppearance="@style/txt_black_15" />
+
+                            <TextView
+                                android:id="@+id/txt2_weather_day7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/txt_weather_day7"
+                                android:layout_centerHorizontal="true"
+                                android:text="28º"
+                                android:textAppearance="@style/txt_black_15" />
 
                         </RelativeLayout>
 
@@ -245,145 +347,372 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/weather_list"
                 android:layout_width="match_parent"
-                android:layout_height="397dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="570dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/wether_table"
-                >
+                android:layout_height="480dp"
+                android:layout_below="@id/weather_day"
+                android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/graph_background_30"
+                android:elevation="5dp">
 
                 <View
                     android:id="@+id/weather_top"
                     android:layout_width="match_parent"
-                    android:layout_height="37dp"
+                    android:layout_height="50dp"
                     android:layout_centerHorizontal="true"
-                    android:background="@drawable/covid_graph_top"
-                    />
+                    android:background="@drawable/graph_top_30" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="45dp" >
+                    android:layout_height="50dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:id="@+id/weather_list_title"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="월요일 08.31"
-                        android:textSize="20dp"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="10dp"
-                        />
+                        android:layout_centerVertical="true">
 
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/sun"
-                        android:layout_marginLeft="170dp"
-                        />
+                        <TextView
+                            android:id="@+id/weather_list_title_txt1"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:text="@string/date_id1"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/txt_black_18" />
 
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/dust7"
-                        android:layout_marginLeft="260dp"
-                        />
+                        <TextView
+                            android:id="@+id/weather_list_title_txt2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/weather_id1"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/txt_black_18" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="30/50"
-                        android:textSize="20dp"
-                        android:layout_marginLeft="350dp"
-                        android:layout_marginTop="10dp"
-                        />
+                        <TextView
+                            android:id="@+id/weather_list_title_txt3"
+                            android:layout_width="85dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:text="@string/weather_id2"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/txt_black_18" />
+
+                    </LinearLayout>
 
                 </RelativeLayout>
 
-                <!-- margintop을 한줄 추가할때 마다 +65씩 해주면 간격이 맞는듯 -->
-                <RelativeLayout
+                <LinearLayout
+                    android:id="@+id/weather_list1"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginTop="110dp" >
+                    android:layout_below="@id/weather_top"
+                    android:layout_marginTop="10dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/weather_list1_txt1"
+                        android:layout_width="120dp"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
                         android:text="월요일 08.31"
-                        android:textSize="20dp"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="10dp"
-                        />
+                        android:textAlignment="center"
+                        android:textAppearance="@style/txt_black_18" />
 
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/sun"
-                        android:layout_marginLeft="170dp"
-                        />
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
 
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/dust7"
-                        android:layout_marginLeft="260dp"
-                        />
+                        <ImageView
+                            android:id="@+id/weather_list1_img1"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/sun" />
+
+                    </RelativeLayout>
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/weather_list1_txt2"
+                        android:layout_width="85dp"
                         android:layout_height="wrap_content"
-                        android:text="30/50"
-                        android:textSize="20dp"
-                        android:layout_marginLeft="350dp"
-                        android:layout_marginTop="10dp"
-                        />
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="20dp"
+                        android:text="26/32"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/txt_black_18" />
 
-                </RelativeLayout>
+                </LinearLayout>
 
-                <RelativeLayout
+                <LinearLayout
+                    android:id="@+id/weather_list2"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginTop="175dp" >
+                    android:layout_below="@id/weather_list1"
+                    android:layout_marginTop="10dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/weather_list2_txt1"
+                        android:layout_width="120dp"
                         android:layout_height="wrap_content"
-                        android:text="월요일 08.31"
-                        android:textSize="20dp"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="10dp"
-                        />
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:text="화요일 09.01"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/txt_black_18" />
 
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/sun"
-                        android:layout_marginLeft="170dp"
-                        />
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
 
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/dust7"
-                        android:layout_marginLeft="260dp"
-                        />
+                        <ImageView
+                            android:id="@+id/weather_list2_img1"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/sun" />
+
+                    </RelativeLayout>
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/weather_list2_txt2"
+                        android:layout_width="85dp"
                         android:layout_height="wrap_content"
-                        android:text="30/50"
-                        android:textSize="20dp"
-                        android:layout_marginLeft="350dp"
-                        android:layout_marginTop="10dp"
-                        />
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="20dp"
+                        android:text="28/30"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/txt_black_18" />
 
-                </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/weather_list3"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/weather_list2"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/weather_list3_txt1"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:text="수요일 09.02"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/txt_black_18" />
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/weather_list3_img1"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/sun" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/weather_list3_txt2"
+                        android:layout_width="85dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="20dp"
+                        android:text="28/30"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/txt_black_18" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/weather_list4"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/weather_list3"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/weather_list4_txt1"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:text="목요일 09.03"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/txt_black_18" />
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/weather_list4_img1"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/sun" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/weather_list4_txt2"
+                        android:layout_width="85dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="20dp"
+                        android:text="28/30"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/txt_black_18" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/weather_list5"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/weather_list4"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/weather_list5_txt1"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:text="금요일 09.04"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/txt_black_18" />
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/weather_list5_img1"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/sun" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/weather_list5_txt2"
+                        android:layout_width="85dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="20dp"
+                        android:text="28/30"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/txt_black_18" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/weather_list6"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/weather_list5"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/weather_list6_txt1"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:text="토요일 09.05"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/txt_black_18" />
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/weather_list6_img1"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/sun" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/weather_list6_txt2"
+                        android:layout_width="85dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="20dp"
+                        android:text="28/30"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/txt_black_18" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/weather_list7"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/weather_list6"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/weather_list7_txt1"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:text="일요일 09.06"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/txt_black_18" />
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/weather_list7_img1"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/sun" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/weather_list7_txt2"
+                        android:layout_width="85dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="20dp"
+                        android:text="28/30"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/txt_black_18" />
+
+                </LinearLayout>
 
             </RelativeLayout>
 
+            <!-- 스크롤 짤림 방지 -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_below="@+id/weather_list"/>
 
         </RelativeLayout>
 
