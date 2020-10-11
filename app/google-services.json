@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "409259890846",
-    "firebase_url": "https://tiny-weather-project.firebaseio.com",
-    "project_id": "tiny-weather-project",
-    "storage_bucket": "tiny-weather-project.appspot.com"
+    "project_number": "994206978519",
+    "firebase_url": "https://tiny-weather-2020.firebaseio.com",
+    "project_id": "tiny-weather-2020",
+    "storage_bucket": "tiny-weather-2020.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:409259890846:android:d455dff08f298b6611c38f",
+        "mobilesdk_app_id": "1:994206978519:android:2820f8e550a0f53097fb92",
         "android_client_info": {
           "package_name": "org.techtown.tiny_weather"
         }
       },
       "oauth_client": [
         {
-          "client_id": "409259890846-gslsgs3vpf2rl8qa7tqch80blpkeiaqn.apps.googleusercontent.com",
+          "client_id": "994206978519-108hlf5guf856tp9jl8f0lu4j6djh21d.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "org.techtown.tiny_weather",
@@ -23,20 +23,28 @@
           }
         },
         {
-          "client_id": "409259890846-ordkee0j0jbhl7hv1gv9l49jj9iujnl4.apps.googleusercontent.com",
+          "client_id": "994206978519-an02jb0v3e5g6cuneacdeiaiu8lo5dj1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.techtown.tiny_weather",
+            "certificate_hash": "2dd9f7d1aa724b632c59e4662d253d3c05461a04"
+          }
+        },
+        {
+          "client_id": "994206978519-a2crd2vii9hn97991htfts65ks538ika.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBYjX0D7C8PiUA7cSEkw5QrWuQNh4OMTFg"
+          "current_key": "AIzaSyDjAKyGaHIpScEWYQh3M2euKmEfN2PHpw8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "409259890846-ordkee0j0jbhl7hv1gv9l49jj9iujnl4.apps.googleusercontent.com",
+              "client_id": "994206978519-a2crd2vii9hn97991htfts65ks538ika.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
