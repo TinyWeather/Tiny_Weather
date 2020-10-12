@@ -25,5 +25,8 @@
         <activity android:name=".LodingActivity"
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
 
+        <!-- 회원가입/로그인 -->
+        <activity android:name=".JoinActivity"></activity>
+
     </application>
 </manifest>

@@ -57,7 +57,7 @@
         />
 
     <Button
-        android:id="@+id/group_13"
+        android:id="@+id/join_btn"
         android:layout_width="127dp"
         android:layout_height="45dp"
         android:layout_alignParentLeft="true"
