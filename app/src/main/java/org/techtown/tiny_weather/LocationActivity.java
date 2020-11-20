@@ -1,12 +1,9 @@
 package org.techtown.tiny_weather;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -14,11 +11,8 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
 
 import java.io.IOException;
 import java.util.List;
@@ -169,9 +163,9 @@ public class LocationActivity extends Service implements LocationListener {
 
                 if(strAddress.length > 4)
                     if(address.contains("대한민국"))
-                        getAddress = strAddress[2];
+                        getAddress = strAddress[1];
                     else
-                        getAddress = strAddress[3];
+                        getAddress = strAddress[4];
                 else
                     getAddress = address;
             }

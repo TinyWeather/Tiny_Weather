@@ -141,15 +141,25 @@
                 android:layout_below="@id/txt_covid2"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-                android:text="1일 확진자 : n명(오늘)"
+                android:text="1일 확진자 : n명"
                 android:textAppearance="@style/txt_black_32" />
+
+            <TextView
+                android:id="@+id/txt_covid5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_covid3"
+                android:layout_alignRight="@+id/txt_covid3"
+                android:text="(오늘)"
+                android:textAppearance="@style/txt_black_14" />
 
             <TextView
                 android:id="@+id/txt_covid4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/txt_covid3"
+                android:layout_below="@id/txt_covid5"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
                 android:text="누적 확진자 : n명"
                 android:textAppearance="@style/txt_black_28" />
 
