@@ -43,6 +43,7 @@ public class CovidActivity {
 
     public void setCovidXmlData(String location) {
         if(time < 10) {
+            calendar = Calendar.getInstance();
             calendar.add(Calendar.DATE, -1);
         }
         today = dateFormat.format(calendar.getTime());
