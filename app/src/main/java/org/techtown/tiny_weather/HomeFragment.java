@@ -109,12 +109,12 @@ public class HomeFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        text = (TextView) getActivity().findViewById(R.id.txt_location2);
-        text2 = (TextView) getActivity().findViewById(R.id.txt_covid2);
-        text3 = (TextView) getActivity().findViewById(R.id.update_time2);
-        text4 = (TextView) getActivity().findViewById(R.id.txt_covid3);
-        text5 = (TextView) getActivity().findViewById(R.id.txt_covid4);
-        text6 = (TextView) getActivity().findViewById(R.id.txt_covid5);
+        text = (TextView) getActivity().findViewById(R.id.home_txt_location2);
+        text2 = (TextView) getActivity().findViewById(R.id.home_txt_covid2);
+        text3 = (TextView) getActivity().findViewById(R.id.home_update_time2);
+        text4 = (TextView) getActivity().findViewById(R.id.home_txt_covid3);
+        text5 = (TextView) getActivity().findViewById(R.id.home_txt_covid4);
+        text6 = (TextView) getActivity().findViewById(R.id.home_txt_covid5);
 
         text.setText(locationActivity.getTextView());
         text2.setText(locationActivity.getTextView2());

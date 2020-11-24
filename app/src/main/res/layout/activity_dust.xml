@@ -18,7 +18,7 @@
             android:background="@drawable/background_color">
 
             <TextView
-                android:id="@+id/txt_location"
+                android:id="@+id/dust_txt_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -28,10 +28,10 @@
                 android:textAppearance="@style/txt_black_24" />
 
             <TextView
-                android:id="@+id/txt_location2"
+                android:id="@+id/dust_txt_location2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/txt_location"
+                android:layout_below="@id/dust_txt_location"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:lineSpacingExtra="5sp"
@@ -39,10 +39,10 @@
                 android:textAppearance="@style/txt_black_36" />
 
             <TextView
-                android:id="@+id/update_time"
+                android:id="@+id/dust_update_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/txt_location2"
+                android:layout_below="@id/dust_txt_location2"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:text="@string/update_time_id1"
@@ -50,10 +50,10 @@
                 android:textAppearance="@style/txt_black_18" />
 
             <TextView
-                android:id="@+id/update_time2"
+                android:id="@+id/dust_update_time2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/update_time"
+                android:layout_below="@id/dust_update_time"
                 android:layout_centerHorizontal="true"
                 android:text="@string/update_time_id2"
                 android:textAlignment="center"
@@ -63,7 +63,7 @@
                 android:id="@+id/dust_img"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_below="@id/update_time2"
+                android:layout_below="@id/dust_update_time2"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="25dp"
                 app:srcCompat="@drawable/dust6" />
@@ -234,7 +234,7 @@
                     </RelativeLayout>
 
                     <TextView
-                        android:id="@+id/weather_list1_txt2"
+                        android:id="@+id/dust_list1_txt2"
                         android:layout_width="85dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"

@@ -18,7 +18,7 @@
             android:background="@drawable/background_color">
 
             <TextView
-                android:id="@+id/txt_location"
+                android:id="@+id/weather_txt_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -28,20 +28,20 @@
                 android:textAppearance="@style/txt_black_24" />
 
             <TextView
-                android:id="@+id/txt_location2"
+                android:id="@+id/weather_txt_location2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/txt_location"
+                android:layout_below="@id/weather_txt_location"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:text="@string/location_id2"
                 android:textAppearance="@style/txt_black_36" />
 
             <TextView
-                android:id="@+id/update_time"
+                android:id="@+id/weather_update_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/txt_location2"
+                android:layout_below="@id/weather_txt_location2"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:text="@string/update_time_id1"
@@ -49,48 +49,48 @@
                 android:textAppearance="@style/txt_black_18" />
 
             <TextView
-                android:id="@+id/update_time2"
+                android:id="@+id/weather_update_time2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/update_time"
+                android:layout_below="@id/weather_update_time"
                 android:layout_centerHorizontal="true"
                 android:text="@string/update_time_id2"
                 android:textAlignment="center"
                 android:textAppearance="@style/txt_black_18" />
 
             <ImageView
-                android:id="@+id/img_weather"
+                android:id="@+id/weather_img"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_below="@id/update_time2"
+                android:layout_below="@id/weather_update_time2"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="25dp"
                 app:srcCompat="@drawable/sun" />
 
             <TextView
-                android:id="@+id/txt_weather"
+                android:id="@+id/weather_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/img_weather"
+                android:layout_below="@id/weather_img"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:text="28º"
                 android:textAppearance="@style/txt_black_36" />
 
             <TextView
-                android:id="@+id/txt_weather2"
+                android:id="@+id/weather_txt2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/txt_weather"
+                android:layout_below="@id/weather_txt"
                 android:layout_centerHorizontal="true"
                 android:text="어제보다 2º 낮아요"
                 android:textAppearance="@style/txt_black_15" />
 
             <TextView
-                android:id="@+id/txt_weather3"
+                android:id="@+id/weather_txt3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/txt_weather2"
+                android:layout_below="@id/weather_txt2"
                 android:layout_centerHorizontal="true"
                 android:text="최고 30º / 최저 22º"
                 android:textAppearance="@style/txt_black_14" />
@@ -99,7 +99,7 @@
                 android:id="@+id/weather_day"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
-                android:layout_below="@id/txt_weather3"
+                android:layout_below="@id/weather_txt3"
                 android:layout_centerHorizontal="true"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="20dp"

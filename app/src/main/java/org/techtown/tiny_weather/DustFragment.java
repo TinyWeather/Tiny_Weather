@@ -66,8 +66,8 @@ public class DustFragment extends Fragment {
         locationActivity = new LocationActivity(getContext());
         timeActivity = new TimeActivity();
 
-        text = (TextView) getActivity().findViewById(R.id.txt_location2);
-        text2 = (TextView) getActivity().findViewById(R.id.update_time2);
+        text = (TextView) getActivity().findViewById(R.id.dust_txt_location2);
+        text2 = (TextView) getActivity().findViewById(R.id.dust_update_time2);
 
         text.setText(locationActivity.getTextView());
         text2.setText(timeActivity.getTime());

@@ -28,7 +28,7 @@ public class MapFragment extends Fragment {
             @Override
             public void onRefresh() {
                 locationActivity = new LocationActivity(getContext());
-                TextView text = (TextView) getActivity().findViewById(R.id.txt_location2);
+                TextView text = (TextView) getActivity().findViewById(R.id.map_txt_location2);
                 text.setText(locationActivity.getTextView());
 
                 NavigationView navigationView = (NavigationView) rootView.getRootView().findViewById(R.id.nav_view);
@@ -56,7 +56,7 @@ public class MapFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         locationActivity = new LocationActivity(getContext());
-        TextView text = (TextView) getActivity().findViewById(R.id.txt_location2);
+        TextView text = (TextView) getActivity().findViewById(R.id.map_txt_location2);
         text.setText(locationActivity.getTextView());
     }
 

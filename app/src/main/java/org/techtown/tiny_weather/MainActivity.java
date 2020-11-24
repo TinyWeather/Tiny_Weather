@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,6 +20,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements onTabItemSelectedListener {
+    FragmentManager fragmentManager;
 
     MapFragment mapFragment;
     CovidFragment covidFragment;
@@ -45,13 +47,11 @@ public class MainActivity extends AppCompatActivity implements onTabItemSelected
         // 액션바 + 네비게이션 드로우
         setActionBar();
 
-        mapFragment = new MapFragment();
-        covidFragment = new CovidFragment();
         homeFragment = new HomeFragment();
-        weatherFragment = new WeatherFragment();
-        dustFragment = new DustFragment();
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, homeFragment).commit();
+        fragmentManager = getSupportFragmentManager();
+
+        fragmentManager.beginTransaction().replace(R.id.container, homeFragment).commit();
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.home);
@@ -60,19 +60,59 @@ public class MainActivity extends AppCompatActivity implements onTabItemSelected
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.map:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, mapFragment).commit();
+                        if(mapFragment == null) {
+                            mapFragment = new MapFragment();
+                            fragmentManager.beginTransaction().add(R.id.container, mapFragment).commit();
+                        }
+                        if(mapFragment != null) fragmentManager.beginTransaction().show(mapFragment).commit();
+                        if(covidFragment != null) fragmentManager.beginTransaction().hide(covidFragment).commit();
+                        if(homeFragment != null) fragmentManager.beginTransaction().hide(homeFragment).commit();
+                        if(weatherFragment != null) fragmentManager.beginTransaction().hide(weatherFragment).commit();
+                        if(dustFragment != null) fragmentManager.beginTransaction().hide(dustFragment).commit();
                         return true;
                     case R.id.covid:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, covidFragment).commit();
+                        if(covidFragment == null) {
+                            covidFragment = new CovidFragment();
+                            fragmentManager.beginTransaction().add(R.id.container, covidFragment).commit();
+                        }
+                        if(mapFragment != null) fragmentManager.beginTransaction().hide(mapFragment).commit();
+                        if(covidFragment != null) fragmentManager.beginTransaction().show(covidFragment).commit();
+                        if(homeFragment != null) fragmentManager.beginTransaction().hide(homeFragment).commit();
+                        if(weatherFragment != null) fragmentManager.beginTransaction().hide(weatherFragment).commit();
+                        if(dustFragment != null) fragmentManager.beginTransaction().hide(dustFragment).commit();
                         return true;
                     case R.id.home:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, homeFragment).commit();
+                        if(homeFragment == null) {
+                            homeFragment = new HomeFragment();
+                            fragmentManager.beginTransaction().add(R.id.container, homeFragment).commit();
+                        }
+                        if(mapFragment != null) fragmentManager.beginTransaction().hide(mapFragment).commit();
+                        if(covidFragment != null) fragmentManager.beginTransaction().hide(covidFragment).commit();
+                        if(homeFragment != null) fragmentManager.beginTransaction().show(homeFragment).commit();
+                        if(weatherFragment != null) fragmentManager.beginTransaction().hide(weatherFragment).commit();
+                        if(dustFragment != null) fragmentManager.beginTransaction().hide(dustFragment).commit();
                         return true;
                     case R.id.weather:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, weatherFragment).commit();
+                        if(weatherFragment == null) {
+                            weatherFragment = new WeatherFragment();
+                            fragmentManager.beginTransaction().add(R.id.container, weatherFragment).commit();
+                        }
+                        if(mapFragment != null) fragmentManager.beginTransaction().hide(mapFragment).commit();
+                        if(covidFragment != null) fragmentManager.beginTransaction().hide(covidFragment).commit();
+                        if(homeFragment != null) fragmentManager.beginTransaction().hide(homeFragment).commit();
+                        if(weatherFragment != null) fragmentManager.beginTransaction().show(weatherFragment).commit();
+                        if(dustFragment != null) fragmentManager.beginTransaction().hide(dustFragment).commit();
                         return true;
                     case R.id.dust:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, dustFragment).commit();
+                        if(dustFragment == null) {
+                            dustFragment = new DustFragment();
+                            fragmentManager.beginTransaction().add(R.id.container, dustFragment).commit();
+                        }
+                        if(mapFragment != null) fragmentManager.beginTransaction().hide(mapFragment).commit();
+                        if(covidFragment != null) fragmentManager.beginTransaction().hide(covidFragment).commit();
+                        if(homeFragment != null) fragmentManager.beginTransaction().hide(homeFragment).commit();
+                        if(weatherFragment != null) fragmentManager.beginTransaction().hide(weatherFragment).commit();
+                        if(dustFragment != null) fragmentManager.beginTransaction().show(dustFragment).commit();
                         return true;
                 }
 
