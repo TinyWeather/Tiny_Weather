@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <group
         android:id="@+id/group_setting">
         <item android:title="정보">
@@ -21,6 +22,8 @@
                     android:icon="@mipmap/ic_location_on_black_24dp"
                     style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
                     android:title="GPS"
+                    android:checked="false"
+                    app:actionLayout="@layout/navi_gps"
                     />
             </menu>
         </item>
