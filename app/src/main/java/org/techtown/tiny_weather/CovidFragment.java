@@ -83,6 +83,7 @@ public class CovidFragment extends Fragment {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
+                        covidActivity.setCovidXmlData("합계");
                         covidActivity.setCovidXmlData2(locationActivity.getTextView2());
                         covidActivity.setCovidXmlData3();
 
@@ -170,10 +171,12 @@ public class CovidFragment extends Fragment {
         textView.setText("전국 확진자 " + covidActivity.getIncDec() + "명");
 
         linearLayout = (LinearLayout) rootView.getRootView().findViewById(R.id.covid_list1);
+        linearLayout.removeAllViews();
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.setMargins(15, 0, 15, 0);
 
         for(int i=9; i>=0; i--) {
+            System.out.println("*+*+*+*+*+*+*+*+*+*+*+*" + covidActivity.getArrIncDec2(i));
             if (Integer.parseInt(covidActivity.getArrIncDec2(i)) == 0)
                 img = R.drawable.dust8;
             else if(Integer.parseInt(covidActivity.getArrIncDec2(i)) <= 5)
@@ -217,6 +220,7 @@ public class CovidFragment extends Fragment {
         }
 
         linearLayout = (LinearLayout) rootView.getRootView().findViewById(R.id.covid_list2);
+        linearLayout.removeAllViews();
         TextView textView1 = (TextView) rootView.getRootView().findViewById(R.id.covid_txt1);
         TextView textView2 = (TextView) rootView.getRootView().findViewById(R.id.covid_txt2);
         TextView textView3 = (TextView) rootView.getRootView().findViewById(R.id.covid_txt3);

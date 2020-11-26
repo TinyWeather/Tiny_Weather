@@ -1,12 +1,9 @@
-/*
 package org.techtown.tiny_weather;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
-import java.net.MalformedURLException;
 import java.net.URL;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -29,7 +26,6 @@ public class DustActivity {
     boolean khaiGradeCheck=false, so2GradeCheck=false,  coGradeCheck=false,  o3GradeCheck=false,  no2GradeCheck=false;
     boolean pm10GradeCheck=false, pm25GradeCheck=false,  pm10Grade1hCheck=false,  pm25Grade1hCheck=false;
 
-    public void setDustXmlData(String location){
     public void setDustXmlData(String location){
         if(time < 10) {
             calendar = Calendar.getInstance();
@@ -222,10 +218,9 @@ public class DustActivity {
             }
 
             System.out.println("=============파싱 끝=============");
-        } catch (MalformedURLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println("=============파싱 에러=============");
         }
     }
 }
-*/
