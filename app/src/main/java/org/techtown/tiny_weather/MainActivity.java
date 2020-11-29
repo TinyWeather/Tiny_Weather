@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements onTabItemSelected
                             mapFragment = new MapFragment();
                             fragmentManager.beginTransaction().add(R.id.container, mapFragment).commit();
                         }
+
                         if(mapFragment != null) fragmentManager.beginTransaction().show(mapFragment).commit();
                         if(covidFragment != null) fragmentManager.beginTransaction().hide(covidFragment).commit();
                         if(homeFragment != null) fragmentManager.beginTransaction().hide(homeFragment).commit();
@@ -75,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements onTabItemSelected
                             covidFragment = new CovidFragment();
                             fragmentManager.beginTransaction().add(R.id.container, covidFragment).commit();
                         }
+
                         if(mapFragment != null) fragmentManager.beginTransaction().hide(mapFragment).commit();
                         if(covidFragment != null) fragmentManager.beginTransaction().show(covidFragment).commit();
                         if(homeFragment != null) fragmentManager.beginTransaction().hide(homeFragment).commit();
@@ -86,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements onTabItemSelected
                             homeFragment = new HomeFragment();
                             fragmentManager.beginTransaction().add(R.id.container, homeFragment).commit();
                         }
+
                         if(mapFragment != null) fragmentManager.beginTransaction().hide(mapFragment).commit();
                         if(covidFragment != null) fragmentManager.beginTransaction().hide(covidFragment).commit();
                         if(homeFragment != null) fragmentManager.beginTransaction().show(homeFragment).commit();
@@ -97,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements onTabItemSelected
                             weatherFragment = new WeatherFragment();
                             fragmentManager.beginTransaction().add(R.id.container, weatherFragment).commit();
                         }
+
                         if(mapFragment != null) fragmentManager.beginTransaction().hide(mapFragment).commit();
                         if(covidFragment != null) fragmentManager.beginTransaction().hide(covidFragment).commit();
                         if(homeFragment != null) fragmentManager.beginTransaction().hide(homeFragment).commit();
@@ -108,6 +112,7 @@ public class MainActivity extends AppCompatActivity implements onTabItemSelected
                             dustFragment = new DustFragment();
                             fragmentManager.beginTransaction().add(R.id.container, dustFragment).commit();
                         }
+
                         if(mapFragment != null) fragmentManager.beginTransaction().hide(mapFragment).commit();
                         if(covidFragment != null) fragmentManager.beginTransaction().hide(covidFragment).commit();
                         if(homeFragment != null) fragmentManager.beginTransaction().hide(homeFragment).commit();

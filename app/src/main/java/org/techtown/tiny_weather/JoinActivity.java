@@ -21,8 +21,5 @@ public class JoinActivity extends AppCompatActivity {
 
         id_textview = (TextView) findViewById(R.id.email);
         pw_textview =(TextView) findViewById(R.id.password);
-
-
-
     }
 }
