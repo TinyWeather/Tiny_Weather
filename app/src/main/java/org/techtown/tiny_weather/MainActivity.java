@@ -40,9 +40,6 @@ public class MainActivity extends AppCompatActivity implements onTabItemSelected
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // 로딩
-        Intent intent = new Intent(this, LodingActivity.class);
-        startActivity(intent);
 
         // 액션바 + 네비게이션 드로우
         setActionBar();
