@@ -34,12 +34,19 @@ import java.util.zip.Inflater;
 public class HomeFragment extends Fragment {
     LocationActivity locationActivity;
     TimeActivity timeActivity;
+    WeatherActivity weatherActivity;
     CovidActivity covidActivity;
 
     SwipeRefreshLayout swipeRefreshLayout;
-    TextView text, text2, text3, text4, text5, text6;
+    TextView text, text2, text3;
 
+    // 날씨
+    String weather, minWeather, maxWeather;
+    TextView weatherText1, weatherText2, weatherText3;
+
+    // 코로나
     String covidIncDec, covidIsolIngCnt, covidDate;
+    TextView covidText1, covidText2, covidText3;
 
     @Override
     public void onAttach(Context context) {
@@ -47,6 +54,7 @@ public class HomeFragment extends Fragment {
 
         locationActivity = new LocationActivity(context);
         timeActivity = new TimeActivity();
+        weatherActivity = new WeatherActivity();
         covidActivity = new CovidActivity();
     }
 
@@ -69,6 +77,13 @@ public class HomeFragment extends Fragment {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
+                        // 날씨
+                        weatherActivity.setWeatherXmlData(locationActivity.getLat(), locationActivity.getLon());
+                        weather = weatherActivity.getWeather() + "º";
+                        minWeather = "최저 " + weatherActivity.getMinWeather() + "º";
+                        maxWeather = "최고 " + weatherActivity.getMaxWeather() + "º";
+
+                        // 코로나
                         covidActivity.setCovidXmlData(locationActivity.getTextView2());
                         covidIncDec = "1일 확진자 : " + covidActivity.getIncDec() + "명";
                         covidIsolIngCnt = "누적 확진자 : " + covidActivity.getIsolIngCnt() + "명";
@@ -77,9 +92,12 @@ public class HomeFragment extends Fragment {
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                text4.setText(covidIncDec);
-                                text5.setText(covidIsolIngCnt);
-                                text6.setText(covidDate);
+                                weatherText1.setText(weather);
+                                weatherText3.setText(minWeather + " / " + maxWeather);
+
+                                covidText1.setText(covidIncDec);
+                                covidText2.setText(covidIsolIngCnt);
+                                covidText3.setText(covidDate);
                             }
                         });
                     }
@@ -112,9 +130,14 @@ public class HomeFragment extends Fragment {
         text = (TextView) getActivity().findViewById(R.id.home_txt_location2);
         text2 = (TextView) getActivity().findViewById(R.id.home_txt_covid2);
         text3 = (TextView) getActivity().findViewById(R.id.home_update_time2);
-        text4 = (TextView) getActivity().findViewById(R.id.home_txt_covid3);
-        text5 = (TextView) getActivity().findViewById(R.id.home_txt_covid4);
-        text6 = (TextView) getActivity().findViewById(R.id.home_txt_covid5);
+
+        weatherText1 = (TextView) getActivity().findViewById(R.id.home_txt_weather);
+        weatherText2 = (TextView) getActivity().findViewById(R.id.home_txt_weather2);
+        weatherText3 = (TextView) getActivity().findViewById(R.id.home_txt_weather3);
+
+        covidText1 = (TextView) getActivity().findViewById(R.id.home_txt_covid3);
+        covidText2 = (TextView) getActivity().findViewById(R.id.home_txt_covid4);
+        covidText3 = (TextView) getActivity().findViewById(R.id.home_txt_covid5);
 
         text.setText(locationActivity.getTextView());
         text2.setText(locationActivity.getTextView2());
@@ -123,6 +146,13 @@ public class HomeFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                // 날씨
+                weatherActivity.setWeatherXmlData(locationActivity.getLat(), locationActivity.getLon());
+                weather = weatherActivity.getWeather() + "º";
+                minWeather = "최저 " + weatherActivity.getMinWeather() + "º";
+                maxWeather = "최고 " + weatherActivity.getMaxWeather() + "º";
+
+                // 코로나
                 covidActivity.setCovidXmlData(locationActivity.getTextView2());
                 covidIncDec = "1일 확진자 : " + covidActivity.getIncDec() + "명";
                 covidIsolIngCnt = "누적 확진자 : " + covidActivity.getIsolIngCnt() + "명";
@@ -131,9 +161,12 @@ public class HomeFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        text4.setText(covidIncDec);
-                        text5.setText(covidIsolIngCnt);
-                        text6.setText(covidDate);
+                        weatherText1.setText(weather);
+                        weatherText3.setText(minWeather + " / " + maxWeather);
+
+                        covidText1.setText(covidIncDec);
+                        covidText2.setText(covidIsolIngCnt);
+                        covidText3.setText(covidDate);
                     }
                 });
             }
