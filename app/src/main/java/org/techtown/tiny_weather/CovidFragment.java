@@ -1,5 +1,6 @@
 package org.techtown.tiny_weather;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -36,7 +37,7 @@ public class CovidFragment extends Fragment {
     SwipeRefreshLayout swipeRefreshLayout;
     TextView text, text2, text3, text4;
 
-    LinearLayout linearLayout;
+    LinearLayout linearLayout, linearLayout2;
 
     @Override
     public void onAttach(Context context) {
@@ -47,6 +48,7 @@ public class CovidFragment extends Fragment {
         covidActivity = new CovidActivity();
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -91,6 +93,8 @@ public class CovidFragment extends Fragment {
                             @Override
                             public void run() {
                                 initUI(rootView);
+                                initUI2(rootView);
+                                initUI3(rootView);
                             }
                         });
                     }
@@ -139,6 +143,8 @@ public class CovidFragment extends Fragment {
                     @Override
                     public void run() {
                         initUI(rootView);
+                        initUI2(rootView);
+                        initUI3(rootView);
                     }
                 });
             }
@@ -169,6 +175,10 @@ public class CovidFragment extends Fragment {
 
         TextView textView = (TextView) rootView.getRootView().findViewById(R.id.covid_txt);
         textView.setText("전국 확진자 " + covidActivity.getIncDec() + "명");
+    }
+
+    public void initUI2(ViewGroup rootView) {
+        int img;
 
         linearLayout = (LinearLayout) rootView.getRootView().findViewById(R.id.covid_list1);
         linearLayout.removeAllViews();
@@ -176,7 +186,6 @@ public class CovidFragment extends Fragment {
         layoutParams.setMargins(15, 0, 15, 0);
 
         for(int i=9; i>=0; i--) {
-            System.out.println("*+*+*+*+*+*+*+*+*+*+*+*" + covidActivity.getArrIncDec2(i));
             if (Integer.parseInt(covidActivity.getArrIncDec2(i)) == 0)
                 img = R.drawable.dust8;
             else if(Integer.parseInt(covidActivity.getArrIncDec2(i)) <= 5)
@@ -218,9 +227,11 @@ public class CovidFragment extends Fragment {
 
             linearLayout.addView(linearLayout1, layoutParams);
         }
+    }
 
-        linearLayout = (LinearLayout) rootView.getRootView().findViewById(R.id.covid_list2);
-        linearLayout.removeAllViews();
+    public void initUI3(ViewGroup rootView) {
+        linearLayout2 = (LinearLayout) rootView.getRootView().findViewById(R.id.covid_list2);
+        linearLayout2.removeAllViews();
         TextView textView1 = (TextView) rootView.getRootView().findViewById(R.id.covid_txt1);
         TextView textView2 = (TextView) rootView.getRootView().findViewById(R.id.covid_txt2);
         TextView textView3 = (TextView) rootView.getRootView().findViewById(R.id.covid_txt3);
@@ -252,7 +263,7 @@ public class CovidFragment extends Fragment {
             linearLayout1.addView(newTextView2);
             linearLayout1.addView(newTextView3);
 
-            linearLayout.addView(linearLayout1, layoutParams2);
+            linearLayout2.addView(linearLayout1, layoutParams2);
         }
     }
 }

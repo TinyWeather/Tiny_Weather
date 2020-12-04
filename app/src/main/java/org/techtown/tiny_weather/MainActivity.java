@@ -46,22 +46,8 @@ public class MainActivity extends AppCompatActivity implements onTabItemSelected
 
         fragmentManager = getSupportFragmentManager();
 
-        mapFragment = new MapFragment();
-        fragmentManager.beginTransaction().replace(R.id.container, mapFragment).commit();
-        covidFragment = new CovidFragment();
-        fragmentManager.beginTransaction().add(R.id.container, covidFragment).commit();
         homeFragment = new HomeFragment();
-        fragmentManager.beginTransaction().add(R.id.container, homeFragment).commit();
-        weatherFragment = new WeatherFragment();
-        fragmentManager.beginTransaction().add(R.id.container, weatherFragment).commit();
-        dustFragment = new DustFragment();
-        fragmentManager.beginTransaction().add(R.id.container, dustFragment).commit();
-
-        if(mapFragment != null) fragmentManager.beginTransaction().hide(mapFragment).commit();
-        if(covidFragment != null) fragmentManager.beginTransaction().hide(covidFragment).commit();
-        if(homeFragment != null) fragmentManager.beginTransaction().show(homeFragment).commit();
-        if(weatherFragment != null) fragmentManager.beginTransaction().hide(weatherFragment).commit();
-        if(dustFragment != null) fragmentManager.beginTransaction().hide(dustFragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.container, homeFragment).commit();
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.home);

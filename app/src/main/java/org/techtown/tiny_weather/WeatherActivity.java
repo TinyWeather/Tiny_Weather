@@ -86,7 +86,7 @@ public class WeatherActivity {
             rd.close();
             conn.disconnect();
 
-            System.out.println("=============파싱 시작1=============");
+            System.out.println("=============Weather 파싱 시작1=============");
 
             JsonParser jParser = new JsonParser();
             JsonObject jObject1 = (JsonObject) jParser.parse(sb.toString());
@@ -99,9 +99,9 @@ public class WeatherActivity {
             setMinWeather(String.valueOf(jObject5.get("min")));
             setMaxWeather(String.valueOf(jObject5.get("max")));
 
-            System.out.println("=============파싱 끝1=============");
+            System.out.println("=============Weather 파싱 끝1=============");
         } catch (Exception e) {
-            System.out.println("=============파싱 에러1=============");
+            System.out.println("=============Weather 파싱 에러1=============");
             System.out.println(e.getMessage());
         }
     }
@@ -143,7 +143,7 @@ public class WeatherActivity {
             rd.close();
             conn.disconnect();
 
-            System.out.println("=============파싱 시작2=============");
+            System.out.println("=============Weather 파싱 시작2=============");
 
 
             JsonParser jParser = new JsonParser();
@@ -151,10 +151,10 @@ public class WeatherActivity {
             JsonObject jObject2 = (JsonObject) jParser.parse(String.valueOf(jObject1.get("current")));
             setyWeather(String.valueOf(jObject2.get("temp")));
 
-            System.out.println("=============파싱 끝2=============");
+            System.out.println("=============Weather 파싱 끝2=============");
         }
         catch (Exception e) {
-            System.out.println("=============파싱 에러2=============");
+            System.out.println("=============Weather 파싱 에러2=============");
             System.out.println(e.getMessage());
         }
     }
