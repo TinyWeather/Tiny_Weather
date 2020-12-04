@@ -9,38 +9,42 @@
     <ImageView
         android:id="@+id/title"
         android:layout_width="250dp"
-        android:layout_height="180dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="80dp"
+        android:layout_height="250dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="129dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"
         android:background="@drawable/login_title"/>
 
 
-    <TextView
+    <EditText
         android:id="@+id/email"
         android:layout_width="220dp"
         android:layout_height="34dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="95dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="320dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/title"
+        android:layout_marginTop="-15dp"
         android:background="@drawable/login_text"
-        android:hint="  E-mail"
-        android:textSize="20dp"
+        android:padding="5dp"
+        android:hint="E-mail"
+        android:textColor="#000000"
+        android:textColorHint="#787878"
+        android:textAppearance="@style/txt_black_20"
         />
 
-    <TextView
+    <EditText
         android:id="@+id/password"
         android:layout_width="220dp"
         android:layout_height="34dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="95dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="380dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/email"
+        android:layout_marginTop="20dp"
         android:background="@drawable/login_text"
-        android:hint="  password"
-        android:textSize="20dp"
+        android:padding="5dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColorHint="#787878"
+        android:textColor="#000000"
+        android:textAppearance="@style/txt_black_20"
         />
 
     <!-- textview에도 onclick이벤트가 적용 됨 -->
@@ -48,24 +52,23 @@
         android:id="@+id/password_"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="215dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="420dp"
-        android:text=">password 찾기"
-        android:lineSpacingExtra="2sp"
+        android:layout_below="@id/password"
+        android:layout_alignEnd="@+id/password"
+        android:layout_marginTop="5dp"
+        android:text="> password 찾기"
+        android:textAppearance="@style/txt_black_14"
         />
 
     <Button
         android:id="@+id/join_btn"
         android:layout_width="127dp"
         android:layout_height="45dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="143dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="480dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/password_"
+        android:layout_marginTop="50dp"
         android:background="@drawable/login_btn"
-        android:text="login/join"
+        android:text="Login/Join"
+        android:textAppearance="@style/txt_black_18"
         />
 
 </RelativeLayout>

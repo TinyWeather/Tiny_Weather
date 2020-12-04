@@ -41,7 +41,7 @@ public class HomeFragment extends Fragment {
     TextView text, text2, text3;
 
     // 날씨
-    String weather, minWeather, maxWeather;
+    String weather, minWeather, maxWeather, yWeather;
     TextView weatherText1, weatherText2, weatherText3;
 
     // 코로나
@@ -78,10 +78,12 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void run() {
                         // 날씨
-                        weatherActivity.setWeatherXmlData(locationActivity.getLat(), locationActivity.getLon());
+                        weatherActivity.setWeatherJsonData(locationActivity.getLat(), locationActivity.getLon());
+                        weatherActivity.setWeatherJsonData2(locationActivity.getLat(), locationActivity.getLon());
                         weather = weatherActivity.getWeather() + "º";
                         minWeather = "최저 " + weatherActivity.getMinWeather() + "º";
                         maxWeather = "최고 " + weatherActivity.getMaxWeather() + "º";
+                        yWeather = weatherActivity.getyWeather();
 
                         // 코로나
                         covidActivity.setCovidXmlData(locationActivity.getTextView2());
@@ -93,6 +95,7 @@ public class HomeFragment extends Fragment {
                             @Override
                             public void run() {
                                 weatherText1.setText(weather);
+                                weatherText2.setText(yWeather);
                                 weatherText3.setText(minWeather + " / " + maxWeather);
 
                                 covidText1.setText(covidIncDec);
@@ -147,10 +150,12 @@ public class HomeFragment extends Fragment {
             @Override
             public void run() {
                 // 날씨
-                weatherActivity.setWeatherXmlData(locationActivity.getLat(), locationActivity.getLon());
+                weatherActivity.setWeatherJsonData(locationActivity.getLat(), locationActivity.getLon());
+                weatherActivity.setWeatherJsonData2(locationActivity.getLat(), locationActivity.getLon());
                 weather = weatherActivity.getWeather() + "º";
                 minWeather = "최저 " + weatherActivity.getMinWeather() + "º";
                 maxWeather = "최고 " + weatherActivity.getMaxWeather() + "º";
+                yWeather = weatherActivity.getyWeather();
 
                 // 코로나
                 covidActivity.setCovidXmlData(locationActivity.getTextView2());
@@ -162,6 +167,7 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void run() {
                         weatherText1.setText(weather);
+                        weatherText2.setText(yWeather);
                         weatherText3.setText(minWeather + " / " + maxWeather);
 
                         covidText1.setText(covidIncDec);
