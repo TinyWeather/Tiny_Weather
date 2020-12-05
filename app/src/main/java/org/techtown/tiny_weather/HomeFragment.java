@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -35,9 +36,12 @@ public class HomeFragment extends Fragment {
     LocationActivity locationActivity;
     TimeActivity timeActivity;
     CovidActivity covidActivity;
+   // DustActivity dustActivity;
 
+    ViewGroup rootView;
     SwipeRefreshLayout swipeRefreshLayout;
     TextView text, text2, text3, text4, text5, text6;
+  //  ImageView dust_img;
 
     String covidIncDec, covidIsolIngCnt, covidDate;
 
@@ -48,6 +52,7 @@ public class HomeFragment extends Fragment {
         locationActivity = new LocationActivity(context);
         timeActivity = new TimeActivity();
         covidActivity = new CovidActivity();
+    //    dustActivity = new DustActivity();
     }
 
     @Nullable
@@ -74,12 +79,16 @@ public class HomeFragment extends Fragment {
                         covidIsolIngCnt = "누적 확진자 : " + covidActivity.getIsolIngCnt() + "명";
                         covidDate = "(" + covidActivity.getToday() + ")";
 
+      //                  dustActivity.setDustXmlData(locationActivity.getTextView()); /*지역 getTextView 사용하는지 확인필요 '서울','경남' 이런 식*/
+
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 text4.setText(covidIncDec);
                                 text5.setText(covidIsolIngCnt);
                                 text6.setText(covidDate);
+
+     //                           initUI(rootView);
                             }
                         });
                     }
@@ -128,12 +137,16 @@ public class HomeFragment extends Fragment {
                 covidIsolIngCnt = "누적 확진자 : " + covidActivity.getIsolIngCnt() + "명";
                 covidDate = "(" + covidActivity.getToday() + ")";
 
+  //              dustActivity.setDustXmlData(locationActivity.getTextView()); /*지역 getTextView 사용하는지 확인필요 '서울','양천구' 이런 식*/
+
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         text4.setText(covidIncDec);
                         text5.setText(covidIsolIngCnt);
                         text6.setText(covidDate);
+
+  //                      initUI(rootView);
                     }
                 });
             }
@@ -141,6 +154,17 @@ public class HomeFragment extends Fragment {
     }
 
     public void initUI(ViewGroup rootView) {
+    /*    int icon_img;
+        if (Integer.parseInt(dustActivity.getPm10Grade1h()) == 1)
+            icon_img = R.drawable.dust8;
+        else if(Integer.parseInt(covidActivity.getIncDec()) == 2)
+            icon_img = R.drawable.dust6;
+        else if(Integer.parseInt(covidActivity.getIncDec()) == 3)
+            icon_img = R.drawable.dust3;
+        else
+            icon_img = R.drawable.dust1;
 
+        ImageView dust_img = (ImageView) getActivity().findViewById(R.id.home_img_dust);
+        dust_img.setImageResource(icon_img);*/
     }
 }
