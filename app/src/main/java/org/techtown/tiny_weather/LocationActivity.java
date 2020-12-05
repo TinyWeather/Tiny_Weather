@@ -31,23 +31,22 @@ public class LocationActivity extends Service implements LocationListener {
     double lat;
     double lon;
 
+    public double getLat() {
+        return lat;
+    }
+
+    public double getLon() {
+        return lon;
+    }
+
     private static final long MIN_DISTANCE_UPDATE = 10;
     private static final long MIN_TIME_UPDATE = 1000 * 10 * 1;
 
     protected LocationManager locationManager;
 
-    /*
-    private Context context;
-    private Activity activity;
-    private static final int REQUEST_CODE_LOCATION = 2;
-    private LocationManager locationManager;*/
-
     public LocationActivity(Context mContext) {
         this.mContext = mContext;
         getLocation();
-        /*this.context = context;
-        this.activity = activity;
-        locationManager = (LocationManager)context.getSystemService(Context.LOCATION_SERVICE);*/
     }
 
     @SuppressLint("MissingPermission")

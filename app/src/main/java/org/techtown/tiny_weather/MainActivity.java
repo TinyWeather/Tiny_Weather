@@ -44,10 +44,9 @@ public class MainActivity extends AppCompatActivity implements onTabItemSelected
         // 액션바 + 네비게이션 드로우
         setActionBar();
 
-        homeFragment = new HomeFragment();
-
         fragmentManager = getSupportFragmentManager();
 
+        homeFragment = new HomeFragment();
         fragmentManager.beginTransaction().replace(R.id.container, homeFragment).commit();
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);

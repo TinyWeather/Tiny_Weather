@@ -10,8 +10,8 @@ import java.util.Calendar;
 public class CovidActivity {
     String incDec, isolIngCnt;
 
-    String[] arrIncDec2 = new String[10];
-    String[] arrStdDay2 = new String[10];
+    String[] arrIncDec2 = new String[20];
+    String[] arrStdDay2 = new String[20];
 
     String[] arrIncDec3 = new String[20];
     String[] arrDefCnt3 = new String[20];
@@ -115,7 +115,7 @@ public class CovidActivity {
 
             int parserEvent = parser.getEventType();
             boolean locationCheck = false;
-            System.out.println("=============파싱 시작1=============");
+            System.out.println("=============Covid 파싱 시작1=============");
             System.out.println(today);
 
             while (parserEvent != XmlPullParser.END_DOCUMENT){
@@ -234,9 +234,9 @@ public class CovidActivity {
                 parserEvent = parser.next();
             }
 
-            System.out.println("=============파싱 끝1=============");
+            System.out.println("=============Covid 파싱 끝1=============");
         } catch (Exception e) {
-            System.out.println("=============파싱 에러1=============");
+            System.out.println("=============Covid 파싱 에러1=============");
         }
     }
 
@@ -267,7 +267,7 @@ public class CovidActivity {
 
             int parserEvent = parser.getEventType();
             boolean locationCheck = false;
-            System.out.println("=============파싱 시작2=============");
+            System.out.println("=============Covid 파싱 시작2=============");
 
             int arrNum = 0;
 
@@ -389,9 +389,9 @@ public class CovidActivity {
                 parserEvent = parser.next();
             }
 
-            System.out.println("=============파싱 끝2=============");
+            System.out.println("=============Covid 파싱 끝2=============");
         } catch (Exception e) {
-            System.out.println("=============파싱 에러2=============");
+            System.out.println("=============Covid 파싱 에러2=============");
             System.out.println(e.getMessage());
         }
     }
@@ -417,7 +417,7 @@ public class CovidActivity {
             parser.setInput(url.openStream(), null);
 
             int parserEvent = parser.getEventType();
-            System.out.println("=============파싱 시작3=============");
+            System.out.println("=============Covid 파싱 시작3=============");
 
             int arrNum2 = 0;
 
@@ -534,9 +534,9 @@ public class CovidActivity {
                 parserEvent = parser.next();
             }
 
-            System.out.println("=============파싱 끝3=============");
+            System.out.println("=============Covid 파싱 끝3=============");
         } catch (Exception e) {
-            System.out.println("=============파싱 에러3=============");
+            System.out.println("=============Covid 파싱 에러3=============");
             System.out.println(e.getMessage());
         }
     }
