@@ -8,11 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class DustActivity {
-    String pm10Grade1h;
-
     String key="kd3zWLkxFKVIuT0XejOXR1qWycWNx03d21q75t5AHS2gIRKGQXQhqtwrvDWy3Huf04BaJZQL2vQHDvEkT8coDw%3D%3D";
 
-    /*필요 시 시간 2020-10-10 식으로 변경*/
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
     SimpleDateFormat dateFormat2 = new SimpleDateFormat("MM월dd일");
     SimpleDateFormat timeFormat = new SimpleDateFormat("HH");
@@ -20,17 +17,11 @@ public class DustActivity {
     int time = Integer.parseInt(timeFormat.format(calendar.getTime()));
     String today, today2;
 
-    /* 아직 필요 x
-  public String getToday() {
+    public String getToday() {
         return today2;
-    }*/
-    
-    /*미세먼지 한시간 등급*/
-    public String getPm10Grade1h() {
-        return pm10Grade1h;
     }
 
-    boolean dataTimeCheck=false, mangNameCheck=false, stationNameCheck=false, so2ValueCheck=false,  coValueCheck=false,  o3ValueCheck=false,  no2ValueCheck=false ;
+    boolean dataTimeCheck=false, mangNameCheck=false,  so2ValueCheck=false,  coValueCheck=false,  o3ValueCheck=false,  no2ValueCheck=false ;
     boolean pm10ValueCheck=false,pm10Value24Check=false,  pm25ValueCheck=false,  pm25Value24Check=false,  khaiValueCheck=false;
     boolean khaiGradeCheck=false, so2GradeCheck=false,  coGradeCheck=false,  o3GradeCheck=false,  no2GradeCheck=false;
     boolean pm10GradeCheck=false, pm25GradeCheck=false,  pm10Grade1hCheck=false,  pm25Grade1hCheck=false;
@@ -43,14 +34,12 @@ public class DustActivity {
         today = dateFormat.format(calendar.getTime());
         today2 = dateFormat2.format(calendar.getTime());
 
-        /*sidoName 필요함 위치 끊어오기*/
-        String queryUrl="http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?"//요청 URL
+        String queryUrl="http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnMesureSidoLIst?"//요청 URL
                 + "ServiceKey=" + key
                 + "&pageNo=1" //페이지 번호
                 + "&numOfRows=1000" //한 페이지 결과 수
-                + "&sidoName=서울" //시도 이름
-                + "&searchCondition=DAILY" //요청 데이터기간 시간: hour 하루 : daily
-                + "&ver=1.3"; // 버전
+                + "&sidoName=" //시도 이름
+                + "&searchCondition=DAILY"; //요청 데이터기간 시간: hour 하루 : daily
         StringBuffer buffer=new StringBuffer();
 
         try {
@@ -69,17 +58,14 @@ public class DustActivity {
                 switch(parserEvent){
                     case XmlPullParser.START_TAG://parser가 시작 태그를 만나면 실행
                         System.out.println("=============태그 만남=============");
-                        if(parser.getName().equals("item")){ // 목록
+                        if(parser.getName().equals("item")){
                             locationCheck = false;
                         }
-                        if(parser.getName().equals("dataTime")){ // 측정일
+                        if(parser.getName().equals("dataTime")){ //
                             dataTimeCheck = true;
                         }
-                        if(parser.getName().equals("mangName")){ // 측정 망 정보
+                        if(parser.getName().equals("mangName")){ //
                             mangNameCheck = true;
-                        }
-                        if(parser.getName().equals("stationName")){ // 측정소 명 ex)강서구
-                            stationNameCheck = true;
                         }
                         if(parser.getName().equals("so2Value")){ //
                             so2ValueCheck = true;
@@ -93,16 +79,16 @@ public class DustActivity {
                         if(parser.getName().equals("no2Value")){ //
                             no2ValueCheck = true;
                         }
-                        if(parser.getName().equals("pm10Value")){ // 미세먼지
+                        if(parser.getName().equals("pm10Value")){ //
                             pm10ValueCheck = true;
                         }
-                        if(parser.getName().equals("pm10Value24")){ //미세먼지(PM10) 24시간예측이동농도
+                        if(parser.getName().equals("pm10Value24")){ //
                             pm10Value24Check = true;
                         }
-                        if(parser.getName().equals("pm25Value")){ // 초미세먼지
+                        if(parser.getName().equals("pm25Value")){ //
                             pm25ValueCheck = true;
                         }
-                        if(parser.getName().equals("pm25Value24")){ // 초미세먼지 24시간예측이동농도
+                        if(parser.getName().equals("pm25Value24")){ //
                             pm25Value24Check = true;
                         }
                         if(parser.getName().equals("khaiValue")){ //
@@ -123,16 +109,16 @@ public class DustActivity {
                         if(parser.getName().equals("no2Grade")){ //
                             no2GradeCheck = true;
                         }
-                        if(parser.getName().equals("pm10Grade")){ // 미세먼지 24시간 등급
+                        if(parser.getName().equals("pm10Grade")){ //
                             pm10GradeCheck = true;
                         }
-                        if(parser.getName().equals("pm25Grade")){ // 초미세먼지 24시간 등급
+                        if(parser.getName().equals("pm25Grade")){ //
                             pm25GradeCheck = true;
                         }
-                        if(parser.getName().equals("pm10Grade1h")){ // 미세먼지 1시간 등급
+                        if(parser.getName().equals("pm10Grade1h")){ //
                             pm10Grade1hCheck = true;
                         }
-                        if(parser.getName().equals("pm25Grade1h")){ // 초미세먼지 1시간 등급
+                        if(parser.getName().equals("pm25Grade1h")){ //
                             pm25Grade1hCheck = true;
                         }
                         if(parser.getName().equals("message")){ //message 태그를 만나면 에러 출력
@@ -151,13 +137,6 @@ public class DustActivity {
                         if(mangNameCheck) {
                             System.out.println(parser.getText());
                             mangNameCheck = false;
-                        }
-                        if(stationNameCheck){
-                            if(location.contains(parser.getText())){
-                                locationCheck = true;
-                            }
-                            System.out.println(parser.getText());
-                            stationNameCheck = false;
                         }
                         if(so2ValueCheck) {
                             System.out.println(parser.getText());
