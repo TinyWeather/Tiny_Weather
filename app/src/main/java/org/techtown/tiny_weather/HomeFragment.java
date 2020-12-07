@@ -86,7 +86,7 @@ public class HomeFragment extends Fragment {
                         yWeather = weatherActivity.getyWeather();
 
                         // 코로나
-                        covidActivity.setCovidXmlData(locationActivity.getTextView2());
+                        covidActivity.setCovidXmlData(locationActivity.getTextView3());
                         covidIncDec = "1일 확진자 : " + covidActivity.getIncDec() + "명";
                         covidIsolIngCnt = "누적 확진자 : " + covidActivity.getIsolIngCnt() + "명";
                         covidDate = "(" + covidActivity.getToday() + ")";
@@ -158,7 +158,7 @@ public class HomeFragment extends Fragment {
                 yWeather = weatherActivity.getyWeather();
 
                 // 코로나
-                covidActivity.setCovidXmlData(locationActivity.getTextView2());
+                covidActivity.setCovidXmlData(locationActivity.getTextView3());
                 covidIncDec = "1일 확진자 : " + covidActivity.getIncDec() + "명";
                 covidIsolIngCnt = "누적 확진자 : " + covidActivity.getIsolIngCnt() + "명";
                 covidDate = "(" + covidActivity.getToday() + ")";
