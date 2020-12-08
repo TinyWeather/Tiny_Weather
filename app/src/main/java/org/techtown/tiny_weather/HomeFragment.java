@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -41,8 +42,13 @@ public class HomeFragment extends Fragment {
     TextView text, text2, text3;
 
     // 날씨
-    String weather, minWeather, maxWeather, yWeather;
+    int weather, minWeather, maxWeather, yWeather, subWeather, idWeather, imgWeather;
+    String subWeatherStr;
     TextView weatherText1, weatherText2, weatherText3;
+    ImageView weatgerImg1;
+    Date date = new Date();
+    SimpleDateFormat timeFormat = new SimpleDateFormat("HH");
+    int time = Integer.parseInt(timeFormat.format(date));
 
     // 코로나
     String covidIncDec, covidIsolIngCnt, covidDate;
@@ -80,10 +86,17 @@ public class HomeFragment extends Fragment {
                         // 날씨
                         weatherActivity.setWeatherJsonData(locationActivity.getLat(), locationActivity.getLon());
                         weatherActivity.setWeatherJsonData2(locationActivity.getLat(), locationActivity.getLon());
-                        weather = weatherActivity.getWeather() + "º";
-                        minWeather = "최저 " + weatherActivity.getMinWeather() + "º";
-                        maxWeather = "최고 " + weatherActivity.getMaxWeather() + "º";
+                        weather = weatherActivity.getWeather();
+                        minWeather = weatherActivity.getMinWeather();
+                        maxWeather = weatherActivity.getMaxWeather();
                         yWeather = weatherActivity.getyWeather();
+                        subWeather = weather - yWeather;
+                        if(subWeather == 0)
+                            subWeatherStr = "어제와 같아요";
+                        else if(subWeather < 0)
+                            subWeatherStr = "어제보다 " + (-subWeather) + " ℃ 낮아요";
+                        else if(subWeather > 0)
+                            subWeatherStr = "어제보다 " + subWeather + " ℃ 높아요";
 
                         // 코로나
                         covidActivity.setCovidXmlData(locationActivity.getTextView3());
@@ -94,9 +107,9 @@ public class HomeFragment extends Fragment {
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                weatherText1.setText(weather);
-                                weatherText2.setText(yWeather);
-                                weatherText3.setText(minWeather + " / " + maxWeather);
+                                weatherText1.setText(weather + " ℃");
+                                weatherText2.setText(subWeatherStr);
+                                weatherText3.setText("최저 " + minWeather + " ℃ / 최고 " + maxWeather + " ℃");
 
                                 covidText1.setText(covidIncDec);
                                 covidText2.setText(covidIsolIngCnt);
@@ -137,6 +150,7 @@ public class HomeFragment extends Fragment {
         weatherText1 = (TextView) getActivity().findViewById(R.id.home_txt_weather);
         weatherText2 = (TextView) getActivity().findViewById(R.id.home_txt_weather2);
         weatherText3 = (TextView) getActivity().findViewById(R.id.home_txt_weather3);
+        weatgerImg1 = (ImageView) getActivity().findViewById(R.id.home_img_weather);
 
         covidText1 = (TextView) getActivity().findViewById(R.id.home_txt_covid3);
         covidText2 = (TextView) getActivity().findViewById(R.id.home_txt_covid4);
@@ -152,10 +166,66 @@ public class HomeFragment extends Fragment {
                 // 날씨
                 weatherActivity.setWeatherJsonData(locationActivity.getLat(), locationActivity.getLon());
                 weatherActivity.setWeatherJsonData2(locationActivity.getLat(), locationActivity.getLon());
-                weather = weatherActivity.getWeather() + "º";
-                minWeather = "최저 " + weatherActivity.getMinWeather() + "º";
-                maxWeather = "최고 " + weatherActivity.getMaxWeather() + "º";
+                weather = weatherActivity.getWeather();
+                minWeather = weatherActivity.getMinWeather();
+                maxWeather = weatherActivity.getMaxWeather();
                 yWeather = weatherActivity.getyWeather();
+                idWeather = weatherActivity.getIdWeather();
+
+                subWeather = weather - yWeather;
+                if(subWeather == 0)
+                    subWeatherStr = "어제와 같아요";
+                else if(subWeather < 0)
+                    subWeatherStr = "어제보다 " + (-subWeather) + " ℃ 낮아요";
+                else if(subWeather > 0)
+                    subWeatherStr = "어제보다 " + subWeather + " ℃ 높아요";
+
+                if(idWeather < 300) {
+                    if(time >= 6 && time < 18)
+                        imgWeather = R.drawable.storm_day;
+                    else if(time >= 18 && time < 22)
+                        imgWeather = R.drawable.storm;
+                    else
+                        imgWeather = R.drawable.storm_night;
+                }
+                else if(idWeather < 600) {
+                    if(time >= 6 && time < 18)
+                        imgWeather = R.drawable.rainy_day;
+                    else if(time >= 18 && time < 22)
+                        imgWeather = R.drawable.rainy;
+                    else
+                        imgWeather = R.drawable.rainy_night;
+                }
+                else if(idWeather < 700) {
+                    if(time >= 6 && time < 18)
+                        imgWeather = R.drawable.snowy_day;
+                    else if(time >= 18 && time < 22)
+                        imgWeather = R.drawable.snowy;
+                    else
+                        imgWeather = R.drawable.snowy_night;
+                }
+                else if(idWeather < 800) {
+                    if(time >= 6 && time < 18)
+                        imgWeather = R.drawable.windy_day;
+                    else if(time >= 18 && time < 22)
+                        imgWeather = R.drawable.windy;
+                    else
+                        imgWeather = R.drawable.windy_night;
+                }
+                else if(idWeather == 800) {
+                    if(time >= 6 && time < 20)
+                        imgWeather = R.drawable.sun;
+                    else
+                        imgWeather = R.drawable.moon;
+                }
+                else if(idWeather < 900) {
+                    if(time >= 6 && time < 18)
+                        imgWeather = R.drawable.cloudy_day;
+                    else if(time >= 18 && time < 22)
+                        imgWeather = R.drawable.cloud;
+                    else
+                        imgWeather = R.drawable.cloudy_night;
+                }
 
                 // 코로나
                 covidActivity.setCovidXmlData(locationActivity.getTextView3());
@@ -166,9 +236,10 @@ public class HomeFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        weatherText1.setText(weather);
-                        weatherText2.setText(yWeather);
-                        weatherText3.setText(minWeather + " / " + maxWeather);
+                        weatherText1.setText(weather + " ℃");
+                        weatherText2.setText(subWeatherStr);
+                        weatherText3.setText("최저 " + minWeather + " ℃ / 최고 " + maxWeather + " ℃");
+                        weatgerImg1.setImageResource(imgWeather);
 
                         covidText1.setText(covidIncDec);
                         covidText2.setText(covidIsolIngCnt);

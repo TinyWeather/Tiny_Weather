@@ -90,6 +90,7 @@ public class CovidActivity {
     boolean gubunEnCheck=false, incDecCheck=false, isolClearCntCheck=false, isolIngCntCheck=false, localOccCntCheck=false;
     boolean overFlowCntCheck=false, qurRateCheck=false, seqCheck=false, stdDayCheck=false, updateDtCheck=false;
 
+    // 지역별 1일 확진자, 누적 확진자
     public void setCovidXmlData(String location) {
         if(time < 10) {
             calendar = Calendar.getInstance();
@@ -116,7 +117,6 @@ public class CovidActivity {
             int parserEvent = parser.getEventType();
             boolean locationCheck = false;
             System.out.println("=============Covid 파싱 시작1=============");
-            System.out.println(today);
 
             while (parserEvent != XmlPullParser.END_DOCUMENT){
                 switch(parserEvent){
@@ -240,6 +240,7 @@ public class CovidActivity {
         }
     }
 
+    // 지역별 10일간 1일 확진자
     public void setCovidXmlData2(String location) {
         calendar = Calendar.getInstance();
         if(time < 10)
@@ -396,6 +397,7 @@ public class CovidActivity {
         }
     }
 
+    // 지역, 1일 확진자, 누적 확진자
     public void setCovidXmlData3() {
         calendar = Calendar.getInstance();
         if(time < 10)
