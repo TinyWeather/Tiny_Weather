@@ -44,11 +44,11 @@
     </string>
 
     <string name="dust_id2">
-        시간별 예보 (좋음, 보통, 나쁜, 매우나쁨)
+        현 위치 대기 상태
     </string>
 
     <string name="dust_id3">
-        주간 예보 (월요일 ~ 일요일)
+        전국 대기 상태
     </string>
 
     <string name="dust_id4">
