@@ -1,29 +1,35 @@
 package org.techtown.tiny_weather;
 
+import android.content.Context;
+
+import androidx.fragment.app.Fragment;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
-public class DustActivity {
-    String pm10Grade1h;
+public class DustActivity extends Fragment {
+    LocationActivity locationActivity;
 
     String key="kd3zWLkxFKVIuT0XejOXR1qWycWNx03d21q75t5AHS2gIRKGQXQhqtwrvDWy3Huf04BaJZQL2vQHDvEkT8coDw%3D%3D";
 
-    /*필요 시 시간 2020-10-10 식으로 변경*/
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
-    SimpleDateFormat dateFormat2 = new SimpleDateFormat("MM월dd일");
-    SimpleDateFormat timeFormat = new SimpleDateFormat("HH");
-    Calendar calendar = Calendar.getInstance();
-    int time = Integer.parseInt(timeFormat.format(calendar.getTime()));
-    String today, today2;
+    String pm10Value, pm10Grade1h;
 
-    /* 아직 필요 x
-  public String getToday() {
-        return today2;
-    }*/
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        locationActivity = new LocationActivity(context);
+    }
+
+    /*미세먼지 수치*/
+    public String getpm10Value() {
+        return pm10Value;
+    }
+
+    public void setpm10Value(String pm10Value) {
+        this.pm10Value = pm10Value;
+    }
 
     /*미세먼지 한시간 등급*/
     public String getPm10Grade1h() {
@@ -36,19 +42,16 @@ public class DustActivity {
     boolean pm10GradeCheck=false, pm25GradeCheck=false,  pm10Grade1hCheck=false,  pm25Grade1hCheck=false;
 
     public void setDustXmlData(String location){
-        if(time < 10) {
-            calendar = Calendar.getInstance();
-            calendar.add(Calendar.DATE, -1);
-        }
-        today = dateFormat.format(calendar.getTime());
-        today2 = dateFormat2.format(calendar.getTime());
 
         /*sidoName 필요함 위치 끊어오기*/
+        locationActivity = new LocationActivity(getContext());
+        //String sidoName = locationActivity.getTextView3();
+
         String queryUrl="http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?"//요청 URL
-                + "ServiceKey=" + key
+                + "ServiceKey=" + key // 키
                 + "&pageNo=1" //페이지 번호
                 + "&numOfRows=1000" //한 페이지 결과 수
-                + "&sidoName=서울" //시도 이름
+                + "&sidoName=" + "서울" //시도 이름
                 + "&searchCondition=DAILY" //요청 데이터기간 시간: hour 하루 : daily
                 + "&ver=1.3"; // 버전
         StringBuffer buffer=new StringBuffer();
@@ -62,13 +65,14 @@ public class DustActivity {
 
             int parserEvent = parser.getEventType();
             boolean locationCheck = false;
-            System.out.println("=============파싱 시작=============");
-            System.out.println(today);
+
+            System.out.println(queryUrl);
+            System.out.println("============= 미세먼지 파싱 시작=============");
 
             while (parserEvent != XmlPullParser.END_DOCUMENT){
                 switch(parserEvent){
                     case XmlPullParser.START_TAG://parser가 시작 태그를 만나면 실행
-                        System.out.println("=============태그 만남=============");
+           //             System.out.println("============= 미세먼지 태그 만남=============");
                         if(parser.getName().equals("item")){ // 목록
                             locationCheck = false;
                         }
@@ -142,8 +146,8 @@ public class DustActivity {
                         break;
 
                     case XmlPullParser.TEXT://parser가 내용에 접근했을때
-                        System.out.println("=============텍스트 만남=============");
-                        System.out.println("============="+parser.getText()+"=============");
+            //            System.out.println("============= 미세먼지 텍스트 만남=============");
+            //            System.out.println("============= 미세먼지  "+parser.getText()+"=============");
                         if(dataTimeCheck) {
                             System.out.println(parser.getText());
                             dataTimeCheck = false;
@@ -177,6 +181,8 @@ public class DustActivity {
                         }
                         if(pm10ValueCheck) {
                             System.out.println(parser.getText());
+                            if(locationCheck)
+                                setpm10Value(parser.getText());
                             pm10ValueCheck = false;
                         }
                         if(pm10Value24Check) {
@@ -238,10 +244,10 @@ public class DustActivity {
                 parserEvent = parser.next();
             }
 
-            System.out.println("=============파싱 끝=============");
+        //    System.out.println("============= 미세먼지 파싱 끝=============");
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("=============파싱 에러=============");
+        //    System.out.println("============= 미세먼지 파싱 에러=============");
         }
     }
 }

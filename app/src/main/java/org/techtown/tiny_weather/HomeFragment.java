@@ -37,6 +37,7 @@ public class HomeFragment extends Fragment {
     TimeActivity timeActivity;
     WeatherActivity weatherActivity;
     CovidActivity covidActivity;
+    DustActivity dustActivity;
 
     SwipeRefreshLayout swipeRefreshLayout;
     TextView text, text2, text3;
@@ -54,6 +55,10 @@ public class HomeFragment extends Fragment {
     String covidIncDec, covidIsolIngCnt, covidDate;
     TextView covidText1, covidText2, covidText3;
 
+    // 미세먼지
+    String dustGrade;
+    TextView dustText1;
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -62,6 +67,7 @@ public class HomeFragment extends Fragment {
         timeActivity = new TimeActivity();
         weatherActivity = new WeatherActivity();
         covidActivity = new CovidActivity();
+        dustActivity = new DustActivity();
     }
 
     @Nullable
@@ -79,6 +85,7 @@ public class HomeFragment extends Fragment {
                 text.setText(locationActivity.getTextView());
                 text2.setText(locationActivity.getTextView2());
                 text3.setText(timeActivity.getTime());
+                dustText1.setText(locationActivity.getTextView3());
 
                 new Thread(new Runnable() {
                     @Override
@@ -104,6 +111,10 @@ public class HomeFragment extends Fragment {
                         covidIsolIngCnt = "누적 확진자 : " + covidActivity.getIsolIngCnt() + "명";
                         covidDate = "(" + covidActivity.getToday() + ")";
 
+                        // 미세먼지
+                        //dustActivity.setDustXmlData(locationActivity.getTextView3());
+                        dustGrade  = "";
+
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -114,6 +125,8 @@ public class HomeFragment extends Fragment {
                                 covidText1.setText(covidIncDec);
                                 covidText2.setText(covidIsolIngCnt);
                                 covidText3.setText(covidDate);
+
+                                dustText1.setText(dustGrade);
                             }
                         });
                     }
@@ -155,6 +168,8 @@ public class HomeFragment extends Fragment {
         covidText1 = (TextView) getActivity().findViewById(R.id.home_txt_covid3);
         covidText2 = (TextView) getActivity().findViewById(R.id.home_txt_covid4);
         covidText3 = (TextView) getActivity().findViewById(R.id.home_txt_covid5);
+
+        dustText1 = (TextView) getActivity().findViewById(R.id.home_txt_dust);
 
         text.setText(locationActivity.getTextView());
         text2.setText(locationActivity.getTextView2());
@@ -233,6 +248,11 @@ public class HomeFragment extends Fragment {
                 covidIsolIngCnt = "누적 확진자 : " + covidActivity.getIsolIngCnt() + "명";
                 covidDate = "(" + covidActivity.getToday() + ")";
 
+                // 미세먼지
+                //dustActivity.setDustXmlData("종로"); //View 들어갈지 View3들어갈지 확인이 필요
+                //dustGrade = dustActivity.getpm10Value();
+                //System.out.println("미세먼지"+dustGrade+"====");
+
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -244,6 +264,8 @@ public class HomeFragment extends Fragment {
                         covidText1.setText(covidIncDec);
                         covidText2.setText(covidIsolIngCnt);
                         covidText3.setText(covidDate);
+
+                        dustText1.setText(dustGrade);
                     }
                 });
             }

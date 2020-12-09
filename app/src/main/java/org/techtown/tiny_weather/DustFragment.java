@@ -1,5 +1,6 @@
 package org.techtown.tiny_weather;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -20,9 +21,18 @@ import java.util.Locale;
 
 public class DustFragment extends Fragment {
     LocationActivity locationActivity;
-    TimeActivity timeActivity;
+    DustActivity dustActivity;
+   // TimeActivity timeActivity;
     SwipeRefreshLayout swipeRefreshLayout;
-    TextView text, text2;
+    TextView text;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        locationActivity = new LocationActivity(context);
+        dustActivity = new DustActivity();
+    }
 
     @Nullable
     @Override
@@ -34,15 +44,15 @@ public class DustFragment extends Fragment {
             @Override
             public void onRefresh() {
                 locationActivity = new LocationActivity(getContext());
-                timeActivity = new TimeActivity();
+               // timeActivity = new TimeActivity();
 
-                text.setText(locationActivity.getTextView());
-                text2.setText(timeActivity.getTime());
+                text.setText(locationActivity.getTextView3());
+              //  text2.setText(timeActivity.getTime());
 
                 NavigationView navigationView = (NavigationView) rootView.getRootView().findViewById(R.id.nav_view);
                 View header = navigationView.getHeaderView(0);
                 TextView textHeader = (TextView) header.findViewById(R.id.user_location);
-                textHeader.setText(locationActivity.getTextView());
+                textHeader.setText(locationActivity.getTextView3());
 
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
@@ -64,13 +74,13 @@ public class DustFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         locationActivity = new LocationActivity(getContext());
-        timeActivity = new TimeActivity();
+        //timeActivity = new TimeActivity();
 
         text = (TextView) getActivity().findViewById(R.id.dust_txt_location2);
-        text2 = (TextView) getActivity().findViewById(R.id.dust_update_time2);
+        //text2 = (TextView) getActivity().findViewById(R.id.dust_update_time2);
 
-        text.setText(locationActivity.getTextView());
-        text2.setText(timeActivity.getTime());
+        text.setText(locationActivity.getTextView3());
+       // text2.setText(timeActivity.getTime());
     }
 
     public void initUI(ViewGroup rootView) {
