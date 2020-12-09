@@ -142,7 +142,7 @@ public class LocationActivity extends Service implements LocationListener {
             }
         }
 
-        return getAddress;
+        return getAddress; // __구 __동
     }
 
     public String getTextView2() {
@@ -173,7 +173,92 @@ public class LocationActivity extends Service implements LocationListener {
             }
         }
 
-        return getAddress;
+        return getAddress; // __시
+    }
+
+    public String getTextView3() {
+        String address = getTextView2();
+        String getAddress = "";
+
+        switch (address) {
+            case "서울특별시" : getAddress = "서울"; break;
+            case "부산광역시" : getAddress = "부산"; break;
+            case "대구광역시" : getAddress = "대구"; break;
+            case "인천광역시" : getAddress = "인천"; break;
+            case "광주광역시" : getAddress = "광주"; break;
+            case "대전광역시" : getAddress = "대전"; break;
+            case "울산광역시" : getAddress = "울산"; break;
+            case "세종특별자치시" : getAddress = "세종"; break;
+            case "경기도" : getAddress = "경기"; break;
+            case "강원도" : getAddress = "강원"; break;
+            case "충청북도" : getAddress = "충북"; break;
+            case "충청남도" : getAddress = "충남"; break;
+            case "전라북도" : getAddress = "전북"; break;
+            case "전라남도" : getAddress = "전남"; break;
+            case "경상북도" : getAddress = "경북"; break;
+            case "경상남도" : getAddress = "경남"; break;
+            case "제주특별자치도" : getAddress = "제주"; break;
+        }
+
+        return getAddress; // __ (시 단위)
+    }
+
+    public String getTextView4() {
+        String address = getTextView2();
+        String getAddress = "";
+
+        switch (address) {
+            case "서울특별시" : getAddress = "seoul"; break;
+            case "부산광역시" : getAddress = "busan"; break;
+            case "대구광역시" : getAddress = "daegu"; break;
+            case "인천광역시" : getAddress = "incheon"; break;
+            case "광주광역시" : getAddress = "gwangju"; break;
+            case "대전광역시" : getAddress = "daejeon"; break;
+            case "울산광역시" : getAddress = "ulsan"; break;
+            case "세종특별자치시" : getAddress = "sejong"; break;
+            case "경기도" : getAddress = "gyeonggi"; break;
+            case "강원도" : getAddress = "gangwon"; break;
+            case "충청북도" : getAddress = "chungbuk"; break;
+            case "충청남도" : getAddress = "chungnam"; break;
+            case "전라북도" : getAddress = "jeonbuk"; break;
+            case "전라남도" : getAddress = "jeonnam"; break;
+            case "경상북도" : getAddress = "gyeongbuk"; break;
+            case "경상남도" : getAddress = "gyeongnam"; break;
+            case "제주특별자치도" : getAddress = "jeju"; break;
+        }
+
+        return getAddress; // 영문 (시 단위)
+    }
+
+    public String getTextView5() {
+        locationManager = (LocationManager)mContext.getSystemService(Context.LOCATION_SERVICE);
+        String getAddress = "위치 조회 불가";
+        //사용자의 현재 위치
+        if( location != null ) {
+            System.out.println("★★★ 현재 내 위치값 : "+lat+","+lon+" ★★★");
+            String address = getAddress(mContext, lat, lon);
+
+            System.out.println("★★★ 현재 내 위치값 : "+address+" ★★★");
+            if(!address.equals("주소를 가져올 수 없습니다.") && !address.equals("현재 위치를 확인 할 수 없습니다.")) {
+                if(address.contains(","))
+                    address = address.replace(",", "");
+
+                String strAddress[] = address.split(" ");
+
+                if(strAddress.length > 4)
+                    if(address.contains("대한민국"))
+                        getAddress = getTextView3() + " " + strAddress[2];
+                    else
+                        getAddress = strAddress[4] + " " + strAddress[3];
+                else
+                    getAddress = address;
+            }
+            else {
+                getAddress = "위치 조회 불가";
+            }
+        }
+
+        return getAddress; // __(시 단위) __구
     }
 
     public static String getAddress(Context mContext, double lat, double lon) {

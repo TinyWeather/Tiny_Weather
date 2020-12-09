@@ -86,7 +86,7 @@ public class CovidFragment extends Fragment {
                     @Override
                     public void run() {
                         covidActivity.setCovidXmlData("합계");
-                        covidActivity.setCovidXmlData2(locationActivity.getTextView2());
+                        covidActivity.setCovidXmlData2(locationActivity.getTextView3());
                         covidActivity.setCovidXmlData3();
 
                         getActivity().runOnUiThread(new Runnable() {
@@ -136,7 +136,7 @@ public class CovidFragment extends Fragment {
             @Override
             public void run() {
                 covidActivity.setCovidXmlData("합계");
-                covidActivity.setCovidXmlData2(locationActivity.getTextView2());
+                covidActivity.setCovidXmlData2(locationActivity.getTextView3());
                 covidActivity.setCovidXmlData3();
 
                 getActivity().runOnUiThread(new Runnable() {
