@@ -12,7 +12,7 @@
     </string>
 
     <string name="location_id3">
-        __구
+        __시
     </string>
 
     <string name="location_id4">
@@ -24,11 +24,11 @@
     </string>
 
     <string name="covid_id2">
-        신규확진자
+        신규
     </string>
 
     <string name="covid_id3">
-        누적확진자
+        누적
     </string>
 
     <string name="weather_id1">
@@ -36,7 +36,7 @@
     </string>
 
     <string name="weather_id2">
-        최저/최고
+        최저 / 최고
     </string>
 
     <string name="dust_id1">

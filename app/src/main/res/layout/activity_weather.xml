@@ -65,7 +65,7 @@
                 android:layout_below="@id/weather_update_time2"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="25dp"
-                app:srcCompat="@drawable/sun" />
+                app:srcCompat="@mipmap/logo" />
 
             <TextView
                 android:id="@+id/weather_txt"
@@ -74,7 +74,6 @@
                 android:layout_below="@id/weather_img"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:text="28º"
                 android:textAppearance="@style/txt_black_36" />
 
             <TextView
@@ -83,7 +82,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/weather_txt"
                 android:layout_centerHorizontal="true"
-                android:text="어제보다 2º 낮아요"
                 android:textAppearance="@style/txt_black_15" />
 
             <TextView
@@ -92,7 +90,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/weather_txt2"
                 android:layout_centerHorizontal="true"
-                android:text="최고 30º / 최저 22º"
                 android:textAppearance="@style/txt_black_14" />
 
             <RelativeLayout
@@ -113,232 +110,10 @@
                     android:layout_centerVertical="true">
 
                     <LinearLayout
+                        android:id="@+id/weather_list1"
                         android:layout_width="wrap_content"
-                        android:layout_height="100dp">
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="100dp"
-                            android:layout_gravity="center">
-
-                            <ImageView
-                                android:id="@+id/img_weather_day1"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_centerHorizontal="true"
-                                app:srcCompat="@drawable/sun" />
-
-                            <TextView
-                                android:id="@+id/txt_weather_day1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/img_weather_day1"
-                                android:layout_centerHorizontal="true"
-                                android:text="11시"
-                                android:textAppearance="@style/txt_black_15" />
-
-                            <TextView
-                                android:id="@+id/txt2_weather_day1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/txt_weather_day1"
-                                android:layout_centerHorizontal="true"
-                                android:text="28º"
-                                android:textAppearance="@style/txt_black_15" />
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="100dp"
-                            android:layout_gravity="center">
-
-                            <ImageView
-                                android:id="@+id/img_weather_day2"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_centerHorizontal="true"
-                                app:srcCompat="@drawable/sun" />
-
-                            <TextView
-                                android:id="@+id/txt_weather_day2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/img_weather_day2"
-                                android:layout_centerHorizontal="true"
-                                android:text="12시"
-                                android:textAppearance="@style/txt_black_15" />
-
-                            <TextView
-                                android:id="@+id/txt2_weather_day2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/txt_weather_day2"
-                                android:layout_centerHorizontal="true"
-                                android:text="28º"
-                                android:textAppearance="@style/txt_black_15" />
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="100dp"
-                            android:layout_gravity="center">
-
-                            <ImageView
-                                android:id="@+id/img_weather_day3"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_centerHorizontal="true"
-                                app:srcCompat="@drawable/sun" />
-
-                            <TextView
-                                android:id="@+id/txt_weather_day3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/img_weather_day3"
-                                android:layout_centerHorizontal="true"
-                                android:text="13시"
-                                android:textAppearance="@style/txt_black_15" />
-
-                            <TextView
-                                android:id="@+id/txt2_weather_day3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/txt_weather_day3"
-                                android:layout_centerHorizontal="true"
-                                android:text="28º"
-                                android:textAppearance="@style/txt_black_15" />
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="100dp"
-                            android:layout_gravity="center">
-
-                            <ImageView
-                                android:id="@+id/img_weather_day4"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_centerHorizontal="true"
-                                app:srcCompat="@drawable/sun" />
-
-                            <TextView
-                                android:id="@+id/txt_weather_day4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/img_weather_day4"
-                                android:layout_centerHorizontal="true"
-                                android:text="14시"
-                                android:textAppearance="@style/txt_black_15" />
-
-                            <TextView
-                                android:id="@+id/txt2_weather_day4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/txt_weather_day4"
-                                android:layout_centerHorizontal="true"
-                                android:text="28º"
-                                android:textAppearance="@style/txt_black_15" />
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="100dp"
-                            android:layout_gravity="center">
-
-                            <ImageView
-                                android:id="@+id/img_weather_day5"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_centerHorizontal="true"
-                                app:srcCompat="@drawable/sun" />
-
-                            <TextView
-                                android:id="@+id/txt_weather_day5"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/img_weather_day5"
-                                android:layout_centerHorizontal="true"
-                                android:text="15시"
-                                android:textAppearance="@style/txt_black_15" />
-
-                            <TextView
-                                android:id="@+id/txt2_weather_day5"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/txt_weather_day5"
-                                android:layout_centerHorizontal="true"
-                                android:text="28º"
-                                android:textAppearance="@style/txt_black_15" />
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="100dp"
-                            android:layout_gravity="center">
-
-                            <ImageView
-                                android:id="@+id/img_weather_day6"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_centerHorizontal="true"
-                                app:srcCompat="@drawable/sun" />
-
-                            <TextView
-                                android:id="@+id/txt_weather_day6"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/img_weather_day6"
-                                android:layout_centerHorizontal="true"
-                                android:text="16시"
-                                android:textAppearance="@style/txt_black_15" />
-
-                            <TextView
-                                android:id="@+id/txt2_weather_day6"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/txt_weather_day6"
-                                android:layout_centerHorizontal="true"
-                                android:text="28º"
-                                android:textAppearance="@style/txt_black_15" />
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="100dp"
-                            android:layout_gravity="center">
-
-                            <ImageView
-                                android:id="@+id/img_weather_day7"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_centerHorizontal="true"
-                                app:srcCompat="@drawable/sun" />
-
-                            <TextView
-                                android:id="@+id/txt_weather_day7"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/img_weather_day7"
-                                android:layout_centerHorizontal="true"
-                                android:text="17시"
-                                android:textAppearance="@style/txt_black_15" />
-
-                            <TextView
-                                android:id="@+id/txt2_weather_day7"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/txt_weather_day7"
-                                android:layout_centerHorizontal="true"
-                                android:text="28º"
-                                android:textAppearance="@style/txt_black_15" />
-
-                        </RelativeLayout>
+                        android:layout_height="100dp"
+                        android:orientation="horizontal">
 
                     </LinearLayout>
 
@@ -347,9 +122,9 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/weather_list"
+                android:id="@+id/weather_list2"
                 android:layout_width="match_parent"
-                android:layout_height="480dp"
+                android:layout_height="490dp"
                 android:layout_below="@id/weather_day"
                 android:layout_centerHorizontal="true"
                 android:layout_marginHorizontal="10dp"
@@ -375,10 +150,14 @@
                         android:layout_centerVertical="true">
 
                         <TextView
+                            android:id="@+id/margin"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
                             android:id="@+id/weather_list_title_txt1"
                             android:layout_width="120dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
                             android:text="@string/date_id1"
                             android:textAlignment="center"
                             android:textAppearance="@style/txt_black_18" />
@@ -394,7 +173,7 @@
 
                         <TextView
                             android:id="@+id/weather_list_title_txt3"
-                            android:layout_width="85dp"
+                            android:layout_width="130dp"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="20dp"
                             android:text="@string/weather_id2"
@@ -406,303 +185,11 @@
                 </RelativeLayout>
 
                 <LinearLayout
-                    android:id="@+id/weather_list1"
+                    android:id="@+id/weather_list2_list"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="430dp"
                     android:layout_below="@id/weather_top"
-                    android:layout_marginTop="10dp">
-
-                    <TextView
-                        android:id="@+id/weather_list1_txt1"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:text="월요일 08.31"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/txt_black_18" />
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <ImageView
-                            android:id="@+id/weather_list1_img1"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_centerHorizontal="true"
-                            android:background="@drawable/sun" />
-
-                    </RelativeLayout>
-
-                    <TextView
-                        android:id="@+id/weather_list1_txt2"
-                        android:layout_width="85dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="20dp"
-                        android:text="26/32"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/txt_black_18" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/weather_list2"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_below="@id/weather_list1"
-                    android:layout_marginTop="10dp">
-
-                    <TextView
-                        android:id="@+id/weather_list2_txt1"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:text="화요일 09.01"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/txt_black_18" />
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <ImageView
-                            android:id="@+id/weather_list2_img1"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_centerHorizontal="true"
-                            android:background="@drawable/sun" />
-
-                    </RelativeLayout>
-
-                    <TextView
-                        android:id="@+id/weather_list2_txt2"
-                        android:layout_width="85dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="20dp"
-                        android:text="28/30"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/txt_black_18" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/weather_list3"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_below="@id/weather_list2"
-                    android:layout_marginTop="10dp">
-
-                    <TextView
-                        android:id="@+id/weather_list3_txt1"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:text="수요일 09.02"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/txt_black_18" />
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <ImageView
-                            android:id="@+id/weather_list3_img1"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_centerHorizontal="true"
-                            android:background="@drawable/sun" />
-
-                    </RelativeLayout>
-
-                    <TextView
-                        android:id="@+id/weather_list3_txt2"
-                        android:layout_width="85dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="20dp"
-                        android:text="28/30"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/txt_black_18" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/weather_list4"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_below="@id/weather_list3"
-                    android:layout_marginTop="10dp">
-
-                    <TextView
-                        android:id="@+id/weather_list4_txt1"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:text="목요일 09.03"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/txt_black_18" />
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <ImageView
-                            android:id="@+id/weather_list4_img1"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_centerHorizontal="true"
-                            android:background="@drawable/sun" />
-
-                    </RelativeLayout>
-
-                    <TextView
-                        android:id="@+id/weather_list4_txt2"
-                        android:layout_width="85dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="20dp"
-                        android:text="28/30"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/txt_black_18" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/weather_list5"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_below="@id/weather_list4"
-                    android:layout_marginTop="10dp">
-
-                    <TextView
-                        android:id="@+id/weather_list5_txt1"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:text="금요일 09.04"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/txt_black_18" />
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <ImageView
-                            android:id="@+id/weather_list5_img1"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_centerHorizontal="true"
-                            android:background="@drawable/sun" />
-
-                    </RelativeLayout>
-
-                    <TextView
-                        android:id="@+id/weather_list5_txt2"
-                        android:layout_width="85dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="20dp"
-                        android:text="28/30"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/txt_black_18" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/weather_list6"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_below="@id/weather_list5"
-                    android:layout_marginTop="10dp">
-
-                    <TextView
-                        android:id="@+id/weather_list6_txt1"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:text="토요일 09.05"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/txt_black_18" />
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <ImageView
-                            android:id="@+id/weather_list6_img1"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_centerHorizontal="true"
-                            android:background="@drawable/sun" />
-
-                    </RelativeLayout>
-
-                    <TextView
-                        android:id="@+id/weather_list6_txt2"
-                        android:layout_width="85dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="20dp"
-                        android:text="28/30"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/txt_black_18" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/weather_list7"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_below="@id/weather_list6"
-                    android:layout_marginTop="10dp">
-
-                    <TextView
-                        android:id="@+id/weather_list7_txt1"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:text="일요일 09.06"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/txt_black_18" />
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <ImageView
-                            android:id="@+id/weather_list7_img1"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_centerHorizontal="true"
-                            android:background="@drawable/sun" />
-
-                    </RelativeLayout>
-
-                    <TextView
-                        android:id="@+id/weather_list7_txt2"
-                        android:layout_width="85dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="20dp"
-                        android:text="28/30"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/txt_black_18" />
+                    android:orientation="vertical">
 
                 </LinearLayout>
 
@@ -712,7 +199,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                android:layout_below="@+id/weather_list"/>
+                android:layout_below="@+id/weather_list2"/>
 
         </RelativeLayout>
 

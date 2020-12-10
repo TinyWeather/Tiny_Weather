@@ -66,7 +66,7 @@
                 android:layout_below="@id/covid_update_time2"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="40dp"
-                app:srcCompat="@drawable/dust7" />
+                app:srcCompat="@mipmap/logo" />
 
             <TextView
                 android:id="@+id/covid_txt"
@@ -75,7 +75,6 @@
                 android:layout_below="@id/covid_img"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:text="보통"
                 android:textAppearance="@style/txt_black_40" />
 
             <TextView
