@@ -114,7 +114,7 @@ public class HomeFragment extends Fragment {
                         covidDate = "(" + covidActivity.getToday() + ")";
 
                         // 미세먼지
-                        //dustActivity.setDustXmlData(locationActivity.getTextView3());
+                        //dustActivity.setDustXmlData(locationActivity.getTextView5());
                         //dustpm10Value  = "";
 
                         getActivity().runOnUiThread(new Runnable() {
@@ -253,7 +253,7 @@ public class HomeFragment extends Fragment {
 
                 // 미세먼지
                 /*
-                dustActivity.setDustXmlData("종로"); //View 들어갈지 View3들어갈지 확인이 필요
+                dustActivity.setDustXmlData(locationActivity.getTextView5());
                 dustpm10Value = dustActivity.getpm10Value(); // 미세먼지 수치
                 System.out.println("미세먼지"+dustpm10Value+"====");
 

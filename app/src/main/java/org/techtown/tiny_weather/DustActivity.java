@@ -26,25 +26,19 @@ public class DustActivity extends Fragment {
     public String getpm10Value() {
         return pm10Value;
     }
-
     public void setpm10Value(String pm10Value) {
         this.pm10Value = pm10Value;
     }
 
-    /*미세먼지 한시간 등급*/
-    public String getPm10Grade1h() {
-        return pm10Grade1h;
-    }
-
-    boolean dataTimeCheck=false, mangNameCheck=false, stationNameCheck=false, so2ValueCheck=false,  coValueCheck=false,  o3ValueCheck=false,  no2ValueCheck=false ;
+    boolean dataTimeCheck=false, mangNameCheck=false, stationNameCheck=false, so2ValueCheck=false,  coValueCheck=false,  o3ValueCheck=false,  no2ValueCheck=false;
     boolean pm10ValueCheck=false,pm10Value24Check=false,  pm25ValueCheck=false,  pm25Value24Check=false,  khaiValueCheck=false;
     boolean khaiGradeCheck=false, so2GradeCheck=false,  coGradeCheck=false,  o3GradeCheck=false,  no2GradeCheck=false;
     boolean pm10GradeCheck=false, pm25GradeCheck=false,  pm10Grade1hCheck=false,  pm25Grade1hCheck=false;
 
     public void setDustXmlData(String location){
 
-        /*sidoName 필요함 위치 끊어오기*/
         locationActivity = new LocationActivity(getContext());
+        // 현 위치 시 이름
         //String sidoName = locationActivity.getTextView3();
 
         String queryUrl="http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?"//요청 URL

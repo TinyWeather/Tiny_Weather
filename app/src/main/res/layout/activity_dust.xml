@@ -8,6 +8,7 @@
     tools:context=".DustFragment">
 
     <ScrollView
+        android:id="@+id/dust_scroll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -78,11 +79,11 @@
                 android:track="@drawable/switch_track_dust"
                 android:thumb="@drawable/switch_thumb_dust" />
 
-            <!--시간별 예보-->
+            <!-- 현 위치 대기 상태 -->
             <RelativeLayout
                 android:id="@+id/dust_day"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="170dp"
                 android:layout_below="@id/dust_switch"
                 android:layout_centerHorizontal="true"
                 android:layout_marginHorizontal="10dp"
@@ -114,47 +115,283 @@
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="120dp"
+                    android:layout_height="140dp"
                     android:layout_below="@id/dust_day_top"
                     android:paddingHorizontal="5dp">
 
                     <HorizontalScrollView
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                        android:layout_height="120dp"
                         android:layout_centerVertical="true">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="100dp">
+                            android:layout_height="120dp">
 
                             <RelativeLayout
+                                android:id="@+id/dust_day1"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="10dp"
                                 android:layout_width="wrap_content"
-                                android:layout_height="100dp"
+                                android:layout_height="120dp"
                                 android:layout_gravity="center">
 
                                 <ImageView
-                                    android:id="@+id/dust_day_img1"
+                                    android:id="@+id/dust_day1_img"
+                                    android:layout_marginBottom="5dp"
                                     android:layout_width="55dp"
                                     android:layout_height="55dp"
                                     android:layout_centerHorizontal="true"
                                     app:srcCompat="@drawable/dust7" />
 
                                 <TextView
-                                    android:id="@+id/dust_day_txt1"
+                                    android:id="@+id/dust_day1_what"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_below="@id/dust_day_img1"
+                                    android:layout_below="@id/dust_day1_img"
                                     android:layout_centerHorizontal="true"
-                                    android:text="11시"
+                                    android:text="미세먼지"
                                     android:textAppearance="@style/txt_black_15" />
 
                                 <TextView
-                                    android:id="@+id/dust_day_txt2"
+                                    android:id="@+id/dust_day1_grade"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_below="@id/dust_day_txt1"
+                                    android:layout_below="@id/dust_day1_what"
                                     android:layout_centerHorizontal="true"
                                     android:text="좋음"
+                                    android:textAppearance="@style/txt_black_15" />
+
+                                <TextView
+                                    android:id="@+id/dust_day1_value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/dust_day1_grade"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="100"
+                                    android:textAppearance="@style/txt_black_15" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/dust_day2"
+                                android:layout_marginRight="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="120dp"
+                                android:layout_gravity="center">
+
+                                <ImageView
+                                    android:id="@+id/dust_day2_img"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_width="55dp"
+                                    android:layout_height="55dp"
+                                    android:layout_centerHorizontal="true"
+                                    app:srcCompat="@drawable/dust7" />
+
+                                <TextView
+                                    android:id="@+id/dust_day2_what"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/dust_day2_img"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="초미세먼지"
+                                    android:textAppearance="@style/txt_black_15" />
+
+                                <TextView
+                                    android:id="@+id/dust_day2_grade"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/dust_day2_what"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="좋음"
+                                    android:textAppearance="@style/txt_black_15" />
+
+                                <TextView
+                                    android:id="@+id/dust_day2_value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/dust_day2_grade"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="100"
+                                    android:textAppearance="@style/txt_black_15" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/dust_day3"
+                                android:layout_marginRight="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="120dp"
+                                android:layout_gravity="center">
+
+                                <ImageView
+                                    android:id="@+id/dust_day3_img"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_width="55dp"
+                                    android:layout_height="55dp"
+                                    android:layout_centerHorizontal="true"
+                                    app:srcCompat="@drawable/dust7" />
+
+                                <TextView
+                                    android:id="@+id/dust_day3_what"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/dust_day3_img"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="이산화질소"
+                                    android:textAppearance="@style/txt_black_15" />
+
+                                <TextView
+                                    android:id="@+id/dust_day3_grade"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/dust_day3_what"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="좋음"
+                                    android:textAppearance="@style/txt_black_15" />
+
+                                <TextView
+                                    android:id="@+id/dust_day3_value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/dust_day3_grade"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="100"
+                                    android:textAppearance="@style/txt_black_15" />
+
+                            </RelativeLayout>
+
+
+                            <RelativeLayout
+                                android:id="@+id/dust_day4"
+                                android:layout_marginRight="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="120dp"
+                                android:layout_gravity="center">
+
+                                <ImageView
+                                    android:id="@+id/dust_day4_img"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_width="55dp"
+                                    android:layout_height="55dp"
+                                    android:layout_centerHorizontal="true"
+                                    app:srcCompat="@drawable/dust7" />
+
+                                <TextView
+                                    android:id="@+id/dust_day4_what"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/dust_day4_img"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="오존"
+                                    android:textAppearance="@style/txt_black_15" />
+
+                                <TextView
+                                    android:id="@+id/dust_day4_grade"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/dust_day4_what"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="좋음"
+                                    android:textAppearance="@style/txt_black_15" />
+
+                                <TextView
+                                    android:id="@+id/dust_day4_value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/dust_day4_grade"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="100"
+                                    android:textAppearance="@style/txt_black_15" />
+
+                            </RelativeLayout>
+
+
+                            <RelativeLayout
+                                android:id="@+id/dust_day5"
+                                android:layout_marginRight="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="120dp"
+                                android:layout_gravity="center">
+
+                                <ImageView
+                                    android:id="@+id/dust_day5_img"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_width="55dp"
+                                    android:layout_height="55dp"
+                                    android:layout_centerHorizontal="true"
+                                    app:srcCompat="@drawable/dust7" />
+
+                                <TextView
+                                    android:id="@+id/dust_day5_what"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/dust_day5_img"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="일산화탄소"
+                                    android:textAppearance="@style/txt_black_15" />
+
+                                <TextView
+                                    android:id="@+id/dust_day5_grade"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/dust_day5_what"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="좋음"
+                                    android:textAppearance="@style/txt_black_15" />
+
+                                <TextView
+                                    android:id="@+id/dust_day5_value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/dust_day5_grade"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="100"
+                                    android:textAppearance="@style/txt_black_15" />
+
+                            </RelativeLayout>
+
+
+                            <RelativeLayout
+                                android:id="@+id/dust_day6"
+                                android:layout_marginRight="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="120dp"
+                                android:layout_gravity="center">
+
+                                <ImageView
+                                    android:id="@+id/dust_day6_img"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_width="55dp"
+                                    android:layout_height="55dp"
+                                    android:layout_centerHorizontal="true"
+                                    app:srcCompat="@drawable/dust7" />
+
+                                <TextView
+                                    android:id="@+id/dust_day6_what"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/dust_day6_img"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="아황산가스"
+                                    android:textAppearance="@style/txt_black_15" />
+
+                                <TextView
+                                    android:id="@+id/dust_day6_grade"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/dust_day6_what"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="좋음"
+                                    android:textAppearance="@style/txt_black_15" />
+
+                                <TextView
+                                    android:id="@+id/dust_day6_value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/dust_day6_grade"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="100"
                                     android:textAppearance="@style/txt_black_15" />
 
                             </RelativeLayout>
@@ -167,7 +404,7 @@
 
             </RelativeLayout>
 
-            <!--주간 예보-->
+            <!-- 전국 대기 상태 -->
             <RelativeLayout
                 android:id="@+id/dust_list"
                 android:layout_width="match_parent"
@@ -186,7 +423,6 @@
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/graph_top_30" />
 
-
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="30dp">
@@ -202,48 +438,65 @@
 
                 </RelativeLayout>
 
-                <LinearLayout
-                    android:id="@+id/dust_list1"
+                <ScrollView
+                    android:id="@+id/dust_list2_scroll"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_below="@id/dust_top"
-                    android:layout_marginTop="10dp">
+                    android:layout_height="480dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/dust_top">
 
-                    <TextView
-                        android:id="@+id/dust_list1_txt1"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:text="월요일 08.31"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/txt_black_18" />
+                    <LinearLayout
+                        android:id="@+id/dust_list2"
+                        android:layout_width="match_parent"
+                        android:layout_height="480dp"
+                        android:orientation="vertical">
 
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <ImageView
-                            android:id="@+id/dust_list1_img1"
-                            android:layout_width="50dp"
+                        <LinearLayout
+                            android:id="@+id/dust_list1"
+                            android:layout_width="match_parent"
                             android:layout_height="50dp"
-                            android:layout_centerHorizontal="true"
-                            android:background="@drawable/dust5" />
+                            android:layout_below="@id/dust_top"
+                            android:layout_marginTop="10dp">
 
-                    </RelativeLayout>
+                            <TextView
+                                android:id="@+id/dust_list1_txt1"
+                                android:layout_width="120dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="20dp"
+                                android:text="월요일 08.31"
+                                android:textAlignment="center"
+                                android:textAppearance="@style/txt_black_18" />
 
-                    <TextView
-                        android:id="@+id/dust_list1_txt2"
-                        android:layout_width="85dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="20dp"
-                        android:text="보통"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/txt_black_18" />
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
 
-                </LinearLayout>
+                                <ImageView
+                                    android:id="@+id/dust_list1_img1"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_centerHorizontal="true"
+                                    android:background="@drawable/dust5" />
+
+                            </RelativeLayout>
+
+                            <TextView
+                                android:id="@+id/dust_list1_txt2"
+                                android:layout_width="85dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginEnd="20dp"
+                                android:text="보통"
+                                android:textAlignment="center"
+                                android:textAppearance="@style/txt_black_18" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </ScrollView>
 
             </RelativeLayout>
 
