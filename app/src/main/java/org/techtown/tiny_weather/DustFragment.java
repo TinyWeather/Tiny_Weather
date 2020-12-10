@@ -22,9 +22,9 @@ import java.util.Locale;
 public class DustFragment extends Fragment {
     LocationActivity locationActivity;
     DustActivity dustActivity;
-   // TimeActivity timeActivity;
+    TimeActivity timeActivity;
     SwipeRefreshLayout swipeRefreshLayout;
-    TextView text;
+    TextView text1, text2;
 
     @Override
     public void onAttach(Context context) {
@@ -44,10 +44,10 @@ public class DustFragment extends Fragment {
             @Override
             public void onRefresh() {
                 locationActivity = new LocationActivity(getContext());
-               // timeActivity = new TimeActivity();
+                timeActivity = new TimeActivity();
 
-                text.setText(locationActivity.getTextView3());
-              //  text2.setText(timeActivity.getTime());
+                text1.setText(locationActivity.getTextView3());
+                text2.setText(timeActivity.getTime());
 
                 NavigationView navigationView = (NavigationView) rootView.getRootView().findViewById(R.id.nav_view);
                 View header = navigationView.getHeaderView(0);
@@ -74,13 +74,13 @@ public class DustFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         locationActivity = new LocationActivity(getContext());
-        //timeActivity = new TimeActivity();
+        timeActivity = new TimeActivity();
 
-        text = (TextView) getActivity().findViewById(R.id.dust_txt_location2);
-        //text2 = (TextView) getActivity().findViewById(R.id.dust_update_time2);
+        text1 = (TextView) getActivity().findViewById(R.id.dust_txt_location2);
+        text2 = (TextView) getActivity().findViewById(R.id.dust_update_time2);
 
-        text.setText(locationActivity.getTextView3());
-       // text2.setText(timeActivity.getTime());
+        text1.setText(locationActivity.getTextView3());
+        text2.setText(timeActivity.getTime());
     }
 
     public void initUI(ViewGroup rootView) {

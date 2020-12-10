@@ -56,7 +56,9 @@ public class HomeFragment extends Fragment {
     TextView covidText1, covidText2, covidText3;
 
     // 미세먼지
-    String dustGrade;
+    int imgDust;
+    String dustpm10Value;
+    ImageView dustImg;
     TextView dustText1;
 
     @Override
@@ -113,7 +115,7 @@ public class HomeFragment extends Fragment {
 
                         // 미세먼지
                         //dustActivity.setDustXmlData(locationActivity.getTextView3());
-                        dustGrade  = "";
+                        //dustpm10Value  = "";
 
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
@@ -126,7 +128,7 @@ public class HomeFragment extends Fragment {
                                 covidText2.setText(covidIsolIngCnt);
                                 covidText3.setText(covidDate);
 
-                                dustText1.setText(dustGrade);
+                                dustText1.setText(dustpm10Value);
                             }
                         });
                     }
@@ -170,6 +172,7 @@ public class HomeFragment extends Fragment {
         covidText3 = (TextView) getActivity().findViewById(R.id.home_txt_covid5);
 
         dustText1 = (TextView) getActivity().findViewById(R.id.home_txt_dust);
+        dustImg = (ImageView) getActivity().findViewById(R.id.home_img_dust);
 
         text.setText(locationActivity.getTextView());
         text2.setText(locationActivity.getTextView2());
@@ -249,10 +252,45 @@ public class HomeFragment extends Fragment {
                 covidDate = "(" + covidActivity.getToday() + ")";
 
                 // 미세먼지
-                //dustActivity.setDustXmlData("종로"); //View 들어갈지 View3들어갈지 확인이 필요
-                //dustGrade = dustActivity.getpm10Value();
-                //System.out.println("미세먼지"+dustGrade+"====");
+                /*
+                dustActivity.setDustXmlData("종로"); //View 들어갈지 View3들어갈지 확인이 필요
+                dustpm10Value = dustActivity.getpm10Value(); // 미세먼지 수치
+                System.out.println("미세먼지"+dustpm10Value+"====");
 
+                int pm10Value = Integer.parseInt(dustpm10Value);
+                if( 0 <= pm10Value &&  pm10Value < 16 ){
+                    imgDust = R.drawable.dust8;
+                    dustpm10Value = "최고 좋음";
+                }
+                else if( 16 <= pm10Value &&  pm10Value < 31 ){
+                    imgDust = R.drawable.dust7;
+                    dustpm10Value = "좋음";
+                }
+                else if( 31 <= pm10Value &&  pm10Value < 41 ){
+                    imgDust = R.drawable.dust6;
+                    dustpm10Value = "양호";
+                }
+                else if( 41 <= pm10Value &&  pm10Value < 51 ){
+                    imgDust = R.drawable.dust5;
+                    dustpm10Value = "보통";
+                }
+                else if( 51 <= pm10Value &&  pm10Value < 76 ){
+                    imgDust = R.drawable.dust4;
+                    dustpm10Value = "나쁨";
+                }
+                else if( 76 <= pm10Value &&  pm10Value < 101 ){
+                    imgDust = R.drawable.dust3;
+                    dustpm10Value = "상당히 나쁨";
+                }
+                else if( 101 <= pm10Value &&  pm10Value < 151 ){
+                    imgDust = R.drawable.dust2;
+                    dustpm10Value = "매우 나쁨";
+                }
+                else if( 151 <= pm10Value){
+                    imgDust = R.drawable.dust1;
+                    dustpm10Value = "최악";
+                }
+                 */
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -265,7 +303,9 @@ public class HomeFragment extends Fragment {
                         covidText2.setText(covidIsolIngCnt);
                         covidText3.setText(covidDate);
 
-                        dustText1.setText(dustGrade);
+                        dustText1.setText(dustpm10Value);
+                        dustImg.setImageResource(imgDust);
+
                     }
                 });
             }
