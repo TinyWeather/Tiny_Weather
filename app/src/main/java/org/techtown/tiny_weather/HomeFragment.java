@@ -114,8 +114,7 @@ public class HomeFragment extends Fragment {
                         covidDate = "(" + covidActivity.getToday() + ")";
 
                         // 미세먼지
-                        //dustActivity.setDustXmlData(locationActivity.getTextView5());
-                        //dustpm10Value  = "";
+                        dustActivity.setDustXmlData(locationActivity.getTextView5());
 
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
@@ -252,10 +251,8 @@ public class HomeFragment extends Fragment {
                 covidDate = "(" + covidActivity.getToday() + ")";
 
                 // 미세먼지
-                /*
                 dustActivity.setDustXmlData(locationActivity.getTextView5());
                 dustpm10Value = dustActivity.getpm10Value(); // 미세먼지 수치
-                System.out.println("미세먼지"+dustpm10Value+"====");
 
                 int pm10Value = Integer.parseInt(dustpm10Value);
                 if( 0 <= pm10Value &&  pm10Value < 16 ){
@@ -290,7 +287,7 @@ public class HomeFragment extends Fragment {
                     imgDust = R.drawable.dust1;
                     dustpm10Value = "최악";
                 }
-                 */
+                
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
