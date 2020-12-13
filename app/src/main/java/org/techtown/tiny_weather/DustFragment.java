@@ -23,6 +23,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.google.android.material.navigation.NavigationView;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -44,6 +45,10 @@ public class DustFragment extends Fragment {
     int imgDust, imgDust1, imgDust2, imgDust3, imgDust4, imgDust5;
     String dustpm10Value, Dustpm10ValueText, dustpm25Value, Dustpm25ValueText;
     String dustno2Value, Dustno2ValueText, dusto3Value, Dusto3ValueText, dustcoValue, DustcoValueText, dustso2Value, Dustso2ValueText;
+
+    ArrayList arrayList1, arrayList2, arrayList3;
+
+    String hahah;
 
     @Override
     public void onAttach(Context context) {
@@ -67,8 +72,7 @@ public class DustFragment extends Fragment {
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_UP) {
                     scrollViewA.requestDisallowInterceptTouchEvent(false);
-                }
-                else {
+                } else {
                     scrollViewA.requestDisallowInterceptTouchEvent(true);
                 }
                 return false;
@@ -78,8 +82,7 @@ public class DustFragment extends Fragment {
         swipeRefreshLayout = (SwipeRefreshLayout) rootView.getRootView().findViewById(R.id.refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
-            public void onRefresh()
-            {
+            public void onRefresh() {
                 locationActivity = new LocationActivity(getContext());
                 timeActivity = new TimeActivity();
 
@@ -90,11 +93,13 @@ public class DustFragment extends Fragment {
                     @Override
                     public void run() {
                         dustActivity.setDustXmlData(locationActivity.getTextView5());
+                        dustActivity.setDustXmlData2(timeActivity.getTime2());
+                        //dustActivity.setDustXmlData2("seoul");
 
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                switchBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+                                switchBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                                     @Override
                                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                                         // 스위치 버튼이 체크되었는지 검사하여 텍스트뷰에 각 경우에 맞게 출력합니다.
@@ -106,6 +111,7 @@ public class DustFragment extends Fragment {
                                             initUI4(rootView); // 오존
                                             initUI5(rootView); // 일산화탄소
                                             initUI6(rootView); // 아황산가스
+                                            initUI7(rootView); // 전국 대기 상태
 
                                         } else {
                                             initUI(rootView); // 미세먼지 상단
@@ -115,6 +121,7 @@ public class DustFragment extends Fragment {
                                             initUI4(rootView); // 오존
                                             initUI5(rootView); // 일산화탄소
                                             initUI6(rootView); // 아황산가스
+                                            initUI7(rootView); // 전국 대기 상태
                                         }
                                     }
                                 });
@@ -158,12 +165,14 @@ public class DustFragment extends Fragment {
             @Override
             public void run() {
                 dustActivity.setDustXmlData(locationActivity.getTextView5());
+                dustActivity.setDustXmlData2(timeActivity.getTime2());
+                //dustActivity.setDustXmlData2("seoul");
 
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
 
-                        switchBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+                        switchBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                             @Override
                             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                                 if (isChecked) {
@@ -174,6 +183,7 @@ public class DustFragment extends Fragment {
                                     initUI4(rootView); // 오존
                                     initUI5(rootView); // 일산화탄소
                                     initUI6(rootView); // 아황산가스
+                                    initUI7(rootView); // 전국 대기 상태
                                 } else {
                                     initUI(rootView); // 미세먼지 상단
                                     initUI1(rootView); // 미세먼지 하단
@@ -182,6 +192,7 @@ public class DustFragment extends Fragment {
                                     initUI4(rootView); // 오존
                                     initUI5(rootView); // 일산화탄소
                                     initUI6(rootView); // 아황산가스
+                                    initUI7(rootView); // 전국 대기 상태
                                 }
                             }
                         });
@@ -196,35 +207,28 @@ public class DustFragment extends Fragment {
         dustpm10Value = dustActivity.getpm10Value(); // 미세먼지 수치
         // 미세먼지
         int pm10Value = Integer.parseInt(dustpm10Value);
-        if( 0 <= pm10Value &&  pm10Value < 16 ){
+        if (0 <= pm10Value && pm10Value < 16) {
             imgDust = R.drawable.dust8;
             Dustpm10ValueText = "최고 좋음";
-        }
-        else if( 16 <= pm10Value &&  pm10Value < 31 ){
+        } else if (16 <= pm10Value && pm10Value < 31) {
             imgDust = R.drawable.dust7;
             Dustpm10ValueText = "좋음";
-        }
-        else if( 31 <= pm10Value &&  pm10Value < 41 ){
+        } else if (31 <= pm10Value && pm10Value < 41) {
             imgDust = R.drawable.dust6;
             Dustpm10ValueText = "양호";
-        }
-        else if( 41 <= pm10Value &&  pm10Value < 51 ){
+        } else if (41 <= pm10Value && pm10Value < 51) {
             imgDust = R.drawable.dust5;
             Dustpm10ValueText = "보통";
-        }
-        else if( 51 <= pm10Value &&  pm10Value < 76 ){
+        } else if (51 <= pm10Value && pm10Value < 76) {
             imgDust = R.drawable.dust4;
             Dustpm10ValueText = "나쁨";
-        }
-        else if( 76 <= pm10Value &&  pm10Value < 101 ){
+        } else if (76 <= pm10Value && pm10Value < 101) {
             imgDust = R.drawable.dust3;
             Dustpm10ValueText = "상당히 나쁨";
-        }
-        else if( 101 <= pm10Value &&  pm10Value < 151 ){
+        } else if (101 <= pm10Value && pm10Value < 151) {
             imgDust = R.drawable.dust2;
             Dustpm10ValueText = "매우 나쁨";
-        }
-        else if( 151 <= pm10Value){
+        } else if (151 <= pm10Value) {
             imgDust = R.drawable.dust1;
             Dustpm10ValueText = "최악";
         }
@@ -237,35 +241,28 @@ public class DustFragment extends Fragment {
         dustpm10Value = dustActivity.getpm10Value(); // 미세먼지 수치
         // 미세먼지
         int pm10Value = Integer.parseInt(dustpm10Value);
-        if( 0 <= pm10Value &&  pm10Value < 16 ){
+        if (0 <= pm10Value && pm10Value < 16) {
             imgDust = R.drawable.dust8;
             Dustpm10ValueText = "최고 좋음";
-        }
-        else if( 16 <= pm10Value &&  pm10Value < 31 ){
+        } else if (16 <= pm10Value && pm10Value < 31) {
             imgDust = R.drawable.dust7;
             Dustpm10ValueText = "좋음";
-        }
-        else if( 31 <= pm10Value &&  pm10Value < 41 ){
+        } else if (31 <= pm10Value && pm10Value < 41) {
             imgDust = R.drawable.dust6;
             Dustpm10ValueText = "양호";
-        }
-        else if( 41 <= pm10Value &&  pm10Value < 51 ){
+        } else if (41 <= pm10Value && pm10Value < 51) {
             imgDust = R.drawable.dust5;
             Dustpm10ValueText = "보통";
-        }
-        else if( 51 <= pm10Value &&  pm10Value < 76 ){
+        } else if (51 <= pm10Value && pm10Value < 76) {
             imgDust = R.drawable.dust4;
             Dustpm10ValueText = "나쁨";
-        }
-        else if( 76 <= pm10Value &&  pm10Value < 101 ){
+        } else if (76 <= pm10Value && pm10Value < 101) {
             imgDust = R.drawable.dust3;
             Dustpm10ValueText = "상당히 나쁨";
-        }
-        else if( 101 <= pm10Value &&  pm10Value < 151 ){
+        } else if (101 <= pm10Value && pm10Value < 151) {
             imgDust = R.drawable.dust2;
             Dustpm10ValueText = "매우 나쁨";
-        }
-        else if( 151 <= pm10Value){
+        } else if (151 <= pm10Value) {
             imgDust = R.drawable.dust1;
             Dustpm10ValueText = "최악";
         }
@@ -275,7 +272,7 @@ public class DustFragment extends Fragment {
 
         dust_day1_img.setImageResource(imgDust);
         dust_day1_grade.setText(Dustpm10ValueText);
-        dust_day1_value.setText(dustpm10Value+" ㎍/㎥");
+        dust_day1_value.setText(dustpm10Value + " ㎍/㎥");
     }
 
     // 상단 얼굴 : 초미세먼지
@@ -349,7 +346,7 @@ public class DustFragment extends Fragment {
 
         dust_day2_img.setImageResource(imgDust1);
         dust_day2_grade.setText(Dustpm25ValueText);
-        dust_day2_value.setText(dustpm25Value+" ㎍/㎥");
+        dust_day2_value.setText(dustpm25Value + " ㎍/㎥");
     }
 
     // 현 위치 대기 상태 : 이산화질소 수치
@@ -388,7 +385,7 @@ public class DustFragment extends Fragment {
 
         dust_day3_img.setImageResource(imgDust2);
         dust_day3_grade.setText(Dustno2ValueText);
-        dust_day3_value.setText(dustno2Value+" ppm");
+        dust_day3_value.setText(dustno2Value + " ppm");
     }
 
     // 현 위치 대기 상태 : 오존 농도
@@ -427,7 +424,7 @@ public class DustFragment extends Fragment {
 
         dust_day4_img.setImageResource(imgDust3);
         dust_day4_grade.setText(Dusto3ValueText);
-        dust_day4_value.setText(dusto3Value+" ppm");
+        dust_day4_value.setText(dusto3Value + " ppm");
     }
 
     // 현 위치 대기 상태 : 일산화탄소
@@ -466,7 +463,7 @@ public class DustFragment extends Fragment {
 
         dust_day5_img.setImageResource(imgDust4);
         dust_day5_grade.setText(DustcoValueText);
-        dust_day5_value.setText(dustcoValue+" ppm");
+        dust_day5_value.setText(dustcoValue + " ppm");
     }
 
     // 현 위치 대기 상태 : 아황산가스
@@ -505,6 +502,21 @@ public class DustFragment extends Fragment {
 
         dust_day6_img.setImageResource(imgDust5);
         dust_day6_grade.setText(Dustso2ValueText);
-        dust_day6_value.setText(dustso2Value+" ppm");
+        dust_day6_value.setText(dustso2Value + " ppm");
+    }
+
+    // 전국 대기 상태
+    public void initUI7(ViewGroup rootView) {
+        TextView dust_list_title_txt = (TextView) getActivity().findViewById(R.id.dust_list_title_txt);
+        dust_list_title_txt.setText("전국 대기 상태 : 미세먼지");
+    
+         dustActivity.getSeoul();
+
+        arrayList1 = new ArrayList();
+        //arrayList.add(hahah);
+
+
+        TextView dust_list1 = (TextView) getActivity().findViewById(R.id.dust_list1_txt1);
+        //dust_list1.setText(arrayList.get(0)+"111");
     }
 }

@@ -302,7 +302,6 @@ public class HomeFragment extends Fragment {
 
                         dustText1.setText(dustpm10Value);
                         dustImg.setImageResource(imgDust);
-
                     }
                 });
             }

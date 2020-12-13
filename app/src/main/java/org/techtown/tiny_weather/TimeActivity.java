@@ -18,4 +18,12 @@ public class TimeActivity {
 
         return formatDate;
     }
+
+    public String getTime2(){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd kk"+":00");
+        Date time = new Date();
+        String currentTime = format.format(time);
+
+        return currentTime;
+    }
 }
