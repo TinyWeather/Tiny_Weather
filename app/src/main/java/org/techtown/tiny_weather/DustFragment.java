@@ -140,7 +140,7 @@ public class DustFragment extends Fragment {
                 NavigationView navigationView = (NavigationView) rootView.getRootView().findViewById(R.id.nav_view);
                 View header = navigationView.getHeaderView(0);
                 TextView textHeader = (TextView) header.findViewById(R.id.user_location);
-                textHeader.setText(locationActivity.getTextView3());
+                textHeader.setText(locationActivity.getTextView());
 
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
@@ -580,6 +580,7 @@ public class DustFragment extends Fragment {
 
             TextView newTextView = new TextView(rootView.getContext());
             newTextView.setText(dustActivity.getSeoul());
+            newTextView.setTextAppearance(R.style.txt_black_18);
             //     newTextView.setText(arrayList1.get(i));
             //newTextView.setText(Dustpm10ValueText);
           //  newTextView.setTextColor(0xAA1e6de0);
@@ -589,14 +590,18 @@ public class DustFragment extends Fragment {
 
             TextView newTextView2 = new TextView(rootView.getContext());
             newTextView2.setText(pm10Value +" ㎍/㎥");
+            newTextView2.setTextAppearance(R.style.txt_black_18);
            // newTextView2.setTextColor(R.id.dust_list_title_txt);
 
             ImageView imageView1 = new ImageView(rootView.getContext());
             imageView1.setImageResource(imgDust);
+            imageView1.setLayoutParams(new ViewGroup.LayoutParams(140, 140));
+            imageView1.requestLayout();
 
 
             TextView newTextView3 = new TextView(rootView.getContext());
             newTextView3.setText(arrayListPlace.get(i));
+            newTextView3.setTextAppearance(R.style.txt_black_18);
            // newTextView3.setTextColor(R.id.dust_list_title_txt);
 
             LinearLayout linearLayout1 = new LinearLayout(rootView.getContext());
@@ -677,6 +682,7 @@ public class DustFragment extends Fragment {
 
             TextView newTextView = new TextView(rootView.getContext());
             newTextView.setText(Dustpm10ValueText);
+            newTextView.setTextAppearance(R.style.txt_black_18);
             //     newTextView.setText(arrayList1.get(i));
             //newTextView.setText(Dustpm10ValueText);
             //  newTextView.setTextColor(0xAA1e6de0);
@@ -686,14 +692,18 @@ public class DustFragment extends Fragment {
 
             TextView newTextView2 = new TextView(rootView.getContext());
             newTextView2.setText(pm10Value +" ㎍/㎥");
+            newTextView2.setTextAppearance(R.style.txt_black_18);
             // newTextView2.setTextColor(R.id.dust_list_title_txt);
 
             ImageView imageView1 = new ImageView(rootView.getContext());
             imageView1.setImageResource(imgDust);
+            imageView1.setLayoutParams(new ViewGroup.LayoutParams(140, 140));
+            imageView1.requestLayout();
 
 
             TextView newTextView3 = new TextView(rootView.getContext());
             newTextView3.setText(arrayListPlace.get(i));
+            newTextView3.setTextAppearance(R.style.txt_black_18);
             // newTextView3.setTextColor(R.id.dust_list_title_txt);
 
             LinearLayout linearLayout1 = new LinearLayout(rootView.getContext());
