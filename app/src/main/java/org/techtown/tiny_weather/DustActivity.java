@@ -15,6 +15,8 @@ public class DustActivity extends Fragment {
    // TimeActivity timeActivity;
 
     String key="kd3zWLkxFKVIuT0XejOXR1qWycWNx03d21q75t5AHS2gIRKGQXQhqtwrvDWy3Huf04BaJZQL2vQHDvEkT8coDw%3D%3D";
+    String What = "";
+    String sidoName = "";
 
     String pm10Value, pm25Value, no2Value, o3Value, coValue, so2Value;
 
@@ -188,17 +190,16 @@ public class DustActivity extends Fragment {
     boolean seoulCheck=false, busanCheck=false, daeguCheck=false, incheonCheck=false, gwangjuCheck=false, daejeonCheck=false, ulsanCheck=false, gyeonggiCheck=false, gangwonCheck=false;
     boolean chungbukCheck=false, chungnamCheck=false, jeonbukCheck=false, jeonnamCheck=false, gyeongbukCheck=false, gyeongnamCheck=false, jejuCheck=false, sejongCheck=false;
 
-    public void setDustXmlData(String location){
+    public void setDustXmlData(String location, String sidoName){
 
         locationActivity = new LocationActivity(getContext());
         // 현 위치 시 이름
-        //String sidoName = locationActivity.getTextView3();
 
         String queryUrl="http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?"//요청 URL
                 + "ServiceKey=" + key // 키
                 + "&pageNo=1" //페이지 번호
                 + "&numOfRows=1000" //한 페이지 결과 수
-                + "&sidoName=" + "서울" //시도 이름
+                + "&sidoName=" + sidoName //시도 이름
                 + "&searchCondition=DAILY" //요청 데이터기간 시간: hour 하루 : daily
                 + "&ver=1.3"; // 버전
         StringBuffer buffer=new StringBuffer();
@@ -323,7 +324,238 @@ public class DustActivity extends Fragment {
                 + "ServiceKey=" + key // 키
                 + "&pageNo=1" //페이지 번호
                 + "&numOfRows=1000" //한 페이지 결과 수
-                + "&itemCode=PM10" // 	측정항목 구분 (SO2, CO, O3, NO2, PM10, PM25) : 미세먼지
+                + "&itemCode="+"PM10" // 	측정항목 구분 (SO2, CO, O3, NO2, PM10, PM25) : 미세먼지
+                + "&dataGubun=HOUR"; // 요청 자료 구분 (시간평균 : HOUR, 일평균 : DAILY)
+        StringBuffer buffer=new StringBuffer();
+
+        try {
+            URL url= new URL(queryUrl); //문자열로 된 요청 url을 URL 객체로 생성.
+
+            XmlPullParserFactory factory= XmlPullParserFactory.newInstance();
+            XmlPullParser parser= factory.newPullParser();
+            parser.setInput(url.openStream(), null);
+
+            int parserEvent = parser.getEventType();
+            boolean timeCheck = false;
+
+            System.out.println(queryUrl);
+            System.out.println("============= DUST2 파싱 시작=============");
+
+            while (parserEvent != XmlPullParser.END_DOCUMENT){
+                switch(parserEvent){
+                    case XmlPullParser.START_TAG://parser가 시작 태그를 만나면 실행
+                        //             System.out.println("============= 미세먼지 태그 만남=============");
+                        if(parser.getName().equals("item")){ // 목록
+                            timeCheck = false;
+                        }
+                        if(parser.getName().equals("dataTime")){ // 측정일
+                            dataTimeCheck = true;
+                        }
+                        if(parser.getName().equals("itemCode")){ // 측정항목
+                            itemCodeCheck = true;
+                        }
+                        if(parser.getName().equals("dataGubun")){ // 자료구분
+                            dataGubunCheck = true;
+                        }
+                        if(parser.getName().equals("seoul")){ // 서울
+                            seoulCheck = true;
+                        }
+                        if(parser.getName().equals("busan")){ // 부산
+                            busanCheck = true;
+                        }
+                        if(parser.getName().equals("daegu")){ // 대구
+                            daeguCheck = true;
+                        }
+                        if(parser.getName().equals("incheon")){ // 인천
+                            incheonCheck = true;
+                        }
+                        if(parser.getName().equals("gwangju")){ // 광주
+                            gwangjuCheck = true;
+                        }
+                        if(parser.getName().equals("daejeon")){ // 대전
+                            daejeonCheck = true;
+                        }
+                        if(parser.getName().equals("ulsan")){ // 울산
+                            ulsanCheck = true;
+                        }
+                        if(parser.getName().equals("gyeonggi")){ // 경기
+                            gyeonggiCheck = true;
+                        }
+                        if(parser.getName().equals("gangwon")){ // 강원
+                            gangwonCheck = true;
+                        }
+                        if(parser.getName().equals("chungbuk")){ // 충북
+                            chungbukCheck = true;
+                        }
+                        if(parser.getName().equals("chungnam")){ // 충남
+                            chungnamCheck = true;
+                        }
+                        if(parser.getName().equals("jeonbuk")){ // 전북
+                            jeonbukCheck = true;
+                        }
+                        if(parser.getName().equals("jeonnam")){ // 전남
+                            jeonnamCheck = true;
+                        }
+                        if(parser.getName().equals("gyeongbuk")){ // 경북
+                            gyeongbukCheck = true;
+                        }
+                        if(parser.getName().equals("gyeongnam")){ // 경남
+                            gyeongnamCheck = true;
+                        }
+                        if(parser.getName().equals("jeju")){ // 제주
+                            jejuCheck = true;
+                        }
+                        if(parser.getName().equals("sejong")){ // 세종
+                            sejongCheck = true;
+                        }
+                        if(parser.getName().equals("message")){ //message 태그를 만나면 에러 출력
+                            System.out.println("미세먼지 에러");
+                        }
+                        break;
+
+                    case XmlPullParser.TEXT://parser가 내용에 접근했을때
+                        //            System.out.println("============= 미세먼지 텍스트 만남=============");
+                        //            System.out.println("============= 미세먼지  "+parser.getText()+"=============");
+                        if(dataTimeCheck) {
+                            System.out.println(parser.getText());
+                            if(time.equals(parser.getText())){
+                                timeCheck = true;
+                            }
+                            dataTimeCheck = false;
+                        }
+                        if(mangNameCheck) {
+                            System.out.println(parser.getText());
+                            mangNameCheck = false;
+                        }
+                        if(itemCodeCheck) {
+                            System.out.println(parser.getText());
+                            itemCodeCheck  = false;
+                        }
+                        if(dataGubunCheck){
+                            System.out.println(parser.getText());
+                            dataGubunCheck  = false;
+                        }
+                        if(seoulCheck) {
+                            System.out.println(parser.getText());
+                            if(timeCheck)
+                                setSeoul(parser.getText());
+                            seoulCheck  = false;
+                        }
+                        if(busanCheck) {
+                            System.out.println(parser.getText());
+                            if(timeCheck)
+                                setBusan(parser.getText());
+                            busanCheck = false;
+                        }
+                        if(daeguCheck) {
+                            System.out.println(parser.getText());
+                            if(timeCheck)
+                                setDaegu(parser.getText());
+                            daeguCheck = false;
+                        }
+                        if(incheonCheck) {
+                            System.out.println(parser.getText());
+                            if(timeCheck)
+                                setIncheon(parser.getText());
+                            incheonCheck = false;
+                        }
+                        if(gwangjuCheck ) {
+                            System.out.println(parser.getText());
+                            if(timeCheck)
+                                setGwangju(parser.getText());
+                            gwangjuCheck  = false;
+                        }
+                        if(daejeonCheck) {
+                            System.out.println(parser.getText());
+                            if(timeCheck)
+                                setDaejeon(parser.getText());
+                            daejeonCheck  = false;
+                        }
+                        if(ulsanCheck) {
+                            System.out.println(parser.getText());
+                            if(timeCheck)
+                                setUlsan(parser.getText());
+                            ulsanCheck = false;
+                        }
+                        if(gyeonggiCheck) {
+                            System.out.println(parser.getText());
+                            if(timeCheck)
+                                setGyeonggi(parser.getText());
+                            gyeonggiCheck = false;
+                        }
+                        if(gangwonCheck) {
+                            System.out.println(parser.getText());
+                            if(timeCheck)
+                                setGangwon(parser.getText());
+                            gangwonCheck = false;
+                        }
+                        if(chungbukCheck) {
+                            System.out.println(parser.getText());
+                            if(timeCheck)
+                                setChungbuk(parser.getText());
+                            chungbukCheck = false;
+                        }
+                        if(chungnamCheck) {
+                            System.out.println(parser.getText());
+                            if(timeCheck)
+                                setChungnam(parser.getText());
+                            chungnamCheck = false;
+                        }
+                        if(jeonbukCheck) {
+                            System.out.println(parser.getText());
+                            if(timeCheck)
+                                setJeonbuk(parser.getText());
+                            jeonbukCheck = false;
+                        }
+                        if(jeonnamCheck) {
+                            System.out.println(parser.getText());
+                            if(timeCheck)
+                                setJeonnam(parser.getText());
+                            jeonnamCheck = false;
+                        }
+                        if(gyeongbukCheck) {
+                            System.out.println(parser.getText());
+                            if(timeCheck)
+                                setGyeongbuk(parser.getText());
+                            gyeongbukCheck = false;
+                        }
+                        if(gyeongnamCheck) {
+                            System.out.println(parser.getText());
+                            if(timeCheck)
+                                setGyeongnam(parser.getText());
+                            gyeongnamCheck = false;
+                        }
+                        if(jejuCheck) {
+                            System.out.println(parser.getText());
+                            if(timeCheck)
+                                setJeju(parser.getText());
+                            jejuCheck = false;
+                        }
+                        if(sejongCheck) {
+                            System.out.println(parser.getText());
+                            if(timeCheck)
+                                setSejong(parser.getText());
+                            sejongCheck = false;
+                        }
+                    case XmlPullParser.END_TAG:
+                        break;
+                }
+                parserEvent = parser.next();
+            }
+            System.out.println("============= DUST2 파싱 끝=============");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("============= DUST2 파싱 에러=============");
+        }
+    }
+
+    public void setDustXmlData3(String time, String what){
+
+        String queryUrl="http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnMesureLIst?"//요청 URL
+                + "ServiceKey=" + key // 키
+                + "&pageNo=1" //페이지 번호
+                + "&numOfRows=1000" //한 페이지 결과 수
+                + "&itemCode="+ what // 	측정항목 구분 (SO2, CO, O3, NO2, PM10, PM25) : 미세먼지
                 + "&dataGubun=HOUR"; // 요청 자료 구분 (시간평균 : HOUR, 일평균 : DAILY)
         StringBuffer buffer=new StringBuffer();
 

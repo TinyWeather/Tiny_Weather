@@ -452,49 +452,6 @@
                         android:layout_height="480dp"
                         android:orientation="vertical">
 
-                        <LinearLayout
-                            android:id="@+id/dust_list1"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_below="@id/dust_top"
-                            android:layout_marginTop="10dp">
-
-                            <TextView
-                                android:id="@+id/dust_list1_txt1"
-                                android:layout_width="120dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginStart="20dp"
-                                android:text="월요일 08.31"
-                                android:textAlignment="center"
-                                android:textAppearance="@style/txt_black_18" />
-
-                            <RelativeLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1">
-
-                                <ImageView
-                                    android:id="@+id/dust_list1_img1"
-                                    android:layout_width="50dp"
-                                    android:layout_height="50dp"
-                                    android:layout_centerHorizontal="true"
-                                    android:background="@drawable/dust5" />
-
-                            </RelativeLayout>
-
-                            <TextView
-                                android:id="@+id/dust_list1_txt2"
-                                android:layout_width="85dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginEnd="20dp"
-                                android:text="보통"
-                                android:textAlignment="center"
-                                android:textAppearance="@style/txt_black_18" />
-
-                        </LinearLayout>
-
                     </LinearLayout>
 
                 </ScrollView>

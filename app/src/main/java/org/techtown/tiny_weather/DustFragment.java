@@ -2,8 +2,10 @@ package org.techtown.tiny_weather;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -22,8 +24,11 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
+import org.w3c.dom.Text;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
 
@@ -46,9 +51,10 @@ public class DustFragment extends Fragment {
     String dustpm10Value, Dustpm10ValueText, dustpm25Value, Dustpm25ValueText;
     String dustno2Value, Dustno2ValueText, dusto3Value, Dusto3ValueText, dustcoValue, DustcoValueText, dustso2Value, Dustso2ValueText;
 
-    ArrayList arrayList1, arrayList2, arrayList3;
-
-    String hahah;
+    ArrayList<String> arrayList1, arrayList2, arrayList3;
+    ArrayList<String> arrayListPlace = new ArrayList<String>(
+            Arrays.asList("서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종", "경기", "강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주")
+    );
 
     @Override
     public void onAttach(Context context) {
@@ -92,8 +98,9 @@ public class DustFragment extends Fragment {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        dustActivity.setDustXmlData(locationActivity.getTextView5());
-                        dustActivity.setDustXmlData2(timeActivity.getTime2());
+                        dustActivity.setDustXmlData(locationActivity.getTextView5(), locationActivity.getTextView3());
+                   //     dustActivity.setDustXmlData2(timeActivity.getTime2());
+                        dustActivity.setDustXmlData3(timeActivity.getTime2(),"PM10");
                         //dustActivity.setDustXmlData2("seoul");
 
                         getActivity().runOnUiThread(new Runnable() {
@@ -164,8 +171,9 @@ public class DustFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                dustActivity.setDustXmlData(locationActivity.getTextView5());
-                dustActivity.setDustXmlData2(timeActivity.getTime2());
+                dustActivity.setDustXmlData(locationActivity.getTextView5(), locationActivity.getTextView3());
+              //  dustActivity.setDustXmlData2(timeActivity.getTime2());
+                dustActivity.setDustXmlData3(timeActivity.getTime2(),"PM25");
                 //dustActivity.setDustXmlData2("seoul");
 
                 getActivity().runOnUiThread(new Runnable() {
@@ -507,16 +515,196 @@ public class DustFragment extends Fragment {
 
     // 전국 대기 상태
     public void initUI7(ViewGroup rootView) {
+
         TextView dust_list_title_txt = (TextView) getActivity().findViewById(R.id.dust_list_title_txt);
         dust_list_title_txt.setText("전국 대기 상태 : 미세먼지");
-    
-         dustActivity.getSeoul();
 
-        arrayList1 = new ArrayList();
-        //arrayList.add(hahah);
+        arrayList1 = new ArrayList(){
+            {
+                add(dustActivity.getSeoul());
+                add(dustActivity.getBusan());
+                add(dustActivity.getDaegu());
+                add(dustActivity.getIncheon());
+                add(dustActivity.getGangwon());
+                add(dustActivity.getDaejeon());
+                add(dustActivity.getUlsan());
+                add(dustActivity.getGyeonggi());
+                add(dustActivity.getGangwon());
+                add(dustActivity.getChungbuk());
+                add(dustActivity.getChungnam());
+                add(dustActivity.getJeonbuk());
+                add(dustActivity.getJeonnam());
+                add(dustActivity.getGyeongbuk());
+                add(dustActivity.getGyeongnam());
+                add(dustActivity.getJeju());
+                add(dustActivity.getSejong());
+            }
+        };
+
+        linearLayout = (LinearLayout) rootView.getRootView().findViewById(R.id.dust_list2);
+        linearLayout.removeAllViews();
+        // TextView textView1 = (TextView) rootView.getRootView().findViewById(R.id.dust_list_title_txt);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        layoutParams.setMargins(50, 0, 20, 0);
+
+        for ( int i=0 ; i < arrayList1.size(); i++ ) {
+          //  String pm10 = arrayList1.get(i);
+            String pm10 = dustActivity.getBusan();
+            int pm10Value = Integer.parseInt(pm10);
+            if (0 <= pm10Value && pm10Value < 16) {
+                imgDust = R.drawable.dust8;
+                Dustpm10ValueText = "최고 좋음";
+            } else if (16 <= pm10Value && pm10Value < 31) {
+                imgDust = R.drawable.dust7;
+                Dustpm10ValueText = "좋음";
+            } else if (31 <= pm10Value && pm10Value < 41) {
+                imgDust = R.drawable.dust6;
+                Dustpm10ValueText = "양호";
+            } else if (41 <= pm10Value && pm10Value < 51) {
+                imgDust = R.drawable.dust5;
+                Dustpm10ValueText = "보통";
+            } else if (51 <= pm10Value && pm10Value < 76) {
+                imgDust = R.drawable.dust4;
+                Dustpm10ValueText = "나쁨";
+            } else if (76 <= pm10Value && pm10Value < 101) {
+                imgDust = R.drawable.dust3;
+                Dustpm10ValueText = "상당히 나쁨";
+            } else if (101 <= pm10Value && pm10Value < 151) {
+                imgDust = R.drawable.dust2;
+                Dustpm10ValueText = "매우 나쁨";
+            } else if (151 <= pm10Value) {
+                imgDust = R.drawable.dust1;
+                Dustpm10ValueText = "최악";
+            }
 
 
-        TextView dust_list1 = (TextView) getActivity().findViewById(R.id.dust_list1_txt1);
-        //dust_list1.setText(arrayList.get(0)+"111");
+            TextView newTextView = new TextView(rootView.getContext());
+            newTextView.setText(dustActivity.getSeoul());
+            //     newTextView.setText(arrayList1.get(i));
+            //newTextView.setText(Dustpm10ValueText);
+          //  newTextView.setTextColor(0xAA1e6de0);
+            //newTextView.setGravity(Gravity.CENTER);
+            // newTextView.setLayoutParams(new ViewGroup.LayoutParams(textView1.getWidth(), ViewGroup.LayoutParams.WRAP_CONTENT));
+
+
+            TextView newTextView2 = new TextView(rootView.getContext());
+            newTextView2.setText(pm10Value +" ㎍/㎥");
+           // newTextView2.setTextColor(R.id.dust_list_title_txt);
+
+            ImageView imageView1 = new ImageView(rootView.getContext());
+            imageView1.setImageResource(imgDust);
+
+
+            TextView newTextView3 = new TextView(rootView.getContext());
+            newTextView3.setText(arrayListPlace.get(i));
+           // newTextView3.setTextColor(R.id.dust_list_title_txt);
+
+            LinearLayout linearLayout1 = new LinearLayout(rootView.getContext());
+            linearLayout1.setOrientation(LinearLayout.HORIZONTAL);
+            linearLayout1.addView(newTextView);
+            linearLayout1.addView(newTextView2);
+            linearLayout1.addView(imageView1);
+            linearLayout1.addView(newTextView3);
+
+            linearLayout.addView(linearLayout1, layoutParams);
+
+        }
+    }
+
+    // 전국 대기 상태
+    public void initUI8(ViewGroup rootView) {
+
+        TextView dust_list_title_txt = (TextView) getActivity().findViewById(R.id.dust_list_title_txt);
+        dust_list_title_txt.setText("전국 대기 상태 : 미세먼지");
+
+        arrayList1 = new ArrayList(){
+            {
+                add(dustActivity.getSeoul());
+                add(dustActivity.getBusan());
+                add(dustActivity.getDaegu());
+                add(dustActivity.getIncheon());
+                add(dustActivity.getGangwon());
+                add(dustActivity.getDaejeon());
+                add(dustActivity.getUlsan());
+                add(dustActivity.getGyeonggi());
+                add(dustActivity.getGangwon());
+                add(dustActivity.getChungbuk());
+                add(dustActivity.getChungnam());
+                add(dustActivity.getJeonbuk());
+                add(dustActivity.getJeonnam());
+                add(dustActivity.getGyeongbuk());
+                add(dustActivity.getGyeongnam());
+                add(dustActivity.getJeju());
+                add(dustActivity.getSejong());
+            }
+        };
+
+        linearLayout = (LinearLayout) rootView.getRootView().findViewById(R.id.dust_list2);
+        linearLayout.removeAllViews();
+        // TextView textView1 = (TextView) rootView.getRootView().findViewById(R.id.dust_list_title_txt);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        layoutParams.setMargins(50, 0, 20, 0);
+
+        for ( int i=0 ; i < arrayList1.size(); i++ ) {
+            String pm10 = arrayList1.get(i);
+            int pm10Value = Integer.parseInt(pm10);
+            if (0 <= pm10Value && pm10Value < 16) {
+                imgDust = R.drawable.dust8;
+                Dustpm10ValueText = "최고 좋음";
+            } else if (16 <= pm10Value && pm10Value < 31) {
+                imgDust = R.drawable.dust7;
+                Dustpm10ValueText = "좋음";
+            } else if (31 <= pm10Value && pm10Value < 41) {
+                imgDust = R.drawable.dust6;
+                Dustpm10ValueText = "양호";
+            } else if (41 <= pm10Value && pm10Value < 51) {
+                imgDust = R.drawable.dust5;
+                Dustpm10ValueText = "보통";
+            } else if (51 <= pm10Value && pm10Value < 76) {
+                imgDust = R.drawable.dust4;
+                Dustpm10ValueText = "나쁨";
+            } else if (76 <= pm10Value && pm10Value < 101) {
+                imgDust = R.drawable.dust3;
+                Dustpm10ValueText = "상당히 나쁨";
+            } else if (101 <= pm10Value && pm10Value < 151) {
+                imgDust = R.drawable.dust2;
+                Dustpm10ValueText = "매우 나쁨";
+            } else if (151 <= pm10Value) {
+                imgDust = R.drawable.dust1;
+                Dustpm10ValueText = "최악";
+            }
+
+
+            TextView newTextView = new TextView(rootView.getContext());
+            newTextView.setText(Dustpm10ValueText);
+            //     newTextView.setText(arrayList1.get(i));
+            //newTextView.setText(Dustpm10ValueText);
+            //  newTextView.setTextColor(0xAA1e6de0);
+            //newTextView.setGravity(Gravity.CENTER);
+            // newTextView.setLayoutParams(new ViewGroup.LayoutParams(textView1.getWidth(), ViewGroup.LayoutParams.WRAP_CONTENT));
+
+
+            TextView newTextView2 = new TextView(rootView.getContext());
+            newTextView2.setText(pm10Value +" ㎍/㎥");
+            // newTextView2.setTextColor(R.id.dust_list_title_txt);
+
+            ImageView imageView1 = new ImageView(rootView.getContext());
+            imageView1.setImageResource(imgDust);
+
+
+            TextView newTextView3 = new TextView(rootView.getContext());
+            newTextView3.setText(arrayListPlace.get(i));
+            // newTextView3.setTextColor(R.id.dust_list_title_txt);
+
+            LinearLayout linearLayout1 = new LinearLayout(rootView.getContext());
+            linearLayout1.setOrientation(LinearLayout.HORIZONTAL);
+            linearLayout1.addView(newTextView3);
+            linearLayout1.addView(newTextView);
+            linearLayout1.addView(newTextView2);
+            linearLayout1.addView(imageView1);
+
+            linearLayout.addView(linearLayout1, layoutParams);
+
+        }
     }
 }

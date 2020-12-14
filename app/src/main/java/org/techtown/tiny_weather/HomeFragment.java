@@ -87,7 +87,6 @@ public class HomeFragment extends Fragment {
                 text.setText(locationActivity.getTextView());
                 text2.setText(locationActivity.getTextView2());
                 text3.setText(timeActivity.getTime());
-            //    dustText1.setText(locationActivity.getTextView3());
 
                 new Thread(new Runnable() {
                     @Override
@@ -114,7 +113,7 @@ public class HomeFragment extends Fragment {
                         covidDate = "(" + covidActivity.getToday() + ")";
 
                         // 미세먼지
-                        //dustActivity.setDustXmlData(locationActivity.getTextView5());
+                        dustActivity.setDustXmlData(locationActivity.getTextView5(), locationActivity.getTextView3());
 
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
@@ -251,8 +250,7 @@ public class HomeFragment extends Fragment {
                 covidDate = "(" + covidActivity.getToday() + ")";
 
                 // 미세먼지
-                /*
-                dustActivity.setDustXmlData(locationActivity.getTextView5());
+                dustActivity.setDustXmlData(locationActivity.getTextView5(), locationActivity.getTextView3());
                 dustpm10Value = dustActivity.getpm10Value(); // 미세먼지 수치
 
                 int pm10Value = Integer.parseInt(dustpm10Value);
@@ -288,7 +286,6 @@ public class HomeFragment extends Fragment {
                     imgDust = R.drawable.dust1;
                     dustpm10Value = "최악";
                 }
-                */
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -301,8 +298,8 @@ public class HomeFragment extends Fragment {
                         covidText2.setText(covidIsolIngCnt);
                         covidText3.setText(covidDate);
 
-                      //  dustText1.setText(dustpm10Value);
-                      //  dustImg.setImageResource(imgDust);
+                        dustText1.setText(dustpm10Value);
+                        dustImg.setImageResource(imgDust);
                     }
                 });
             }
