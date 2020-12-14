@@ -34,7 +34,6 @@
                 android:layout_height="wrap_content"
                 android:text="▽"
                 android:textSize="20dp"
-
                 />
 
         </LinearLayout>

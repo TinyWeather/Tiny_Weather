@@ -37,6 +37,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".Notice"></activity>
+        <activity android:name=".Donation"></activity>
+        <activity android:name=".Inquiry"></activity>
+        <activity android:name=".Guide"></activity>
+
+
     </application>
+
 
 </manifest>
