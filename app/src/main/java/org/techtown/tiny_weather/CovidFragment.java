@@ -35,7 +35,7 @@ public class CovidFragment extends Fragment {
 
     ViewGroup rootView;
     SwipeRefreshLayout swipeRefreshLayout;
-    TextView text, text2, text3, text4;
+    TextView text, text2, text3;
 
     LinearLayout linearLayout, linearLayout2;
 
@@ -77,10 +77,9 @@ public class CovidFragment extends Fragment {
                 locationActivity = new LocationActivity(getContext());
                 timeActivity = new TimeActivity();
 
-                text.setText(locationActivity.getTextView());
+                text.setText(locationActivity.getTextView2());
                 text2.setText(locationActivity.getTextView2());
-                text3.setText(locationActivity.getTextView2());
-                text4.setText(timeActivity.getTime());
+                text3.setText(timeActivity.getTime());
 
                 new Thread(new Runnable() {
                     @Override
@@ -123,14 +122,12 @@ public class CovidFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         text = (TextView) getActivity().findViewById(R.id.covid_txt_location2);
-        text2 = (TextView) getActivity().findViewById(R.id.covid_address_txt2);
-        text3 = (TextView) getActivity().findViewById(R.id.covid_graph_text);
-        text4 = (TextView) getActivity().findViewById(R.id.covid_update_time2);
+        text2 = (TextView) getActivity().findViewById(R.id.covid_graph_text);
+        text3 = (TextView) getActivity().findViewById(R.id.covid_update_time2);
 
-        text.setText(locationActivity.getTextView());
+        text.setText(locationActivity.getTextView2());
         text2.setText(locationActivity.getTextView2());
-        text3.setText(locationActivity.getTextView2());
-        text4.setText(timeActivity.getTime());
+        text3.setText(timeActivity.getTime());
 
         new Thread(new Runnable() {
             @Override
@@ -238,7 +235,7 @@ public class CovidFragment extends Fragment {
         LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams2.setMargins(50, 0, 20, 0);
 
-        for(int i=18; i>=1; i--) {
+        for(int i=18; i>=0; i--) {
             TextView newTextView = new TextView(rootView.getContext());
             newTextView.setText(covidActivity.getArrGubun3(i));
             newTextView.setGravity(Gravity.CENTER);
