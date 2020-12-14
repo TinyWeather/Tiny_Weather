@@ -17,11 +17,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="Edit"
             android:layout_marginRight="20dp"
             android:background="#00000000"
-            android:textSize="30sp"
-            android:textColor="#000000"
+            android:text="EDIT"
+            android:textAppearance="@style/txt_black_30"
             />
 
         <EditText
@@ -29,10 +28,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:hint="제목"
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:hint="제목"
+            android:textAppearance="@style/txt_black_20"
             />
 
         <FrameLayout
@@ -43,14 +43,15 @@
                 android:id="@+id/content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="내용을 입력하세요"
-                android:layout_gravity="center"
+                android:gravity="top"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:inputType="textMultiLine"
                 android:lines="15"
                 android:maxLines="30"
                 android:scrollbars="vertical"
+                android:hint="내용을 입력하세요"
+                android:textAppearance="@style/txt_black_20"
                 />
 
         </FrameLayout>

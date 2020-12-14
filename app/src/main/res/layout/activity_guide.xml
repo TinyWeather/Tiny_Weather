@@ -23,17 +23,17 @@
                 android:id="@+id/guide1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" 1. 위치정보가 없음으로 떠요!"
-                android:textSize="25dp"
                 android:layout_weight="1"
+                android:text=" 1. 위치정보가 없음으로 떠요!"
+                android:textAppearance="@style/txt_black_25"
                 />
 
             <Button
                 android:id="@+id/btn1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="▽"
-                android:textSize="20dp"
+                android:text="@string/guide_btn_id1"
+                android:textAppearance="@style/txt_black_20"
 
                 />
 
@@ -44,10 +44,9 @@
             android:id="@+id/text1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="위치정보가 없을땐 gps설정을 먼저 확인해 보세요!
-                                만약 그래도 없다면 어플에 gps설정을 제공해주었는지 확인해주세요
-                                    그래도 없는 경우에는 문의하기를 이용해주시면 됩니다."
             android:visibility="gone"
+            android:text="위치정보가 없을땐 gps설정을 먼저 확인해 보세요!\n만약 그래도 없다면 어플에 gps설정을 제공해주었는지 확인해주세요\n그래도 없는 경우에는 문의하기를 이용해주시면 됩니다."
+            android:textAppearance="@style/txt_grey_14"
             />
 
     </LinearLayout>
@@ -71,17 +70,17 @@
                 android:id="@+id/guide2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" 2. 후원 하고 싶어요!"
-                android:textSize="25dp"
                 android:layout_weight="1"
+                android:text=" 2. 후원 하고 싶어요!"
+                android:textAppearance="@style/txt_black_25"
                 />
 
             <Button
                 android:id="@+id/btn2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="▽"
-                android:textSize="20dp"
+                android:text="@string/guide_btn_id1"
+                android:textAppearance="@style/txt_black_20"
                 />
 
         </LinearLayout>
@@ -91,13 +90,9 @@
             android:id="@+id/text2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="그러한 마음가짐은 저희에게 매우 생유베리감사입니다.!!
-
-                                                                                                        그러한 분들을 위해 저희가 후원해주실 수 있는 방도를 만들어 두었습니다:)
-
-
-                                                                                                            적극적인 이용은 너무나 행복합니다."
             android:visibility="gone"
+            android:text="그러한 마음가짐은 저희에게 매우 생유베리감사입니다.!!\n그러한 분들을 위해 저희가 후원해주실 수 있는 방도를 만들어 두었습니다:)\n적극적인 이용은 너무나 행복합니다."
+            android:textAppearance="@style/txt_grey_14"
             />
 
     </LinearLayout>
@@ -121,17 +116,17 @@
                 android:id="@+id/guide3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" 3. 냠냠 하하"
-                android:textSize="25dp"
                 android:layout_weight="1"
+                android:text=" 3. 냠냠 하하"
+                android:textAppearance="@style/txt_black_25"
                 />
 
             <Button
                 android:id="@+id/btn3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="▽"
-                android:textSize="20dp"
+                android:text="@string/guide_btn_id1"
+                android:textAppearance="@style/txt_black_20"
                 />
 
         </LinearLayout>
@@ -141,14 +136,9 @@
             android:id="@+id/text3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="냠냠냠
-            하하하
-            마마마
-            하하하
-
-            가나다
-            가나다라마바사"
             android:visibility="gone"
+            android:text="냠냠냠\n하하하\n마마마\n하하하\n가나다\n가나다라마바사"
+            android:textAppearance="@style/txt_grey_14"
             />
 
     </LinearLayout>
