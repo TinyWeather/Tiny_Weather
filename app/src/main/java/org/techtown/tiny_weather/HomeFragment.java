@@ -114,6 +114,7 @@ public class HomeFragment extends Fragment {
 
                         // 미세먼지
                         dustActivity.setDustXmlData(locationActivity.getTextView5(), locationActivity.getTextView3());
+                        //dustActivity.setDustXmlData("철산","경기");
 
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
@@ -251,6 +252,7 @@ public class HomeFragment extends Fragment {
 
                 // 미세먼지
                 dustActivity.setDustXmlData(locationActivity.getTextView5(), locationActivity.getTextView3());
+                //dustActivity.setDustXmlData("철산","경기");
                 dustpm10Value = dustActivity.getpm10Value(); // 미세먼지 수치
 
                 int pm10Value = Integer.parseInt(dustpm10Value);

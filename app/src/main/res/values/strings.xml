@@ -67,4 +67,36 @@
         ____-__-__ __:__ __
     </string>
 
+    <string name="donation_id1">
+        개발자에게 후원하기
+    </string>
+
+    <string name="donation_name_id1">
+        윤채린
+    </string>
+
+    <string name="donation_name_id2">
+        유소정
+    </string>
+
+    <string name="donation_name_id3">
+        호지원
+    </string>
+
+    <string name="donation_acount_id1">
+        302-0744-2472-21
+    </string>
+
+    <string name="donation_acount_id2">
+        000-0000-0000-00
+    </string>
+
+    <string name="donation_acount_id3">
+        3333-08-5630621
+    </string>
+
+    <string name="guide_btn_id1">
+        ▽
+    </string>
+
 </resources>

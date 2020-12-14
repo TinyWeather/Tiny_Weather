@@ -35,7 +35,7 @@
                 android:layout_below="@id/covid_txt_location"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-                android:text="@string/location_id2"
+                android:text="@string/location_id3"
                 android:textAppearance="@style/txt_black_36" />
 
             <TextView
@@ -75,7 +75,7 @@
                 android:layout_below="@id/covid_img"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:textAppearance="@style/txt_black_40" />
+                android:textAppearance="@style/txt_black_34" />
 
             <TextView
                 android:id="@+id/covid_address_txt"
@@ -85,22 +85,13 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:text="@string/covid_id1"
-                android:textAppearance="@style/txt_black_40" />
-
-            <TextView
-                android:id="@+id/covid_address_txt2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/covid_address_txt"
-                android:layout_centerHorizontal="true"
-                android:text="@string/location_id3"
-                android:textAppearance="@style/txt_black_30" />
+                android:textAppearance="@style/txt_black_34" />
 
             <RelativeLayout
                 android:id="@+id/covid_graph_background"
                 android:layout_width="match_parent"
                 android:layout_height="190dp"
-                android:layout_below="@id/covid_address_txt2"
+                android:layout_below="@id/covid_address_txt"
                 android:layout_centerHorizontal="true"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="20dp"
