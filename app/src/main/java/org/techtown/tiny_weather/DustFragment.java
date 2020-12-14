@@ -106,10 +106,19 @@ public class DustFragment extends Fragment {
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+
+                                initUI(rootView); // 초미세먼지 상단
+                                initUI1(rootView); // 미세먼지 하단
+                                initUI2(rootView); // 초미세먼지
+                                initUI3(rootView); // 이산화질소
+                                initUI4(rootView); // 오존
+                                initUI5(rootView); // 일산화탄소
+                                initUI6(rootView); // 아황산가스
+                                initUI7(rootView); // 전국 대기 상태 : 미세먼지
+
                                 switchBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                                     @Override
                                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                                        // 스위치 버튼이 체크되었는지 검사하여 텍스트뷰에 각 경우에 맞게 출력합니다.
                                         if (isChecked) {
                                             initUI0(rootView); // 초미세먼지 상단
                                             initUI1(rootView); // 미세먼지 하단
@@ -118,7 +127,7 @@ public class DustFragment extends Fragment {
                                             initUI4(rootView); // 오존
                                             initUI5(rootView); // 일산화탄소
                                             initUI6(rootView); // 아황산가스
-                                            initUI7(rootView); // 전국 대기 상태
+                                            initUI8(rootView); // 전국 대기 상태 : 초미세먼지
 
                                         } else {
                                             initUI(rootView); // 미세먼지 상단
@@ -128,7 +137,7 @@ public class DustFragment extends Fragment {
                                             initUI4(rootView); // 오존
                                             initUI5(rootView); // 일산화탄소
                                             initUI6(rootView); // 아황산가스
-                                            initUI7(rootView); // 전국 대기 상태
+                                            initUI7(rootView); // 전국 대기 상태 : 미세먼지
                                         }
                                     }
                                 });
@@ -173,12 +182,21 @@ public class DustFragment extends Fragment {
             public void run() {
                 dustActivity.setDustXmlData(locationActivity.getTextView5(), locationActivity.getTextView3());
               //  dustActivity.setDustXmlData2(timeActivity.getTime2());
-                dustActivity.setDustXmlData3(timeActivity.getTime2(),"PM25");
+                dustActivity.setDustXmlData3(timeActivity.getTime2(),"PM10");
                 //dustActivity.setDustXmlData2("seoul");
 
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+
+                        initUI(rootView); // 초미세먼지 상단
+                        initUI1(rootView); // 미세먼지 하단
+                        initUI2(rootView); // 초미세먼지
+                        initUI3(rootView); // 이산화질소
+                        initUI4(rootView); // 오존
+                        initUI5(rootView); // 일산화탄소
+                        initUI6(rootView); // 아황산가스
+                        initUI7(rootView); // 전국 대기 상태 : 미세먼지
 
                         switchBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                             @Override
@@ -191,7 +209,7 @@ public class DustFragment extends Fragment {
                                     initUI4(rootView); // 오존
                                     initUI5(rootView); // 일산화탄소
                                     initUI6(rootView); // 아황산가스
-                                    initUI7(rootView); // 전국 대기 상태
+                                    initUI8(rootView); // 전국 대기 상태 : 초미세먼지
                                 } else {
                                     initUI(rootView); // 미세먼지 상단
                                     initUI1(rootView); // 미세먼지 하단
@@ -200,7 +218,7 @@ public class DustFragment extends Fragment {
                                     initUI4(rootView); // 오존
                                     initUI5(rootView); // 일산화탄소
                                     initUI6(rootView); // 아황산가스
-                                    initUI7(rootView); // 전국 대기 상태
+                                    initUI7(rootView); // 전국 대기 상태 : 미세먼지
                                 }
                             }
                         });
@@ -513,7 +531,7 @@ public class DustFragment extends Fragment {
         dust_day6_value.setText(dustso2Value + " ppm");
     }
 
-    // 전국 대기 상태
+    // 전국 대기 상태 : 미세먼지
     public void initUI7(ViewGroup rootView) {
 
         TextView dust_list_title_txt = (TextView) getActivity().findViewById(R.id.dust_list_title_txt);
@@ -545,11 +563,11 @@ public class DustFragment extends Fragment {
         linearLayout.removeAllViews();
         // TextView textView1 = (TextView) rootView.getRootView().findViewById(R.id.dust_list_title_txt);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        layoutParams.setMargins(50, 0, 20, 0);
+        layoutParams.setMargins(50, 25, 50, 25);
 
         for ( int i=0 ; i < arrayList1.size(); i++ ) {
-          //  String pm10 = arrayList1.get(i);
-            String pm10 = dustActivity.getBusan();
+            String pm10 = arrayList1.get(i);
+            //  String pm10 = dustActivity.getBusan();
             int pm10Value = Integer.parseInt(pm10);
             if (0 <= pm10Value && pm10Value < 16) {
                 imgDust = R.drawable.dust8;
@@ -579,7 +597,8 @@ public class DustFragment extends Fragment {
 
 
             TextView newTextView = new TextView(rootView.getContext());
-            newTextView.setText(dustActivity.getSeoul());
+            //   newTextView.setText(dustActivity.getSeoul());
+            newTextView.setText(Dustpm10ValueText);
             newTextView.setTextAppearance(R.style.txt_black_18);
             //     newTextView.setText(arrayList1.get(i));
             //newTextView.setText(Dustpm10ValueText);
@@ -616,105 +635,9 @@ public class DustFragment extends Fragment {
         }
     }
 
-    // 전국 대기 상태
+    // 전국 대기 상태 : 초미세먼지
     public void initUI8(ViewGroup rootView) {
-
         TextView dust_list_title_txt = (TextView) getActivity().findViewById(R.id.dust_list_title_txt);
-        dust_list_title_txt.setText("전국 대기 상태 : 미세먼지");
-
-        arrayList1 = new ArrayList(){
-            {
-                add(dustActivity.getSeoul());
-                add(dustActivity.getBusan());
-                add(dustActivity.getDaegu());
-                add(dustActivity.getIncheon());
-                add(dustActivity.getGangwon());
-                add(dustActivity.getDaejeon());
-                add(dustActivity.getUlsan());
-                add(dustActivity.getGyeonggi());
-                add(dustActivity.getGangwon());
-                add(dustActivity.getChungbuk());
-                add(dustActivity.getChungnam());
-                add(dustActivity.getJeonbuk());
-                add(dustActivity.getJeonnam());
-                add(dustActivity.getGyeongbuk());
-                add(dustActivity.getGyeongnam());
-                add(dustActivity.getJeju());
-                add(dustActivity.getSejong());
-            }
-        };
-
-        linearLayout = (LinearLayout) rootView.getRootView().findViewById(R.id.dust_list2);
-        linearLayout.removeAllViews();
-        // TextView textView1 = (TextView) rootView.getRootView().findViewById(R.id.dust_list_title_txt);
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        layoutParams.setMargins(50, 0, 20, 0);
-
-        for ( int i=0 ; i < arrayList1.size(); i++ ) {
-            String pm10 = arrayList1.get(i);
-            int pm10Value = Integer.parseInt(pm10);
-            if (0 <= pm10Value && pm10Value < 16) {
-                imgDust = R.drawable.dust8;
-                Dustpm10ValueText = "최고 좋음";
-            } else if (16 <= pm10Value && pm10Value < 31) {
-                imgDust = R.drawable.dust7;
-                Dustpm10ValueText = "좋음";
-            } else if (31 <= pm10Value && pm10Value < 41) {
-                imgDust = R.drawable.dust6;
-                Dustpm10ValueText = "양호";
-            } else if (41 <= pm10Value && pm10Value < 51) {
-                imgDust = R.drawable.dust5;
-                Dustpm10ValueText = "보통";
-            } else if (51 <= pm10Value && pm10Value < 76) {
-                imgDust = R.drawable.dust4;
-                Dustpm10ValueText = "나쁨";
-            } else if (76 <= pm10Value && pm10Value < 101) {
-                imgDust = R.drawable.dust3;
-                Dustpm10ValueText = "상당히 나쁨";
-            } else if (101 <= pm10Value && pm10Value < 151) {
-                imgDust = R.drawable.dust2;
-                Dustpm10ValueText = "매우 나쁨";
-            } else if (151 <= pm10Value) {
-                imgDust = R.drawable.dust1;
-                Dustpm10ValueText = "최악";
-            }
-
-
-            TextView newTextView = new TextView(rootView.getContext());
-            newTextView.setText(Dustpm10ValueText);
-            newTextView.setTextAppearance(R.style.txt_black_18);
-            //     newTextView.setText(arrayList1.get(i));
-            //newTextView.setText(Dustpm10ValueText);
-            //  newTextView.setTextColor(0xAA1e6de0);
-            //newTextView.setGravity(Gravity.CENTER);
-            // newTextView.setLayoutParams(new ViewGroup.LayoutParams(textView1.getWidth(), ViewGroup.LayoutParams.WRAP_CONTENT));
-
-
-            TextView newTextView2 = new TextView(rootView.getContext());
-            newTextView2.setText(pm10Value +" ㎍/㎥");
-            newTextView2.setTextAppearance(R.style.txt_black_18);
-            // newTextView2.setTextColor(R.id.dust_list_title_txt);
-
-            ImageView imageView1 = new ImageView(rootView.getContext());
-            imageView1.setImageResource(imgDust);
-            imageView1.setLayoutParams(new ViewGroup.LayoutParams(140, 140));
-            imageView1.requestLayout();
-
-
-            TextView newTextView3 = new TextView(rootView.getContext());
-            newTextView3.setText(arrayListPlace.get(i));
-            newTextView3.setTextAppearance(R.style.txt_black_18);
-            // newTextView3.setTextColor(R.id.dust_list_title_txt);
-
-            LinearLayout linearLayout1 = new LinearLayout(rootView.getContext());
-            linearLayout1.setOrientation(LinearLayout.HORIZONTAL);
-            linearLayout1.addView(newTextView3);
-            linearLayout1.addView(newTextView);
-            linearLayout1.addView(newTextView2);
-            linearLayout1.addView(imageView1);
-
-            linearLayout.addView(linearLayout1, layoutParams);
-
-        }
+        dust_list_title_txt.setText("전국 대기 상태 : 초미세먼지");
     }
 }
