@@ -192,7 +192,7 @@ public class DustActivity extends Fragment {
 
     public void setDustXmlData(String location, String sidoName){
 
-        locationActivity = new LocationActivity(getContext());
+    //    locationActivity = new LocationActivity(getContext());
         // 현 위치 시 이름
 
         String queryUrl="http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?"//요청 URL
