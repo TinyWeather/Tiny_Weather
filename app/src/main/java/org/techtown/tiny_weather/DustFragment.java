@@ -46,12 +46,12 @@ public class DustFragment extends Fragment {
     TextView text1, text2;
     Switch switchBtn;
 
-    // 미세먼지
     int imgDust, imgDust1, imgDust2, imgDust3, imgDust4, imgDust5;
-    String dustpm10Value, Dustpm10ValueText, dustpm25Value, Dustpm25ValueText;
-    String dustno2Value, Dustno2ValueText, dusto3Value, Dusto3ValueText, dustcoValue, DustcoValueText, dustso2Value, Dustso2ValueText;
+    String Dustpm10ValueText, Dustpm25ValueText;
+    String Dustno2ValueText, Dusto3ValueText, DustcoValueText, Dustso2ValueText;
+    int dustno2Value, dusto3Value, dustcoValue, dustso2Value, dustpm10Value, dustpm25Value;
 
-    ArrayList<String> arrayList1, arrayList2, arrayList3;
+    ArrayList<Integer> arrayList1, arrayList2, arrayList3;
     ArrayList<String> arrayListPlace = new ArrayList<String>(
             Arrays.asList("서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종", "경기", "강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주")
     );
@@ -100,21 +100,13 @@ public class DustFragment extends Fragment {
                     public void run() {
                         dustActivity.setDustXmlData(locationActivity.getTextView5(), locationActivity.getTextView3());
                    //     dustActivity.setDustXmlData2(timeActivity.getTime2());
-                        dustActivity.setDustXmlData3(timeActivity.getTime2(),"PM10");
+                        dustActivity.setDustXmlData2(timeActivity.getTime2(),"PM10");
+                        dustActivity.setDustXmlData3(timeActivity.getTime2(),"PM25");
                         //dustActivity.setDustXmlData2("seoul");
 
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-
-                                initUI(rootView); // 초미세먼지 상단
-                                initUI1(rootView); // 미세먼지 하단
-                                initUI2(rootView); // 초미세먼지
-                                initUI3(rootView); // 이산화질소
-                                initUI4(rootView); // 오존
-                                initUI5(rootView); // 일산화탄소
-                                initUI6(rootView); // 아황산가스
-                                initUI7(rootView); // 전국 대기 상태 : 미세먼지
 
                                 switchBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                                     @Override
@@ -182,14 +174,15 @@ public class DustFragment extends Fragment {
             public void run() {
                 dustActivity.setDustXmlData(locationActivity.getTextView5(), locationActivity.getTextView3());
               //  dustActivity.setDustXmlData2(timeActivity.getTime2());
-                dustActivity.setDustXmlData3(timeActivity.getTime2(),"PM10");
+                dustActivity.setDustXmlData2(timeActivity.getTime2(),"PM10");
+                dustActivity.setDustXmlData3(timeActivity.getTime2(),"PM25");
                 //dustActivity.setDustXmlData2("seoul");
 
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
 
-                        initUI(rootView); // 초미세먼지 상단
+                        initUI(rootView); // 미세먼지 상단
                         initUI1(rootView); // 미세먼지 하단
                         initUI2(rootView); // 초미세먼지
                         initUI3(rootView); // 이산화질소
@@ -230,9 +223,9 @@ public class DustFragment extends Fragment {
 
     // 상단 얼굴 : 미세먼지
     public void initUI(ViewGroup rootView) {
-        dustpm10Value = dustActivity.getpm10Value(); // 미세먼지 수치
+        int pm10Value = Integer.parseInt(dustActivity.getpm10Value()); // 미세먼지 수치
         // 미세먼지
-        int pm10Value = Integer.parseInt(dustpm10Value);
+       // int pm10Value = dustpm10Value;
         if (0 <= pm10Value && pm10Value < 16) {
             imgDust = R.drawable.dust8;
             Dustpm10ValueText = "최고 좋음";
@@ -264,9 +257,10 @@ public class DustFragment extends Fragment {
 
     // 현 위치 대기 상태 : 미세먼지
     public void initUI1(ViewGroup rootView) {
-        dustpm10Value = dustActivity.getpm10Value(); // 미세먼지 수치
+        dustpm10Value = Integer.parseInt(dustActivity.getpm10Value()); // 미세먼지 수치
+
         // 미세먼지
-        int pm10Value = Integer.parseInt(dustpm10Value);
+        int pm10Value = dustpm10Value;
         if (0 <= pm10Value && pm10Value < 16) {
             imgDust = R.drawable.dust8;
             Dustpm10ValueText = "최고 좋음";
@@ -303,9 +297,9 @@ public class DustFragment extends Fragment {
 
     // 상단 얼굴 : 초미세먼지
     public void initUI0(ViewGroup rootView) {
-        dustpm25Value = dustActivity.getpm25Value(); // 초미세먼지 수치
+        dustpm25Value = Integer.parseInt(dustActivity.getpm25Value()); // 초미세먼지 수치
         // 초미세먼지
-        int pm125Value = Integer.parseInt(dustpm25Value);
+        int pm125Value = dustpm25Value;
         if (0 <= pm125Value && pm125Value < 9) {
             imgDust1 = R.drawable.dust8;
             Dustpm25ValueText = "최고 좋음";
@@ -338,9 +332,9 @@ public class DustFragment extends Fragment {
 
     // 현 위치 대기 상태 : 초미세먼지
     public void initUI2(ViewGroup rootView) {
-        dustpm25Value = dustActivity.getpm25Value(); // 초미세먼지 수치
+        dustpm25Value = Integer.parseInt(dustActivity.getpm25Value()); // 초미세먼지 수치
         // 초미세먼지
-        int pm125Value = Integer.parseInt(dustpm25Value);
+        int pm125Value = dustpm25Value;
         if (0 <= pm125Value && pm125Value < 9) {
             imgDust1 = R.drawable.dust8;
             Dustpm25ValueText = "최고 좋음";
@@ -377,9 +371,10 @@ public class DustFragment extends Fragment {
 
     // 현 위치 대기 상태 : 이산화질소 수치
     public void initUI3(ViewGroup rootView) {
-        dustno2Value = dustActivity.getno2Value(); // 이산화질소 수치
+     //   dustno2Value = Integer.parseInt(dustActivity.getno2Value()); // 이산화질소 수치
+        float no2Value = Float.parseFloat(dustActivity.getno2Value()); // 이산화질소 수치
         // 이산화질소 수치
-        float no2Value = Float.parseFloat(dustno2Value);
+    //    float no2Value = (float) dustno2Value;
         if (0 <= no2Value && no2Value < 0.02) {
             imgDust2 = R.drawable.dust8;
             Dustno2ValueText = "최고 좋음";
@@ -411,14 +406,14 @@ public class DustFragment extends Fragment {
 
         dust_day3_img.setImageResource(imgDust2);
         dust_day3_grade.setText(Dustno2ValueText);
-        dust_day3_value.setText(dustno2Value + " ppm");
+        dust_day3_value.setText(no2Value + " ppm");
     }
 
     // 현 위치 대기 상태 : 오존 농도
     public void initUI4(ViewGroup rootView) {
-        dusto3Value = dustActivity.geto3Value(); //  농도
+        float o3Value = Float.parseFloat(dustActivity.geto3Value()); //  농도
         // 오존 농도
-        float o3Value = Float.parseFloat(dusto3Value);
+     //   float o3Value = (float)dusto3Value;
         if (0 <= o3Value && o3Value < 0.02) {
             imgDust3 = R.drawable.dust8;
             Dusto3ValueText = "최고 좋음";
@@ -450,14 +445,14 @@ public class DustFragment extends Fragment {
 
         dust_day4_img.setImageResource(imgDust3);
         dust_day4_grade.setText(Dusto3ValueText);
-        dust_day4_value.setText(dusto3Value + " ppm");
+        dust_day4_value.setText(o3Value + " ppm");
     }
 
     // 현 위치 대기 상태 : 일산화탄소
     public void initUI5(ViewGroup rootView) {
-        dustcoValue = dustActivity.getcoValue(); // 일산화탄소 수치
+        float coValue = Float.parseFloat(dustActivity.getcoValue()); // 일산화탄소 수치
         // 일산화탄소
-        float coValue = Float.parseFloat(dustcoValue);
+   //     float coValue = (float) dustcoValue;
         if (0 <= coValue && coValue < 1) {
             imgDust4 = R.drawable.dust8;
             DustcoValueText = "최고 좋음";
@@ -489,14 +484,14 @@ public class DustFragment extends Fragment {
 
         dust_day5_img.setImageResource(imgDust4);
         dust_day5_grade.setText(DustcoValueText);
-        dust_day5_value.setText(dustcoValue + " ppm");
+        dust_day5_value.setText(coValue + " ppm");
     }
 
     // 현 위치 대기 상태 : 아황산가스
     public void initUI6(ViewGroup rootView) {
-        dustso2Value = dustActivity.getso2Value(); // 아황산가스 농도
+        float so2Value = Float.parseFloat(dustActivity.getso2Value()); // 아황산가스 농도
         // 아황산가스
-        float so2Value = Float.parseFloat(dustso2Value);
+     //   float so2Value = (float) dustso2Value;
         if (0 <= so2Value && so2Value < 0.01) {
             imgDust5 = R.drawable.dust8;
             Dustso2ValueText = "최고 좋음";
@@ -528,7 +523,7 @@ public class DustFragment extends Fragment {
 
         dust_day6_img.setImageResource(imgDust5);
         dust_day6_grade.setText(Dustso2ValueText);
-        dust_day6_value.setText(dustso2Value + " ppm");
+        dust_day6_value.setText(so2Value + " ppm");
     }
 
     // 전국 대기 상태 : 미세먼지
@@ -566,9 +561,10 @@ public class DustFragment extends Fragment {
         layoutParams.setMargins(50, 25, 50, 25);
 
         for ( int i=0 ; i < arrayList1.size(); i++ ) {
-            String pm10 = arrayList1.get(i);
+
+            int pm10Value = arrayList1.get(i);
             //  String pm10 = dustActivity.getBusan();
-            int pm10Value = Integer.parseInt(pm10);
+         //   int pm10Int = Integer.parseInt(pm10);
             if (0 <= pm10Value && pm10Value < 16) {
                 imgDust = R.drawable.dust8;
                 Dustpm10ValueText = "최고 좋음";
@@ -594,7 +590,6 @@ public class DustFragment extends Fragment {
                 imgDust = R.drawable.dust1;
                 Dustpm10ValueText = "최악";
             }
-
 
             TextView newTextView = new TextView(rootView.getContext());
             //   newTextView.setText(dustActivity.getSeoul());
@@ -625,10 +620,10 @@ public class DustFragment extends Fragment {
 
             LinearLayout linearLayout1 = new LinearLayout(rootView.getContext());
             linearLayout1.setOrientation(LinearLayout.HORIZONTAL);
-            linearLayout1.addView(newTextView);
-            linearLayout1.addView(newTextView2);
-            linearLayout1.addView(imageView1);
-            linearLayout1.addView(newTextView3);
+            linearLayout1.addView(newTextView3); // 지역
+            linearLayout1.addView(imageView1); // 사진
+            linearLayout1.addView(newTextView); // 등급
+            linearLayout1.addView(newTextView2); // 수치
 
             linearLayout.addView(linearLayout1, layoutParams);
 
@@ -639,5 +634,99 @@ public class DustFragment extends Fragment {
     public void initUI8(ViewGroup rootView) {
         TextView dust_list_title_txt = (TextView) getActivity().findViewById(R.id.dust_list_title_txt);
         dust_list_title_txt.setText("전국 대기 상태 : 초미세먼지");
+
+        arrayList2 = new ArrayList(){
+            {
+                add(dustActivity.getSeoul2());
+                add(dustActivity.getBusan2());
+                add(dustActivity.getDaegu2());
+                add(dustActivity.getIncheon2());
+                add(dustActivity.getGangwon2());
+                add(dustActivity.getDaejeon2());
+                add(dustActivity.getUlsan2());
+                add(dustActivity.getGyeonggi2());
+                add(dustActivity.getGangwon2());
+                add(dustActivity.getChungbuk2());
+                add(dustActivity.getChungnam2());
+                add(dustActivity.getJeonbuk2());
+                add(dustActivity.getJeonnam2());
+                add(dustActivity.getGyeongbuk2());
+                add(dustActivity.getGyeongnam2());
+                add(dustActivity.getJeju2());
+                add(dustActivity.getSejong2());
+            }
+        };
+
+        linearLayout = (LinearLayout) rootView.getRootView().findViewById(R.id.dust_list2);
+        linearLayout.removeAllViews();
+        // TextView textView1 = (TextView) rootView.getRootView().findViewById(R.id.dust_list_title_txt);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        layoutParams.setMargins(50, 25, 50, 25);
+
+        for ( int i=0; i < arrayList2.size(); i++ ) {
+
+            int pm25Value = arrayList2.get(i);
+            if (0 <= pm25Value && pm25Value < 9) {
+                imgDust1 = R.drawable.dust8;
+                Dustpm25ValueText = "최고 좋음";
+            } else if (9 <= pm25Value && pm25Value < 16) {
+                imgDust1 = R.drawable.dust7;
+                Dustpm25ValueText = "좋음";
+            } else if (16 <= pm25Value && pm25Value < 21) {
+                imgDust1 = R.drawable.dust6;
+                Dustpm25ValueText = "양호";
+            } else if (21 <= pm25Value && pm25Value < 26) {
+                imgDust1 = R.drawable.dust5;
+                Dustpm25ValueText = "보통";
+            } else if (26 <= pm25Value && pm25Value < 38) {
+                imgDust1 = R.drawable.dust4;
+                Dustpm25ValueText = "나쁨";
+            } else if (38 <= pm25Value && pm25Value < 51) {
+                imgDust1 = R.drawable.dust3;
+                Dustpm25ValueText = "상당히 나쁨";
+            } else if (51 <= pm25Value && pm25Value < 76) {
+                imgDust1 = R.drawable.dust2;
+                Dustpm25ValueText = "매우 나쁨";
+            } else if (76 <= pm25Value) {
+                imgDust1 = R.drawable.dust1;
+                Dustpm25ValueText = "최악";
+            }
+
+            TextView newTextView = new TextView(rootView.getContext());
+            //   newTextView.setText(dustActivity.getSeoul());
+            newTextView.setText(Dustpm25ValueText);
+            newTextView.setTextAppearance(R.style.txt_black_18);
+            //     newTextView.setText(arrayList1.get(i));
+            //newTextView.setText(Dustpm10ValueText);
+            //  newTextView.setTextColor(0xAA1e6de0);
+            //newTextView.setGravity(Gravity.CENTER);
+            // newTextView.setLayoutParams(new ViewGroup.LayoutParams(textView1.getWidth(), ViewGroup.LayoutParams.WRAP_CONTENT));
+
+
+            TextView newTextView2 = new TextView(rootView.getContext());
+            newTextView2.setText(pm25Value + " ㎍/㎥");
+            newTextView2.setTextAppearance(R.style.txt_black_18);
+            // newTextView2.setTextColor(R.id.dust_list_title_txt);
+
+            ImageView imageView1 = new ImageView(rootView.getContext());
+            imageView1.setImageResource(imgDust1);
+            imageView1.setLayoutParams(new ViewGroup.LayoutParams(140, 140));
+            imageView1.requestLayout();
+
+
+            TextView newTextView3 = new TextView(rootView.getContext());
+            newTextView3.setText(arrayListPlace.get(i));
+            newTextView3.setTextAppearance(R.style.txt_black_18);
+            // newTextView3.setTextColor(R.id.dust_list_title_txt);
+
+            LinearLayout linearLayout1 = new LinearLayout(rootView.getContext());
+            linearLayout1.setOrientation(LinearLayout.HORIZONTAL);
+            linearLayout1.addView(newTextView3); // 지역
+            linearLayout1.addView(imageView1); // 사진
+            linearLayout1.addView(newTextView); // 등급
+            linearLayout1.addView(newTextView2); // 수치
+
+            linearLayout.addView(linearLayout1, layoutParams);
+        }
     }
 }

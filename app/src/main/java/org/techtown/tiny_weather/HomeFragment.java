@@ -58,6 +58,7 @@ public class HomeFragment extends Fragment {
     // 미세먼지
     int imgDust;
     String dustpm10Value;
+    String Dustpm10ValueText;
     ImageView dustImg;
     TextView dustText1;
 
@@ -147,9 +148,7 @@ public class HomeFragment extends Fragment {
                 }, 500);
             }
         });
-
         initUI(rootView);
-
         return rootView;
     }
 
@@ -258,36 +257,37 @@ public class HomeFragment extends Fragment {
                 int pm10Value = Integer.parseInt(dustpm10Value);
                 if( 0 <= pm10Value &&  pm10Value < 16 ){
                     imgDust = R.drawable.dust8;
-                    dustpm10Value = "최고 좋음";
+                    Dustpm10ValueText = "최고 좋음";
                 }
                 else if( 16 <= pm10Value &&  pm10Value < 31 ){
                     imgDust = R.drawable.dust7;
-                    dustpm10Value = "좋음";
+                    Dustpm10ValueText = "좋음";
                 }
                 else if( 31 <= pm10Value &&  pm10Value < 41 ){
                     imgDust = R.drawable.dust6;
-                    dustpm10Value = "양호";
+                    Dustpm10ValueText = "양호";
                 }
                 else if( 41 <= pm10Value &&  pm10Value < 51 ){
                     imgDust = R.drawable.dust5;
-                    dustpm10Value = "보통";
+                    Dustpm10ValueText = "보통";
                 }
                 else if( 51 <= pm10Value &&  pm10Value < 76 ){
                     imgDust = R.drawable.dust4;
-                    dustpm10Value = "나쁨";
+                    Dustpm10ValueText = "나쁨";
                 }
                 else if( 76 <= pm10Value &&  pm10Value < 101 ){
                     imgDust = R.drawable.dust3;
-                    dustpm10Value = "상당히 나쁨";
+                    Dustpm10ValueText = "상당히 나쁨";
                 }
                 else if( 101 <= pm10Value &&  pm10Value < 151 ){
                     imgDust = R.drawable.dust2;
-                    dustpm10Value = "매우 나쁨";
+                    Dustpm10ValueText = "매우 나쁨";
                 }
                 else if( 151 <= pm10Value){
                     imgDust = R.drawable.dust1;
-                    dustpm10Value = "최악";
+                    Dustpm10ValueText = "최악";
                 }
+
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -300,7 +300,7 @@ public class HomeFragment extends Fragment {
                         covidText2.setText(covidIsolIngCnt);
                         covidText3.setText(covidDate);
 
-                        dustText1.setText(dustpm10Value);
+                        dustText1.setText(Dustpm10ValueText);
                         dustImg.setImageResource(imgDust);
                     }
                 });
