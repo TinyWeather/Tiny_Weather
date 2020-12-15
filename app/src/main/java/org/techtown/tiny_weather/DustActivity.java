@@ -330,7 +330,7 @@ public class DustActivity extends Fragment {
             while (parserEvent != XmlPullParser.END_DOCUMENT){
                 switch(parserEvent){
                     case XmlPullParser.START_TAG://parser가 시작 태그를 만나면 실행
-           //             System.out.println("============= 미세먼지 태그 만남=============");
+                        //             System.out.println("============= 미세먼지 태그 만남=============");
                         if(parser.getName().equals("item")){ // 목록
                             locationCheck = false;
                         }
@@ -375,10 +375,10 @@ public class DustActivity extends Fragment {
                             }
                             dataTimeCheck = false;
                         }*/
-                        if(mangNameCheck) {
+                  /*      if(mangNameCheck) {
                             //System.out.println(parser.getText());
                             mangNameCheck = false;
-                        }
+                        }*/
                         if(stationNameCheck){
                             if(location.contains(parser.getText())){
                                 locationCheck = true;

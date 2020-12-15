@@ -173,10 +173,8 @@ public class DustFragment extends Fragment {
             @Override
             public void run() {
                 dustActivity.setDustXmlData(locationActivity.getTextView5(), locationActivity.getTextView3());
-              //  dustActivity.setDustXmlData2(timeActivity.getTime2());
                 dustActivity.setDustXmlData2(timeActivity.getTime2(),"PM10");
                 dustActivity.setDustXmlData3(timeActivity.getTime2(),"PM25");
-                //dustActivity.setDustXmlData2("seoul");
 
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
@@ -225,7 +223,6 @@ public class DustFragment extends Fragment {
     public void initUI(ViewGroup rootView) {
         int pm10Value = Integer.parseInt(dustActivity.getpm10Value()); // 미세먼지 수치
         // 미세먼지
-       // int pm10Value = dustpm10Value;
         if (0 <= pm10Value && pm10Value < 16) {
             imgDust = R.drawable.dust8;
             Dustpm10ValueText = "최고 좋음";
@@ -258,7 +255,6 @@ public class DustFragment extends Fragment {
     // 현 위치 대기 상태 : 미세먼지
     public void initUI1(ViewGroup rootView) {
         dustpm10Value = Integer.parseInt(dustActivity.getpm10Value()); // 미세먼지 수치
-
         // 미세먼지
         int pm10Value = dustpm10Value;
         if (0 <= pm10Value && pm10Value < 16) {
@@ -371,10 +367,8 @@ public class DustFragment extends Fragment {
 
     // 현 위치 대기 상태 : 이산화질소 수치
     public void initUI3(ViewGroup rootView) {
-     //   dustno2Value = Integer.parseInt(dustActivity.getno2Value()); // 이산화질소 수치
         float no2Value = Float.parseFloat(dustActivity.getno2Value()); // 이산화질소 수치
         // 이산화질소 수치
-    //    float no2Value = (float) dustno2Value;
         if (0 <= no2Value && no2Value < 0.02) {
             imgDust2 = R.drawable.dust8;
             Dustno2ValueText = "최고 좋음";
@@ -528,7 +522,6 @@ public class DustFragment extends Fragment {
 
     // 전국 대기 상태 : 미세먼지
     public void initUI7(ViewGroup rootView) {
-
         TextView dust_list_title_txt = (TextView) getActivity().findViewById(R.id.dust_list_title_txt);
         dust_list_title_txt.setText("전국 대기 상태 : 미세먼지");
 
