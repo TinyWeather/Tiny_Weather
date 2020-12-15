@@ -26,6 +26,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.google.android.material.navigation.NavigationView;
 
 import java.io.IOException;
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -38,6 +39,7 @@ public class HomeFragment extends Fragment {
     WeatherActivity weatherActivity;
     CovidActivity covidActivity;
     DustActivity dustActivity;
+    LocationDustActivity locationDustActivity;
 
     SwipeRefreshLayout swipeRefreshLayout;
     TextView text, text2, text3;
@@ -62,6 +64,10 @@ public class HomeFragment extends Fragment {
     ImageView dustImg;
     TextView dustText1;
 
+    // TM 좌표 변환
+    int dustCount;
+    String dustTmX, dustTmY;
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -71,6 +77,7 @@ public class HomeFragment extends Fragment {
         weatherActivity = new WeatherActivity();
         covidActivity = new CovidActivity();
         dustActivity = new DustActivity();
+        locationDustActivity = new LocationDustActivity();
     }
 
     @Nullable
@@ -117,6 +124,23 @@ public class HomeFragment extends Fragment {
                         dustActivity.setDustXmlData(locationActivity.getTextView5(), locationActivity.getTextView3());
                         //dustActivity.setDustXmlData("철산","경기");
 
+                        // TM 좌표 변환
+                        String getTextView6 = locationActivity.getTextView6(); // 강서구 대저 / 양천구 목
+                        String getTextView7 = locationActivity.getTextView7(); // 강서구 대저동 / 양천구 목동
+                        String getTextView = locationActivity.getTextView(); // 강서구 대저2동 / 양천구 목1동
+
+                        locationDustActivity.setLocationDustXmlData(getTextView6);
+                        dustCount = Integer.parseInt(locationDustActivity.gettotalCountValue());
+                        if (dustCount == 1){
+                            locationDustActivity.setLocationDustXmlData2(getTextView7);
+                            dustTmX = locationDustActivity.getTmXValue();
+                            dustTmY = locationDustActivity.getTmYValue();
+                        }else{
+                            locationDustActivity.setLocationDustXmlData2(getTextView);
+                            dustTmX = locationDustActivity.getTmXValue();
+                            dustTmY = locationDustActivity.getTmYValue();
+                        }
+
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -128,7 +152,7 @@ public class HomeFragment extends Fragment {
                                 covidText2.setText(covidIsolIngCnt);
                                 covidText3.setText(covidDate);
 
-                                dustText1.setText(dustpm10Value);
+                                dustText1.setText(Dustpm10ValueText);
                             }
                         });
                     }
@@ -254,7 +278,7 @@ public class HomeFragment extends Fragment {
                 //dustActivity.setDustXmlData("철산","경기");
                 dustpm10Value = dustActivity.getpm10Value(); // 미세먼지 수치
 
-                int pm10Value = Integer.parseInt(dustpm10Value);
+                final int pm10Value = Integer.parseInt(dustpm10Value);
                 if( 0 <= pm10Value &&  pm10Value < 16 ){
                     imgDust = R.drawable.dust8;
                     Dustpm10ValueText = "최고 좋음";
@@ -288,6 +312,23 @@ public class HomeFragment extends Fragment {
                     Dustpm10ValueText = "최악";
                 }
 
+                // TM 좌표 변환
+                String getTextView6 = locationActivity.getTextView6(); // 강서구 대저 / 양천구 신정
+                String getTextView7 = locationActivity.getTextView7(); // 강서구 대저동 / 양천구 목동
+                String getTextView = locationActivity.getTextView(); // 강서구 대저2동 / 양천구 목1동
+
+                locationDustActivity.setLocationDustXmlData(getTextView6);
+                dustCount = Integer.parseInt(locationDustActivity.gettotalCountValue());
+                if (dustCount == 1){
+                    locationDustActivity.setLocationDustXmlData2(getTextView7);
+                    dustTmX = locationDustActivity.getTmXValue();
+                    dustTmY = locationDustActivity.getTmYValue();
+                }else{
+                    locationDustActivity.setLocationDustXmlData2(getTextView);
+                    dustTmX = locationDustActivity.getTmXValue();
+                    dustTmY = locationDustActivity.getTmYValue();
+                }
+
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -300,6 +341,7 @@ public class HomeFragment extends Fragment {
                         covidText2.setText(covidIsolIngCnt);
                         covidText3.setText(covidDate);
 
+                  //      dustText1.setText(dustTmX+dustTmY);
                         dustText1.setText(Dustpm10ValueText);
                         dustImg.setImageResource(imgDust);
                     }

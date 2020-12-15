@@ -261,6 +261,21 @@ public class LocationActivity extends Service implements LocationListener {
         return getAddress; // __(시 단위) __구
     }
 
+    // LocationDustActivity totalCount 에 사용
+    public String getTextView6() {
+        String address = getTextView();
+        String getAddress = address.substring(0, address.length()-2);
+
+        return getAddress; // __구 __동 -> 동에서 숫자와 '동' 뺀 것 ex) 목1동 => 목 / 괴안동 => 괴안
+    }
+
+    public String getTextView7() {
+        String address = getTextView();
+        String getAddress = address.substring(0, address.length()-2)+"동";
+
+        return getAddress; // __구 __동 -> 동에서 숫자 뺀 것 ex) 목1동 => 목동
+    }
+
     public static String getAddress(Context mContext, double lat, double lon) {
         String nowAddress ="현재 위치를 확인 할 수 없습니다.";
         Geocoder geocoder = new Geocoder(mContext, Locale.KOREA);
