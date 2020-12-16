@@ -286,9 +286,9 @@ public class HomeFragment extends Fragment {
         }
 
         // TM 좌표 변환
-        String getTextView6 = locationActivity.getTextView6(); // 강서구 대저 / 양천구 신정
-        String getTextView7 = locationActivity.getTextView7(); // 강서구 대저동 / 양천구 목동
-        String getTextView = locationActivity.getTextView(); // 강서구 대저2동 / 양천구 목1동
+        String getTextView6 = locationActivity.getTextView6(); // 강서구 대저 / 양천구 목 / 부평구 삼산 / 김해시 진영 / 가평군 가평
+        String getTextView7 = locationActivity.getTextView7(); // 강서구 대저동 / 양천구 목동 / 부평구 삼산동 / 김해시 진영읍 / 가평군 가평읍
+        String getTextView = locationActivity.getTextView(); // 강서구 대저2동 / 양천구 목1동 / 부평구 삼산동 / 김해시 진영읍 / 가평군 가평읍
 
         locationDustActivity.setLocationDustXmlData(getTextView6);
         dustCount = Integer.parseInt(locationDustActivity.gettotalCountValue());

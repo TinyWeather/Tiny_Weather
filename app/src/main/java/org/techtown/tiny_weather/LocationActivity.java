@@ -281,18 +281,19 @@ public class LocationActivity extends Service implements LocationListener {
     // LocationDustActivity totalCount 에 사용
     public String getTextView6() {
         String address = getTextView();
-        address = address.substring(0, address.length()-1);
+        address = address.substring(0, address.length()-1); // 읍 면 동
         address = address.replaceAll("[0-9]", "");
         String getAddress = address;
 
-        return getAddress; // __구 __동 -> 동에서 숫자와 '동' 뺀 것 ex) 목1동 => 목 / 괴안동 => 괴안
+        return getAddress; // __시군구 __읍면동 -> '숫자'와 '읍면동' 뺀 것 ex) 목1동 => 목 / 괴안동 => 괴안
     }
 
     public String getTextView7() {
         String address = getTextView();
-        String getAddress = address.substring(0, address.length()-2)+"동";
+        address = address.replaceAll("[0-9]", "");
+        String getAddress = address;
 
-        return getAddress; // __구 __동 -> 동에서 숫자 뺀 것 ex) 목1동 => 목동
+        return getAddress; // __시군구 __읍면동 -> 숫자 뺀 것 ex) 목1동 => 목동
     }
 
     public static String getAddress(Context mContext, double lat, double lon) {
