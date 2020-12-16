@@ -46,7 +46,7 @@ public class WeatherFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        locationActivity = new LocationActivity(context);
+        locationActivity = new LocationActivity(context, getActivity());
         timeActivity = new TimeActivity();
         weatherActivity = new WeatherActivity();
     }

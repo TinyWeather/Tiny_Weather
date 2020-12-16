@@ -1,9 +1,12 @@
 package org.techtown.tiny_weather;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -13,6 +16,8 @@ import android.os.Bundle;
 import android.os.IBinder;
 
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import java.io.IOException;
 import java.util.List;
@@ -20,7 +25,11 @@ import java.util.Locale;
 
 public class LocationActivity extends Service implements LocationListener {
     private final Context mContext;
-    int count = 0;
+    private final Activity activity;
+
+    private static final int PERMISSIONS_REQUEST_CODE = 100;
+    String[] REQUIRED_PERMISSIONS  = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
+
     boolean isGPSEnable = false;
 
     boolean isNetWorkEnable = false;
@@ -44,8 +53,9 @@ public class LocationActivity extends Service implements LocationListener {
 
     protected LocationManager locationManager;
 
-    public LocationActivity(Context mContext) {
+    public LocationActivity(Context mContext, Activity activity) {
         this.mContext = mContext;
+        this.activity = activity;
         getLocation();
     }
 
@@ -60,31 +70,38 @@ public class LocationActivity extends Service implements LocationListener {
             isNetWorkEnable = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
 
+            int hasFineLocationPermission = ContextCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION);
+            int hasCoarseLocationPermission = ContextCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION);
+
             if (!isGPSEnable && !isNetWorkEnable) {
             } else {
-                this.isGetLocation = true;
-                if (isNetWorkEnable) {
-                    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, MIN_DISTANCE_UPDATE, this);
-                    if (locationManager != null) {
-                        location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-                        if (location != null) {
-                            lat = location.getLatitude();
-                            lon = location.getLongitude();
-                        }
-                    }
-                }
-                if (isGPSEnable) {
-                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, MIN_DISTANCE_UPDATE, this);
-                    if (location == null) {
-
+                if (hasFineLocationPermission == PackageManager.PERMISSION_GRANTED && hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED) {this.isGetLocation = true;
+                    if (isNetWorkEnable) {
+                        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, MIN_DISTANCE_UPDATE, this);
                         if (locationManager != null) {
-                            location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                            location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
                             if (location != null) {
                                 lat = location.getLatitude();
                                 lon = location.getLongitude();
                             }
                         }
                     }
+                    if (isGPSEnable) {
+                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, MIN_DISTANCE_UPDATE, this);
+                        if (location == null) {
+
+                            if (locationManager != null) {
+                                location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                                if (location != null) {
+                                    lat = location.getLatitude();
+                                    lon = location.getLongitude();
+                                }
+                            }
+                        }
+                    }
+                }
+                else {
+                    ActivityCompat.requestPermissions(activity, REQUIRED_PERMISSIONS, PERMISSIONS_REQUEST_CODE);
                 }
             }
         } catch (Exception e) {
@@ -264,7 +281,9 @@ public class LocationActivity extends Service implements LocationListener {
     // LocationDustActivity totalCount 에 사용
     public String getTextView6() {
         String address = getTextView();
-        String getAddress = address.substring(0, address.length()-2);
+        address = address.substring(0, address.length()-1);
+        address = address.replaceAll("[0-9]", "");
+        String getAddress = address;
 
         return getAddress; // __구 __동 -> 동에서 숫자와 '동' 뺀 것 ex) 목1동 => 목 / 괴안동 => 괴안
     }

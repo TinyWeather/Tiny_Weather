@@ -1,5 +1,6 @@
 package org.techtown.tiny_weather;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -16,7 +17,17 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MapFragment extends Fragment {
     LocationActivity locationActivity;
+    TimeActivity timeActivity;
     SwipeRefreshLayout swipeRefreshLayout;
+    TextView text, text2;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        locationActivity = new LocationActivity(context, getActivity());
+        timeActivity = new TimeActivity();
+    }
 
     @Nullable
     @Override
@@ -27,9 +38,8 @@ public class MapFragment extends Fragment {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                locationActivity = new LocationActivity(getContext());
-                TextView text = (TextView) getActivity().findViewById(R.id.map_txt_location2);
                 text.setText(locationActivity.getTextView());
+                text2.setText(timeActivity.getTime());
 
                 NavigationView navigationView = (NavigationView) rootView.getRootView().findViewById(R.id.nav_view);
                 View header = navigationView.getHeaderView(0);
@@ -55,9 +65,11 @@ public class MapFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        locationActivity = new LocationActivity(getContext());
-        TextView text = (TextView) getActivity().findViewById(R.id.map_txt_location2);
+        text = (TextView) getActivity().findViewById(R.id.map_txt_location2);
+        text2 = (TextView) getActivity().findViewById(R.id.map_update_time2);
+
         text.setText(locationActivity.getTextView());
+        text2.setText(timeActivity.getTime());
     }
 
     public void initUI(ViewGroup rootView) {

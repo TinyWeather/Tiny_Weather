@@ -15,7 +15,7 @@ public class DustActivity extends Fragment {
     String key="kd3zWLkxFKVIuT0XejOXR1qWycWNx03d21q75t5AHS2gIRKGQXQhqtwrvDWy3Huf04BaJZQL2vQHDvEkT8coDw%3D%3D";
     String What = ""; // PM10, PM25
     String sidoName = ""; // 전국 17개 시 단위
-    
+
     // 현 위치 대기 상태
     String pm10Value, pm25Value, no2Value, o3Value, coValue, so2Value;
 
@@ -23,7 +23,7 @@ public class DustActivity extends Fragment {
     String dataTime;
     int seoulValue, busanValue, daeguValue, incheonValue, gwangjuValue, daejeonValue, ulsanValue, sejongValue;
     int gyeonggiValue, gangwonValue, chungbukValue, chungnamValue, jeonbukValue, jeonnamValue, gyeongbukValue, gyeongnamValue, jejuValue;
-    
+
     // 전국 대기 상태 : 초미세먼지
     String dataTime2;
     int seoulValue2, busanValue2, daeguValue2, incheonValue2, gwangjuValue2, daejeonValue2, ulsanValue2, sejongValue2;
@@ -32,6 +32,7 @@ public class DustActivity extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+    //    timeActivity = new TimeActivity();
     }
 
     // 현 위치 대기 상태

@@ -34,13 +34,34 @@
             android:text="@string/location_id2"
             android:textAppearance="@style/txt_black_36" />
 
+        <TextView
+            android:id="@+id/map_update_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/map_txt_location2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="@string/update_time_id1"
+            android:textAlignment="center"
+            android:textAppearance="@style/txt_black_18" />
+
+        <TextView
+            android:id="@+id/map_update_time2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/map_update_time"
+            android:layout_centerHorizontal="true"
+            android:text="@string/update_time_id2"
+            android:textAlignment="center"
+            android:textAppearance="@style/txt_black_18" />
+
         <ImageView
             android:id="@+id/map_image"
             android:layout_width="wrap_content"
             android:layout_height="380dp"
-            android:layout_below="@id/map_txt_location2"
+            android:layout_below="@id/map_update_time2"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="50dp"
             app:srcCompat="@drawable/national_map" />
 
     </RelativeLayout>

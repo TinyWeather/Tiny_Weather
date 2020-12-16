@@ -59,7 +59,7 @@ public class DustFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        locationActivity = new LocationActivity(context);
+        locationActivity = new LocationActivity(context, getActivity());
         timeActivity = new TimeActivity();
         dustActivity = new DustActivity();
     }
@@ -89,9 +89,6 @@ public class DustFragment extends Fragment {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                locationActivity = new LocationActivity(getContext());
-                timeActivity = new TimeActivity();
-
                 text1.setText(locationActivity.getTextView5());
                 text2.setText(timeActivity.getTime());
 

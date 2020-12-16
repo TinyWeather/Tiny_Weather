@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity implements onTabItemSelected
 
         View header = navigationView.getHeaderView(0);
         TextView text = (TextView) header.findViewById(R.id.user_location);
-        LocationActivity locationActivity = new LocationActivity(getApplicationContext());
+        LocationActivity locationActivity = new LocationActivity(getApplicationContext(), MainActivity.this);
         text.setText(locationActivity.getTextView());
     }
 

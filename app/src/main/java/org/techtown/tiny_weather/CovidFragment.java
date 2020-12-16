@@ -1,6 +1,7 @@
 package org.techtown.tiny_weather;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -43,7 +44,7 @@ public class CovidFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        locationActivity = new LocationActivity(context);
+        locationActivity = new LocationActivity(context, getActivity());
         timeActivity = new TimeActivity();
         covidActivity = new CovidActivity();
     }
@@ -74,9 +75,6 @@ public class CovidFragment extends Fragment {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                locationActivity = new LocationActivity(getContext());
-                timeActivity = new TimeActivity();
-
                 text.setText(locationActivity.getTextView2());
                 text2.setText(locationActivity.getTextView2());
                 text3.setText(timeActivity.getTime());

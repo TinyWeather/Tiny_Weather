@@ -42,6 +42,7 @@ public class HomeFragment extends Fragment {
     DustActivity dustActivity;
     LocationDustActivity locationDustActivity;
     DustStationActivity dustStationActivity;
+    ViewGroup rootView;
 
     SwipeRefreshLayout swipeRefreshLayout;
     TextView text, text2, text3;
@@ -76,7 +77,7 @@ public class HomeFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        locationActivity = new LocationActivity(context);
+        locationActivity = new LocationActivity(context, getActivity());
         timeActivity = new TimeActivity();
         weatherActivity = new WeatherActivity();
         covidActivity = new CovidActivity();
@@ -88,15 +89,12 @@ public class HomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.activity_home, container, false);
+        rootView = (ViewGroup) inflater.inflate(R.layout.activity_home, container, false);
 
         swipeRefreshLayout = (SwipeRefreshLayout) rootView.getRootView().findViewById(R.id.refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                locationActivity = new LocationActivity(getContext());
-                timeActivity = new TimeActivity();
-
                 text.setText(locationActivity.getTextView());
                 text2.setText(locationActivity.getTextView2());
                 text3.setText(timeActivity.getTime());
@@ -104,67 +102,12 @@ public class HomeFragment extends Fragment {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        // 날씨
-                        weatherActivity.setWeatherJsonData(locationActivity.getLat(), locationActivity.getLon());
-                        weatherActivity.setWeatherJsonData2(locationActivity.getLat(), locationActivity.getLon());
-                        weather = weatherActivity.getWeather();
-                        minWeather = weatherActivity.getMinWeather();
-                        maxWeather = weatherActivity.getMaxWeather();
-                        yWeather = weatherActivity.getyWeather();
-                        subWeather = weather - yWeather;
-                        if(subWeather == 0)
-                            subWeatherStr = "어제와 같아요";
-                        else if(subWeather < 0)
-                            subWeatherStr = "어제보다 " + (-subWeather) + " ℃ 낮아요";
-                        else if(subWeather > 0)
-                            subWeatherStr = "어제보다 " + subWeather + " ℃ 높아요";
-
-                        // 코로나
-                        covidActivity.setCovidXmlData(locationActivity.getTextView3());
-                        covidIncDec = "1일 확진자 : " + covidActivity.getIncDec() + "명";
-                        covidIsolIngCnt = "누적 확진자 : " + covidActivity.getIsolIngCnt() + "명";
-                        covidDate = "(" + covidActivity.getToday() + ")";
-
-                        // 미세먼지
-                        dustActivity.setDustXmlData(locationActivity.getTextView5(), locationActivity.getTextView3());
-                        //dustActivity.setDustXmlData("철산","경기");
-
-                        // TM 좌표 변환
-                        String getTextView6 = locationActivity.getTextView6(); // 강서구 대저 / 양천구 목
-                        String getTextView7 = locationActivity.getTextView7(); // 강서구 대저동 / 양천구 목동
-                        String getTextView = locationActivity.getTextView(); // 강서구 대저2동 / 양천구 목1동
-
-                        locationDustActivity.setLocationDustXmlData(getTextView6);
-                        dustCount = Integer.parseInt(locationDustActivity.gettotalCountValue());
-                        if (dustCount == 1){
-                            locationDustActivity.setLocationDustXmlData2(getTextView7);
-                            dustTmX = locationDustActivity.getTmXValue();
-                            dustTmY = locationDustActivity.getTmYValue();
-                        }else{
-                            locationDustActivity.setLocationDustXmlData2(getTextView);
-                            dustTmX = locationDustActivity.getTmXValue();
-                            dustTmY = locationDustActivity.getTmYValue();
-                        }
-
-                        // 실험
-                        /*dustStationActivity.setDustStationXmlData("187244.391459","445896.46757");
-                        ArrayList arrayList222 = dustStationActivity.getStationList();
-                        AAA = arrayList222.get(0).toString();*/
-
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                weatherText1.setText(weather + " ℃");
-                                weatherText2.setText(subWeatherStr);
-                                weatherText3.setText("최저 " + minWeather + " ℃ / 최고 " + maxWeather + " ℃");
-
-                                covidText1.setText(covidIncDec);
-                                covidText2.setText(covidIsolIngCnt);
-                                covidText3.setText(covidDate);
-
-                                ///  dustText1.setText(AAA);
-                              ///  dustText1.setText(dustTmX+dustTmY);
-                                dustText1.setText(Dustpm10ValueText);
+                                initUI_Weather(rootView);
+                                initUI_Dust(rootView);
+                                initUI_Covid(rootView);
                             }
                         });
                     }
@@ -184,7 +127,6 @@ public class HomeFragment extends Fragment {
                 }, 500);
             }
         });
-        initUI(rootView);
         return rootView;
     }
 
@@ -215,159 +157,173 @@ public class HomeFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                // 날씨
-                weatherActivity.setWeatherJsonData(locationActivity.getLat(), locationActivity.getLon());
-                weatherActivity.setWeatherJsonData2(locationActivity.getLat(), locationActivity.getLon());
-                weather = weatherActivity.getWeather();
-                minWeather = weatherActivity.getMinWeather();
-                maxWeather = weatherActivity.getMaxWeather();
-                yWeather = weatherActivity.getyWeather();
-                idWeather = weatherActivity.getIdWeather();
-
-                subWeather = weather - yWeather;
-                if(subWeather == 0)
-                    subWeatherStr = "어제와 같아요";
-                else if(subWeather < 0)
-                    subWeatherStr = "어제보다 " + (-subWeather) + " ℃ 낮아요";
-                else if(subWeather > 0)
-                    subWeatherStr = "어제보다 " + subWeather + " ℃ 높아요";
-
-                if(idWeather < 300) {
-                    if(time >= 6 && time < 18)
-                        imgWeather = R.drawable.storm_day;
-                    else if(time >= 18 && time < 22)
-                        imgWeather = R.drawable.storm;
-                    else
-                        imgWeather = R.drawable.storm_night;
-                }
-                else if(idWeather < 600) {
-                    if(time >= 6 && time < 18)
-                        imgWeather = R.drawable.rainy_day;
-                    else if(time >= 18 && time < 22)
-                        imgWeather = R.drawable.rainy;
-                    else
-                        imgWeather = R.drawable.rainy_night;
-                }
-                else if(idWeather < 700) {
-                    if(time >= 6 && time < 18)
-                        imgWeather = R.drawable.snowy_day;
-                    else if(time >= 18 && time < 22)
-                        imgWeather = R.drawable.snowy;
-                    else
-                        imgWeather = R.drawable.snowy_night;
-                }
-                else if(idWeather < 800) {
-                    if(time >= 6 && time < 18)
-                        imgWeather = R.drawable.windy_day;
-                    else if(time >= 18 && time < 22)
-                        imgWeather = R.drawable.windy;
-                    else
-                        imgWeather = R.drawable.windy_night;
-                }
-                else if(idWeather == 800) {
-                    if(time >= 6 && time < 20)
-                        imgWeather = R.drawable.sun;
-                    else
-                        imgWeather = R.drawable.moon;
-                }
-                else if(idWeather < 900) {
-                    if(time >= 6 && time < 18)
-                        imgWeather = R.drawable.cloudy_day;
-                    else if(time >= 18 && time < 22)
-                        imgWeather = R.drawable.cloud;
-                    else
-                        imgWeather = R.drawable.cloudy_night;
-                }
-
-                // 코로나
-                covidActivity.setCovidXmlData(locationActivity.getTextView3());
-                covidIncDec = "1일 확진자 : " + covidActivity.getIncDec() + "명";
-                covidIsolIngCnt = "누적 확진자 : " + covidActivity.getIsolIngCnt() + "명";
-                covidDate = "(" + covidActivity.getToday() + ")";
-
-                // 미세먼지
-                dustActivity.setDustXmlData(locationActivity.getTextView5(), locationActivity.getTextView3());
-                //dustActivity.setDustXmlData("철산","경기");
-                dustpm10Value = dustActivity.getpm10Value(); // 미세먼지 수치
-
-                final int pm10Value = Integer.parseInt(dustpm10Value);
-                if( 0 <= pm10Value &&  pm10Value < 16 ){
-                    imgDust = R.drawable.dust8;
-                    Dustpm10ValueText = "최고 좋음";
-                }
-                else if( 16 <= pm10Value &&  pm10Value < 31 ){
-                    imgDust = R.drawable.dust7;
-                    Dustpm10ValueText = "좋음";
-                }
-                else if( 31 <= pm10Value &&  pm10Value < 41 ){
-                    imgDust = R.drawable.dust6;
-                    Dustpm10ValueText = "양호";
-                }
-                else if( 41 <= pm10Value &&  pm10Value < 51 ){
-                    imgDust = R.drawable.dust5;
-                    Dustpm10ValueText = "보통";
-                }
-                else if( 51 <= pm10Value &&  pm10Value < 76 ){
-                    imgDust = R.drawable.dust4;
-                    Dustpm10ValueText = "나쁨";
-                }
-                else if( 76 <= pm10Value &&  pm10Value < 101 ){
-                    imgDust = R.drawable.dust3;
-                    Dustpm10ValueText = "상당히 나쁨";
-                }
-                else if( 101 <= pm10Value &&  pm10Value < 151 ){
-                    imgDust = R.drawable.dust2;
-                    Dustpm10ValueText = "매우 나쁨";
-                }
-                else if( 151 <= pm10Value){
-                    imgDust = R.drawable.dust1;
-                    Dustpm10ValueText = "최악";
-                }
-
-                // TM 좌표 변환
-                String getTextView6 = locationActivity.getTextView6(); // 강서구 대저 / 양천구 신정
-                String getTextView7 = locationActivity.getTextView7(); // 강서구 대저동 / 양천구 목동
-                String getTextView = locationActivity.getTextView(); // 강서구 대저2동 / 양천구 목1동
-
-                locationDustActivity.setLocationDustXmlData(getTextView6);
-                dustCount = Integer.parseInt(locationDustActivity.gettotalCountValue());
-                if (dustCount == 1){
-                    locationDustActivity.setLocationDustXmlData2(getTextView7);
-                    dustTmX = locationDustActivity.getTmXValue();
-                    dustTmY = locationDustActivity.getTmYValue();
-                }else{
-                    locationDustActivity.setLocationDustXmlData2(getTextView);
-                    dustTmX = locationDustActivity.getTmXValue();
-                    dustTmY = locationDustActivity.getTmYValue();
-                }
-                // 실험
-               /* dustStationActivity.setDustStationXmlData("187244.391459","445896.46757");
-                ArrayList arrayList222 = dustStationActivity.getStationList();
-                AAA = arrayList222.get(0).toString();*/
-
+                initUI_Weather(rootView);
+                initUI_Dust(rootView);
+                initUI_Covid(rootView);
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        weatherText1.setText(weather + " ℃");
-                        weatherText2.setText(subWeatherStr);
-                        weatherText3.setText("최저 " + minWeather + " ℃ / 최고 " + maxWeather + " ℃");
-                        weatgerImg1.setImageResource(imgWeather);
-
-                        covidText1.setText(covidIncDec);
-                        covidText2.setText(covidIsolIngCnt);
-                        covidText3.setText(covidDate);
-
-                        dustText1.setText(Dustpm10ValueText);
-                  //      dustText1.setText(dustTmX+dustTmY);
-                  //      dustText1.setText(AAA);
-                        dustImg.setImageResource(imgDust);
+                        initUI_Weather2(rootView);
+                        initUI_Dust2(rootView);
+                        initUI_Covid2(rootView);
                     }
                 });
             }
         }).start();
     }
 
-    public void initUI(ViewGroup rootView) {
+    public void initUI_Weather(ViewGroup rootView) {
+        weatherActivity.setWeatherJsonData(locationActivity.getLat(), locationActivity.getLon());
+        weatherActivity.setWeatherJsonData2(locationActivity.getLat(), locationActivity.getLon());
+        weather = weatherActivity.getWeather();
+        minWeather = weatherActivity.getMinWeather();
+        maxWeather = weatherActivity.getMaxWeather();
+        yWeather = weatherActivity.getyWeather();
+        idWeather = weatherActivity.getIdWeather();
 
+        subWeather = weather - yWeather;
+        if(subWeather == 0)
+            subWeatherStr = "어제와 같아요";
+        else if(subWeather < 0)
+            subWeatherStr = "어제보다 " + (-subWeather) + " ℃ 낮아요";
+        else if(subWeather > 0)
+            subWeatherStr = "어제보다 " + subWeather + " ℃ 높아요";
+
+        if(idWeather < 300) {
+            if(time >= 6 && time < 18)
+                imgWeather = R.drawable.storm_day;
+            else if(time >= 18 && time < 22)
+                imgWeather = R.drawable.storm;
+            else
+                imgWeather = R.drawable.storm_night;
+        }
+        else if(idWeather < 600) {
+            if(time >= 6 && time < 18)
+                imgWeather = R.drawable.rainy_day;
+            else if(time >= 18 && time < 22)
+                imgWeather = R.drawable.rainy;
+            else
+                imgWeather = R.drawable.rainy_night;
+        }
+        else if(idWeather < 700) {
+            if(time >= 6 && time < 18)
+                imgWeather = R.drawable.snowy_day;
+            else if(time >= 18 && time < 22)
+                imgWeather = R.drawable.snowy;
+            else
+                imgWeather = R.drawable.snowy_night;
+        }
+        else if(idWeather < 800) {
+            if(time >= 6 && time < 18)
+                imgWeather = R.drawable.windy_day;
+            else if(time >= 18 && time < 22)
+                imgWeather = R.drawable.windy;
+            else
+                imgWeather = R.drawable.windy_night;
+        }
+        else if(idWeather == 800) {
+            if(time >= 6 && time < 20)
+                imgWeather = R.drawable.sun;
+            else
+                imgWeather = R.drawable.moon;
+        }
+        else if(idWeather < 900) {
+            if(time >= 6 && time < 18)
+                imgWeather = R.drawable.cloudy_day;
+            else if(time >= 18 && time < 22)
+                imgWeather = R.drawable.cloud;
+            else
+                imgWeather = R.drawable.cloudy_night;
+        }
+    }
+
+    public void initUI_Weather2(ViewGroup rootView) {
+        weatherText1.setText(weather + " ℃");
+        weatherText2.setText(subWeatherStr);
+        weatherText3.setText("최저 " + minWeather + " ℃ / 최고 " + maxWeather + " ℃");
+        weatgerImg1.setImageResource(imgWeather);
+    }
+
+    public void initUI_Dust(ViewGroup rootView) {
+        dustActivity.setDustXmlData(locationActivity.getTextView5(), locationActivity.getTextView3());
+        //dustActivity.setDustXmlData("철산","경기");
+        dustpm10Value = dustActivity.getpm10Value(); // 미세먼지 수치
+        if(dustpm10Value == null)
+            dustpm10Value = "0";
+
+        final int pm10Value = Integer.parseInt(dustpm10Value);
+        if( 0 <= pm10Value &&  pm10Value < 16 ){
+            imgDust = R.drawable.dust8;
+            Dustpm10ValueText = "최고 좋음";
+        }
+        else if( 16 <= pm10Value &&  pm10Value < 31 ){
+            imgDust = R.drawable.dust7;
+            Dustpm10ValueText = "좋음";
+        }
+        else if( 31 <= pm10Value &&  pm10Value < 41 ){
+            imgDust = R.drawable.dust6;
+            Dustpm10ValueText = "양호";
+        }
+        else if( 41 <= pm10Value &&  pm10Value < 51 ){
+            imgDust = R.drawable.dust5;
+            Dustpm10ValueText = "보통";
+        }
+        else if( 51 <= pm10Value &&  pm10Value < 76 ){
+            imgDust = R.drawable.dust4;
+            Dustpm10ValueText = "나쁨";
+        }
+        else if( 76 <= pm10Value &&  pm10Value < 101 ){
+            imgDust = R.drawable.dust3;
+            Dustpm10ValueText = "상당히 나쁨";
+        }
+        else if( 101 <= pm10Value &&  pm10Value < 151 ){
+            imgDust = R.drawable.dust2;
+            Dustpm10ValueText = "매우 나쁨";
+        }
+        else if( 151 <= pm10Value){
+            imgDust = R.drawable.dust1;
+            Dustpm10ValueText = "최악";
+        }
+
+        // TM 좌표 변환
+        String getTextView6 = locationActivity.getTextView6(); // 강서구 대저 / 양천구 신정
+        String getTextView7 = locationActivity.getTextView7(); // 강서구 대저동 / 양천구 목동
+        String getTextView = locationActivity.getTextView(); // 강서구 대저2동 / 양천구 목1동
+
+        locationDustActivity.setLocationDustXmlData(getTextView6);
+        dustCount = Integer.parseInt(locationDustActivity.gettotalCountValue());
+        if (dustCount == 1){
+            locationDustActivity.setLocationDustXmlData2(getTextView7);
+            dustTmX = locationDustActivity.getTmXValue();
+            dustTmY = locationDustActivity.getTmYValue();
+        }else{
+            locationDustActivity.setLocationDustXmlData2(getTextView);
+            dustTmX = locationDustActivity.getTmXValue();
+            dustTmY = locationDustActivity.getTmYValue();
+        }
+        // 실험
+               /* dustStationActivity.setDustStationXmlData("187244.391459","445896.46757");
+                ArrayList arrayList222 = dustStationActivity.getStationList();
+                AAA = arrayList222.get(0).toString();*/
+    }
+
+    public void initUI_Dust2(ViewGroup rootView) {
+        dustText1.setText(Dustpm10ValueText);
+        //      dustText1.setText(dustTmX+dustTmY);
+        //      dustText1.setText(AAA);
+        dustImg.setImageResource(imgDust);
+    }
+
+    public void initUI_Covid(ViewGroup rootView) {
+        covidActivity.setCovidXmlData(locationActivity.getTextView3());
+        covidIncDec = "1일 확진자 : " + covidActivity.getIncDec() + "명";
+        covidIsolIngCnt = "누적 확진자 : " + covidActivity.getIsolIngCnt() + "명";
+        covidDate = "(" + covidActivity.getToday() + ")";
+    }
+
+    public void initUI_Covid2(ViewGroup rootView) {
+        covidText1.setText(covidIncDec);
+        covidText2.setText(covidIsolIngCnt);
+        covidText3.setText(covidDate);
     }
 }
