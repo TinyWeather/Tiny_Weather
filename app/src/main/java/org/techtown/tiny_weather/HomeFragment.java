@@ -28,6 +28,7 @@ import com.google.android.material.navigation.NavigationView;
 import java.io.IOException;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -40,6 +41,7 @@ public class HomeFragment extends Fragment {
     CovidActivity covidActivity;
     DustActivity dustActivity;
     LocationDustActivity locationDustActivity;
+    DustStationActivity dustStationActivity;
 
     SwipeRefreshLayout swipeRefreshLayout;
     TextView text, text2, text3;
@@ -68,6 +70,8 @@ public class HomeFragment extends Fragment {
     int dustCount;
     String dustTmX, dustTmY;
 
+    String AAA;
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -78,6 +82,7 @@ public class HomeFragment extends Fragment {
         covidActivity = new CovidActivity();
         dustActivity = new DustActivity();
         locationDustActivity = new LocationDustActivity();
+        dustStationActivity = new DustStationActivity();
     }
 
     @Nullable
@@ -141,6 +146,11 @@ public class HomeFragment extends Fragment {
                             dustTmY = locationDustActivity.getTmYValue();
                         }
 
+                        // 실험
+                        /*dustStationActivity.setDustStationXmlData("187244.391459","445896.46757");
+                        ArrayList arrayList222 = dustStationActivity.getStationList();
+                        AAA = arrayList222.get(0).toString();*/
+
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -152,6 +162,8 @@ public class HomeFragment extends Fragment {
                                 covidText2.setText(covidIsolIngCnt);
                                 covidText3.setText(covidDate);
 
+                                ///  dustText1.setText(AAA);
+                              ///  dustText1.setText(dustTmX+dustTmY);
                                 dustText1.setText(Dustpm10ValueText);
                             }
                         });
@@ -328,6 +340,10 @@ public class HomeFragment extends Fragment {
                     dustTmX = locationDustActivity.getTmXValue();
                     dustTmY = locationDustActivity.getTmYValue();
                 }
+                // 실험
+               /* dustStationActivity.setDustStationXmlData("187244.391459","445896.46757");
+                ArrayList arrayList222 = dustStationActivity.getStationList();
+                AAA = arrayList222.get(0).toString();*/
 
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
@@ -341,8 +357,9 @@ public class HomeFragment extends Fragment {
                         covidText2.setText(covidIsolIngCnt);
                         covidText3.setText(covidDate);
 
-                  //      dustText1.setText(dustTmX+dustTmY);
                         dustText1.setText(Dustpm10ValueText);
+                  //      dustText1.setText(dustTmX+dustTmY);
+                  //      dustText1.setText(AAA);
                         dustImg.setImageResource(imgDust);
                     }
                 });

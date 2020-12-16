@@ -12,7 +12,6 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import java.net.URL;
 
 public class LocationDustActivity extends Fragment {
-    LocationActivity locationActivity;
 
     String key="kd3zWLkxFKVIuT0XejOXR1qWycWNx03d21q75t5AHS2gIRKGQXQhqtwrvDWy3Huf04BaJZQL2vQHDvEkT8coDw%3D%3D";
     String umdName = "";
