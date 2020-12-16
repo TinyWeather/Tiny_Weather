@@ -59,7 +59,7 @@ public class DustStationActivity {
             String childValue = childvalue.getNodeValue();
             setStationValue(childValue);
 
-            System.out.println("============="+childValue+"=============");
+            System.out.println("======측정소======="+childValue+"=============");
 
 
             System.out.println("============= DustStationActivity 파싱 끝=============");

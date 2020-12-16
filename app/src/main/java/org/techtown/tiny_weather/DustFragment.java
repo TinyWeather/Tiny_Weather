@@ -96,7 +96,7 @@ public class DustFragment extends Fragment {
                     @Override
                     public void run() {
                         dustActivity.setDustXmlData(locationActivity.getTextView5(), locationActivity.getTextView3());
-                   //     dustActivity.setDustXmlData2(timeActivity.getTime2());
+                        //     dustActivity.setDustXmlData2(timeActivity.getTime2());
                         dustActivity.setDustXmlData2(timeActivity.getTime2(),"PM10");
                         dustActivity.setDustXmlData3(timeActivity.getTime2(),"PM25");
                         //dustActivity.setDustXmlData2("seoul");
@@ -404,7 +404,7 @@ public class DustFragment extends Fragment {
     public void initUI4(ViewGroup rootView) {
         float o3Value = Float.parseFloat(dustActivity.geto3Value()); //  농도
         // 오존 농도
-     //   float o3Value = (float)dusto3Value;
+        //   float o3Value = (float)dusto3Value;
         if (0 <= o3Value && o3Value < 0.02) {
             imgDust3 = R.drawable.dust8;
             Dusto3ValueText = "최고 좋음";
@@ -443,7 +443,7 @@ public class DustFragment extends Fragment {
     public void initUI5(ViewGroup rootView) {
         float coValue = Float.parseFloat(dustActivity.getcoValue()); // 일산화탄소 수치
         // 일산화탄소
-   //     float coValue = (float) dustcoValue;
+        //     float coValue = (float) dustcoValue;
         if (0 <= coValue && coValue < 1) {
             imgDust4 = R.drawable.dust8;
             DustcoValueText = "최고 좋음";
@@ -482,7 +482,7 @@ public class DustFragment extends Fragment {
     public void initUI6(ViewGroup rootView) {
         float so2Value = Float.parseFloat(dustActivity.getso2Value()); // 아황산가스 농도
         // 아황산가스
-     //   float so2Value = (float) dustso2Value;
+        //   float so2Value = (float) dustso2Value;
         if (0 <= so2Value && so2Value < 0.01) {
             imgDust5 = R.drawable.dust8;
             Dustso2ValueText = "최고 좋음";
@@ -554,7 +554,7 @@ public class DustFragment extends Fragment {
 
             int pm10Value = arrayList1.get(i);
             //  String pm10 = dustActivity.getBusan();
-         //   int pm10Int = Integer.parseInt(pm10);
+            //   int pm10Int = Integer.parseInt(pm10);
             if (0 <= pm10Value && pm10Value < 16) {
                 imgDust = R.drawable.dust8;
                 Dustpm10ValueText = "최고 좋음";
@@ -587,7 +587,7 @@ public class DustFragment extends Fragment {
             newTextView.setTextAppearance(R.style.txt_black_18);
             //     newTextView.setText(arrayList1.get(i));
             //newTextView.setText(Dustpm10ValueText);
-          //  newTextView.setTextColor(0xAA1e6de0);
+            //  newTextView.setTextColor(0xAA1e6de0);
             //newTextView.setGravity(Gravity.CENTER);
             // newTextView.setLayoutParams(new ViewGroup.LayoutParams(textView1.getWidth(), ViewGroup.LayoutParams.WRAP_CONTENT));
 
@@ -595,7 +595,7 @@ public class DustFragment extends Fragment {
             TextView newTextView2 = new TextView(rootView.getContext());
             newTextView2.setText(pm10Value +" ㎍/㎥");
             newTextView2.setTextAppearance(R.style.txt_black_18);
-           // newTextView2.setTextColor(R.id.dust_list_title_txt);
+            // newTextView2.setTextColor(R.id.dust_list_title_txt);
 
             ImageView imageView1 = new ImageView(rootView.getContext());
             imageView1.setImageResource(imgDust);
@@ -606,7 +606,7 @@ public class DustFragment extends Fragment {
             TextView newTextView3 = new TextView(rootView.getContext());
             newTextView3.setText(arrayListPlace.get(i));
             newTextView3.setTextAppearance(R.style.txt_black_18);
-           // newTextView3.setTextColor(R.id.dust_list_title_txt);
+            // newTextView3.setTextColor(R.id.dust_list_title_txt);
 
             LinearLayout linearLayout1 = new LinearLayout(rootView.getContext());
             linearLayout1.setOrientation(LinearLayout.HORIZONTAL);

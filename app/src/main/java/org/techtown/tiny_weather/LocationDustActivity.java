@@ -88,7 +88,7 @@ public class LocationDustActivity extends Fragment {
                         if (totalCountCheck) {
                             if (totalCheck){
                                 settotalCountValue(parser.getText());
-                                System.out.println("============= settotalCount"+parser.getText()+"=============");
+                                System.out.println("=====settotalCount========"+parser.getText()+"=============");
                             }
                             totalCountCheck = false;
                         }
