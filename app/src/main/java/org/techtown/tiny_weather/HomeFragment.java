@@ -71,7 +71,8 @@ public class HomeFragment extends Fragment {
     int dustCount;
     String dustTmX, dustTmY;
 
-    String AAA;
+    // 측정소 찾기
+    String dustStation;
 
     @Override
     public void onAttach(Context context) {
@@ -245,12 +246,37 @@ public class HomeFragment extends Fragment {
     }
 
     public void initUI_Dust(ViewGroup rootView) {
-        dustActivity.setDustXmlData(locationActivity.getTextView5(), locationActivity.getTextView3());
+
+        // TM 좌표 변환
+        String getTextView6 = locationActivity.getTextView6(); // 강서구 대저 / 양천구 목 / 부평구 삼산 / 김해시 진영 / 가평군 가평
+        String getTextView7 = locationActivity.getTextView7(); // 강서구 대저동 / 양천구 목동 / 부평구 삼산동 / 김해시 진영읍 / 가평군 가평읍
+        String getTextView = locationActivity.getTextView(); // 강서구 대저2동 / 양천구 목1동 / 부평구 삼산동 / 김해시 진영읍 / 가평군 가평읍
+
+        locationDustActivity.setLocationDustXmlData(getTextView6);
+        dustCount = Integer.parseInt(locationDustActivity.gettotalCountValue());
+        if (dustCount == 1){
+            locationDustActivity.setLocationDustXmlData2(getTextView7);
+            dustTmX = locationDustActivity.getTmXValue();
+            dustTmY = locationDustActivity.getTmYValue();
+        }else{
+            locationDustActivity.setLocationDustXmlData2(getTextView);
+            dustTmX = locationDustActivity.getTmXValue();
+            dustTmY = locationDustActivity.getTmYValue();
+        }
+
+        // 가까운 측정소 찾기
+        // dustStationActivity.setDustStationXmlData("187244.391459","445896.46757");
+        //  dustStationActivity.setDustStationXmlData("187221.70890018","441666.82283184");
+        dustStationActivity.setDustStationXmlData(dustTmX,dustTmY);
+        dustStation = dustStationActivity.getStationValue();
+
+        // dustActivity.setDustXmlData(locationActivity.getTextView5(), locationActivity.getTextView3());
+        dustActivity.setDustXmlData(dustStation, locationActivity.getTextView3());
         //dustActivity.setDustXmlData("철산","경기");
         dustpm10Value = dustActivity.getpm10Value(); // 미세먼지 수치
-        if(dustpm10Value == null)
+        if(dustpm10Value == null) {
             dustpm10Value = "0";
-
+        }
         final int pm10Value = Integer.parseInt(dustpm10Value);
         if( 0 <= pm10Value &&  pm10Value < 16 ){
             imgDust = R.drawable.dust8;
@@ -284,33 +310,11 @@ public class HomeFragment extends Fragment {
             imgDust = R.drawable.dust1;
             Dustpm10ValueText = "최악";
         }
-
-        // TM 좌표 변환
-        String getTextView6 = locationActivity.getTextView6(); // 강서구 대저 / 양천구 목 / 부평구 삼산 / 김해시 진영 / 가평군 가평
-        String getTextView7 = locationActivity.getTextView7(); // 강서구 대저동 / 양천구 목동 / 부평구 삼산동 / 김해시 진영읍 / 가평군 가평읍
-        String getTextView = locationActivity.getTextView(); // 강서구 대저2동 / 양천구 목1동 / 부평구 삼산동 / 김해시 진영읍 / 가평군 가평읍
-
-        locationDustActivity.setLocationDustXmlData(getTextView6);
-        dustCount = Integer.parseInt(locationDustActivity.gettotalCountValue());
-        if (dustCount == 1){
-            locationDustActivity.setLocationDustXmlData2(getTextView7);
-            dustTmX = locationDustActivity.getTmXValue();
-            dustTmY = locationDustActivity.getTmYValue();
-        }else{
-            locationDustActivity.setLocationDustXmlData2(getTextView);
-            dustTmX = locationDustActivity.getTmXValue();
-            dustTmY = locationDustActivity.getTmYValue();
-        }
-        // 실험
-               /* dustStationActivity.setDustStationXmlData("187244.391459","445896.46757");
-                ArrayList arrayList222 = dustStationActivity.getStationList();
-                AAA = arrayList222.get(0).toString();*/
     }
 
     public void initUI_Dust2(ViewGroup rootView) {
         dustText1.setText(Dustpm10ValueText);
-        //      dustText1.setText(dustTmX+dustTmY);
-        //      dustText1.setText(AAA);
+        dustText1.setText(Dustpm10ValueText);
         dustImg.setImageResource(imgDust);
     }
 

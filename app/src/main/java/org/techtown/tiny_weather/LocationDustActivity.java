@@ -42,8 +42,7 @@ public class LocationDustActivity extends Fragment {
         this.tmYValue = tmYValue;
     }
 
-    // setLocationDustXmlData(__구 __동 : 목1동 => 목 검색) : totalCount 체크
-    // totalCount 1개 : __구 ___동 (location.getTextView()) / 2개 이상 : __구 __(숫자)(동) 지운 것 (location.getTextView6())
+    // setLocationDustXmlData(__시군구 __읍면동 : 목1동 => 목 검색) : totalCount 체크
     public void setLocationDustXmlData(String where){
         String queryUrl="http://openapi.airkorea.or.kr/openapi/services/rest/MsrstnInfoInqireSvc/getTMStdrCrdnt?"//요청 URL
                 + "ServiceKey=" + key // 키

@@ -24,29 +24,18 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 public class DustStationActivity {
 
-   /* String arrayListValue;
-    public String getArrayListValue() {
-        return arrayListValue;
+    String station;
+    public void setStationValue(String station) {
+        this.station = station;
     }
-    public void setArrayListValue(String arrayListValue) {
-        this.arrayListValue = arrayListValue;
-    }*/
-
-    ArrayList<String> stationList = new ArrayList<String>();
-    public void setStationList(ArrayList<String> stationList)
-    {
-        this.stationList = stationList;
+    public String getStationValue() {
+        return station;
     }
-    public ArrayList<String> getStationList() {
-        return stationList;
-    }
-    boolean stationNameCheck=false;
-    String stationValue;
 
     String key="kd3zWLkxFKVIuT0XejOXR1qWycWNx03d21q75t5AHS2gIRKGQXQhqtwrvDWy3Huf04BaJZQL2vQHDvEkT8coDw%3D%3D";
 
     public void setDustStationXmlData(String tmX, String tmY){
-        String queryUrl="http://openapi.airkorea.or.kr/openapi/services/rest/MsrstnInfoInqireSvc/getTMStdrCrdnt?"//요청 URL
+        String queryUrl="http://openapi.airkorea.or.kr/openapi/services/rest/MsrstnInfoInqireSvc/getNearbyMsrstnList?"//요청 URL
                 + "ServiceKey=" + key // 키
                 + "&tmX=" + tmX // TM_X 좌표
                 + "&tmY=" + tmY; // TM_Y 좌표
@@ -54,46 +43,25 @@ public class DustStationActivity {
 
         try {
             URL url = new URL(queryUrl);
-
-            XmlPullParserFactory factory= XmlPullParserFactory.newInstance();
-            XmlPullParser parser= factory.newPullParser();
-            parser.setInput(url.openStream(), null);
-
-            int parserEvent = parser.getEventType();
-            boolean totalCheck = false;
-
             System.out.println(queryUrl);
-            System.out.println("============= LocationDust 파싱 시작=============");
 
-            while (parserEvent != XmlPullParser.END_DOCUMENT) {
-                switch(parserEvent) {
-                    case XmlPullParser.START_TAG:
-                        if (parser.getName().equals("item")) {
-                            totalCheck = true;
-                        }
-                        if (parser.getName().equals("message")) {
-                            System.out.println("DustLocationActivity 에러");
-                        }
-                        break;
+            DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactoty.newDocumentBuilder();
+            Document doc = dBuilder.parse(String.valueOf(url));
 
-                    case XmlPullParser.TEXT:
-                        if (stationNameCheck) {
-                            if (totalCheck) {
-                                stationValue = parser.getText();
-                                System.out.println("============= stationValue  " + parser.getText() + "=============");
-                            }
-                            stationNameCheck = false;
-                        }
-                        break;
+            doc.getDocumentElement().normalize();
+            System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
 
-                    case XmlPullParser.END_TAG:
-                        if(parser.getName().equals("item")){
-                            stationList.add(stationValue);
-                        }
-                        break;
-                }
-                parserEvent = parser.next();
-            }
+            NodeList childs = doc.getElementsByTagName("stationName");
+            Node child = childs.item(0);
+            Node childvalue = child.getFirstChild();
+
+            String childValue = childvalue.getNodeValue();
+            setStationValue(childValue);
+
+            System.out.println("============="+childValue+"=============");
+
+
             System.out.println("============= DustStationActivity 파싱 끝=============");
         } catch (Exception e) {
             e.printStackTrace();
