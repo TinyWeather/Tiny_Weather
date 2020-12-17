@@ -528,22 +528,22 @@ public class DustActivity extends Fragment {
                         //            System.out.println("============= 미세먼지 텍스트 만남=============");
                         //            System.out.println("============= 미세먼지  "+parser.getText()+"=============");
                         if(dataTimeCheck) {
-                            System.out.println(parser.getText());
+                 //           System.out.println(parser.getText());
                             if(time.equals(parser.getText())){
                                 timeCheck = true;
                             }
                             dataTimeCheck = false;
                         }
                         if(mangNameCheck) {
-                            System.out.println(parser.getText());
+                 //           System.out.println(parser.getText());
                             mangNameCheck = false;
                         }
                         if(itemCodeCheck) {
-                            System.out.println(parser.getText());
+                //            System.out.println(parser.getText());
                             itemCodeCheck  = false;
                         }
                         if(dataGubunCheck){
-                            System.out.println(parser.getText());
+                 //           System.out.println(parser.getText());
                             dataGubunCheck  = false;
                         }
                         if(seoulCheck) {
@@ -759,7 +759,7 @@ public class DustActivity extends Fragment {
                         //            System.out.println("============= 미세먼지 텍스트 만남=============");
                         //            System.out.println("============= 미세먼지  "+parser.getText()+"=============");
                         if(dataTimeCheck2) {
-                            System.out.println(parser.getText());
+              //              System.out.println(parser.getText());
                             if(time.equals(parser.getText())){
                                 timeCheck2 = true;
                             }
@@ -770,11 +770,11 @@ public class DustActivity extends Fragment {
                             mangNameCheck = false;
                         }*/
                         if(itemCodeCheck2) {
-                            System.out.println(parser.getText());
+             //               System.out.println(parser.getText());
                             itemCodeCheck2  = false;
                         }
                         if(dataGubunCheck2){
-                            System.out.println(parser.getText());
+            //                System.out.println(parser.getText());
                             dataGubunCheck2  = false;
                         }
                         if(seoulCheck2) {

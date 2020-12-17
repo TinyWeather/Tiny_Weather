@@ -269,46 +269,52 @@ public class HomeFragment extends Fragment {
         //  dustStationActivity.setDustStationXmlData("187221.70890018","441666.82283184");
         dustStationActivity.setDustStationXmlData(dustTmX,dustTmY);
         dustStation = dustStationActivity.getStationValue();
-
         // dustActivity.setDustXmlData(locationActivity.getTextView5(), locationActivity.getTextView3());
+        
+        // 미세먼지 정보
         dustActivity.setDustXmlData(dustStation, locationActivity.getTextView3());
         //dustActivity.setDustXmlData("철산","경기");
+        
         dustpm10Value = dustActivity.getpm10Value(); // 미세먼지 수치
-        if(dustpm10Value == null) {
-            dustpm10Value = "0";
-        }
-        final int pm10Value = Integer.parseInt(dustpm10Value);
-        if( 0 <= pm10Value &&  pm10Value < 16 ){
-            imgDust = R.drawable.dust8;
-            Dustpm10ValueText = "최고 좋음";
-        }
-        else if( 16 <= pm10Value &&  pm10Value < 31 ){
-            imgDust = R.drawable.dust7;
-            Dustpm10ValueText = "좋음";
-        }
-        else if( 31 <= pm10Value &&  pm10Value < 41 ){
-            imgDust = R.drawable.dust6;
-            Dustpm10ValueText = "양호";
-        }
-        else if( 41 <= pm10Value &&  pm10Value < 51 ){
-            imgDust = R.drawable.dust5;
-            Dustpm10ValueText = "보통";
-        }
-        else if( 51 <= pm10Value &&  pm10Value < 76 ){
-            imgDust = R.drawable.dust4;
-            Dustpm10ValueText = "나쁨";
-        }
-        else if( 76 <= pm10Value &&  pm10Value < 101 ){
+        /*점검중, 측정하지 않는 정보*/
+        if(dustpm10Value == null || dustpm10Value.equals("-")) {
             imgDust = R.drawable.dust3;
-            Dustpm10ValueText = "상당히 나쁨";
+            Dustpm10ValueText ="정보없음";
         }
-        else if( 101 <= pm10Value &&  pm10Value < 151 ){
-            imgDust = R.drawable.dust2;
-            Dustpm10ValueText = "매우 나쁨";
-        }
-        else if( 151 <= pm10Value){
-            imgDust = R.drawable.dust1;
-            Dustpm10ValueText = "최악";
+        else{
+            int pm10Value = Integer.parseInt(dustpm10Value);
+            if( 0 <= pm10Value &&  pm10Value < 16 ){
+                imgDust = R.drawable.dust8;
+                Dustpm10ValueText = "최고 좋음";
+            }
+            else if( 16 <= pm10Value &&  pm10Value < 31 ){
+                imgDust = R.drawable.dust7;
+                Dustpm10ValueText = "좋음";
+            }
+            else if( 31 <= pm10Value &&  pm10Value < 41 ){
+                imgDust = R.drawable.dust6;
+                Dustpm10ValueText = "양호";
+            }
+            else if( 41 <= pm10Value &&  pm10Value < 51 ){
+                imgDust = R.drawable.dust5;
+                Dustpm10ValueText = "보통";
+            }
+            else if( 51 <= pm10Value &&  pm10Value < 76 ){
+                imgDust = R.drawable.dust4;
+                Dustpm10ValueText = "나쁨";
+            }
+            else if( 76 <= pm10Value &&  pm10Value < 101 ){
+                imgDust = R.drawable.dust3;
+                Dustpm10ValueText = "상당히 나쁨";
+            }
+            else if( 101 <= pm10Value &&  pm10Value < 151 ){
+                imgDust = R.drawable.dust2;
+                Dustpm10ValueText = "매우 나쁨";
+            }
+            else if( 151 <= pm10Value){
+                imgDust = R.drawable.dust1;
+                Dustpm10ValueText = "최악";
+            }
         }
     }
 

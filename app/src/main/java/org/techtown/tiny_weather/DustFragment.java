@@ -34,24 +34,36 @@ import java.util.Locale;
 
 public class DustFragment extends Fragment {
     LocationActivity locationActivity;
+    LocationDustActivity locationDustActivity;
     DustActivity dustActivity;
     TimeActivity timeActivity;
+    DustStationActivity dustStationActivity;
 
     ViewGroup rootView;
     ScrollView scrollViewA, scrollViewB;
 
     SwipeRefreshLayout swipeRefreshLayout;
-    LinearLayout linearLayout, linearLayout2;
+    LinearLayout linearLayout;
 
     TextView text1, text2;
     Switch switchBtn;
 
+    // 미세먼지
+    int pm10Value, pm125Value;
+    float no2Value, o3Value, coValue, so2Value;
     int imgDust, imgDust1, imgDust2, imgDust3, imgDust4, imgDust5;
-    String Dustpm10ValueText, Dustpm25ValueText;
-    String Dustno2ValueText, Dusto3ValueText, DustcoValueText, Dustso2ValueText;
-    int dustno2Value, dusto3Value, dustcoValue, dustso2Value, dustpm10Value, dustpm25Value;
+    String Dustpm10ValueText, Dustpm25ValueText, Dustno2ValueText, Dusto3ValueText, DustcoValueText, Dustso2ValueText;
+    String dustno2Value, dusto3Value, dustcoValue, dustso2Value, dustpm10Value, dustpm25Value;
 
-    ArrayList<Integer> arrayList1, arrayList2, arrayList3;
+    // TM 좌표 변환
+    int dustCount;
+    String dustTmX, dustTmY;
+
+    // 측정소 찾기
+    String dustStation;
+
+    // 전국 미세먼지 정보
+    ArrayList<Integer> arrayList1, arrayList2;
     ArrayList<String> arrayListPlace = new ArrayList<String>(
             Arrays.asList("서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종", "경기", "강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주")
     );
@@ -60,8 +72,10 @@ public class DustFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         locationActivity = new LocationActivity(context, getActivity());
-        timeActivity = new TimeActivity();
+        locationDustActivity = new LocationDustActivity();
+        dustStationActivity = new DustStationActivity();
         dustActivity = new DustActivity();
+        timeActivity = new TimeActivity();
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -95,11 +109,35 @@ public class DustFragment extends Fragment {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        dustActivity.setDustXmlData(locationActivity.getTextView5(), locationActivity.getTextView3());
-                        //     dustActivity.setDustXmlData2(timeActivity.getTime2());
+
+                        // TM 좌표 변환
+                        String getTextView6 = locationActivity.getTextView6(); // 강서구 대저 / 양천구 목 / 부평구 삼산 / 김해시 진영 / 가평군 가평
+                        String getTextView7 = locationActivity.getTextView7(); // 강서구 대저동 / 양천구 목동 / 부평구 삼산동 / 김해시 진영읍 / 가평군 가평읍
+                        String getTextView = locationActivity.getTextView(); // 강서구 대저2동 / 양천구 목1동 / 부평구 삼산동 / 김해시 진영읍 / 가평군 가평읍
+
+                        locationDustActivity.setLocationDustXmlData(getTextView6);
+                        dustCount = Integer.parseInt(locationDustActivity.gettotalCountValue());
+                        if (dustCount == 1){
+                            locationDustActivity.setLocationDustXmlData2(getTextView7);
+                            dustTmX = locationDustActivity.getTmXValue();
+                            dustTmY = locationDustActivity.getTmYValue();
+                        }else{
+                            locationDustActivity.setLocationDustXmlData2(getTextView);
+                            dustTmX = locationDustActivity.getTmXValue();
+                            dustTmY = locationDustActivity.getTmYValue();
+                        }
+
+                        // 가까운 측정소 찾기
+                        dustStationActivity.setDustStationXmlData(dustTmX,dustTmY);
+                        dustStation = dustStationActivity.getStationValue();
+
+                        // 미세먼지 근접 측정소 정보
+                        dustActivity.setDustXmlData(dustStation, locationActivity.getTextView3());
+                    //    dustActivity.setDustXmlData(locationActivity.getTextView5(), locationActivity.getTextView3());
+
+                        // 미세먼지 전국 정보
                         dustActivity.setDustXmlData2(timeActivity.getTime2(),"PM10");
                         dustActivity.setDustXmlData3(timeActivity.getTime2(),"PM25");
-                        //dustActivity.setDustXmlData2("seoul");
 
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
@@ -169,7 +207,32 @@ public class DustFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                dustActivity.setDustXmlData(locationActivity.getTextView5(), locationActivity.getTextView3());
+
+                // TM 좌표 변환
+                String getTextView6 = locationActivity.getTextView6();
+                String getTextView7 = locationActivity.getTextView7();
+                String getTextView = locationActivity.getTextView();
+
+                locationDustActivity.setLocationDustXmlData(getTextView6);
+                dustCount = Integer.parseInt(locationDustActivity.gettotalCountValue());
+                if (dustCount == 1){
+                    locationDustActivity.setLocationDustXmlData2(getTextView7);
+                    dustTmX = locationDustActivity.getTmXValue();
+                    dustTmY = locationDustActivity.getTmYValue();
+                }else{
+                    locationDustActivity.setLocationDustXmlData2(getTextView);
+                    dustTmX = locationDustActivity.getTmXValue();
+                    dustTmY = locationDustActivity.getTmYValue();
+                }
+
+                // 가까운 측정소 찾기
+                dustStationActivity.setDustStationXmlData(dustTmX,dustTmY);
+                dustStation = dustStationActivity.getStationValue();
+
+                // 미세먼지 근접 측정소 정보
+                dustActivity.setDustXmlData(dustStation, locationActivity.getTextView3());
+
+                // 미세먼지 전국 정보
                 dustActivity.setDustXmlData2(timeActivity.getTime2(),"PM10");
                 dustActivity.setDustXmlData3(timeActivity.getTime2(),"PM25");
 
@@ -218,32 +281,39 @@ public class DustFragment extends Fragment {
 
     // 상단 얼굴 : 미세먼지
     public void initUI(ViewGroup rootView) {
-        int pm10Value = Integer.parseInt(dustActivity.getpm10Value()); // 미세먼지 수치
-        // 미세먼지
-        if (0 <= pm10Value && pm10Value < 16) {
-            imgDust = R.drawable.dust8;
-            Dustpm10ValueText = "최고 좋음";
-        } else if (16 <= pm10Value && pm10Value < 31) {
-            imgDust = R.drawable.dust7;
-            Dustpm10ValueText = "좋음";
-        } else if (31 <= pm10Value && pm10Value < 41) {
-            imgDust = R.drawable.dust6;
-            Dustpm10ValueText = "양호";
-        } else if (41 <= pm10Value && pm10Value < 51) {
-            imgDust = R.drawable.dust5;
-            Dustpm10ValueText = "보통";
-        } else if (51 <= pm10Value && pm10Value < 76) {
-            imgDust = R.drawable.dust4;
-            Dustpm10ValueText = "나쁨";
-        } else if (76 <= pm10Value && pm10Value < 101) {
+        dustpm10Value = dustActivity.getpm10Value();
+        /*점검중, 측정하지 않는 정보*/
+        if(dustpm10Value == null || dustpm10Value.equals("-")) {
             imgDust = R.drawable.dust3;
-            Dustpm10ValueText = "상당히 나쁨";
-        } else if (101 <= pm10Value && pm10Value < 151) {
-            imgDust = R.drawable.dust2;
-            Dustpm10ValueText = "매우 나쁨";
-        } else if (151 <= pm10Value) {
-            imgDust = R.drawable.dust1;
-            Dustpm10ValueText = "최악";
+            Dustpm10ValueText ="정보없음";
+        }
+        else {
+            pm10Value = Integer.parseInt(dustpm10Value);
+            if (0 <= pm10Value && pm10Value < 16) {
+                imgDust = R.drawable.dust8;
+                Dustpm10ValueText = "최고 좋음";
+            } else if (16 <= pm10Value && pm10Value < 31) {
+                imgDust = R.drawable.dust7;
+                Dustpm10ValueText = "좋음";
+            } else if (31 <= pm10Value && pm10Value < 41) {
+                imgDust = R.drawable.dust6;
+                Dustpm10ValueText = "양호";
+            } else if (41 <= pm10Value && pm10Value < 51) {
+                imgDust = R.drawable.dust5;
+                Dustpm10ValueText = "보통";
+            } else if (51 <= pm10Value && pm10Value < 76) {
+                imgDust = R.drawable.dust4;
+                Dustpm10ValueText = "나쁨";
+            } else if (76 <= pm10Value && pm10Value < 101) {
+                imgDust = R.drawable.dust3;
+                Dustpm10ValueText = "상당히 나쁨";
+            } else if (101 <= pm10Value && pm10Value < 151) {
+                imgDust = R.drawable.dust2;
+                Dustpm10ValueText = "매우 나쁨";
+            } else if (151 <= pm10Value) {
+                imgDust = R.drawable.dust1;
+                Dustpm10ValueText = "최악";
+            }
         }
         ImageView dust_img = (ImageView) getActivity().findViewById(R.id.dust_img); // 미세먼지 상단 사진
         dust_img.setImageResource(imgDust);
@@ -251,33 +321,40 @@ public class DustFragment extends Fragment {
 
     // 현 위치 대기 상태 : 미세먼지
     public void initUI1(ViewGroup rootView) {
-        dustpm10Value = Integer.parseInt(dustActivity.getpm10Value()); // 미세먼지 수치
-        // 미세먼지
-        int pm10Value = dustpm10Value;
-        if (0 <= pm10Value && pm10Value < 16) {
-            imgDust = R.drawable.dust8;
-            Dustpm10ValueText = "최고 좋음";
-        } else if (16 <= pm10Value && pm10Value < 31) {
-            imgDust = R.drawable.dust7;
-            Dustpm10ValueText = "좋음";
-        } else if (31 <= pm10Value && pm10Value < 41) {
-            imgDust = R.drawable.dust6;
-            Dustpm10ValueText = "양호";
-        } else if (41 <= pm10Value && pm10Value < 51) {
-            imgDust = R.drawable.dust5;
-            Dustpm10ValueText = "보통";
-        } else if (51 <= pm10Value && pm10Value < 76) {
-            imgDust = R.drawable.dust4;
-            Dustpm10ValueText = "나쁨";
-        } else if (76 <= pm10Value && pm10Value < 101) {
+        dustpm10Value = dustActivity.getpm10Value();
+        /*점검중, 측정하지 않는 정보*/
+        if(dustpm10Value == null || dustpm10Value.equals("-")) {
             imgDust = R.drawable.dust3;
-            Dustpm10ValueText = "상당히 나쁨";
-        } else if (101 <= pm10Value && pm10Value < 151) {
-            imgDust = R.drawable.dust2;
-            Dustpm10ValueText = "매우 나쁨";
-        } else if (151 <= pm10Value) {
-            imgDust = R.drawable.dust1;
-            Dustpm10ValueText = "최악";
+            Dustpm10ValueText ="정보없음";
+            dustpm10Value = "?";
+        }
+        else {
+            pm10Value = Integer.parseInt(dustpm10Value);
+            if (0 <= pm10Value && pm10Value < 16) {
+                imgDust = R.drawable.dust8;
+                Dustpm10ValueText = "최고 좋음";
+            } else if (16 <= pm10Value && pm10Value < 31) {
+                imgDust = R.drawable.dust7;
+                Dustpm10ValueText = "좋음";
+            } else if (31 <= pm10Value && pm10Value < 41) {
+                imgDust = R.drawable.dust6;
+                Dustpm10ValueText = "양호";
+            } else if (41 <= pm10Value && pm10Value < 51) {
+                imgDust = R.drawable.dust5;
+                Dustpm10ValueText = "보통";
+            } else if (51 <= pm10Value && pm10Value < 76) {
+                imgDust = R.drawable.dust4;
+                Dustpm10ValueText = "나쁨";
+            } else if (76 <= pm10Value && pm10Value < 101) {
+                imgDust = R.drawable.dust3;
+                Dustpm10ValueText = "상당히 나쁨";
+            } else if (101 <= pm10Value && pm10Value < 151) {
+                imgDust = R.drawable.dust2;
+                Dustpm10ValueText = "매우 나쁨";
+            } else if (151 <= pm10Value) {
+                imgDust = R.drawable.dust1;
+                Dustpm10ValueText = "최악";
+            }
         }
         ImageView dust_day1_img = (ImageView) getActivity().findViewById(R.id.dust_day1_img); // 미세먼지 사진
         TextView dust_day1_grade = (TextView) getActivity().findViewById(R.id.dust_day1_grade); // 미세먼지 등급
@@ -290,33 +367,39 @@ public class DustFragment extends Fragment {
 
     // 상단 얼굴 : 초미세먼지
     public void initUI0(ViewGroup rootView) {
-        dustpm25Value = Integer.parseInt(dustActivity.getpm25Value()); // 초미세먼지 수치
-        // 초미세먼지
-        int pm125Value = dustpm25Value;
-        if (0 <= pm125Value && pm125Value < 9) {
-            imgDust1 = R.drawable.dust8;
-            Dustpm25ValueText = "최고 좋음";
-        } else if (9 <= pm125Value && pm125Value < 16) {
-            imgDust1 = R.drawable.dust7;
-            Dustpm25ValueText = "좋음";
-        } else if (16 <= pm125Value && pm125Value < 21) {
-            imgDust1 = R.drawable.dust6;
-            Dustpm25ValueText = "양호";
-        } else if (21 <= pm125Value && pm125Value < 26) {
-            imgDust1 = R.drawable.dust5;
-            Dustpm25ValueText = "보통";
-        } else if (26 <= pm125Value && pm125Value < 38) {
-            imgDust1 = R.drawable.dust4;
-            Dustpm25ValueText = "나쁨";
-        } else if (38 <= pm125Value && pm125Value < 51) {
+        dustpm25Value = dustActivity.getpm25Value();
+        /*점검중, 측정하지 않는 정보*/
+        if(dustpm25Value == null || dustpm25Value.equals("-")) {
             imgDust1 = R.drawable.dust3;
-            Dustpm25ValueText = "상당히 나쁨";
-        } else if (51 <= pm125Value && pm125Value < 76) {
-            imgDust1 = R.drawable.dust2;
-            Dustpm25ValueText = "매우 나쁨";
-        } else if (76 <= pm125Value) {
-            imgDust1 = R.drawable.dust1;
-            Dustpm25ValueText = "최악";
+            Dustpm25ValueText ="정보없음";
+        }
+        else{
+            pm125Value = Integer.parseInt(dustpm25Value);
+            if (0 <= pm125Value && pm125Value < 9) {
+                imgDust1 = R.drawable.dust8;
+                Dustpm25ValueText = "최고 좋음";
+            } else if (9 <= pm125Value && pm125Value < 16) {
+                imgDust1 = R.drawable.dust7;
+                Dustpm25ValueText = "좋음";
+            } else if (16 <= pm125Value && pm125Value < 21) {
+                imgDust1 = R.drawable.dust6;
+                Dustpm25ValueText = "양호";
+            } else if (21 <= pm125Value && pm125Value < 26) {
+                imgDust1 = R.drawable.dust5;
+                Dustpm25ValueText = "보통";
+            } else if (26 <= pm125Value && pm125Value < 38) {
+                imgDust1 = R.drawable.dust4;
+                Dustpm25ValueText = "나쁨";
+            } else if (38 <= pm125Value && pm125Value < 51) {
+                imgDust1 = R.drawable.dust3;
+                Dustpm25ValueText = "상당히 나쁨";
+            } else if (51 <= pm125Value && pm125Value < 76) {
+                imgDust1 = R.drawable.dust2;
+                Dustpm25ValueText = "매우 나쁨";
+            } else if (76 <= pm125Value) {
+                imgDust1 = R.drawable.dust1;
+                Dustpm25ValueText = "최악";
+            }
         }
         ImageView dust_img = (ImageView) getActivity().findViewById(R.id.dust_img); // 미세먼지 상단 사진
 
@@ -325,33 +408,40 @@ public class DustFragment extends Fragment {
 
     // 현 위치 대기 상태 : 초미세먼지
     public void initUI2(ViewGroup rootView) {
-        dustpm25Value = Integer.parseInt(dustActivity.getpm25Value()); // 초미세먼지 수치
-        // 초미세먼지
-        int pm125Value = dustpm25Value;
-        if (0 <= pm125Value && pm125Value < 9) {
-            imgDust1 = R.drawable.dust8;
-            Dustpm25ValueText = "최고 좋음";
-        } else if (9 <= pm125Value && pm125Value < 16) {
-            imgDust1 = R.drawable.dust7;
-            Dustpm25ValueText = "좋음";
-        } else if (16 <= pm125Value && pm125Value < 21) {
-            imgDust1 = R.drawable.dust6;
-            Dustpm25ValueText = "양호";
-        } else if (21 <= pm125Value && pm125Value < 26) {
-            imgDust1 = R.drawable.dust5;
-            Dustpm25ValueText = "보통";
-        } else if (26 <= pm125Value && pm125Value < 38) {
-            imgDust1 = R.drawable.dust4;
-            Dustpm25ValueText = "나쁨";
-        } else if (38 <= pm125Value && pm125Value < 51) {
+        dustpm25Value = dustActivity.getpm25Value();
+        /*점검중, 측정하지 않는 정보*/
+        if(dustpm25Value == null || dustpm25Value.equals("-")) {
             imgDust1 = R.drawable.dust3;
-            Dustpm25ValueText = "상당히 나쁨";
-        } else if (51 <= pm125Value && pm125Value < 76) {
-            imgDust1 = R.drawable.dust2;
-            Dustpm25ValueText = "매우 나쁨";
-        } else if (76 <= pm125Value) {
-            imgDust1 = R.drawable.dust1;
-            Dustpm25ValueText = "최악";
+            Dustpm25ValueText ="정보없음";
+            dustpm25Value = "?";
+        }
+        else{
+            pm125Value = Integer.parseInt(dustpm25Value);
+            if (0 <= pm125Value && pm125Value < 9) {
+                imgDust1 = R.drawable.dust8;
+                Dustpm25ValueText = "최고 좋음";
+            } else if (9 <= pm125Value && pm125Value < 16) {
+                imgDust1 = R.drawable.dust7;
+                Dustpm25ValueText = "좋음";
+            } else if (16 <= pm125Value && pm125Value < 21) {
+                imgDust1 = R.drawable.dust6;
+                Dustpm25ValueText = "양호";
+            } else if (21 <= pm125Value && pm125Value < 26) {
+                imgDust1 = R.drawable.dust5;
+                Dustpm25ValueText = "보통";
+            } else if (26 <= pm125Value && pm125Value < 38) {
+                imgDust1 = R.drawable.dust4;
+                Dustpm25ValueText = "나쁨";
+            } else if (38 <= pm125Value && pm125Value < 51) {
+                imgDust1 = R.drawable.dust3;
+                Dustpm25ValueText = "상당히 나쁨";
+            } else if (51 <= pm125Value && pm125Value < 76) {
+                imgDust1 = R.drawable.dust2;
+                Dustpm25ValueText = "매우 나쁨";
+            } else if (76 <= pm125Value) {
+                imgDust1 = R.drawable.dust1;
+                Dustpm25ValueText = "최악";
+            }
         }
         ImageView dust_day2_img = (ImageView) getActivity().findViewById(R.id.dust_day2_img); // 초미세먼지 사진
         TextView dust_day2_grade = (TextView) getActivity().findViewById(R.id.dust_day2_grade); // 초미세먼지 등급
@@ -364,32 +454,39 @@ public class DustFragment extends Fragment {
 
     // 현 위치 대기 상태 : 이산화질소 수치
     public void initUI3(ViewGroup rootView) {
-        float no2Value = Float.parseFloat(dustActivity.getno2Value()); // 이산화질소 수치
-        // 이산화질소 수치
-        if (0 <= no2Value && no2Value < 0.02) {
-            imgDust2 = R.drawable.dust8;
-            Dustno2ValueText = "최고 좋음";
-        } else if (0.02 <= no2Value && no2Value < 0.03) {
-            imgDust2 = R.drawable.dust7;
-            Dustno2ValueText = "좋음";
-        } else if (0.03 <= no2Value && no2Value < 0.05) {
-            imgDust2 = R.drawable.dust6;
-            Dustno2ValueText = "양호";
-        } else if (0.05 <= no2Value && no2Value < 0.06) {
-            imgDust2 = R.drawable.dust5;
-            Dustno2ValueText = "보통";
-        } else if (0.06 <= no2Value && no2Value < 0.13) {
-            imgDust2 = R.drawable.dust4;
-            Dustno2ValueText = "나쁨";
-        } else if (0.13 <= no2Value && no2Value < 0.2) {
+        dustno2Value = dustActivity.getno2Value();
+        /*점검중, 측정하지 않는 정보*/
+        if(dustno2Value == null || dustno2Value.equals("-")) {
             imgDust2 = R.drawable.dust3;
-            Dustno2ValueText = "상당히 나쁨";
-        } else if (0.2 <= no2Value && no2Value < 1.1) {
-            imgDust2 = R.drawable.dust2;
-            Dustno2ValueText = "매우 나쁨";
-        } else if (1.1 <= no2Value && no2Value < 2) {
-            imgDust2 = R.drawable.dust1;
-            Dustno2ValueText = "최악";
+            Dustno2ValueText ="정보없음";
+            dustno2Value = "?";
+        }else{
+            no2Value = Float.parseFloat(dustno2Value);
+            if (0 <= no2Value && no2Value < 0.02) {
+                imgDust2 = R.drawable.dust8;
+                Dustno2ValueText = "최고 좋음";
+            } else if (0.02 <= no2Value && no2Value < 0.03) {
+                imgDust2 = R.drawable.dust7;
+                Dustno2ValueText = "좋음";
+            } else if (0.03 <= no2Value && no2Value < 0.05) {
+                imgDust2 = R.drawable.dust6;
+                Dustno2ValueText = "양호";
+            } else if (0.05 <= no2Value && no2Value < 0.06) {
+                imgDust2 = R.drawable.dust5;
+                Dustno2ValueText = "보통";
+            } else if (0.06 <= no2Value && no2Value < 0.13) {
+                imgDust2 = R.drawable.dust4;
+                Dustno2ValueText = "나쁨";
+            } else if (0.13 <= no2Value && no2Value < 0.2) {
+                imgDust2 = R.drawable.dust3;
+                Dustno2ValueText = "상당히 나쁨";
+            } else if (0.2 <= no2Value && no2Value < 1.1) {
+                imgDust2 = R.drawable.dust2;
+                Dustno2ValueText = "매우 나쁨";
+            } else if (1.1 <= no2Value && no2Value < 2) {
+                imgDust2 = R.drawable.dust1;
+                Dustno2ValueText = "최악";
+            }
         }
         ImageView dust_day3_img = (ImageView) getActivity().findViewById(R.id.dust_day3_img); // 이산화질소 수치 사진
         TextView dust_day3_grade = (TextView) getActivity().findViewById(R.id.dust_day3_grade); // 이산화질소 수치 등급
@@ -397,38 +494,44 @@ public class DustFragment extends Fragment {
 
         dust_day3_img.setImageResource(imgDust2);
         dust_day3_grade.setText(Dustno2ValueText);
-        dust_day3_value.setText(no2Value + " ppm");
+        dust_day3_value.setText(dustno2Value + " ppm");
     }
 
     // 현 위치 대기 상태 : 오존 농도
     public void initUI4(ViewGroup rootView) {
-        float o3Value = Float.parseFloat(dustActivity.geto3Value()); //  농도
-        // 오존 농도
-        //   float o3Value = (float)dusto3Value;
-        if (0 <= o3Value && o3Value < 0.02) {
-            imgDust3 = R.drawable.dust8;
-            Dusto3ValueText = "최고 좋음";
-        } else if (0.02 <= o3Value && o3Value < 0.03) {
-            imgDust3 = R.drawable.dust7;
-            Dusto3ValueText = "좋음";
-        } else if (0.03 <= o3Value && o3Value < 0.06) {
-            imgDust3 = R.drawable.dust6;
-            Dusto3ValueText = "양호";
-        } else if (0.06 <= o3Value && o3Value < 0.09) {
-            imgDust3 = R.drawable.dust5;
-            Dusto3ValueText = "보통";
-        } else if (0.09 <= o3Value && o3Value < 0.12) {
-            imgDust3 = R.drawable.dust4;
-            Dusto3ValueText = "나쁨";
-        } else if (0.12 <= o3Value && o3Value < 0.15) {
+        /*점검중, 측정하지 않는 정보*/
+        dusto3Value = dustActivity.geto3Value();
+        if(dusto3Value == null || dusto3Value.equals("-")) {
             imgDust3 = R.drawable.dust3;
-            Dusto3ValueText = "상당히 나쁨";
-        } else if (0.15 <= o3Value && o3Value < 0.38) {
-            imgDust3 = R.drawable.dust2;
-            Dusto3ValueText = "매우 나쁨";
-        } else if (0.38 <= o3Value) {
-            imgDust3 = R.drawable.dust1;
-            Dusto3ValueText = "최악";
+            Dusto3ValueText ="정보없음";
+            dusto3Value = "?";
+        }else {
+            o3Value = Float.parseFloat(dusto3Value);
+            if (0 <= o3Value && o3Value < 0.02) {
+                imgDust3 = R.drawable.dust8;
+                Dusto3ValueText = "최고 좋음";
+            } else if (0.02 <= o3Value && o3Value < 0.03) {
+                imgDust3 = R.drawable.dust7;
+                Dusto3ValueText = "좋음";
+            } else if (0.03 <= o3Value && o3Value < 0.06) {
+                imgDust3 = R.drawable.dust6;
+                Dusto3ValueText = "양호";
+            } else if (0.06 <= o3Value && o3Value < 0.09) {
+                imgDust3 = R.drawable.dust5;
+                Dusto3ValueText = "보통";
+            } else if (0.09 <= o3Value && o3Value < 0.12) {
+                imgDust3 = R.drawable.dust4;
+                Dusto3ValueText = "나쁨";
+            } else if (0.12 <= o3Value && o3Value < 0.15) {
+                imgDust3 = R.drawable.dust3;
+                Dusto3ValueText = "상당히 나쁨";
+            } else if (0.15 <= o3Value && o3Value < 0.38) {
+                imgDust3 = R.drawable.dust2;
+                Dusto3ValueText = "매우 나쁨";
+            } else if (0.38 <= o3Value) {
+                imgDust3 = R.drawable.dust1;
+                Dusto3ValueText = "최악";
+            }
         }
         ImageView dust_day4_img = (ImageView) getActivity().findViewById(R.id.dust_day4_img); // 오존 농도 사진
         TextView dust_day4_grade = (TextView) getActivity().findViewById(R.id.dust_day4_grade); // 오존 농도 등급
@@ -436,38 +539,44 @@ public class DustFragment extends Fragment {
 
         dust_day4_img.setImageResource(imgDust3);
         dust_day4_grade.setText(Dusto3ValueText);
-        dust_day4_value.setText(o3Value + " ppm");
+        dust_day4_value.setText(dusto3Value + " ppm");
     }
 
     // 현 위치 대기 상태 : 일산화탄소
     public void initUI5(ViewGroup rootView) {
-        float coValue = Float.parseFloat(dustActivity.getcoValue()); // 일산화탄소 수치
-        // 일산화탄소
-        //     float coValue = (float) dustcoValue;
-        if (0 <= coValue && coValue < 1) {
-            imgDust4 = R.drawable.dust8;
-            DustcoValueText = "최고 좋음";
-        } else if (1 <= coValue && coValue < 2) {
-            imgDust4 = R.drawable.dust7;
-            DustcoValueText = "좋음";
-        } else if (2 <= coValue && coValue < 5.5) {
-            imgDust4 = R.drawable.dust6;
-            DustcoValueText = "양호";
-        } else if (5.5 <= coValue && coValue < 9) {
-            imgDust4 = R.drawable.dust5;
-            DustcoValueText = "보통";
-        } else if (9 <= coValue && coValue < 12) {
-            imgDust4 = R.drawable.dust4;
-            DustcoValueText = "나쁨";
-        } else if (12 <= coValue && coValue < 15) {
+        /*점검중, 측정하지 않는 정보*/
+        dustcoValue = dustActivity.getcoValue();
+        if(dustcoValue == null || dustcoValue.equals("-")) {
             imgDust4 = R.drawable.dust3;
-            DustcoValueText = "상당히 나쁨";
-        } else if (15 <= coValue && coValue < 32) {
-            imgDust4 = R.drawable.dust2;
-            DustcoValueText = "매우 나쁨";
-        } else if (32 <= coValue) {
-            imgDust4 = R.drawable.dust1;
-            DustcoValueText = "최악";
+            DustcoValueText ="정보없음";
+            dustcoValue = "?";
+        }else {
+            coValue = Float.parseFloat(dustcoValue);
+            if (0 <= coValue && coValue < 1) {
+                imgDust4 = R.drawable.dust8;
+                DustcoValueText = "최고 좋음";
+            } else if (1 <= coValue && coValue < 2) {
+                imgDust4 = R.drawable.dust7;
+                DustcoValueText = "좋음";
+            } else if (2 <= coValue && coValue < 5.5) {
+                imgDust4 = R.drawable.dust6;
+                DustcoValueText = "양호";
+            } else if (5.5 <= coValue && coValue < 9) {
+                imgDust4 = R.drawable.dust5;
+                DustcoValueText = "보통";
+            } else if (9 <= coValue && coValue < 12) {
+                imgDust4 = R.drawable.dust4;
+                DustcoValueText = "나쁨";
+            } else if (12 <= coValue && coValue < 15) {
+                imgDust4 = R.drawable.dust3;
+                DustcoValueText = "상당히 나쁨";
+            } else if (15 <= coValue && coValue < 32) {
+                imgDust4 = R.drawable.dust2;
+                DustcoValueText = "매우 나쁨";
+            } else if (32 <= coValue) {
+                imgDust4 = R.drawable.dust1;
+                DustcoValueText = "최악";
+            }
         }
         ImageView dust_day5_img = (ImageView) getActivity().findViewById(R.id.dust_day5_img); // 일산화탄소 사진
         TextView dust_day5_grade = (TextView) getActivity().findViewById(R.id.dust_day5_grade); // 일산화탄소 등급
@@ -475,38 +584,44 @@ public class DustFragment extends Fragment {
 
         dust_day5_img.setImageResource(imgDust4);
         dust_day5_grade.setText(DustcoValueText);
-        dust_day5_value.setText(coValue + " ppm");
+        dust_day5_value.setText(dustcoValue + " ppm");
     }
 
     // 현 위치 대기 상태 : 아황산가스
     public void initUI6(ViewGroup rootView) {
-        float so2Value = Float.parseFloat(dustActivity.getso2Value()); // 아황산가스 농도
-        // 아황산가스
-        //   float so2Value = (float) dustso2Value;
-        if (0 <= so2Value && so2Value < 0.01) {
-            imgDust5 = R.drawable.dust8;
-            Dustso2ValueText = "최고 좋음";
-        } else if (0.01 <= so2Value && so2Value < 0.02) {
-            imgDust5 = R.drawable.dust7;
-            Dustso2ValueText = "좋음";
-        } else if (0.02 <= so2Value && so2Value < 0.04) {
-            imgDust5 = R.drawable.dust6;
-            Dustso2ValueText = "양호";
-        } else if (0.04 <= so2Value && so2Value < 0.05) {
-            imgDust5 = R.drawable.dust5;
-            Dustso2ValueText = "보통";
-        } else if (0.05 <= so2Value && so2Value < 0.1) {
-            imgDust5 = R.drawable.dust4;
-            Dustso2ValueText = "나쁨";
-        } else if (0.1 <= so2Value && so2Value < 0.15) {
+        /*점검중, 측정하지 않는 정보*/
+        dustso2Value = dustActivity.getcoValue();
+        if(dustso2Value == null || dustso2Value.equals("-")) {
             imgDust5 = R.drawable.dust3;
-            Dustso2ValueText = "상당히 나쁨";
-        } else if (0.15 <= so2Value && so2Value < 0.6) {
-            imgDust5 = R.drawable.dust2;
-            Dustso2ValueText = "매우 나쁨";
-        } else if (0.6 <= so2Value) {
-            imgDust5 = R.drawable.dust1;
-            Dustso2ValueText = "최악";
+            Dustso2ValueText ="정보없음";
+            dustso2Value = "?";
+        }else {
+            so2Value = Float.parseFloat(dustso2Value);
+            if (0 <= so2Value && so2Value < 0.01) {
+                imgDust5 = R.drawable.dust8;
+                Dustso2ValueText = "최고 좋음";
+            } else if (0.01 <= so2Value && so2Value < 0.02) {
+                imgDust5 = R.drawable.dust7;
+                Dustso2ValueText = "좋음";
+            } else if (0.02 <= so2Value && so2Value < 0.04) {
+                imgDust5 = R.drawable.dust6;
+                Dustso2ValueText = "양호";
+            } else if (0.04 <= so2Value && so2Value < 0.05) {
+                imgDust5 = R.drawable.dust5;
+                Dustso2ValueText = "보통";
+            } else if (0.05 <= so2Value && so2Value < 0.1) {
+                imgDust5 = R.drawable.dust4;
+                Dustso2ValueText = "나쁨";
+            } else if (0.1 <= so2Value && so2Value < 0.15) {
+                imgDust5 = R.drawable.dust3;
+                Dustso2ValueText = "상당히 나쁨";
+            } else if (0.15 <= so2Value && so2Value < 0.6) {
+                imgDust5 = R.drawable.dust2;
+                Dustso2ValueText = "매우 나쁨";
+            } else if (0.6 <= so2Value) {
+                imgDust5 = R.drawable.dust1;
+                Dustso2ValueText = "최악";
+            }
         }
         ImageView dust_day6_img = (ImageView) getActivity().findViewById(R.id.dust_day6_img); // 아황산가스 사진
         TextView dust_day6_grade = (TextView) getActivity().findViewById(R.id.dust_day6_grade); // 아황산가스 농도 등급
@@ -514,7 +629,7 @@ public class DustFragment extends Fragment {
 
         dust_day6_img.setImageResource(imgDust5);
         dust_day6_grade.setText(Dustso2ValueText);
-        dust_day6_value.setText(so2Value + " ppm");
+        dust_day6_value.setText(dustso2Value + " ppm");
     }
 
     // 전국 대기 상태 : 미세먼지
