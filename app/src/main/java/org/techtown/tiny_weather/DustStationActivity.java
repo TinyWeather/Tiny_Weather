@@ -34,6 +34,7 @@ public class DustStationActivity {
 
     String key="kd3zWLkxFKVIuT0XejOXR1qWycWNx03d21q75t5AHS2gIRKGQXQhqtwrvDWy3Huf04BaJZQL2vQHDvEkT8coDw%3D%3D";
 
+    // TM 좌표 기반 가장 가까운 측정소 찾기
     public void setDustStationXmlData(String tmX, String tmY){
         String queryUrl="http://openapi.airkorea.or.kr/openapi/services/rest/MsrstnInfoInqireSvc/getNearbyMsrstnList?"
                 + "ServiceKey=" + key // 키
@@ -60,7 +61,7 @@ public class DustStationActivity {
             String childValue = childvalue.getNodeValue();
             setStationValue(childValue);
 
-            System.out.println("======측정소 : "+childValue+" ======");
+            System.out.println("====== 측정소 : "+childValue+" ======");
 
             System.out.println("====== 측정소(DustStationActivity) 파싱 끝 ======");
         } catch (Exception e) {
