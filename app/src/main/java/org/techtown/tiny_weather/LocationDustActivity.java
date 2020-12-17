@@ -62,7 +62,7 @@ public class LocationDustActivity extends Fragment {
             boolean totalCheck = false;
 
             System.out.println(queryUrl);
-            System.out.println("============= LocationDust 파싱 시작=============");
+            System.out.println("====== locationDUST1 (LocationDustActivity) 파싱 시작 ======");
 
             while (parserEvent != XmlPullParser.END_DOCUMENT) {
                 switch(parserEvent) {
@@ -74,11 +74,11 @@ public class LocationDustActivity extends Fragment {
                             totalCountCheck = true;
                         }
                         if (parser.getName().equals("message")) {
-                            System.out.println("DustLocationActivity 에러");
+                            System.out.println("====== locationDUST1 (LocationDustActivity) 에러 ======");
                         }
                         break;
 
-                    case XmlPullParser.TEXT://parser가 내용에 접근했을때
+                    case XmlPullParser.TEXT:
                         if(umdNameCheck){
                             if(umdName.contains(parser.getText())){
                                 totalCheck = true;
@@ -88,7 +88,7 @@ public class LocationDustActivity extends Fragment {
                         if (totalCountCheck) {
                             if (totalCheck){
                                 settotalCountValue(parser.getText());
-                                System.out.println("=====settotalCount========"+parser.getText()+"=============");
+                                System.out.println("====== locationDUST1 settotalCount : "+parser.getText()+" ======");
                             }
                             totalCountCheck = false;
                         }
@@ -99,10 +99,10 @@ public class LocationDustActivity extends Fragment {
                 }
                 parserEvent = parser.next();
             }
-            System.out.println("============= LocationDust 파싱 끝=============");
+            System.out.println("====== locationDUST1 (LocationDustActivity) 파싱 끝 ======");
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("============= LocationDust 파싱 에러=============");
+            System.out.println("====== locationDUST1 (LocationDustActivity) 파싱 에러 ======");
         }
     }
 
@@ -127,7 +127,7 @@ public class LocationDustActivity extends Fragment {
            boolean locationCheck = false;
 
            System.out.println(queryUrl);
-           System.out.println("============= LocationDust 파싱 시작=============");
+           System.out.println("====== locationDUST2 (LocationDustActivity) 파싱 시작 ======");
 
            while (parserEvent != XmlPullParser.END_DOCUMENT) {
                switch (parserEvent) {
@@ -165,14 +165,14 @@ public class LocationDustActivity extends Fragment {
                        if (tmXCheck) {
                            if (locationCheck) {
                                setTmXValue(parser.getText());
-                               System.out.println("============= setTmXValue  " + parser.getText() + "=============");
+                               System.out.println("====== TmX : " + parser.getText() + " ======");
                            }
                            tmXCheck = false;
                        }
                        if (tmYCheck) {
                            if (locationCheck) {
                                setTmYValue(parser.getText());
-                               System.out.println("============= setTmYValue  " + parser.getText() + "=============");
+                               System.out.println("====== TmY : " + parser.getText() + " ======");
                            }
                            tmYCheck = false;
                        }
@@ -182,10 +182,10 @@ public class LocationDustActivity extends Fragment {
                }
                parserEvent = parser.next();
            }
-           System.out.println("============= LocationDust 파싱 끝=============");
+           System.out.println("====== locationDUST2 (LocationDustActivity) 파싱 끝 ======");
        } catch (Exception e) {
            e.printStackTrace();
-           System.out.println("============= LocationDust 파싱 에러=============");
+           System.out.println("====== locationDUST2 (LocationDustActivity) 파싱 에러 ======");
        }
    }
 }

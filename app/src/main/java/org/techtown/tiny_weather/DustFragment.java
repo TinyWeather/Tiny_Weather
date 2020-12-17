@@ -635,7 +635,7 @@ public class DustFragment extends Fragment {
     // 전국 대기 상태 : 미세먼지
     public void initUI7(ViewGroup rootView) {
         TextView dust_list_title_txt = (TextView) getActivity().findViewById(R.id.dust_list_title_txt);
-        dust_list_title_txt.setText("전국 대기 상태 : 미세먼지");
+        dust_list_title_txt.setText("전국 대기 상태 :    미세먼지");
 
         arrayList1 = new ArrayList(){
             {
@@ -661,15 +661,11 @@ public class DustFragment extends Fragment {
 
         linearLayout = (LinearLayout) rootView.getRootView().findViewById(R.id.dust_list2);
         linearLayout.removeAllViews();
-        // TextView textView1 = (TextView) rootView.getRootView().findViewById(R.id.dust_list_title_txt);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.setMargins(50, 25, 50, 25);
 
         for ( int i=0 ; i < arrayList1.size(); i++ ) {
-
             int pm10Value = arrayList1.get(i);
-            //  String pm10 = dustActivity.getBusan();
-            //   int pm10Int = Integer.parseInt(pm10);
             if (0 <= pm10Value && pm10Value < 16) {
                 imgDust = R.drawable.dust8;
                 Dustpm10ValueText = "최고 좋음";
@@ -695,33 +691,37 @@ public class DustFragment extends Fragment {
                 imgDust = R.drawable.dust1;
                 Dustpm10ValueText = "최악";
             }
-
+            // 등급
             TextView newTextView = new TextView(rootView.getContext());
-            //   newTextView.setText(dustActivity.getSeoul());
             newTextView.setText(Dustpm10ValueText);
             newTextView.setTextAppearance(R.style.txt_black_18);
-            //     newTextView.setText(arrayList1.get(i));
-            //newTextView.setText(Dustpm10ValueText);
-            //  newTextView.setTextColor(0xAA1e6de0);
-            //newTextView.setGravity(Gravity.CENTER);
-            // newTextView.setLayoutParams(new ViewGroup.LayoutParams(textView1.getWidth(), ViewGroup.LayoutParams.WRAP_CONTENT));
+            newTextView.setGravity(View.TEXT_ALIGNMENT_CENTER);
+            newTextView.setGravity(Gravity.CENTER);
+            newTextView.setWidth(250);
 
-
+            // 수치
             TextView newTextView2 = new TextView(rootView.getContext());
-            newTextView2.setText(pm10Value +" ㎍/㎥");
+            newTextView2.setText(pm10Value + " ㎍/㎥");
             newTextView2.setTextAppearance(R.style.txt_black_18);
-            // newTextView2.setTextColor(R.id.dust_list_title_txt);
+            newTextView2.setWidth(300);
+            newTextView2.setGravity(View.TEXT_ALIGNMENT_CENTER);
+            newTextView2.setGravity(Gravity.CENTER);
 
+            // 사진
             ImageView imageView1 = new ImageView(rootView.getContext());
             imageView1.setImageResource(imgDust);
             imageView1.setLayoutParams(new ViewGroup.LayoutParams(140, 140));
+            imageView1.getLayoutParams().width = 300;
+            imageView1.setScaleType(ImageView.ScaleType.FIT_CENTER);
             imageView1.requestLayout();
 
-
+            // 지역
             TextView newTextView3 = new TextView(rootView.getContext());
             newTextView3.setText(arrayListPlace.get(i));
             newTextView3.setTextAppearance(R.style.txt_black_18);
-            // newTextView3.setTextColor(R.id.dust_list_title_txt);
+            newTextView3.setWidth(120);
+            newTextView3.setPadding(0,25,0,0);
+            newTextView3.setGravity(Gravity.CENTER);
 
             LinearLayout linearLayout1 = new LinearLayout(rootView.getContext());
             linearLayout1.setOrientation(LinearLayout.HORIZONTAL);
@@ -731,7 +731,6 @@ public class DustFragment extends Fragment {
             linearLayout1.addView(newTextView2); // 수치
 
             linearLayout.addView(linearLayout1, layoutParams);
-
         }
     }
 
@@ -764,12 +763,10 @@ public class DustFragment extends Fragment {
 
         linearLayout = (LinearLayout) rootView.getRootView().findViewById(R.id.dust_list2);
         linearLayout.removeAllViews();
-        // TextView textView1 = (TextView) rootView.getRootView().findViewById(R.id.dust_list_title_txt);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        layoutParams.setMargins(50, 25, 50, 25);
+        layoutParams.setMargins(60, 25, 60, 25);
 
         for ( int i=0; i < arrayList2.size(); i++ ) {
-
             int pm25Value = arrayList2.get(i);
             if (0 <= pm25Value && pm25Value < 9) {
                 imgDust1 = R.drawable.dust8;
@@ -796,33 +793,37 @@ public class DustFragment extends Fragment {
                 imgDust1 = R.drawable.dust1;
                 Dustpm25ValueText = "최악";
             }
-
+            // 등급
             TextView newTextView = new TextView(rootView.getContext());
-            //   newTextView.setText(dustActivity.getSeoul());
             newTextView.setText(Dustpm25ValueText);
             newTextView.setTextAppearance(R.style.txt_black_18);
-            //     newTextView.setText(arrayList1.get(i));
-            //newTextView.setText(Dustpm10ValueText);
-            //  newTextView.setTextColor(0xAA1e6de0);
-            //newTextView.setGravity(Gravity.CENTER);
-            // newTextView.setLayoutParams(new ViewGroup.LayoutParams(textView1.getWidth(), ViewGroup.LayoutParams.WRAP_CONTENT));
+            newTextView.setGravity(View.TEXT_ALIGNMENT_CENTER);
+            newTextView.setGravity(Gravity.CENTER);
+            newTextView.setWidth(250);
 
-
+            // 수치
             TextView newTextView2 = new TextView(rootView.getContext());
             newTextView2.setText(pm25Value + " ㎍/㎥");
             newTextView2.setTextAppearance(R.style.txt_black_18);
-            // newTextView2.setTextColor(R.id.dust_list_title_txt);
+            newTextView2.setWidth(300);
+            newTextView2.setGravity(View.TEXT_ALIGNMENT_CENTER);
+            newTextView2.setGravity(Gravity.CENTER);
 
+            // 사진
             ImageView imageView1 = new ImageView(rootView.getContext());
             imageView1.setImageResource(imgDust1);
             imageView1.setLayoutParams(new ViewGroup.LayoutParams(140, 140));
+            imageView1.getLayoutParams().width = 300;
+            imageView1.setScaleType(ImageView.ScaleType.FIT_CENTER);
             imageView1.requestLayout();
 
-
+            // 지역
             TextView newTextView3 = new TextView(rootView.getContext());
             newTextView3.setText(arrayListPlace.get(i));
             newTextView3.setTextAppearance(R.style.txt_black_18);
-            // newTextView3.setTextColor(R.id.dust_list_title_txt);
+            newTextView3.setWidth(120);
+            newTextView3.setPadding(0,25,0,0);
+            newTextView3.setGravity(Gravity.CENTER);
 
             LinearLayout linearLayout1 = new LinearLayout(rootView.getContext());
             linearLayout1.setOrientation(LinearLayout.HORIZONTAL);

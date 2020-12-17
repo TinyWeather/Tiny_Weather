@@ -35,13 +35,14 @@ public class DustStationActivity {
     String key="kd3zWLkxFKVIuT0XejOXR1qWycWNx03d21q75t5AHS2gIRKGQXQhqtwrvDWy3Huf04BaJZQL2vQHDvEkT8coDw%3D%3D";
 
     public void setDustStationXmlData(String tmX, String tmY){
-        String queryUrl="http://openapi.airkorea.or.kr/openapi/services/rest/MsrstnInfoInqireSvc/getNearbyMsrstnList?"//요청 URL
+        String queryUrl="http://openapi.airkorea.or.kr/openapi/services/rest/MsrstnInfoInqireSvc/getNearbyMsrstnList?"
                 + "ServiceKey=" + key // 키
                 + "&tmX=" + tmX // TM_X 좌표
                 + "&tmY=" + tmY; // TM_Y 좌표
         StringBuffer buffer=new StringBuffer();
 
         try {
+            System.out.println("====== 측정소(DustStationActivity) 파싱 시작 ======");
             URL url = new URL(queryUrl);
             System.out.println(queryUrl);
 
@@ -59,13 +60,12 @@ public class DustStationActivity {
             String childValue = childvalue.getNodeValue();
             setStationValue(childValue);
 
-            System.out.println("======측정소======="+childValue+"=============");
+            System.out.println("======측정소 : "+childValue+" ======");
 
-
-            System.out.println("============= DustStationActivity 파싱 끝=============");
+            System.out.println("====== 측정소(DustStationActivity) 파싱 끝 ======");
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("============= DustStationActivity 파싱 에러=============");
+            System.out.println("====== 측정소(DustStationActivity) 파싱 에러 ======");
         }
     }
 }

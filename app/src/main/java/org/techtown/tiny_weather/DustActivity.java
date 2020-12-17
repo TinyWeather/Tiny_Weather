@@ -32,7 +32,6 @@ public class DustActivity extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-    //    timeActivity = new TimeActivity();
     }
 
     // 현 위치 대기 상태
@@ -326,22 +325,23 @@ public class DustActivity extends Fragment {
             boolean locationCheck = false;
 
             System.out.println(queryUrl);
-            System.out.println("============= DUST1 파싱 시작=============");
+            System.out.println("====== DUST1(DustActivity) 파싱 시작 ======");
 
             while (parserEvent != XmlPullParser.END_DOCUMENT){
                 switch(parserEvent){
                     case XmlPullParser.START_TAG://parser가 시작 태그를 만나면 실행
-                        //             System.out.println("============= 미세먼지 태그 만남=============");
                         if(parser.getName().equals("item")){ // 목록
                             locationCheck = false;
                         }
-      /*                  if(parser.getName().equals("dataTime")){ // 측정일
+                        /*
+                        if(parser.getName().equals("dataTime")){ // 측정일
                             dataTimeCheck = true;
-                        }*/
+                        }
+                        */
                         if(parser.getName().equals("mangName")){ // 측정 망 정보
                             mangNameCheck = true;
                         }
-                        if(parser.getName().equals("stationName")){ // 측정소 명 ex)강서구
+                        if(parser.getName().equals("stationName")){ // 측정소 명
                             stationNameCheck = true;
                         }
                         if(parser.getName().equals("so2Value")){ // 아황산가스 농도
@@ -363,23 +363,11 @@ public class DustActivity extends Fragment {
                             pm25ValueCheck = true;
                         }
                         if(parser.getName().equals("message")){ //message 태그를 만나면 에러 출력
-                            System.out.println("미세먼지 에러");
+                            System.out.println("====== DUST1(DustActivity) 미세먼지 에러 ======");
                         }
                         break;
 
                     case XmlPullParser.TEXT://parser가 내용에 접근했을때
-            //            System.out.println("============= 미세먼지 텍스트 만남=============");
-            //            System.out.println("============= 미세먼지  "+parser.getText()+"=============");
-                    /*    if(dataTimeCheck) {
-                            if(location.contains(parser.getText())){
-                                locationCheck = true;
-                            }
-                            dataTimeCheck = false;
-                        }*/
-                  /*      if(mangNameCheck) {
-                            //System.out.println(parser.getText());
-                            mangNameCheck = false;
-                        }*/
                         if(stationNameCheck){
                             if(location.contains(parser.getText())){
                                 locationCheck = true;
@@ -422,10 +410,10 @@ public class DustActivity extends Fragment {
                 }
                 parserEvent = parser.next();
             }
-           System.out.println("============= DUST1 파싱 끝=============");
+            System.out.println("====== DUST1(DustActivity) 파싱 끝 ======");
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("============= DUST1 파싱 에러=============");
+            System.out.println("====== DUST1(DustActivity) 파싱 에러 ======");
         }
     }
 
@@ -435,12 +423,12 @@ public class DustActivity extends Fragment {
                 + "ServiceKey=" + key // 키
                 + "&pageNo=1" //페이지 번호
                 + "&numOfRows=1000" //한 페이지 결과 수
-                + "&itemCode="+ what // 	측정항목 구분 (SO2, CO, O3, NO2, PM10, PM25) : 미세먼지
+                + "&itemCode="+ what // 측정항목 구분 (SO2, CO, O3, NO2, PM10, PM25) : 미세먼지
                 + "&dataGubun=HOUR"; // 요청 자료 구분 (시간평균 : HOUR, 일평균 : DAILY)
         StringBuffer buffer=new StringBuffer();
 
         try {
-            URL url= new URL(queryUrl); //문자열로 된 요청 url을 URL 객체로 생성.
+            URL url= new URL(queryUrl); 
 
             XmlPullParserFactory factory= XmlPullParserFactory.newInstance();
             XmlPullParser parser= factory.newPullParser();
@@ -450,12 +438,11 @@ public class DustActivity extends Fragment {
             boolean timeCheck = false;
 
             System.out.println(queryUrl);
-            System.out.println("============= DUST2 파싱 시작=============");
+            System.out.println("====== DUST2(DustActivity) 파싱 시작 ======");
 
             while (parserEvent != XmlPullParser.END_DOCUMENT){
                 switch(parserEvent){
-                    case XmlPullParser.START_TAG://parser가 시작 태그를 만나면 실행
-                        //             System.out.println("============= 미세먼지 태그 만남=============");
+                    case XmlPullParser.START_TAG:
                         if(parser.getName().equals("item")){ // 목록
                             timeCheck = false;
                         }
@@ -520,130 +507,107 @@ public class DustActivity extends Fragment {
                             sejongCheck = true;
                         }
                         if(parser.getName().equals("message")){ //message 태그를 만나면 에러 출력
-                            System.out.println("미세먼지 에러");
+                            System.out.println("====== DUST2(DustActivity) 미세먼지 에러 ======");
                         }
                         break;
 
-                    case XmlPullParser.TEXT://parser가 내용에 접근했을때
-                        //            System.out.println("============= 미세먼지 텍스트 만남=============");
-                        //            System.out.println("============= 미세먼지  "+parser.getText()+"=============");
+                    case XmlPullParser.TEXT:
                         if(dataTimeCheck) {
-                 //           System.out.println(parser.getText());
                             if(time.equals(parser.getText())){
                                 timeCheck = true;
                             }
                             dataTimeCheck = false;
                         }
                         if(mangNameCheck) {
-                 //           System.out.println(parser.getText());
                             mangNameCheck = false;
                         }
                         if(itemCodeCheck) {
-                //            System.out.println(parser.getText());
                             itemCodeCheck  = false;
                         }
                         if(dataGubunCheck){
-                 //           System.out.println(parser.getText());
                             dataGubunCheck  = false;
                         }
                         if(seoulCheck) {
-                            //                  System.out.println(parser.getText());
                             if(timeCheck)
                                 setSeoul(Integer.parseInt(parser.getText()));
                             seoulCheck  = false;
                         }
                         if(busanCheck) {
-                            //                 System.out.println(parser.getText());
                             if(timeCheck)
                                 setBusan(Integer.parseInt(parser.getText()));
                             busanCheck = false;
                         }
                         if(daeguCheck) {
-                            //                 System.out.println(parser.getText());
                             if(timeCheck)
                                 setDaegu(Integer.parseInt(parser.getText()));
                             daeguCheck = false;
                         }
                         if(incheonCheck) {
-                            //               System.out.println(parser.getText());
                             if(timeCheck)
                                 setIncheon(Integer.parseInt(parser.getText()));
                             incheonCheck = false;
                         }
                         if(gwangjuCheck ) {
-                            //                System.out.println(parser.getText());
                             if(timeCheck)
                                 setGwangju(Integer.parseInt(parser.getText()));
                             gwangjuCheck  = false;
                         }
                         if(daejeonCheck) {
-                            //                System.out.println(parser.getText());
                             if(timeCheck)
                                 setDaejeon(Integer.parseInt(parser.getText()));
                             daejeonCheck  = false;
                         }
                         if(ulsanCheck) {
-                            //                System.out.println(parser.getText());
                             if(timeCheck)
                                 setUlsan(Integer.parseInt(parser.getText()));
                             ulsanCheck = false;
                         }
                         if(gyeonggiCheck) {
-                            //                System.out.println(parser.getText());
                             if(timeCheck)
                                 setGyeonggi(Integer.parseInt(parser.getText()));
                             gyeonggiCheck = false;
                         }
                         if(gangwonCheck) {
-                            //                System.out.println(parser.getText());
                             if(timeCheck)
                                 setGangwon(Integer.parseInt(parser.getText()));
                             gangwonCheck = false;
                         }
                         if(chungbukCheck) {
-                            //                System.out.println(parser.getText());
                             if(timeCheck)
                                 setChungbuk(Integer.parseInt(parser.getText()));
                             chungbukCheck = false;
                         }
                         if(chungnamCheck) {
-                            //               System.out.println(parser.getText());
                             if(timeCheck)
                                 setChungnam(Integer.parseInt(parser.getText()));
                             chungnamCheck = false;
                         }
                         if(jeonbukCheck) {
-                            //                System.out.println(parser.getText());
                             if(timeCheck)
                                 setJeonbuk(Integer.parseInt(parser.getText()));
                             jeonbukCheck = false;
                         }
                         if(jeonnamCheck) {
-                            //              System.out.println(parser.getText());
                             if(timeCheck)
                                 setJeonnam(Integer.parseInt(parser.getText()));
                             jeonnamCheck = false;
                         }
                         if(gyeongbukCheck) {
-                            //              System.out.println(parser.getText());
                             if(timeCheck)
                                 setGyeongbuk(Integer.parseInt(parser.getText()));
                             gyeongbukCheck = false;
                         }
                         if(gyeongnamCheck) {
-                            //                 System.out.println(parser.getText());
                             if(timeCheck)
                                 setGyeongnam(Integer.parseInt(parser.getText()));
                             gyeongnamCheck = false;
                         }
                         if(jejuCheck) {
-                            //               System.out.println(parser.getText());
                             if(timeCheck)
                                 setJeju(Integer.parseInt(parser.getText()));
                             jejuCheck = false;
                         }
                         if(sejongCheck) {
-                            //                System.out.println(parser.getText());
                             if(timeCheck)
                                 setSejong(Integer.parseInt(parser.getText()));
                             sejongCheck = false;
@@ -653,10 +617,10 @@ public class DustActivity extends Fragment {
                 }
                 parserEvent = parser.next();
             }
-            System.out.println("============= DUST2 파싱 끝=============");
+            System.out.println("====== DUST2(DustActivity) 파싱 끝 ======");
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("============= DUST2 파싱 에러=============");
+            System.out.println("====== DUST2(DustActivity) 파싱 에러 ======");
         }
     }
 
@@ -666,12 +630,12 @@ public class DustActivity extends Fragment {
                 + "ServiceKey=" + key // 키
                 + "&pageNo=1" //페이지 번호
                 + "&numOfRows=1000" //한 페이지 결과 수
-                + "&itemCode="+ what // 	측정항목 구분 (SO2, CO, O3, NO2, PM10, PM25) : 미세먼지
+                + "&itemCode="+ what // 측정항목 구분 (SO2, CO, O3, NO2, PM10, PM25) : 미세먼지
                 + "&dataGubun=HOUR"; // 요청 자료 구분 (시간평균 : HOUR, 일평균 : DAILY)
         StringBuffer buffer=new StringBuffer();
 
         try {
-            URL url= new URL(queryUrl); //문자열로 된 요청 url을 URL 객체로 생성.
+            URL url= new URL(queryUrl);
 
             XmlPullParserFactory factory= XmlPullParserFactory.newInstance();
             XmlPullParser parser= factory.newPullParser();
@@ -681,12 +645,11 @@ public class DustActivity extends Fragment {
             boolean timeCheck2 = false;
 
             System.out.println(queryUrl);
-            System.out.println("============= DUST3 파싱 시작=============");
+            System.out.println("====== DUST3(DustActivity) 파싱 시작 ======");
 
             while (parserEvent != XmlPullParser.END_DOCUMENT){
                 switch(parserEvent){
-                    case XmlPullParser.START_TAG://parser가 시작 태그를 만나면 실행
-                        //             System.out.println("============= 미세먼지 태그 만남=============");
+                    case XmlPullParser.START_TAG:
                         if(parser.getName().equals("item")){ // 목록
                             timeCheck2 = false;
                         }
@@ -750,131 +713,105 @@ public class DustActivity extends Fragment {
                         if(parser.getName().equals("sejong")){ // 세종
                             sejongCheck2 = true;
                         }
-                        if(parser.getName().equals("message")){ //message 태그를 만나면 에러 출력
-                            System.out.println("미세먼지 에러");
+                        if(parser.getName().equals("message")){
+                            System.out.println("====== DUST3(DustActivity) 미세먼지 에러 ======");
                         }
                         break;
 
-                    case XmlPullParser.TEXT://parser가 내용에 접근했을때
-                        //            System.out.println("============= 미세먼지 텍스트 만남=============");
-                        //            System.out.println("============= 미세먼지  "+parser.getText()+"=============");
+                    case XmlPullParser.TEXT:
                         if(dataTimeCheck2) {
-              //              System.out.println(parser.getText());
                             if(time.equals(parser.getText())){
                                 timeCheck2 = true;
                             }
                             dataTimeCheck2 = false;
                         }
-                 /*       if(mangNameCheck) {
-                            System.out.println(parser.getText());
-                            mangNameCheck = false;
-                        }*/
                         if(itemCodeCheck2) {
-             //               System.out.println(parser.getText());
                             itemCodeCheck2  = false;
                         }
                         if(dataGubunCheck2){
-            //                System.out.println(parser.getText());
                             dataGubunCheck2  = false;
                         }
                         if(seoulCheck2) {
-                            //                  System.out.println(parser.getText());
                             if(timeCheck2)
                                 setSeoul2(Integer.parseInt(parser.getText()));
                             seoulCheck2  = false;
                         }
                         if(busanCheck2) {
-                            //                 System.out.println(parser.getText());
                             if(timeCheck2)
                                 setBusan2(Integer.parseInt(parser.getText()));
                             busanCheck2 = false;
                         }
                         if(daeguCheck2) {
-                            //                 System.out.println(parser.getText());
                             if(timeCheck2)
                                 setDaegu2(Integer.parseInt(parser.getText()));
                             daeguCheck2 = false;
                         }
                         if(incheonCheck2) {
-                            //               System.out.println(parser.getText());
                             if(timeCheck2)
                                 setIncheon2(Integer.parseInt(parser.getText()));
                             incheonCheck2 = false;
                         }
                         if(gwangjuCheck2) {
-                            //                System.out.println(parser.getText());
                             if(timeCheck2)
                                 setGwangju2(Integer.parseInt(parser.getText()));
                             gwangjuCheck2  = false;
                         }
                         if(daejeonCheck2) {
-                            //                System.out.println(parser.getText());
                             if(timeCheck2)
                                 setDaejeon2(Integer.parseInt(parser.getText()));
                             daejeonCheck2  = false;
                         }
                         if(ulsanCheck2) {
-                            //                System.out.println(parser.getText());
                             if(timeCheck2)
                                 setUlsan2(Integer.parseInt(parser.getText()));
                             ulsanCheck2 = false;
                         }
                         if(gyeonggiCheck2) {
-                            //                System.out.println(parser.getText());
                             if(timeCheck2)
                                 setGyeonggi2(Integer.parseInt(parser.getText()));
                             gyeonggiCheck2 = false;
                         }
                         if(gangwonCheck2) {
-                            //                System.out.println(parser.getText());
                             if(timeCheck2)
                                 setGangwon2(Integer.parseInt(parser.getText()));
                             gangwonCheck2 = false;
                         }
                         if(chungbukCheck2) {
-                            //                System.out.println(parser.getText());
                             if(timeCheck2)
                                 setChungbuk2(Integer.parseInt(parser.getText()));
                             chungbukCheck2 = false;
                         }
                         if(chungnamCheck2) {
-                            //               System.out.println(parser.getText());
                             if(timeCheck2)
                                 setChungnam2(Integer.parseInt(parser.getText()));
                             chungnamCheck2 = false;
                         }
                         if(jeonbukCheck2) {
-                            //                System.out.println(parser.getText());
                             if(timeCheck2)
                                 setJeonbuk2(Integer.parseInt(parser.getText()));
                             jeonbukCheck2 = false;
                         }
                         if(jeonnamCheck2) {
-                            //              System.out.println(parser.getText());
                             if(timeCheck2)
                                 setJeonnam2(Integer.parseInt(parser.getText()));
                             jeonnamCheck2 = false;
                         }
                         if(gyeongbukCheck2) {
-                            //              System.out.println(parser.getText());
                             if(timeCheck2)
                                 setGyeongbuk2(Integer.parseInt(parser.getText()));
                             gyeongbukCheck2 = false;
                         }
                         if(gyeongnamCheck2) {
-                            //                 System.out.println(parser.getText());
                             if(timeCheck2)
                                 setGyeongnam2(Integer.parseInt(parser.getText()));
                             gyeongnamCheck2 = false;
                         }
                         if(jejuCheck2) {
-                            //               System.out.println(parser.getText());
                             if(timeCheck2)
                                 setJeju2(Integer.parseInt(parser.getText()));
                             jejuCheck2 = false;
                         }
                         if(sejongCheck2) {
-                            //                System.out.println(parser.getText());
                             if(timeCheck2)
                                 setSejong2(Integer.parseInt(parser.getText()));
                             sejongCheck2 = false;
@@ -884,10 +821,10 @@ public class DustActivity extends Fragment {
                 }
                 parserEvent = parser.next();
             }
-            System.out.println("============= DUST3 파싱 끝=============");
+            System.out.println("====== DUST3(DustActivity) 파싱 끝 ======");
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("============= DUST3 파싱 에러=============");
+            System.out.println("====== DUST3(DustActivity) 파싱 에러 ======");
         }
     }
 }
