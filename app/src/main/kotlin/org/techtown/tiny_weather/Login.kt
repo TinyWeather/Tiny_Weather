@@ -21,7 +21,9 @@ class Login : AppCompatActivity() {
         startActivity(intent)
 
         join_btn.setOnClickListener {
-            login()
+            if(email.text.toString() == "" || password.text.toString() == ""){
+                login()
+            }
         }
     }
 
@@ -38,6 +40,9 @@ class Login : AppCompatActivity() {
     }
 
     fun signin(){
+
+
+
         auth?.signInWithEmailAndPassword(email.text.toString(), password.text.toString())
                 ?.addOnCompleteListener { task ->
                     if(task.isSuccessful){
