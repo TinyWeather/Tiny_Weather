@@ -60,8 +60,6 @@ class Login : AppCompatActivity() {
                         signin()
                     }
                 }
-
-
     }
 
     fun signin(){

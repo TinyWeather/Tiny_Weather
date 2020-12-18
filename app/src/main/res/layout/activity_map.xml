@@ -65,7 +65,7 @@
             app:srcCompat="@drawable/national_map" />
 
         <!-- 경기-->
-        <ImageView
+    <!--    <ImageView
             android:id="@+id/gyenggi"
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -73,7 +73,7 @@
             android:layout_below="@id/map_update_time2"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
-            />
+            />-->
 
     <!--    <ImageView
             android:id="@+id/gangwon"
