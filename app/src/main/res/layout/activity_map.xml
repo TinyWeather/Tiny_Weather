@@ -64,6 +64,31 @@
             android:layout_marginTop="50dp"
             app:srcCompat="@drawable/national_map" />
 
+        <!-- 경기-->
+        <ImageView
+            android:id="@+id/gyenggi"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/gyenggi"
+            android:layout_below="@id/map_update_time2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            />
+
+    <!--    <ImageView
+            android:id="@+id/gangwon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gangwon" />
+
+        <ImageView
+            android:id="@+id/incheon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/incheon"/>
+-->
+
+
     </RelativeLayout>
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

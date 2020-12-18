@@ -270,11 +270,11 @@ public class HomeFragment extends Fragment {
         dustStationActivity.setDustStationXmlData(dustTmX,dustTmY);
         dustStation = dustStationActivity.getStationValue();
         // dustActivity.setDustXmlData(locationActivity.getTextView5(), locationActivity.getTextView3());
-        
+
         // 미세먼지 정보
         dustActivity.setDustXmlData(dustStation, locationActivity.getTextView3());
         //dustActivity.setDustXmlData("철산","경기");
-        
+
         dustpm10Value = dustActivity.getpm10Value(); // 미세먼지 수치
         /*점검중, 측정하지 않는 정보*/
         if(dustpm10Value == null || dustpm10Value.equals("-")) {

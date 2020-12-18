@@ -11,11 +11,15 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.firestore.auth.FirebaseAuthCredentialsProvider;
+
 public class JoinActivity extends AppCompatActivity {
 
     private TextView id_textview;
     private TextView pw_textview;
     private Button joinBtn;
+    FirebaseAuthException auth = null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,6 +29,8 @@ public class JoinActivity extends AppCompatActivity {
         id_textview = (TextView) findViewById(R.id.email);
         pw_textview =(TextView) findViewById(R.id.password);
         joinBtn = (Button) findViewById(R.id.join_btn);
+
+
 
         Intent intent = new Intent(this, LodingActivity.class);
         startActivity(intent);
