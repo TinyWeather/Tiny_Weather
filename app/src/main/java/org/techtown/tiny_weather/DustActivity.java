@@ -183,7 +183,6 @@ public class DustActivity extends Fragment {
         this.jejuValue = jejuValue;
     }
 
-
     // 전국 대기 상태 : 초미세먼지
     /*지역*/
     public int getSeoul2() {

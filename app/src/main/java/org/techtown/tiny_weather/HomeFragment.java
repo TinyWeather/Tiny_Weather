@@ -265,15 +265,11 @@ public class HomeFragment extends Fragment {
         }
 
         // 가까운 측정소 찾기
-        // dustStationActivity.setDustStationXmlData("187244.391459","445896.46757");
-        //  dustStationActivity.setDustStationXmlData("187221.70890018","441666.82283184");
         dustStationActivity.setDustStationXmlData(dustTmX,dustTmY);
         dustStation = dustStationActivity.getStationValue();
-        // dustActivity.setDustXmlData(locationActivity.getTextView5(), locationActivity.getTextView3());
 
         // 미세먼지 정보
         dustActivity.setDustXmlData(dustStation, locationActivity.getTextView3());
-        //dustActivity.setDustXmlData("철산","경기");
 
         dustpm10Value = dustActivity.getpm10Value(); // 미세먼지 수치
         /*점검중, 측정하지 않는 정보*/

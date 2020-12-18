@@ -30,8 +30,6 @@ public class JoinActivity extends AppCompatActivity {
         pw_textview =(TextView) findViewById(R.id.password);
         joinBtn = (Button) findViewById(R.id.join_btn);
 
-
-
         Intent intent = new Intent(this, LodingActivity.class);
         startActivity(intent);
 

@@ -133,7 +133,6 @@ public class DustFragment extends Fragment {
 
                         // 미세먼지 근접 측정소 정보
                         dustActivity.setDustXmlData(dustStation, locationActivity.getTextView3());
-                    //    dustActivity.setDustXmlData(locationActivity.getTextView5(), locationActivity.getTextView3());
 
                         // 미세먼지 전국 정보
                         dustActivity.setDustXmlData2(timeActivity.getTime2(),"PM10");
