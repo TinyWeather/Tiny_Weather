@@ -23,7 +23,7 @@ class Login : AppCompatActivity() {
         startActivity(intent)
 
         join_btn.setOnClickListener {
-            if(email.text.toString() != "" || password.text.toString() != ""){
+            if(email.text.toString() != "" && password.text.toString() != ""){
                 login()
             }else{
                 Toast.makeText(this, "빈칸을 채우세요", Toast.LENGTH_SHORT).show()
