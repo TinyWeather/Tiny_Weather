@@ -44,6 +44,12 @@
         <activity android:name=".JoinActivity"></activity>
 
 
+        <!--
+        로그인 없이 사용
+        1.  android:name=".LoginActivity" -> android:name=".JoinActivity" 변경
+        2.  <activity android:name=".JoinActivity"></activity> 지우기
+        -->
+
     </application>
 
 
