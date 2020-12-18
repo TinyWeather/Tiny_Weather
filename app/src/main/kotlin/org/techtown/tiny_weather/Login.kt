@@ -33,33 +33,35 @@ class Login : AppCompatActivity() {
 
     fun login(){
 
-        var builder = AlertDialog.Builder(this)
-        builder.setTitle("회원가입")
-        builder.setMessage("회원가입하시겠습니까?")
-        builder.setIcon(R.mipmap.ic_launcher_logo)
+        auth?.createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
+                ?.addOnCompleteListener { task ->
+                    if(task.isSuccessful){
+                        //Creating a user account
+                        var builder = AlertDialog.Builder(this)
+                        builder.setTitle("회원가입")
+                        builder.setMessage("회원가입하시겠습니까?")
+                        builder.setIcon(R.mipmap.ic_launcher_logo)
 
-        var listener = DialogInterface.OnClickListener{
-            _,p1 ->
-            when(p1){
-                DialogInterface.BUTTON_POSITIVE->
-                    auth?.createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
-                            ?.addOnCompleteListener { task ->
-                                if(task.isSuccessful){
-                                    //Creating a user account
+                        var listener = DialogInterface.OnClickListener{
+                            _,p1 ->
+                            when(p1){
+                                DialogInterface.BUTTON_POSITIVE->
                                     goHome(task.result?.user)
-                                } else{
-                                    signin()
-                                }
+                                DialogInterface.BUTTON_NEGATIVE ->
+                                    Toast.makeText(this, "미 가입시 앱 이용 불가", Toast.LENGTH_SHORT).show()
                             }
-                DialogInterface.BUTTON_NEGATIVE ->
-                    Toast.makeText(this, "미 가입시 앱 이용 불가", Toast.LENGTH_SHORT).show()
-            }
-        }
+                        }
 
-        builder.setPositiveButton("예",listener)
-        builder.setNegativeButton("아니요",listener)
+                        builder.setPositiveButton("예",listener)
+                        builder.setNegativeButton("아니요",listener)
 
-        builder.show();
+                        builder.show();
+                    } else{
+                        signin()
+                    }
+                }
+
+
     }
 
     fun signin(){
