@@ -71,6 +71,10 @@
         개발자에게 후원하기
     </string>
 
+    <string name="donation_id2">
+        (카카오뱅크)
+    </string>
+
     <string name="donation_name_id1">
         윤채린
     </string>
@@ -84,11 +88,11 @@
     </string>
 
     <string name="donation_acount_id1">
-        302-0744-2472-21
+        3333-10-4867606
     </string>
 
     <string name="donation_acount_id2">
-        000-0000-0000-00
+        3333-06-6740607
     </string>
 
     <string name="donation_acount_id3">

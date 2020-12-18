@@ -25,11 +25,22 @@
             android:textAppearance="@style/txt_black_32"
             />
 
+        <TextView
+            android:id="@+id/donation_txt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/donation_txt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="@string/donation_id2"
+            android:textAppearance="@style/txt_black_15"
+            />
+
         <ImageView
             android:id="@+id/donation_img1"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_below="@id/donation_txt"
+            android:layout_below="@id/donation_txt2"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50sp"
             android:src="@drawable/character_youn"
