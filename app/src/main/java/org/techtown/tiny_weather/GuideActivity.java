@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Guide extends AppCompatActivity {
+public class GuideActivity extends AppCompatActivity {
 
     Button btn1,btn2,btn3;
     TextView text1,text2,text3;

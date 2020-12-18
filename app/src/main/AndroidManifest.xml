@@ -37,10 +37,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Notice"></activity>
-        <activity android:name=".Donation"></activity>
-        <activity android:name=".Inquiry"></activity>
-        <activity android:name=".Guide"></activity>
+        <activity android:name=".NoticeActivity"></activity>
+        <activity android:name=".DonationActivity"></activity>
+        <activity android:name=".InquiryActivity"></activity>
+        <activity android:name=".GuideActivity"></activity>
         <activity android:name=".JoinActivity"></activity>
 
 

@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
-public class Notice extends AppCompatActivity {
+public class NoticeActivity extends AppCompatActivity {
 
     ListView list;
     ArrayList<String> listArray;

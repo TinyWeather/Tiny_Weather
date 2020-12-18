@@ -151,16 +151,16 @@ public class MainActivity extends AppCompatActivity implements onTabItemSelected
                 else if(id == R.id.gps){
                     Toast.makeText(context, title, Toast.LENGTH_SHORT).show();
                 }else if(id == R.id.notice){//공지사항
-                    Intent intent = new Intent(getApplicationContext(),Notice.class);
+                    Intent intent = new Intent(getApplicationContext(), NoticeActivity.class);
                     startActivity(intent);
                 }else if(id == R.id.inquiry){//문의하기
-                    Intent intent = new Intent(getApplicationContext(),Inquiry.class);
+                    Intent intent = new Intent(getApplicationContext(), InquiryActivity.class);
                     startActivity(intent);
                 }else if(id == R.id.guide){//가이드북
-                    Intent intent = new Intent(getApplicationContext(),Guide.class);
+                    Intent intent = new Intent(getApplicationContext(), GuideActivity.class);
                     startActivity(intent);
                 }else if(id == R.id.donation){//개발자 지원하기
-                    Intent intent = new Intent(getApplicationContext(),Donation.class);
+                    Intent intent = new Intent(getApplicationContext(), DonationActivity.class);
                     startActivity(intent);
                 }
 
