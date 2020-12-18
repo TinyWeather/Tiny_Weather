@@ -10,7 +10,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.actiivity_login.*
 
-class Login : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
     var auth : FirebaseAuth?= null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,10 +23,10 @@ class Login : AppCompatActivity() {
         startActivity(intent)
 
         join_btn.setOnClickListener {
-            if(email.text.toString() != "" && password.text.toString() != ""){
+            if(email.text.toString() != "" && password.text.length > 7){
                 login()
             }else{
-                Toast.makeText(this, "빈칸을 채우세요", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "빈칸을 채우거나 비밀번호를 8자 이상 작성하세요", Toast.LENGTH_SHORT).show()
             }
         }
     }
